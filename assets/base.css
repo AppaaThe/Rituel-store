@@ -53,7 +53,7 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 
 /* Bundle Selector */
 .bundle-selector { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
-.bundle-option { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border: 1px solid var(--cream-dark); border-radius: 4px; cursor: pointer; transition: all 0.3s; background: var(--white); position: relative; overflow: hidden; }
+.bundle-option { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border: 1px solid var(--cream-dark); border-radius: 4px; cursor: pointer; transition: all 0.3s; background: var(--white); position: relative; overflow: hidden; text-decoration: none; color: inherit; }
 .bundle-option.active { border-color: var(--terracotta); }
 .bundle-radio { width: 18px; height: 18px; border: 1.5px solid var(--cream-dark); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
 .bundle-option.active .bundle-radio { border-color: var(--terracotta); background: var(--terracotta); }
@@ -61,7 +61,8 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 .bundle-info { flex: 1; }
 .bundle-name { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2px; }
 .bundle-includes { font-size: 12px; color: var(--stone); }
-.bundle-price { font-family: var(--serif); font-size: 20px; }
+.bundle-price { font-family: var(--serif); font-size: 20px; display: flex; align-items: baseline; gap: 8px; }
+.bundle-compare { font-size: 13px; color: var(--stone); text-decoration: line-through; opacity: 0.5; }
 .bundle-badge { position: absolute; top: -1px; right: 16px; background: var(--terracotta); color: white; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 10px; border-radius: 0 0 4px 4px; }
 
 /* Buttons */
