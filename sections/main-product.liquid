@@ -1,67 +1,39 @@
 <div class="product-page">
 
-  {%- comment -%} LEFT: Image Gallery {%- endcomment -%}
   <div class="product-media">
-    <div class="product-gallery">
-      <div class="product-gallery-main" id="galleryMain">
-        {%- if product.images.size > 0 -%}
-          <img
-            src="{{ product.images[0] | image_url: width: 900 }}"
-            alt="{{ product.images[0].alt | escape }}"
-            id="mainImage"
-            loading="eager"
-          >
-        {%- else -%}
-          <div class="gallery-placeholder">
-            <div class="hero-stone"></div>
-          </div>
-        {%- endif -%}
-      </div>
-
-      {%- if product.images.size > 1 -%}
-        <div class="product-gallery-thumbs">
-          {%- for image in product.images -%}
-            <button
-              class="thumb-btn {% if forloop.first %}active{% endif %}"
-              onclick="switchImage('{{ image | image_url: width: 900 }}', '{{ image.alt | escape }}', this)"
-              type="button"
-            >
-              <img src="{{ image | image_url: width: 120 }}" alt="{{ image.alt | escape }}" loading="lazy">
-            </button>
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
-    </div>
+    {%- if product.featured_image -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 900 }}"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+        class="product-main-img"
+        loading="eager"
+      >
+    {%- else -%}
+      <div class="gallery-placeholder"></div>
+    {%- endif -%}
   </div>
 
-  {%- comment -%} RIGHT: Product Info {%- endcomment -%}
   <div class="product-info">
 
     <p class="product-vendor">{{ product.vendor }}</p>
     <h1 class="product-title">{{ product.title }}</h1>
 
-    {%- comment -%} Price with compare-at {%- endcomment -%}
     <div class="product-price-wrap">
       <span class="product-page-price">{{ product.price | money }}</span>
       {%- if product.compare_at_price > product.price -%}
         <span class="product-compare-price">{{ product.compare_at_price | money }}</span>
-        <span class="product-save-badge">
-          Save {{ product.compare_at_price | minus: product.price | money }}
-        </span>
+        <span class="product-save-badge">Save {{ product.compare_at_price | minus: product.price | money }}</span>
       {%- endif -%}
     </div>
 
-    {%- comment -%} Tags: Most Popular / Best Value badge {%- endcomment -%}
     {%- if product.tags contains 'most popular' -%}
-      <div class="product-tag-badge badge-popular">⭐ Most Popular</div>
+      <div class="product-tag-badge badge-popular">&#11088; Most Popular</div>
     {%- elsif product.tags contains 'best value' -%}
       <div class="product-tag-badge badge-value">Best Value</div>
     {%- endif -%}
 
-    {%- comment -%} Description {%- endcomment -%}
     <div class="product-description">{{ product.description }}</div>
 
-    {%- comment -%} Add to cart form {%- endcomment -%}
     {%- form 'product', product -%}
       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
       <button type="submit" class="btn-primary btn-add-cart" {% unless product.available %}disabled{% endunless %}>
@@ -69,24 +41,14 @@
       </button>
     {%- endform -%}
 
-    {%- comment -%} Trust signals {%- endcomment -%}
     <div class="product-trust">
-      <div class="trust-item"><span class="trust-dot"></span> Free shipping over €45</div>
+      <div class="trust-item"><span class="trust-dot"></span> Free shipping over &#8364;45</div>
       <div class="trust-item"><span class="trust-dot"></span> 30-day money-back guarantee</div>
-      <div class="trust-item"><span class="trust-dot"></span> Natural amethyst — each piece is unique</div>
+      <div class="trust-item"><span class="trust-dot"></span> Natural amethyst &#8212; each piece is unique</div>
     </div>
 
   </div>
 </div>
-
-<script>
-function switchImage(src, alt, btn) {
-  document.getElementById('mainImage').src = src;
-  document.getElementById('mainImage').alt = alt;
-  document.querySelectorAll('.thumb-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-</script>
 
 {% schema %}
 {
