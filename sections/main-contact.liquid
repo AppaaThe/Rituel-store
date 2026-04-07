@@ -1,0 +1,106 @@
+<div class="contact-page">
+  <div class="contact-header">
+    <span class="section-label">Get in Touch</span>
+    <h1 class="contact-title">We're here<br><em>for you.</em></h1>
+    <p class="contact-subtitle">Questions about your order, your ritual, or anything else — we read and reply to every message.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <span class="contact-info-label">Email</span>
+        <a href="mailto:hello@rituel.co" class="contact-info-value">hello@rituel.co</a>
+      </div>
+      <div class="contact-info-item">
+        <span class="contact-info-label">Response time</span>
+        <span class="contact-info-value">Within 24 hours</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="contact-info-label">Orders & shipping</span>
+        <span class="contact-info-value">Track your order via the link in your confirmation email</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="contact-info-label">Returns</span>
+        <a href="{{ pages['faq'].url | default: '/pages/faq' }}" class="contact-info-value">See our 30-day guarantee →</a>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      {%- form 'contact', id: 'ContactForm' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="contact-success">
+            <p>Thank you — we'll be in touch within 24 hours.</p>
+          </div>
+        {%- endif -%}
+        <div class="contact-field">
+          <label for="ContactForm-name">Name</label>
+          <input type="text" id="ContactForm-name" name="contact[name]" placeholder="Your name" value="{% if form.name %}{{ form.name }}{% endif %}">
+        </div>
+        <div class="contact-field">
+          <label for="ContactForm-email">Email <span style="color:var(--terracotta);">*</span></label>
+          <input type="email" id="ContactForm-email" name="contact[email]" required placeholder="your@email.com" value="{% if form.email %}{{ form.email }}{% endif %}">
+        </div>
+        <div class="contact-field">
+          <label for="ContactForm-body">Message <span style="color:var(--terracotta);">*</span></label>
+          <textarea id="ContactForm-body" name="contact[body]" required placeholder="How can we help?" rows="6">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+        </div>
+        <button type="submit" class="btn-primary">
+          <span>Send Message</span>
+        </button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+<style>
+.contact-page { padding: 160px 80px 100px; max-width: 1200px; margin: 0 auto; }
+.contact-header { margin-bottom: 80px; max-width: 560px; }
+.contact-title { font-family: var(--serif); font-size: clamp(42px,5vw,68px); font-weight: 300; line-height: 1.1; margin-top: 16px; margin-bottom: 20px; }
+.contact-title em { font-style: italic; color: var(--terracotta); }
+.contact-subtitle { font-size: 16px; line-height: 1.8; color: var(--stone); }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 100px; align-items: start; }
+
+.contact-info { display: flex; flex-direction: column; gap: 40px; }
+.contact-info-item { border-bottom: 1px solid var(--cream-dark); padding-bottom: 28px; }
+.contact-info-label { display: block; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 10px; }
+.contact-info-value { font-family: var(--serif); font-size: 18px; color: var(--espresso); text-decoration: none; line-height: 1.5; display: block; }
+a.contact-info-value:hover { color: var(--terracotta); }
+
+.contact-form-wrap { background: var(--white); padding: 56px; border-radius: 4px; }
+.contact-field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.contact-field label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); }
+.contact-field input,
+.contact-field textarea {
+  background: var(--cream);
+  border: 1px solid var(--cream-dark);
+  padding: 16px 20px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--espresso);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.3s;
+  resize: none;
+  width: 100%;
+}
+.contact-field input:focus,
+.contact-field textarea:focus { border-color: var(--terracotta); }
+.contact-field input::placeholder,
+.contact-field textarea::placeholder { color: var(--stone); opacity: 0.6; }
+.contact-success { background: var(--cream-dark); border-left: 3px solid var(--terracotta); padding: 20px 24px; margin-bottom: 32px; border-radius: 2px; }
+.contact-success p { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--espresso); }
+
+@media (max-width: 1024px) {
+  .contact-page { padding: 140px 40px 80px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+  .contact-form-wrap { padding: 40px 32px; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Contact Page",
+  "presets": [{ "name": "Contact Page" }]
+}
+{% endschema %}
