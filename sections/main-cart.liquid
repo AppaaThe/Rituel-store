@@ -1,0 +1,39 @@
+<div class="cart-page">
+  <h1>Your Bag</h1>
+  {%- if cart.item_count > 0 -%}
+    {%- form 'cart', cart -%}
+      {%- for item in cart.items -%}
+        <div class="cart-item">
+          {%- if item.image -%}
+            <img class="cart-item-image" src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title }}">
+          {%- else -%}
+            <div class="cart-item-image"></div>
+          {%- endif -%}
+          <div>
+            <div class="cart-item-name">{{ item.product.title }}</div>
+            <div style="font-size:12px;color:var(--stone);margin-top:4px;">Qty: {{ item.quantity }}</div>
+          </div>
+          <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+        </div>
+      {%- endfor -%}
+      <div class="cart-total">Total: {{ cart.total_price | money }}</div>
+      <button type="submit" name="checkout" class="btn-primary" style="max-width:320px;margin-top:24px;">
+        <span>Proceed to Checkout</span>
+      </button>
+    {%- endform -%}
+  {%- else -%}
+    <div class="cart-empty">
+      <p>Your bag is empty.</p>
+      <a href="{{ routes.collections_url }}/all" class="btn-primary" style="display:inline-block;max-width:240px;text-decoration:none;text-align:center;padding:20px 40px;">
+        <span>Start Your Ritual</span>
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Cart",
+  "presets": [{ "name": "Cart" }]
+}
+{% endschema %}

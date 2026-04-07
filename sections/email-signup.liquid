@@ -1,0 +1,22 @@
+<section class="club-section" id="club">
+  <div class="club-inner">
+    <span class="section-label reveal">The Ritual Club</span>
+    <h2 class="section-title reveal reveal-delay-1">Join 18,000<br><em>Women</em></h2>
+    <p class="club-desc reveal reveal-delay-2">Get weekly ritual guides, skincare tips, and exclusive member discounts. Plus a free Ritual Guidebook when you join today.</p>
+    <form class="email-form reveal reveal-delay-3" id="emailForm" action="/contact#contact_form" method="post" accept-charset="UTF-8">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input class="email-input" type="email" name="contact[email]" placeholder="Your email address" required>
+      <button type="submit" class="email-submit">Join Free</button>
+    </form>
+    <p class="email-note">No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Email Signup",
+  "presets": [{ "name": "Email Signup" }]
+}
+{% endschema %}

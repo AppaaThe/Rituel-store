@@ -1,0 +1,8 @@
+{
+  "general": {
+    "title": "RITUEL",
+    "password_page": { "login_form_heading": "Enter store using password", "login_form_password_label": "Password", "login_form_password_placeholder": "Your password", "login_form_submit": "Enter", "signup_button_text": "Subscribe" }
+  },
+  "products": { "product": { "add_to_cart": "Add to Ritual", "sold_out": "Sold Out", "unavailable": "Unavailable" } },
+  "cart": { "general": { "title": "Your Bag", "empty": "Your bag is empty.", "checkout": "Proceed to Checkout", "subtotal": "Subtotal" } }
+}

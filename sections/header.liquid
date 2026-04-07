@@ -1,0 +1,15 @@
+<header class="site-header">
+  <a href="{{ routes.root_url }}" class="header-logo">RITUEL</a>
+  <ul class="header-nav">
+    <li><a href="#ritual">The Ritual</a></li>
+    <li><a href="{{ routes.collections_url }}/all">Shop</a></li>
+    <li><a href="{{ pages['about-us'].url }}">Our Story</a></li>
+    <li><a href="{{ pages['faq'].url }}">FAQ</a></li>
+  </ul>
+  <div class="header-icons">
+    <a href="{{ routes.cart_url }}" class="header-cart">
+      Bag
+      <span class="cart-count">{{ cart.item_count }}</span>
+    </a>
+  </div>
+</header>

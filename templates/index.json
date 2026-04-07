@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "hero": { "type": "hero", "settings": {} },
+    "marquee": { "type": "marquee", "settings": {} },
+    "ritual-steps": { "type": "ritual-steps", "settings": {} },
+    "featured-products": { "type": "featured-products", "settings": {} },
+    "testimonials": { "type": "testimonials", "settings": {} },
+    "email-signup": { "type": "email-signup", "settings": {} }
+  },
+  "order": ["hero", "marquee", "ritual-steps", "featured-products", "testimonials", "email-signup"]
+}

@@ -1,0 +1,35 @@
+<div class="product-page">
+  <div class="product-media">
+    {%- if product.featured_image -%}
+      <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}" loading="lazy">
+    {%- else -%}
+      <div class="hero-floating">
+        <div class="hero-stone"></div>
+        <div class="hero-roller"></div>
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="product-info">
+    <p class="product-vendor">{{ product.vendor }}</p>
+    <h1 class="product-title">{{ product.title }}</h1>
+    <p class="product-page-price">{{ product.price | money }}</p>
+    <div class="product-description">{{ product.description }}</div>
+    {%- form 'product', product -%}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" class="btn-primary" {% unless product.available %}disabled{% endunless %}>
+        <span>{% if product.available %}Add to Ritual{% else %}Sold Out{% endif %}</span>
+      </button>
+    {%- endform -%}
+    <div class="hero-trust" style="margin-top:24px; opacity:1; animation:none;">
+      <div class="trust-item"><span class="trust-dot"></span> Free shipping over $45</div>
+      <div class="trust-item"><span class="trust-dot"></span> 30-day guarantee</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "presets": [{ "name": "Product" }]
+}
+{% endschema %}

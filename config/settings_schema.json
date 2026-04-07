@@ -1,0 +1,24 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Rituel",
+    "theme_version": "1.0.0",
+    "theme_author": "RITUEL",
+    "theme_documentation_url": "https://github.com/AppaaThe/Rituel-store",
+    "theme_support_url": "https://github.com/AppaaThe/Rituel-store"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Background", "default": "#F7F2EA" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#1E120A" },
+      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#B8704A" }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  }
+]

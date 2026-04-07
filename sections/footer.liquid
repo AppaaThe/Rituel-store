@@ -1,0 +1,34 @@
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand-name">RITUEL</div>
+    <p class="footer-tagline">The 5-minute morning ritual that changes everything. Made for women who move fast and want to look like they don't.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Shop</h4>
+    <ul>
+      <li><a href="{{ routes.collections_url }}/all">All Products</a></li>
+      <li><a href="{{ routes.collections_url }}/kits">Ritual Kits</a></li>
+      <li><a href="{{ routes.collections_url }}/add-ons">Add-Ons</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Learn</h4>
+    <ul>
+      <li><a href="{{ pages['about-us'].url }}">Our Story</a></li>
+      <li><a href="{{ pages['faq'].url }}">FAQ</a></li>
+      <li><a href="{{ routes.root_url }}#ritual">The Ritual</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Support</h4>
+    <ul>
+      <li><a href="{{ pages['faq'].url }}">FAQ</a></li>
+      <li><a href="{{ pages['shipping'].url }}">Shipping & Returns</a></li>
+      <li><a href="mailto:hello@rituel.co">Contact Us</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>&copy; {{ 'now' | date: '%Y' }} RITUEL. All rights reserved.</p>
+  <p>Made with intention.</p>
+</div>
