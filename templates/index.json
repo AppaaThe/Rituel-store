@@ -69,15 +69,15 @@
             "section_padding": 40,
             "item_spacing": 10,
             "first_open": true,
-            "background_color": "#F7F2EA",
-            "heading_color": "#1E120A",
-            "text_color": "#1E120A",
-            "item_background_color": "#FFFFFF",
-            "question_color": "#1E120A",
-            "answer_color": "#1E120A",
-            "icon_color": "#B8704A",
-            "border_color": "#E5DED0",
-            "border_hover_color": "#B8704A",
+            "background_color": "#f7f2ea",
+            "heading_color": "#1e120a",
+            "text_color": "#1e120a",
+            "item_background_color": "#ffffff",
+            "question_color": "#1e120a",
+            "answer_color": "#1e120a",
+            "icon_color": "#b8704a",
+            "border_color": "#e5ded0",
+            "border_hover_color": "#b8704a",
             "border_width": 1,
             "border_radius": 8,
             "question_padding": 20,
@@ -91,6 +91,11 @@
         "ai_gen_block_efbf5b0_88ywc7"
       ],
       "settings": {}
+    },
+    "main_faq_QGqqkN": {
+      "type": "main-faq",
+      "name": "FAQ Page",
+      "settings": {}
     }
   },
   "order": [
@@ -100,6 +105,7 @@
     "featured-products",
     "testimonials",
     "email-signup",
-    "177558145937cd02ca"
+    "177558145937cd02ca",
+    "main_faq_QGqqkN"
   ]
 }
