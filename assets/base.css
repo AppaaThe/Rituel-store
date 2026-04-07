@@ -40,10 +40,24 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 /* Hero */
 .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
 .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(ellipse at 30% 70%, #C8A882 0%, #B8956A 40%, #8B6845 100%); }
-.hero-floating { width: 260px; height: 360px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; animation: float 6s ease-in-out infinite; }
-@keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-18px) rotate(2deg); } }
-.hero-stone { width: 130px; height: 200px; background: linear-gradient(145deg,#E8D5C0,#C4956A,#8B6035); border-radius: 70px 70px 50px 50px; box-shadow: 20px 30px 60px rgba(30,18,10,0.3), inset -3px -5px 20px rgba(0,0,0,0.15); }
-.hero-roller { width: 85px; height: 85px; background: linear-gradient(145deg,#E0C8D8,#B8849A,#8B5070); border-radius: 50%; box-shadow: 10px 15px 30px rgba(30,18,10,0.25); }
+
+/* Hero Emblem */
+.hero-emblem-wrap { position: relative; width: 420px; height: 420px; display: flex; align-items: center; justify-content: center; }
+.emblem-orbit { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(247,242,234,0.15); animation: slowSpin 40s linear infinite; }
+.emblem-orbit::before { content: ''; position: absolute; top: -4px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: rgba(247,242,234,0.5); border-radius: 50%; }
+.emblem-orbit::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: rgba(247,242,234,0.5); border-radius: 50%; }
+.emblem-ring-dash { position: absolute; inset: 20px; border-radius: 50%; border: 1px dashed rgba(247,242,234,0.25); }
+.emblem-ring-inner { position: absolute; inset: 44px; border-radius: 50%; border: 1px solid rgba(247,242,234,0.4); }
+.emblem-center { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+.emblem-wordmark { font-family: var(--serif); font-size: 64px; font-weight: 300; letter-spacing: 0.35em; color: var(--cream); line-height: 1; padding-left: 0.35em; }
+.emblem-tagline { font-size: 9px; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(247,242,234,0.55); padding-left: 0.45em; }
+.emblem-line { width: 48px; height: 1px; background: rgba(247,242,234,0.35); }
+.emblem-dot { position: absolute; width: 5px; height: 5px; background: rgba(247,242,234,0.4); border-radius: 50%; }
+.emblem-dot-top { top: 44px; left: 50%; transform: translateX(-50%); }
+.emblem-dot-bottom { bottom: 44px; left: 50%; transform: translateX(-50%); }
+.emblem-dot-left { left: 44px; top: 50%; transform: translateY(-50%); }
+.emblem-dot-right { right: 44px; top: 50%; transform: translateY(-50%); }
+@keyframes slowSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .hero-content { display: flex; flex-direction: column; justify-content: center; padding: 120px 80px 80px 72px; }
 .hero-eyebrow { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
 .hero-title { font-family: var(--serif); font-size: clamp(52px,5.5vw,80px); line-height: 1.0; font-weight: 300; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
@@ -278,6 +292,8 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 @media (max-width: 1024px) {
   .hero { grid-template-columns: 1fr; }
   .hero-visual { height: 60vh; }
+  .hero-emblem-wrap { width: 280px; height: 280px; }
+  .emblem-wordmark { font-size: 44px; }
   .hero-content { padding: 80px 40px; }
   .site-header { padding: 20px 32px; }
   .header-nav { display: none; }
