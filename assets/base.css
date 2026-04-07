@@ -69,8 +69,8 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 .btn-primary::after { content: ''; position: absolute; inset: 0; background: var(--terracotta); transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.23,1,0.32,1); }
 .btn-primary:hover::after { transform: translateY(0); }
 .btn-primary span { position: relative; z-index: 1; }
-.btn-secondary { background: transparent; color: var(--cream); border: 1px solid rgba(255,255,255,0.25); padding: 14px; font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.3s; width: 100%; }
-.btn-secondary:hover { background: var(--terracotta); border-color: var(--terracotta); }
+.btn-secondary { display: block; text-align: center; text-decoration: none; background: transparent; color: var(--cream); border: 1px solid rgba(255,255,255,0.25); padding: 14px; font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.3s; width: 100%; box-sizing: border-box; }
+.btn-secondary:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
 
 /* Trust */
 .hero-trust { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; opacity: 0; animation: fadeUp 0.8s ease forwards 1s; }
