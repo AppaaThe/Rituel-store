@@ -33,6 +33,14 @@
       "type": "testimonials",
       "settings": {}
     },
+    "problem": {
+      "type": "problem",
+      "settings": {}
+    },
+    "before-after": {
+      "type": "before-after",
+      "settings": {}
+    },
     "email-signup": {
       "type": "email-signup",
       "settings": {}
@@ -101,6 +109,8 @@
   "order": [
     "hero",
     "marquee",
+    "problem",
+    "before-after",
     "ritual-steps",
     "featured-products",
     "testimonials",
