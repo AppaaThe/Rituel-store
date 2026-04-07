@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RITUEL — The 5-Minute Morning Face Ritual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F2EA;
+    --cream-dark: #EDE6D6;
+    --terracotta: #B8704A;
+    --terracotta-light: #D4956E;
+    --espresso: #1E120A;
+    --stone: #8B7355;
+    --blush: #E8C5B0;
+    --white: #FDFAF5;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--espresso);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom Cursor */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--terracotta);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9000;
+    opacity: 0.5;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 48px;
+    mix-blend-mode: normal;
+  }
+  nav::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(247,242,234,0.95), transparent);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    letter-spacing: 0.25em;
+    color: var(--espresso);
+    text-decoration: none;
+    position: relative;
+    font-weight: 400;
+  }
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+    position: relative;
+  }
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+  .nav-cart {
+    position: relative;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--espresso);
+    cursor: pointer;
+    font-family: var(--sans);
+    background: none; border: none;
+  }
+  .cart-count {
+    position: absolute; top: -8px; right: -12px;
+    width: 16px; height: 16px;
+    background: var(--terracotta);
+    color: white;
+    border-radius: 50%;
+    font-size: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 500;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .cart-count.bump { transform: scale(1.5); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-visual {
+    position: relative;
+    background: var(--cream-dark);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-stone-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 70%, #C8A882 0%, #B8956A 40%, #8B6845 100%);
+  }
+  .hero-gua-sha {
+    position: relative; z-index: 2;
+    width: 320px; height: 420px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 24px;
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(-2deg); }
+    50% { transform: translateY(-18px) rotate(2deg); }
+  }
+  .product-visual-main {
+    width: 140px; height: 220px;
+    background: linear-gradient(145deg, #E8D5C0, #C4956A, #8B6035);
+    border-radius: 70px 70px 50px 50px;
+    position: relative;
+    box-shadow: 20px 30px 60px rgba(30,18,10,0.3), inset -3px -5px 20px rgba(0,0,0,0.15), inset 3px 3px 10px rgba(255,255,255,0.2);
+  }
+  .product-visual-main::after {
+    content: '';
+    position: absolute; top: 15%; left: 20%; right: 20%; bottom: 15%;
+    background: linear-gradient(160deg, rgba(255,255,255,0.25) 0%, transparent 60%);
+    border-radius: inherit;
+  }
+  .product-visual-roller {
+    width: 90px; height: 90px;
+    background: linear-gradient(145deg, #E0C8D8, #B8849A, #8B5070);
+    border-radius: 50%;
+    box-shadow: 10px 15px 30px rgba(30,18,10,0.25), inset -2px -4px 12px rgba(0,0,0,0.15);
+    position: relative;
+  }
+  .product-visual-roller::before {
+    content: '';
+    position: absolute; top: 10%; left: 10%; right: 10%; bottom: 10%;
+    background: linear-gradient(145deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    position: absolute; top: 10%; right: 10%;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(30,18,10,0.2);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 10px;
+    line-height: 1.4;
+    color: var(--espresso);
+    animation: spin 20s linear infinite;
+    z-index: 3;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .hero-badge span {
+    display: block;
+    animation: spin 20s linear infinite reverse;
+    font-style: italic;
+  }
+
+  .hero-content {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 80px 80px 72px;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 5.5vw, 80px);
+    line-height: 1.0;
+    font-weight: 300;
+    color: var(--espresso);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .hero-subtitle {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--stone);
+    max-width: 380px;
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Bundle Selector */
+  .bundle-selector {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+  .bundle-option {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px;
+    border: 1px solid var(--cream-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .bundle-option::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--terracotta);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    opacity: 0.04;
+  }
+  .bundle-option:hover::before, .bundle-option.active::before { transform: translateX(0); }
+  .bundle-option.active {
+    border-color: var(--terracotta);
+  }
+  .bundle-radio {
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 50%;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bundle-option.active .bundle-radio {
+    border-color: var(--terracotta);
+    background: var(--terracotta);
+  }
+  .bundle-option.active .bundle-radio::after {
+    content: '';
+    width: 6px; height: 6px;
+    background: white;
+    border-radius: 50%;
+  }
+  .bundle-info { flex: 1; }
+  .bundle-name {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--espresso);
+    margin-bottom: 2px;
+  }
+  .bundle-includes {
+    font-size: 12px;
+    color: var(--stone);
+  }
+  .bundle-price {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--espresso);
+  }
+  .bundle-badge {
+    position: absolute; top: -1px; right: 16px;
+    background: var(--terracotta);
+    color: white;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .add-to-cart {
+    background: var(--espresso);
+    color: var(--cream);
+    border: none;
+    padding: 20px 48px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+  .add-to-cart::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--terracotta);
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .add-to-cart:hover::after { transform: translateY(0); }
+  .add-to-cart span { position: relative; z-index: 1; }
+  .add-to-cart.added {
+    background: var(--terracotta);
+  }
+
+  .hero-trust {
+    display: flex; gap: 32px;
+    margin-top: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px;
+    color: var(--stone);
+    letter-spacing: 0.05em;
+  }
+  .trust-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    flex-shrink: 0;
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-bar {
+    background: var(--espresso);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-track span {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--blush);
+    margin: 0 32px;
+  }
+  .marquee-track span::before {
+    content: '✦';
+    margin-right: 32px;
+    font-style: normal;
+    font-size: 10px;
+    color: var(--terracotta);
+  }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ─── RITUAL STEPS ─── */
+  .ritual-section {
+    padding: 140px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 100px;
+    align-items: end;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 4vw, 60px);
+    line-height: 1.1;
+    font-weight: 300;
+  }
+  .section-title em { font-style: italic; color: var(--terracotta); }
+  .section-desc {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--stone);
+    max-width: 400px;
+    align-self: end;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .step-card {
+    background: var(--white);
+    padding: 56px 40px;
+    position: relative;
+    transition: transform 0.4s ease;
+    overflow: hidden;
+  }
+  .step-card:hover { transform: translateY(-8px); }
+  .step-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--terracotta);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+  }
+  .step-card:hover::after { transform: scaleX(1); }
+  .step-number {
+    font-family: var(--serif);
+    font-size: 80px;
+    color: var(--cream-dark);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 24px;
+    transition: color 0.3s;
+  }
+  .step-card:hover .step-number { color: var(--blush); }
+  .step-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .step-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--stone);
+  }
+  .step-time {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    padding: 6px 14px;
+    border: 1px solid var(--terracotta);
+    border-radius: 20px;
+  }
+
+  /* ─── UPSELL STRIP ─── */
+  .upsell-section {
+    background: var(--espresso);
+    padding: 100px 80px;
+  }
+  .upsell-inner {
+    max-width: 1400px; margin: 0 auto;
+  }
+  .upsell-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+  .upsell-header .section-label { color: var(--blush); }
+  .upsell-header .section-title { color: var(--cream); }
+  .upsell-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .upsell-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 40px 32px;
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .upsell-card:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: var(--terracotta-light);
+    transform: translateY(-4px);
+  }
+  .upsell-card.featured {
+    border-color: var(--terracotta);
+    background: rgba(184,112,74,0.1);
+  }
+  .upsell-featured-label {
+    position: absolute; top: 0; right: 0;
+    background: var(--terracotta);
+    color: white;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 0 4px 0 4px;
+  }
+  .upsell-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+  .upsell-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+  .upsell-desc {
+    font-size: 13px;
+    color: rgba(247,242,234,0.5);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .upsell-price-row {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .upsell-price {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--cream);
+  }
+  .upsell-orig {
+    font-size: 14px;
+    color: rgba(247,242,234,0.3);
+    text-decoration: line-through;
+  }
+  .upsell-add {
+    width: 100%; margin-top: 20px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--cream);
+    padding: 14px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .upsell-add:hover, .upsell-card.featured .upsell-add {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+
+  /* ─── REVIEWS ─── */
+  .reviews-section {
+    padding: 140px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 80px;
+  }
+  .review-card {
+    padding: 40px;
+    background: var(--white);
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+  }
+  .review-card:hover { transform: translateY(-6px); }
+  .review-stars {
+    color: var(--terracotta);
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+  .review-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--espresso);
+    margin-bottom: 24px;
+  }
+  .review-author {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .review-card:nth-child(2) {
+    margin-top: 40px;
+    background: var(--cream-dark);
+  }
+  .review-card:nth-child(3) { margin-top: 20px; }
+
+  /* ─── EMAIL CAPTURE ─── */
+  .ritual-club {
+    background: linear-gradient(135deg, var(--terracotta) 0%, #8B4A2A 100%);
+    padding: 120px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ritual-club::before {
+    content: 'RITUEL';
+    position: absolute;
+    font-family: var(--serif);
+    font-size: 300px;
+    color: rgba(255,255,255,0.04);
+    letter-spacing: 0.3em;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .ritual-club-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .ritual-club .section-label { color: rgba(255,255,255,0.6); }
+  .ritual-club .section-title { color: white; margin-bottom: 20px; font-size: 50px; }
+  .ritual-club-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+  .email-form {
+    display: flex;
+    gap: 0;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  .email-input {
+    flex: 1;
+    padding: 18px 24px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-right: none;
+    color: white;
+    font-family: var(--sans);
+    font-size: 13px;
+    outline: none;
+    border-radius: 2px 0 0 2px;
+    transition: background 0.3s;
+  }
+  .email-input::placeholder { color: rgba(255,255,255,0.4); }
+  .email-input:focus { background: rgba(255,255,255,0.18); }
+  .email-submit {
+    padding: 18px 32px;
+    background: var(--espresso);
+    color: var(--cream);
+    border: none;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0 2px 2px 0;
+    transition: background 0.3s;
+    white-space: nowrap;
+  }
+  .email-submit:hover { background: #2C1810; }
+  .email-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 16px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--espresso);
+    padding: 80px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--cream);
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(247,242,234,0.4);
+    line-height: 1.8;
+    max-width: 240px;
+  }
+  .footer-col h4 {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terracotta-light);
+    margin-bottom: 24px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-col a {
+    font-size: 13px;
+    color: rgba(247,242,234,0.5);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--cream); }
+  .footer-bottom {
+    background: var(--espresso);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 24px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-bottom p {
+    font-size: 11px;
+    color: rgba(247,242,234,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ─── CART TOAST ─── */
+  .toast {
+    position: fixed;
+    bottom: 32px; right: 32px;
+    background: var(--espresso);
+    color: var(--cream);
+    padding: 16px 24px;
+    border-radius: 4px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 999;
+    border-left: 3px solid var(--terracotta);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-visual { height: 60vh; }
+    .hero-content { padding: 80px 40px; }
+    nav { padding: 20px 32px; }
+    .nav-links { display: none; }
+    .ritual-section, .reviews-section { padding: 80px 40px; }
+    .section-header { grid-template-columns: 1fr; gap: 24px; }
+    .steps-grid, .upsell-grid, .reviews-grid { grid-template-columns: 1fr; }
+    .review-card:nth-child(2), .review-card:nth-child(3) { margin-top: 0; }
+    footer { grid-template-columns: 1fr 1fr; padding: 60px 40px; }
+    .ritual-club { padding: 80px 40px; }
+    .upsell-section { padding: 80px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="toast" id="toast">Added to your ritual ✦</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">RITUEL</a>
+  <ul class="nav-links">
+    <li><a href="#ritual">The Ritual</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#reviews">Stories</a></li>
+    <li><a href="#club">Club</a></li>
+  </ul>
+  <button class="nav-cart" onclick="showCart()">
+    Bag
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-visual">
+    <div class="hero-stone-bg"></div>
+    <div class="hero-badge"><span>Rose<br>Quartz<br>✦<br>Handcrafted</span></div>
+    <div class="hero-gua-sha">
+      <div class="product-visual-main"></div>
+      <div class="product-visual-roller"></div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">The Morning Ritual</p>
+    <h1 class="hero-title">Sculpt.<br><em>Glow.</em><br>Repeat.</h1>
+    <p class="hero-subtitle">A 5-minute ritual that transforms your skin from the inside out. Rose quartz gua sha meets ice therapy — the ancient ritual, perfected.</p>
+
+    <div class="bundle-selector" id="bundleSelector">
+      <div class="bundle-option active" data-price="32" data-name="Starter Kit" onclick="selectBundle(this)">
+        <div class="bundle-radio"></div>
+        <div class="bundle-info">
+          <div class="bundle-name">Starter Kit</div>
+          <div class="bundle-includes">Gua Sha + Ice Roller</div>
+        </div>
+        <div class="bundle-price">$32</div>
+      </div>
+
+      <div class="bundle-option" data-price="45" data-name="Ritual Kit" onclick="selectBundle(this)">
+        <div class="bundle-badge">Most Popular</div>
+        <div class="bundle-radio"></div>
+        <div class="bundle-info">
+          <div class="bundle-name">Ritual Kit</div>
+          <div class="bundle-includes">Gua Sha + Ice Roller + Facial Oil</div>
+        </div>
+        <div class="bundle-price">$45</div>
+      </div>
+
+      <div class="bundle-option" data-price="58" data-name="Full Ritual Kit" onclick="selectBundle(this)">
+        <div class="bundle-radio"></div>
+        <div class="bundle-info">
+          <div class="bundle-name">Full Ritual Kit</div>
+          <div class="bundle-includes">Everything + Cleansing Spray</div>
+        </div>
+        <div class="bundle-price">$58</div>
+      </div>
+    </div>
+
+    <button class="add-to-cart" id="addToCartBtn" onclick="addToCart()">
+      <span id="cartBtnText">Add to Ritual — $32</span>
+    </button>
+
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-dot"></span> Free shipping over $45</div>
+      <div class="trust-item"><span class="trust-dot"></span> 30-day ritual guarantee</div>
+      <div class="trust-item"><span class="trust-dot"></span> 4,200+ reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Rose Quartz Gua Sha</span><span>Ice Roller Therapy</span><span>5-Minute Morning Ritual</span><span>Sculpt & Define</span><span>Lymphatic Drainage</span><span>Reduce Puffiness</span><span>Ancient Ritual. Modern Life.</span>
+    <span>Rose Quartz Gua Sha</span><span>Ice Roller Therapy</span><span>5-Minute Morning Ritual</span><span>Sculpt & Define</span><span>Lymphatic Drainage</span><span>Reduce Puffiness</span><span>Ancient Ritual. Modern Life.</span>
+  </div>
+</div>
+
+<!-- RITUAL STEPS -->
+<section class="ritual-section" id="ritual">
+  <div class="section-header">
+    <div>
+      <p class="section-label reveal">How It Works</p>
+      <h2 class="section-title reveal reveal-delay-1">The 5-Minute<br><em>Morning Ritual</em></h2>
+    </div>
+    <p class="section-desc reveal reveal-delay-2">Three simple steps. Five minutes. Visible results from day one. Used by women across 40 countries who refuse to spend an hour getting ready.</p>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-number">01</div>
+      <h3 class="step-title">Cleanse & Prep</h3>
+      <p class="step-desc">Apply a few drops of facial oil to clean skin. The oil creates the perfect glide for your gua sha — never drag on dry skin.</p>
+      <span class="step-time">60 seconds</span>
+    </div>
+    <div class="step-card reveal reveal-delay-1">
+      <div class="step-number">02</div>
+      <h3 class="step-title">Sculpt with Gua Sha</h3>
+      <p class="step-desc">Using your rose quartz stone, sweep upward and outward along your jawline, cheekbones, and forehead. Gentle pressure, always upward.</p>
+      <span class="step-time">3 minutes</span>
+    </div>
+    <div class="step-card reveal reveal-delay-2">
+      <div class="step-number">03</div>
+      <h3 class="step-title">Depuff with Ice</h3>
+      <p class="step-desc">Roll the chilled ice roller over your face to lock in results, reduce redness, and wake up your skin. You'll look like you slept 10 hours.</p>
+      <span class="step-time">90 seconds</span>
+    </div>
+  </div>
+</section>
+
+<!-- UPSELLS -->
+<section class="upsell-section" id="shop">
+  <div class="upsell-inner">
+    <div class="upsell-header">
+      <p class="section-label reveal">Complete Your Ritual</p>
+      <h2 class="section-title reveal reveal-delay-1">Add to Your Order<br><em>& Save</em></h2>
+    </div>
+    <div class="upsell-grid">
+      <div class="upsell-card reveal">
+        <div class="upsell-icon">🌹</div>
+        <div class="upsell-name">Ritual Facial Oil</div>
+        <p class="upsell-desc">Rosehip + Vitamin C. The essential glide for your gua sha. Absorbs in seconds, never greasy.</p>
+        <div class="upsell-price-row">
+          <span class="upsell-price">$18</span>
+          <span class="upsell-orig">$24</span>
+        </div>
+        <button class="upsell-add" onclick="addUpsell('Ritual Facial Oil', 18)">Add to Order</button>
+      </div>
+
+      <div class="upsell-card featured reveal reveal-delay-1">
+        <div class="upsell-featured-label">Best Value</div>
+        <div class="upsell-icon">✨</div>
+        <div class="upsell-name">Ritual Guidebook</div>
+        <p class="upsell-desc">Digital PDF — technique diagrams, pressure point maps, 30-day challenge tracker. Delivered instantly.</p>
+        <div class="upsell-price-row">
+          <span class="upsell-price">$7</span>
+          <span class="upsell-orig">$14</span>
+        </div>
+        <button class="upsell-add" onclick="addUpsell('Ritual Guidebook PDF', 7)">Add to Order — $7</button>
+      </div>
+
+      <div class="upsell-card reveal reveal-delay-2">
+        <div class="upsell-icon">💎</div>
+        <div class="upsell-name">Jade Roller</div>
+        <p class="upsell-desc">Pair with your gua sha for the complete tool set. Natural jade, weighted for perfect pressure.</p>
+        <div class="upsell-price-row">
+          <span class="upsell-price">$14</span>
+          <span class="upsell-orig">$22</span>
+        </div>
+        <button class="upsell-add" onclick="addUpsell('Jade Roller', 14)">Add to Order</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div style="text-align:center; margin-bottom:0;">
+    <p class="section-label reveal" style="text-align:center;">4,200+ Five-Star Reviews</p>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Real Women.<br><em>Real Results.</em></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I've done my ritual every single morning for 3 months. My jawline is more defined than it's ever been. My coworkers keep asking if I've lost weight — it's the face sculpting."</p>
+      <p class="review-author">Sofia M. — Verified Buyer</p>
+    </div>
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The ice roller after a late night is genuinely magic. I look awake and glowing in 5 minutes flat. I've gifted this to my sister, my mom, and my best friend."</p>
+      <p class="review-author">Aisha K. — Verified Buyer</p>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Skeptical at first. Now I genuinely panic if I forget to do it. My skin texture has completely changed. The ritual aspect is what makes you stick with it."</p>
+      <p class="review-author">Camille R. — Verified Buyer</p>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section class="ritual-club" id="club">
+  <div class="ritual-club-inner">
+    <p class="section-label reveal">The Ritual Club</p>
+    <h2 class="section-title reveal reveal-delay-1">Join 18,000<br><em>Women</em></h2>
+    <p class="ritual-club-desc reveal reveal-delay-2">Get weekly ritual guides, skincare tips, and exclusive member discounts. Plus — a free Ritual Guidebook when you join today.</p>
+    <div class="email-form reveal reveal-delay-3">
+      <input type="email" class="email-input" placeholder="Your email address" id="emailInput">
+      <button class="email-submit" onclick="joinClub()">Join Free</button>
+    </div>
+    <p class="email-note">No spam. Unsubscribe anytime. We value your ritual, not your inbox.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">RITUEL</div>
+    <p class="footer-tagline">The 5-minute morning ritual that changes everything. Made for women who move fast and want to look like they don't.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Shop</h4>
+    <ul>
+      <li><a href="#">Starter Kit</a></li>
+      <li><a href="#">Ritual Kit</a></li>
+      <li><a href="#">Full Kit</a></li>
+      <li><a href="#">Ritual Facial Oil</a></li>
+      <li><a href="#">Jade Roller</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Learn</h4>
+    <ul>
+      <li><a href="#">The Ritual Guide</a></li>
+      <li><a href="#">Gua Sha 101</a></li>
+      <li><a href="#">30-Day Challenge</a></li>
+      <li><a href="#">Before & After</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Support</h4>
+    <ul>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Shipping & Returns</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Track Order</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 RITUEL. All rights reserved.</p>
+  <p>Made with intention.</p>
+</div>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .bundle-option, .upsell-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+      cursorRing.style.transform = 'translate(-50%, -50%) scale(1.5)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursorRing.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+  });
+
+  // Bundle selector
+  let selectedPrice = 32;
+  let selectedName = 'Starter Kit';
+  let cartTotal = 0;
+  let cartItems = 0;
+
+  function selectBundle(el) {
+    document.querySelectorAll('.bundle-option').forEach(o => o.classList.remove('active'));
+    el.classList.add('active');
+    selectedPrice = parseInt(el.dataset.price);
+    selectedName = el.dataset.name;
+    document.getElementById('cartBtnText').textContent = `Add to Ritual — $${selectedPrice}`;
+  }
+
+  // Cart
+  function addToCart() {
+    const btn = document.getElementById('addToCartBtn');
+    const countEl = document.getElementById('cartCount');
+    cartItems++;
+    cartTotal += selectedPrice;
+    countEl.textContent = cartItems;
+    countEl.classList.add('bump');
+    setTimeout(() => countEl.classList.remove('bump'), 400);
+    showToast(`${selectedName} added`);
+    btn.classList.add('added');
+    document.getElementById('cartBtnText').textContent = '✦ Added to Ritual';
+    setTimeout(() => {
+      btn.classList.remove('added');
+      document.getElementById('cartBtnText').textContent = `Add to Ritual — $${selectedPrice}`;
+    }, 2000);
+  }
+
+  function addUpsell(name, price) {
+    cartItems++;
+    cartTotal += price;
+    const countEl = document.getElementById('cartCount');
+    countEl.textContent = cartItems;
+    countEl.classList.add('bump');
+    setTimeout(() => countEl.classList.remove('bump'), 400);
+    showToast(`${name} added — $${price}`);
+  }
+
+  function showCart() {
+    showToast(cartItems > 0 ? `${cartItems} item${cartItems > 1 ? 's' : ''} — $${cartTotal}` : 'Your bag is empty');
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg + ' ✦';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  function joinClub() {
+    const email = document.getElementById('emailInput').value;
+    if (email && email.includes('@')) {
+      showToast('Welcome to the Ritual Club!');
+      document.getElementById('emailInput').value = '';
+    } else {
+      showToast('Enter a valid email address');
+    }
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
