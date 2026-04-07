@@ -3,6 +3,7 @@
 
   <nav class="header-nav" role="navigation">
     <a href="{{ routes.root_url }}">Home</a>
+    <a href="{{ routes.collections_url }}/all">Shop</a>
     <a href="{{ pages['about-us'].url | default: '/pages/about-us' }}">About Us</a>
     <a href="{{ pages['faq'].url | default: '/pages/faq' }}">FAQ</a>
     <a href="/pages/contact">Contact</a>
@@ -34,6 +35,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-inner">
     <a href="{{ routes.root_url }}" onclick="toggleMenu()">Home</a>
+    <a href="{{ routes.collections_url }}/all" onclick="toggleMenu()">Shop</a>
     <a href="{{ pages['about-us'].url | default: '/pages/about-us' }}" onclick="toggleMenu()">About Us</a>
     <a href="{{ pages['faq'].url | default: '/pages/faq' }}" onclick="toggleMenu()">FAQ</a>
     <a href="/pages/contact" onclick="toggleMenu()">Contact</a>
