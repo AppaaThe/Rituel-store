@@ -1,32 +1,81 @@
+{%- assign gua_sha = all_products['rituel-gua-sha'] -%}
+{%- assign roller = all_products['rituel-jade-roller'] -%}
+{%- assign ice = all_products['rituel-ice-roller'] -%}
+{%- assign oil = all_products['rituel-rosehip-oil'] -%}
+
 <section class="products-section" id="shop">
   <div class="products-inner">
     <div class="products-header">
       <span class="section-label reveal">Complete Your Ritual</span>
-      <h2 class="section-title reveal reveal-delay-1">Add to Your Order<br><em>& Save</em></h2>
+      <h2 class="section-title reveal reveal-delay-1">Add to Your Order<br><em>&amp; Save</em></h2>
     </div>
-    <div class="products-grid">
+    <div class="products-grid products-grid-4">
+
       <div class="product-card reveal">
-        <div class="product-icon">🌹</div>
-        <div class="product-name">Ritual Facial Oil</div>
-        <p class="product-desc">Rosehip + Vitamin C. The essential glide for your gua sha. Absorbs in seconds, never greasy.</p>
-        <div class="product-price">$18 <span class="product-price-orig">$24</span></div>
-        <button class="btn-secondary">Add to Order</button>
+        <a href="{{ gua_sha.url }}" class="product-card-img-link">
+          {%- if gua_sha.featured_image -%}
+            <img src="{{ gua_sha.featured_image | image_url: width: 500 }}" alt="{{ gua_sha.title }}" class="product-card-photo" loading="lazy">
+          {%- else -%}
+            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-stone-amethyst.jpg" alt="RITUEL Amethyst Gua Sha Stone" class="product-card-photo" loading="lazy">
+          {%- endif -%}
+        </a>
+        <div class="product-card-body">
+          <div class="product-name">Amethyst Gua Sha Stone</div>
+          <p class="product-desc">The tool that sculpts your jawline and drains puffiness in 5 minutes every morning.</p>
+          <div class="product-price">&#8364;22 <span class="product-price-orig">&#8364;32</span></div>
+          <a href="{{ gua_sha.url }}" class="btn-secondary">Add to Order</a>
+        </div>
       </div>
-      <div class="product-card featured reveal reveal-delay-1">
-        <div class="product-featured-label">Best Value</div>
-        <div class="product-icon">✨</div>
-        <div class="product-name">Ritual Guidebook</div>
-        <p class="product-desc">Digital PDF — technique diagrams, pressure point maps, 30-day challenge tracker. Delivered instantly.</p>
-        <div class="product-price">$7 <span class="product-price-orig">$14</span></div>
-        <button class="btn-secondary">Add to Order — $7</button>
+
+      <div class="product-card reveal reveal-delay-1">
+        <a href="{{ roller.url }}" class="product-card-img-link">
+          {%- if roller.featured_image -%}
+            <img src="{{ roller.featured_image | image_url: width: 500 }}" alt="{{ roller.title }}" class="product-card-photo" loading="lazy">
+          {%- else -%}
+            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-facial-roller-amethyst.jpg" alt="RITUEL Amethyst Facial Roller" class="product-card-photo" loading="lazy">
+          {%- endif -%}
+        </a>
+        <div class="product-card-body">
+          <div class="product-name">Double-Sided Amethyst Roller</div>
+          <p class="product-desc">Two heads, zero puffiness. Pairs with gua sha to warm up the skin and drain the under-eye area.</p>
+          <div class="product-price">&#8364;16 <span class="product-price-orig">&#8364;24</span></div>
+          <a href="{{ roller.url }}" class="btn-secondary">Add to Order</a>
+        </div>
       </div>
+
       <div class="product-card reveal reveal-delay-2">
-        <div class="product-icon">💎</div>
-        <div class="product-name">Jade Roller</div>
-        <p class="product-desc">Pair with your gua sha for the complete tool set. Natural jade, weighted for perfect pressure.</p>
-        <div class="product-price">$14 <span class="product-price-orig">$22</span></div>
-        <button class="btn-secondary">Add to Order</button>
+        <a href="{{ ice.url }}" class="product-card-img-link">
+          {%- if ice.featured_image -%}
+            <img src="{{ ice.featured_image | image_url: width: 500 }}" alt="{{ ice.title }}" class="product-card-photo" loading="lazy">
+          {%- else -%}
+            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-ice-roller-rose-pink.jpg" alt="RITUEL Rose Ice Roller" class="product-card-photo" loading="lazy">
+          {%- endif -%}
+        </a>
+        <div class="product-card-body">
+          <div class="product-name">Rose Ice Roller</div>
+          <p class="product-desc">The final step. Constricts, de-puffs, closes pores. Look like you slept 10 hours in 60 seconds.</p>
+          <div class="product-price">&#8364;19 <span class="product-price-orig">&#8364;28</span></div>
+          <a href="{{ ice.url }}" class="btn-secondary">Add to Order</a>
+        </div>
       </div>
+
+      <div class="product-card featured reveal reveal-delay-3">
+        <div class="product-featured-label">Best Value</div>
+        <a href="{{ oil.url }}" class="product-card-img-link">
+          {%- if oil.featured_image -%}
+            <img src="{{ oil.featured_image | image_url: width: 500 }}" alt="{{ oil.title }}" class="product-card-photo" loading="lazy">
+          {%- else -%}
+            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-rosehip-facial-oil-30ml.jpg" alt="RITUEL Pure Rosehip Oil" class="product-card-photo" loading="lazy">
+          {%- endif -%}
+        </a>
+        <div class="product-card-body">
+          <div class="product-name">Pure Rosehip Oil 30ml</div>
+          <p class="product-desc">100% pure. The glide your gua sha needs. Fades dark spots, hydrates deeply, never clogs pores.</p>
+          <div class="product-price">&#8364;15 <span class="product-price-orig">&#8364;22</span></div>
+          <a href="{{ oil.url }}" class="btn-secondary">Add to Order</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
