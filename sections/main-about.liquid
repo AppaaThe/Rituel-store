@@ -1,0 +1,265 @@
+<div class="about-page">
+
+  <div class="about-hero">
+    <div class="about-hero-visual">
+      <div class="about-stone-shape"></div>
+      <div class="about-roller-shape"></div>
+    </div>
+    <div class="about-hero-content">
+      <span class="section-label">Our Story</span>
+      <h1 class="about-title">We built RITUEL because every skincare brand was selling <em>hope.</em></h1>
+    </div>
+  </div>
+
+  <div class="about-body">
+
+    <div class="about-block reveal">
+      <p>Most skincare is passive. You apply something, you wait, and you wonder if it's working. Serums, creams, masks — they sit on your skin and rely entirely on absorption.</p>
+      <p>We found something different.</p>
+    </div>
+
+    <div class="about-pull-quote reveal">
+      "Gua sha is a practice that's been used in East Asian medicine for thousands of years. It works because it <em>moves.</em>"
+    </div>
+
+    <div class="about-block reveal">
+      <p>It physically stimulates your lymphatic system, drains puffiness, boosts circulation, and sculpts your facial muscles through consistent daily movement. The ice roller seals everything in. Together, they create a ritual that produces visible results — starting from the very first morning.</p>
+      <p>The problem was the market. Gua sha tools were either sold as cheap novelties with no instruction, or as overpriced clinical tools with no soul. Nobody was selling the ritual — the experience of 5 intentional minutes every morning that change not just how your skin looks, but how you start your day.</p>
+      <p>That's what RITUEL is.</p>
+    </div>
+
+    <div class="about-values reveal">
+      <div class="about-value">
+        <span class="about-value-number">01</span>
+        <h3>Five minutes, every morning.</h3>
+        <p>Your morning routine should feel like something. Not a checklist. Not a transaction. A ritual — five minutes that belong entirely to you.</p>
+      </div>
+      <div class="about-value">
+        <span class="about-value-number">02</span>
+        <h3>Results you can see.</h3>
+        <p>We don't sell hope. We sell a practice that physically changes your skin through consistent, intentional movement. The results are real and they're cumulative.</p>
+      </div>
+      <div class="about-value">
+        <span class="about-value-number">03</span>
+        <h3>Premium, without pretension.</h3>
+        <p>Our tools are made from natural rose quartz and jade. Our packaging feels like a luxury purchase — because showing up for yourself every day deserves that.</p>
+      </div>
+    </div>
+
+    <div class="about-block reveal">
+      <p>We believe your morning routine should feel like something. Not a checklist. Not a transaction. A ritual — five minutes that belong entirely to you, that you do for yourself, every day.</p>
+      <p>4,200+ women have started their ritual with us. We're glad you found us.</p>
+      <p class="about-signature">— The RITUEL Team</p>
+    </div>
+
+    <div class="about-stat-row reveal">
+      <div class="about-stat">
+        <div class="about-stat-number">4,200+</div>
+        <div class="about-stat-label">Five-star reviews</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-number">40+</div>
+        <div class="about-stat-label">Countries worldwide</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-number">5 min</div>
+        <div class="about-stat-label">Every morning</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-number">Day 1</div>
+        <div class="about-stat-label">Visible results</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="about-cta-section">
+    <span class="section-label">Ready?</span>
+    <h2 class="about-cta-title">Start your ritual <em>today.</em></h2>
+    <a href="{{ routes.collections_url }}/all" class="btn-primary" style="display:inline-block;max-width:280px;text-decoration:none;text-align:center;padding:20px 48px;margin-top:40px;">
+      <span>Shop the Ritual</span>
+    </a>
+  </div>
+
+</div>
+
+<style>
+.about-page { overflow: hidden; }
+
+/* Hero */
+.about-hero {
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 100px;
+}
+.about-hero-visual {
+  background: radial-gradient(ellipse at 35% 65%, #C8A882, #8B6845);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  min-height: 500px;
+}
+.about-stone-shape {
+  width: 160px; height: 260px;
+  background: linear-gradient(145deg, #E8D5C0, #C4956A, #8B6035);
+  border-radius: 80px 80px 60px 60px;
+  box-shadow: 20px 30px 60px rgba(30,18,10,0.3);
+  animation: float 6s ease-in-out infinite;
+  position: absolute; left: 35%;
+}
+.about-roller-shape {
+  width: 90px; height: 90px;
+  background: linear-gradient(145deg, #E0C8D8, #B8849A, #8B5070);
+  border-radius: 50%;
+  box-shadow: 10px 15px 30px rgba(30,18,10,0.25);
+  animation: float 6s ease-in-out infinite 1s;
+  position: absolute; left: 55%; top: 60%;
+}
+.about-hero-content {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 80px 80px 72px;
+}
+.about-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4vw, 58px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-top: 20px;
+}
+.about-title em { font-style: italic; color: var(--terracotta); }
+
+/* Body */
+.about-body { max-width: 760px; margin: 0 auto; padding: 100px 80px; }
+.about-block p {
+  font-size: 17px; line-height: 1.95; color: var(--stone);
+  margin-bottom: 24px;
+}
+.about-block p:last-child { margin-bottom: 0; }
+.about-block { margin-bottom: 64px; }
+
+.about-pull-quote {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.4;
+  color: var(--espresso);
+  border-left: 3px solid var(--terracotta);
+  padding: 8px 0 8px 40px;
+  margin: 64px 0;
+  font-style: italic;
+}
+.about-pull-quote em { color: var(--terracotta); font-style: normal; }
+
+/* Values */
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin: 64px -80px;
+}
+.about-value {
+  background: var(--white);
+  padding: 48px 36px;
+  transition: transform 0.3s;
+}
+.about-value:hover { transform: translateY(-6px); }
+.about-value-number {
+  font-family: var(--serif);
+  font-size: 48px;
+  color: var(--cream-dark);
+  font-weight: 300;
+  display: block;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.about-value h3 {
+  font-family: var(--serif);
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+.about-value p { font-size: 14px; line-height: 1.8; color: var(--stone); }
+
+.about-signature {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--terracotta);
+  margin-top: 8px;
+}
+
+/* Stats */
+.about-stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin: 64px -80px 0;
+  background: var(--espresso);
+}
+.about-stat {
+  padding: 48px 36px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.about-stat:last-child { border-right: none; }
+.about-stat-number {
+  font-family: var(--serif);
+  font-size: 48px;
+  color: var(--cream);
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+.about-stat-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta-light);
+}
+
+/* CTA */
+.about-cta-section {
+  background: linear-gradient(135deg, var(--terracotta) 0%, #8B4A2A 100%);
+  padding: 120px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.about-cta-section::before {
+  content: 'RITUEL';
+  position: absolute;
+  font-family: var(--serif);
+  font-size: 260px;
+  color: rgba(255,255,255,0.04);
+  letter-spacing: 0.3em;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.about-cta-section .section-label { color: rgba(255,255,255,0.6); }
+.about-cta-title {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 300;
+  color: white;
+  margin-top: 16px;
+  position: relative;
+}
+.about-cta-title em { font-style: italic; }
+
+@media (max-width: 1024px) {
+  .about-hero { grid-template-columns: 1fr; }
+  .about-hero-visual { height: 50vh; min-height: 300px; }
+  .about-hero-content { padding: 60px 40px; }
+  .about-body { padding: 80px 40px; }
+  .about-values { grid-template-columns: 1fr; margin: 64px 0; }
+  .about-stat-row { grid-template-columns: 1fr 1fr; margin: 64px 0 0; }
+  .about-cta-section { padding: 80px 40px; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Page",
+  "presets": [{ "name": "About Page" }]
+}
+{% endschema %}
