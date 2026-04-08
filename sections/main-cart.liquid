@@ -1,35 +1,145 @@
 <div class="cart-page">
-  <h1>Your Bag</h1>
+  <h1 class="cart-title">Your Bag</h1>
+
   {%- if cart.item_count > 0 -%}
     {%- form 'cart', cart -%}
-      {%- for item in cart.items -%}
-        <div class="cart-item">
-          {%- if item.image -%}
-            <img class="cart-item-image" src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title }}">
-          {%- else -%}
-            <div class="cart-item-image"></div>
-          {%- endif -%}
-          <div>
-            <div class="cart-item-name">{{ item.product.title }}</div>
-            <div style="font-size:12px;color:var(--stone);margin-top:4px;">Qty: {{ item.quantity }}</div>
-          </div>
-          <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+
+      <div class="cart-layout">
+
+        <div class="cart-items-col">
+
+          {%- for item in cart.items -%}
+            <div class="cart-item">
+              {%- if item.image -%}
+                <img class="cart-item-image" src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title }}">
+              {%- else -%}
+                <div class="cart-item-image cart-item-image-placeholder"></div>
+              {%- endif -%}
+              <div class="cart-item-details">
+                <div class="cart-item-name">{{ item.product.title }}</div>
+                {%- if item.product.compare_at_price > item.product.price -%}
+                  <div class="cart-item-save">Save {{ item.product.compare_at_price | minus: item.product.price | money }}</div>
+                {%- endif -%}
+                <div class="cart-item-qty">
+                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="cart-qty-btn" aria-label="Remove one">&#8722;</a>
+                  <span class="cart-qty-num">{{ item.quantity }}</span>
+                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="cart-qty-btn" aria-label="Add one">&#43;</a>
+                </div>
+              </div>
+              <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+            </div>
+          {%- endfor -%}
+
+          {%- comment -%} ── ORDER BUMP ── {%- endcomment -%}
+          {%- assign bump_product = all_products['rituel-rosehip-oil'] -%}
+          {%- assign already_in_cart = false -%}
+          {%- for item in cart.items -%}
+            {%- if item.product.handle == 'rituel-rosehip-oil' -%}
+              {%- assign already_in_cart = true -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- unless already_in_cart -%}
+            {%- if bump_product != blank -%}
+              <div class="order-bump">
+                <div class="order-bump-badge">Add-On Offer</div>
+                <div class="order-bump-inner">
+                  <div class="order-bump-check-wrap">
+                    <input type="checkbox" id="bumpCheck" class="order-bump-checkbox" onchange="handleBump(this)">
+                    <label for="bumpCheck" class="order-bump-check-label"></label>
+                  </div>
+                  {%- if bump_product.featured_image -%}
+                    <img class="order-bump-img" src="{{ bump_product.featured_image | image_url: width: 160 }}" alt="{{ bump_product.title }}">
+                  {%- endif -%}
+                  <div class="order-bump-copy">
+                    <div class="order-bump-headline">Yes — add the Rosehip Oil to my order</div>
+                    <div class="order-bump-sub">Your gua sha needs a glide. Pure rosehip oil doubles as your daily facial oil. One tick. No new checkout.</div>
+                    <div class="order-bump-price">
+                      <span class="bump-price">{{ bump_product.price | money }}</span>
+                      {%- if bump_product.compare_at_price > bump_product.price -%}
+                        <span class="bump-compare">{{ bump_product.compare_at_price | money }}</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endunless -%}
+
         </div>
-      {%- endfor -%}
-      <div class="cart-total">Total: {{ cart.total_price | money }}</div>
-      <button type="submit" name="checkout" class="btn-primary" style="max-width:320px;margin-top:24px;">
-        <span>Proceed to Checkout</span>
-      </button>
+
+        <div class="cart-summary-col">
+
+          <div class="cart-summary">
+            <h2 class="cart-summary-title">Order Summary</h2>
+            <div class="cart-summary-row">
+              <span>Subtotal</span>
+              <span id="cartSubtotal">{{ cart.total_price | money }}</span>
+            </div>
+            <div class="cart-summary-row cart-shipping-row">
+              <span>Shipping</span>
+              <span>
+                {%- if cart.total_price >= 4500 -%}
+                  <span class="cart-free-shipping">Free</span>
+                {%- else -%}
+                  Calculated at checkout
+                {%- endif -%}
+              </span>
+            </div>
+            {%- if cart.total_price < 4500 -%}
+              {%- assign remaining = 4500 | minus: cart.total_price -%}
+              <div class="cart-free-shipping-bar">
+                <div class="cart-free-bar-fill" style="width: {{ cart.total_price | times: 100 | divided_by: 4500 }}%"></div>
+              </div>
+              <p class="cart-free-shipping-note">Add {{ remaining | money }} more for free shipping</p>
+            {%- endif -%}
+            <div class="cart-summary-total">
+              <span>Total</span>
+              <span id="cartTotal">{{ cart.total_price | money }}</span>
+            </div>
+            <button type="submit" name="checkout" class="btn-primary cart-checkout-btn">
+              <span>Checkout Securely</span>
+            </button>
+            <a href="{{ routes.collections_url }}/all" class="cart-continue-link">&#8592; Continue shopping</a>
+          </div>
+
+          <div class="cart-trust">
+            <div class="cart-trust-item"><span class="trust-dot"></span> Free shipping over &#8364;45</div>
+            <div class="cart-trust-item"><span class="trust-dot"></span> 30-day money-back guarantee</div>
+            <div class="cart-trust-item"><span class="trust-dot"></span> Secure checkout</div>
+          </div>
+
+        </div>
+
+      </div>
+
     {%- endform -%}
+
   {%- else -%}
     <div class="cart-empty">
-      <p>Your bag is empty.</p>
-      <a href="{{ routes.collections_url }}/all" class="btn-primary" style="display:inline-block;max-width:240px;text-decoration:none;text-align:center;padding:20px 40px;">
+      <p class="cart-empty-title">Your bag is empty.</p>
+      <p class="cart-empty-sub">Start with the 5-minute ritual that changes how your face looks every morning.</p>
+      <a href="{{ routes.collections_url }}/all" class="btn-primary" style="display:inline-block;max-width:280px;text-decoration:none;text-align:center;padding:20px 40px;">
         <span>Start Your Ritual</span>
       </a>
     </div>
   {%- endif -%}
+
 </div>
+
+<script>
+function handleBump(checkbox) {
+  if (checkbox.checked) {
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: {{ all_products['rituel-rosehip-oil'].selected_or_first_available_variant.id | json }}, quantity: 1 })
+    }).then(() => {
+      window.location.reload();
+    });
+  }
+}
+</script>
 
 {% schema %}
 {
