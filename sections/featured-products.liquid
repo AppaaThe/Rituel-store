@@ -1,83 +1,113 @@
 {%- assign gua_sha = all_products['rituel-gua-sha'] -%}
-{%- assign roller = all_products['rituel-jade-roller'] -%}
-{%- assign ice = all_products['rituel-ice-roller'] -%}
-{%- assign oil = all_products['rituel-rosehip-oil'] -%}
+{%- assign roller  = all_products['rituel-jade-roller'] -%}
+{%- assign ice     = all_products['rituel-ice-roller'] -%}
+{%- assign oil     = all_products['rituel-rosehip-oil'] -%}
 
-<section class="products-section" id="shop">
-  <div class="products-inner">
-    <div class="products-header">
-      <span class="section-label reveal">Complete Your Ritual</span>
-      <h2 class="section-title reveal reveal-delay-1">Add to Your Order<br><em>&amp; Save</em></h2>
-    </div>
-    <div class="products-grid products-grid-4">
+<section class="editorial-products" id="shop">
 
-      <div class="product-card reveal">
-        <a href="{{ gua_sha.url }}" class="product-card-img-link">
-          {%- if gua_sha.featured_image -%}
-            <img src="{{ gua_sha.featured_image | image_url: width: 500 }}" alt="{{ gua_sha.title }}" class="product-card-photo" loading="lazy">
-          {%- else -%}
-            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-stone-amethyst.jpg" alt="RITUEL Amethyst Gua Sha Stone" class="product-card-photo" loading="lazy">
-          {%- endif -%}
-        </a>
-        <div class="product-card-body">
-          <div class="product-name">Amethyst Gua Sha Stone</div>
-          <p class="product-desc">The tool that sculpts your jawline and drains puffiness in 5 minutes every morning.</p>
-          <div class="product-price">&#8364;22 <span class="product-price-orig">&#8364;32</span></div>
-          <a href="{{ gua_sha.url }}" class="btn-secondary">Add to Order</a>
-        </div>
-      </div>
-
-      <div class="product-card reveal reveal-delay-1">
-        <a href="{{ roller.url }}" class="product-card-img-link">
-          {%- if roller.featured_image -%}
-            <img src="{{ roller.featured_image | image_url: width: 500 }}" alt="{{ roller.title }}" class="product-card-photo" loading="lazy">
-          {%- else -%}
-            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-facial-roller-amethyst.jpg" alt="RITUEL Amethyst Facial Roller" class="product-card-photo" loading="lazy">
-          {%- endif -%}
-        </a>
-        <div class="product-card-body">
-          <div class="product-name">Double-Sided Amethyst Roller</div>
-          <p class="product-desc">Two heads, zero puffiness. Pairs with gua sha to warm up the skin and drain the under-eye area.</p>
-          <div class="product-price">&#8364;16 <span class="product-price-orig">&#8364;24</span></div>
-          <a href="{{ roller.url }}" class="btn-secondary">Add to Order</a>
-        </div>
-      </div>
-
-      <div class="product-card reveal reveal-delay-2">
-        <a href="{{ ice.url }}" class="product-card-img-link">
-          {%- if ice.featured_image -%}
-            <img src="{{ ice.featured_image | image_url: width: 500 }}" alt="{{ ice.title }}" class="product-card-photo" loading="lazy">
-          {%- else -%}
-            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-ice-roller-rose-pink.jpg" alt="RITUEL Rose Ice Roller" class="product-card-photo" loading="lazy">
-          {%- endif -%}
-        </a>
-        <div class="product-card-body">
-          <div class="product-name">Rose Ice Roller</div>
-          <p class="product-desc">The final step. Constricts, de-puffs, closes pores. Look like you slept 10 hours in 60 seconds.</p>
-          <div class="product-price">&#8364;19 <span class="product-price-orig">&#8364;28</span></div>
-          <a href="{{ ice.url }}" class="btn-secondary">Add to Order</a>
-        </div>
-      </div>
-
-      <div class="product-card featured reveal reveal-delay-3">
-        <div class="product-featured-label">Best Value</div>
-        <a href="{{ oil.url }}" class="product-card-img-link">
-          {%- if oil.featured_image -%}
-            <img src="{{ oil.featured_image | image_url: width: 500 }}" alt="{{ oil.title }}" class="product-card-photo" loading="lazy">
-          {%- else -%}
-            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-rosehip-facial-oil-30ml.jpg" alt="RITUEL Pure Rosehip Oil" class="product-card-photo" loading="lazy">
-          {%- endif -%}
-        </a>
-        <div class="product-card-body">
-          <div class="product-name">Pure Rosehip Oil 30ml</div>
-          <p class="product-desc">100% pure. The glide your gua sha needs. Fades dark spots, hydrates deeply, never clogs pores.</p>
-          <div class="product-price">&#8364;15 <span class="product-price-orig">&#8364;22</span></div>
-          <a href="{{ oil.url }}" class="btn-secondary">Add to Order</a>
-        </div>
-      </div>
-
-    </div>
+  <div class="editorial-header reveal">
+    <span class="editorial-overline">The Tools</span>
+    <h2 class="editorial-title">Four objects.<br><em>One ritual.</em></h2>
+    <div class="editorial-title-rule"></div>
   </div>
+
+  <div class="editorial-spread">
+
+    {%- comment -%} ── HERO PRODUCT (left, large) ── {%- endcomment -%}
+    <a href="{{ gua_sha.url }}" class="editorial-hero reveal" style="text-decoration:none;">
+      <div class="editorial-hero-image">
+        {%- if gua_sha.featured_image -%}
+          <img src="{{ gua_sha.featured_image | image_url: width: 900 }}" alt="{{ gua_sha.title }}" loading="lazy">
+        {%- else -%}
+          <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-stone-amethyst.jpg" alt="Gua Sha Stone" loading="lazy">
+        {%- endif -%}
+        <div class="editorial-hero-overlay"></div>
+      </div>
+      <div class="editorial-hero-content">
+        <span class="editorial-product-label">The Foundation</span>
+        <h3 class="editorial-hero-name">Amethyst<br>Gua Sha</h3>
+        <p class="editorial-hero-benefit">Sculpts your jawline. Drains overnight puffiness. 5 minutes every morning.</p>
+        <div class="editorial-hero-footer">
+          <div class="editorial-price-block">
+            <span class="editorial-price">&#8364;22</span>
+            <span class="editorial-compare">&#8364;32</span>
+          </div>
+          <span class="editorial-cta-link">Add to Ritual &#8594;</span>
+        </div>
+      </div>
+    </a>
+
+    {%- comment -%} ── SIDE PRODUCTS (right, stacked) ── {%- endcomment -%}
+    <div class="editorial-side">
+
+      <a href="{{ roller.url }}" class="editorial-side-card reveal" style="text-decoration:none;">
+        <div class="editorial-side-num">01</div>
+        <div class="editorial-side-img">
+          {%- if roller.featured_image -%}
+            <img src="{{ roller.featured_image | image_url: width: 300 }}" alt="{{ roller.title }}" loading="lazy">
+          {%- else -%}
+            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-facial-roller-amethyst.jpg" alt="Amethyst Roller" loading="lazy">
+          {%- endif -%}
+        </div>
+        <div class="editorial-side-body">
+          <span class="editorial-product-label">The Warm-Up</span>
+          <div class="editorial-side-name">Double-Sided Amethyst Roller</div>
+          <p class="editorial-side-desc">Two heads, zero puffiness. Preps skin for gua sha, targets the under-eye area.</p>
+        </div>
+        <div class="editorial-side-price-col">
+          <span class="editorial-price">&#8364;16</span>
+          <span class="editorial-compare">&#8364;24</span>
+        </div>
+      </a>
+
+      <a href="{{ ice.url }}" class="editorial-side-card reveal reveal-delay-1" style="text-decoration:none;">
+        <div class="editorial-side-num">02</div>
+        <div class="editorial-side-img">
+          {%- if ice.featured_image -%}
+            <img src="{{ ice.featured_image | image_url: width: 300 }}" alt="{{ ice.title }}" loading="lazy">
+          {%- else -%}
+            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-ice-roller-rose-pink.jpg" alt="Rose Ice Roller" loading="lazy">
+          {%- endif -%}
+        </div>
+        <div class="editorial-side-body">
+          <span class="editorial-product-label">The Finisher</span>
+          <div class="editorial-side-name">Rose Ice Roller</div>
+          <p class="editorial-side-desc">Constricts. De-puffs. Seals everything in. Look like you slept 10 hours.</p>
+        </div>
+        <div class="editorial-side-price-col">
+          <span class="editorial-price">&#8364;19</span>
+          <span class="editorial-compare">&#8364;28</span>
+        </div>
+      </a>
+
+      <a href="{{ oil.url }}" class="editorial-side-card reveal reveal-delay-2" style="text-decoration:none;">
+        <div class="editorial-side-num">03</div>
+        <div class="editorial-side-img">
+          {%- if oil.featured_image -%}
+            <img src="{{ oil.featured_image | image_url: width: 300 }}" alt="{{ oil.title }}" loading="lazy">
+          {%- else -%}
+            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-rosehip-facial-oil-30ml.jpg" alt="Rosehip Oil" loading="lazy">
+          {%- endif -%}
+        </div>
+        <div class="editorial-side-body">
+          <span class="editorial-product-label">The Glide</span>
+          <div class="editorial-side-name">Pure Rosehip Oil 30ml</div>
+          <p class="editorial-side-desc">100% pure. Fades dark spots, hydrates deeply, never clogs pores. The only reorder you'll make.</p>
+        </div>
+        <div class="editorial-side-price-col">
+          <span class="editorial-price">&#8364;15</span>
+          <span class="editorial-compare">&#8364;22</span>
+        </div>
+      </a>
+
+      <div class="editorial-side-footer">
+        <a href="{{ routes.collections_url }}/all" class="editorial-all-link">View all products &amp; ritual sets &#8594;</a>
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
 {% schema %}

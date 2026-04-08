@@ -107,19 +107,75 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 .section-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px; align-items: end; }
 .section-desc { font-size: 15px; line-height: 1.9; color: var(--stone); max-width: 400px; }
 
-/* Steps */
-.steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-.step-card { background: var(--white); padding: 56px 40px; transition: transform 0.4s; position: relative; overflow: hidden; }
-.step-card:hover { transform: translateY(-8px); }
-.step-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--terracotta); transform: scaleX(0); transition: transform 0.4s; transform-origin: left; }
-.step-card:hover::after { transform: scaleX(1); }
-.step-number { font-family: var(--serif); font-size: 80px; color: var(--cream-dark); font-weight: 300; line-height: 1; margin-bottom: 24px; transition: color 0.3s; }
-.step-card:hover .step-number { color: var(--blush); }
-.step-title { font-family: var(--serif); font-size: 24px; margin-bottom: 16px; }
-.step-desc { font-size: 14px; line-height: 1.8; color: var(--stone); }
-.step-time { display: inline-block; margin-top: 20px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracotta); padding: 6px 14px; border: 1px solid var(--terracotta); border-radius: 20px; }
+/* ── Ritual Steps (redesigned) ── */
+.ritual-section { background: var(--cream); padding: 120px 80px; }
+.ritual-inner { max-width: 1300px; margin: 0 auto; }
+.ritual-header { display: grid; grid-template-columns: auto 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
+.ritual-title { font-family: var(--serif); font-size: 56px; font-weight: 300; line-height: 1.1; }
+.ritual-title em { font-style: italic; color: var(--terracotta); }
+.ritual-subtitle { font-size: 14px; line-height: 1.9; color: var(--stone); max-width: 380px; padding-bottom: 8px; }
+.ritual-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px; }
+.ritual-step { position: relative; overflow: hidden; background: var(--white); }
+.ritual-step:hover .ritual-step-bg-num { opacity: 0.07; transform: translateY(-10px) scale(1.05); }
+.ritual-step:hover .ritual-step-line { transform: scaleX(1); }
+.ritual-step-bg-num { font-family: var(--serif); font-size: 200px; font-weight: 300; color: var(--espresso); opacity: 0.035; position: absolute; top: -20px; right: -20px; line-height: 1; pointer-events: none; transition: opacity 0.5s, transform 0.5s; }
+.ritual-step-inner { position: relative; padding: 56px 40px 48px; z-index: 1; }
+.ritual-step-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; }
+.ritual-step-num { font-family: var(--serif); font-size: 48px; font-weight: 300; color: var(--terracotta); line-height: 1; }
+.ritual-step-time { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--stone); border: 1px solid var(--cream-dark); padding: 5px 12px; border-radius: 20px; }
+.ritual-step-title { font-family: var(--serif); font-size: 30px; font-weight: 300; margin-bottom: 16px; color: var(--espresso); }
+.ritual-step-desc { font-size: 14px; line-height: 1.85; color: var(--stone); margin-bottom: 0; }
+.ritual-step-line { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--terracotta); transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left; }
+.ritual-total { background: var(--espresso); padding: 48px 80px; }
+.ritual-total-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; gap: 40px; }
+.ritual-total-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(247,242,234,0.35); }
+.ritual-total-num { font-family: var(--serif); font-size: 80px; font-weight: 300; color: var(--terracotta); line-height: 1; }
+.ritual-total-unit { font-size: 28px; margin-left: 4px; }
+.ritual-total-tag { font-family: var(--serif); font-size: 22px; font-style: italic; color: rgba(247,242,234,0.45); letter-spacing: 0.05em; }
 
-/* Products Grid */
+/* ── Editorial Products (redesigned) ── */
+.editorial-products { background: var(--espresso); padding: 100px 80px; }
+.editorial-header { max-width: 1400px; margin: 0 auto 64px; display: flex; align-items: flex-end; gap: 48px; }
+.editorial-overline { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--terracotta); display: block; margin-bottom: 10px; }
+.editorial-title { font-family: var(--serif); font-size: 56px; font-weight: 300; color: var(--cream); line-height: 1.1; }
+.editorial-title em { font-style: italic; color: var(--blush); }
+.editorial-title-rule { flex: 1; height: 1px; background: rgba(247,242,234,0.1); margin-bottom: 10px; }
+.editorial-spread { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 3px; }
+
+/* Hero product */
+.editorial-hero { display: block; position: relative; overflow: hidden; background: #2A1A10; cursor: pointer; }
+.editorial-hero-image { position: relative; height: 680px; overflow: hidden; }
+.editorial-hero-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94); display: block; }
+.editorial-hero:hover .editorial-hero-image img { transform: scale(1.06); }
+.editorial-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,18,10,0.92) 0%, rgba(30,18,10,0.3) 50%, transparent 100%); }
+.editorial-hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 48px; }
+.editorial-product-label { font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--terracotta); display: block; margin-bottom: 12px; }
+.editorial-hero-name { font-family: var(--serif); font-size: 56px; font-weight: 300; color: var(--cream); line-height: 1.05; margin-bottom: 14px; }
+.editorial-hero-benefit { font-size: 13px; color: rgba(247,242,234,0.55); line-height: 1.7; margin-bottom: 28px; max-width: 380px; }
+.editorial-hero-footer { display: flex; align-items: center; justify-content: space-between; }
+.editorial-price-block { display: flex; align-items: baseline; gap: 12px; }
+.editorial-price { font-family: var(--serif); font-size: 28px; color: var(--cream); }
+.editorial-compare { font-size: 14px; color: rgba(247,242,234,0.3); text-decoration: line-through; }
+.editorial-cta-link { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracotta); transition: letter-spacing 0.3s, color 0.3s; }
+.editorial-hero:hover .editorial-cta-link { letter-spacing: 0.28em; color: var(--blush); }
+
+/* Side products */
+.editorial-side { display: flex; flex-direction: column; gap: 3px; }
+.editorial-side-card { display: grid; grid-template-columns: 32px 88px 1fr auto; gap: 16px; align-items: center; background: rgba(255,255,255,0.04); padding: 24px; border-left: 2px solid transparent; transition: background 0.35s, border-color 0.35s; cursor: pointer; }
+.editorial-side-card:hover { background: rgba(255,255,255,0.08); border-left-color: var(--terracotta); }
+.editorial-side-num { font-family: var(--serif); font-size: 22px; color: rgba(247,242,234,0.18); font-weight: 300; }
+.editorial-side-img { width: 88px; height: 88px; overflow: hidden; background: radial-gradient(ellipse at 50% 60%, #C8A882, #6B4C2A); flex-shrink: 0; }
+.editorial-side-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+.editorial-side-card:hover .editorial-side-img img { transform: scale(1.08); }
+.editorial-side-body { display: flex; flex-direction: column; gap: 4px; }
+.editorial-side-name { font-family: var(--serif); font-size: 16px; color: var(--cream); font-weight: 300; }
+.editorial-side-desc { font-size: 12px; color: rgba(247,242,234,0.4); line-height: 1.6; }
+.editorial-side-price-col { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
+.editorial-side-footer { padding: 24px; margin-top: auto; }
+.editorial-all-link { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,242,234,0.3); text-decoration: none; transition: color 0.3s; }
+.editorial-all-link:hover { color: var(--terracotta); }
+
+/* Legacy product card classes (used in collection page) */
 .products-section { background: var(--espresso); padding: 100px 80px; }
 .products-inner { max-width: 1400px; margin: 0 auto; }
 .products-header { text-align: center; margin-bottom: 72px; }
@@ -388,4 +444,21 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
   .comparison-divider { flex-direction: row; padding-top: 0; justify-content: center; }
   .comparison-arrow { transform: rotate(90deg); }
   .before-after-title { font-size: 40px; }
+  /* Ritual steps responsive */
+  .ritual-section { padding: 80px 32px; }
+  .ritual-header { grid-template-columns: 1fr; gap: 16px; }
+  .ritual-steps { grid-template-columns: 1fr; gap: 2px; }
+  .ritual-step-bg-num { font-size: 140px; }
+  .ritual-title { font-size: 40px; }
+  .ritual-total { padding: 40px 32px; }
+  .ritual-total-inner { gap: 24px; }
+  .ritual-total-num { font-size: 60px; }
+  /* Editorial products responsive */
+  .editorial-products { padding: 80px 32px; }
+  .editorial-spread { grid-template-columns: 1fr; }
+  .editorial-hero-image { height: 480px; }
+  .editorial-hero-name { font-size: 40px; }
+  .editorial-title { font-size: 40px; }
+  .editorial-side-card { grid-template-columns: 88px 1fr auto; gap: 12px; }
+  .editorial-side-num { display: none; }
 }
