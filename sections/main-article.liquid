@@ -1,0 +1,141 @@
+<article class="article-page">
+
+  <header class="article-hero">
+    <p class="article-eyebrow">The Ritual Guide</p>
+    <h1>{{ article.title }}</h1>
+    <p class="article-meta">BY RITUEL &nbsp;·&nbsp; {{ article.published_at | date: "%B %d, %Y" }} &nbsp;·&nbsp; {{ article.content | strip_html | split: ' ' | size | divided_by: 200 | plus: 1 }} min read</p>
+  </header>
+
+  {% if article.image %}
+    <div class="article-featured-img">
+      <img src="{{ article.image | img_url: '1200x600', crop: 'center' }}" alt="{{ article.image.alt | escape }}" />
+    </div>
+  {% endif %}
+
+  <div class="article-body">
+    {{ article.content }}
+  </div>
+
+  <div class="article-footer">
+    <a href="{{ blog.url }}" class="back-link">← Back to {{ blog.title }}</a>
+  </div>
+
+</article>
+
+<style>
+  .article-page {
+    background: var(--cream, #FAF6F0);
+    min-height: 100vh;
+  }
+
+  .article-hero {
+    background: var(--espresso, #2C1810);
+    padding: 100px 40px 80px;
+    text-align: center;
+  }
+
+  .article-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold, #C9A96E);
+    margin-bottom: 24px;
+  }
+
+  .article-hero h1 {
+    font-family: var(--serif, 'Cormorant Garamond', serif);
+    font-size: clamp(32px, 5vw, 58px);
+    font-weight: 300;
+    color: #FAF6F0;
+    line-height: 1.15;
+    max-width: 760px;
+    margin: 0 auto 28px;
+  }
+
+  .article-meta {
+    font-size: 13px;
+    color: rgba(250,246,240,0.45);
+    letter-spacing: 0.15em;
+  }
+
+  .article-featured-img {
+    max-height: 480px;
+    overflow: hidden;
+  }
+
+  .article-featured-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .article-body {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 72px 32px 80px;
+    font-family: var(--sans, 'Jost', sans-serif);
+    font-size: 17px;
+    line-height: 1.8;
+    color: #3a2218;
+  }
+
+  .article-body h2 {
+    font-family: var(--serif, 'Cormorant Garamond', serif);
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 400;
+    color: var(--espresso, #2C1810);
+    margin: 56px 0 20px;
+    line-height: 1.2;
+  }
+
+  .article-body h3 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--espresso, #2C1810);
+    margin: 32px 0 12px;
+  }
+
+  .article-body p { margin-bottom: 24px; }
+  .article-body strong { font-weight: 600; color: var(--espresso, #2C1810); }
+
+  .article-body a {
+    color: var(--amethyst, #7B5EA7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(123,94,167,0.3);
+  }
+
+  .article-footer {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    border-top: 1px solid rgba(44,24,16,0.1);
+    padding-top: 40px;
+  }
+
+  .back-link {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone, #8B7355);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .back-link:hover { color: var(--amethyst, #7B5EA7); }
+
+  @media (max-width: 768px) {
+    .article-hero { padding: 80px 24px 60px; }
+    .article-body { padding: 48px 20px 60px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}
