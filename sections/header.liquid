@@ -209,7 +209,10 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 101;
 }
 .announcement-inner {
@@ -414,7 +417,9 @@ window.addEventListener('scroll', () => {
   var bar = document.getElementById('announcementBar');
   var header = document.getElementById('siteHeader');
   if (bar && header) {
-    header.style.top = bar.offsetHeight + 'px';
+    var barHeight = bar.offsetHeight;
+    header.style.top = barHeight + 'px';
+    document.body.style.paddingTop = (barHeight + 72) + 'px';
   }
 })();
 </script>
