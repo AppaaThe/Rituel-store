@@ -17,6 +17,7 @@
     <a href="{{ routes.collections_url }}/all">Shop</a>
     <a href="{{ pages['about-us'].url | default: '/pages/about-us' }}">About Us</a>
     <a href="{{ pages['faq'].url | default: '/pages/faq' }}">FAQ</a>
+    <a href="/blogs/news">Blog</a>
     <a href="/pages/contact">Contact</a>
   </nav>
 
@@ -49,6 +50,7 @@
     <a href="{{ routes.collections_url }}/all" onclick="toggleMenu()">Shop</a>
     <a href="{{ pages['about-us'].url | default: '/pages/about-us' }}" onclick="toggleMenu()">About Us</a>
     <a href="{{ pages['faq'].url | default: '/pages/faq' }}" onclick="toggleMenu()">FAQ</a>
+    <a href="/blogs/news" onclick="toggleMenu()">Blog</a>
     <a href="/pages/contact" onclick="toggleMenu()">Contact</a>
     <a href="{{ routes.cart_url }}" onclick="toggleMenu()">Cart ({{ cart.item_count }})</a>
   </div>
