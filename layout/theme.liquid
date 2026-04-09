@@ -40,5 +40,18 @@
   {% section 'footer' %}
 
   {{ 'rituel.js' | asset_url | script_tag }}
+
+  <!-- Klaviyo onsite tracking (works with Shopify Klaviyo app) -->
+  <script>
+    // Klaviyo identify on page load if customer is logged in
+    {% if customer %}
+      window._learnq = window._learnq || [];
+      window._learnq.push(['identify', {
+        '$email': '{{ customer.email }}',
+        '$first_name': '{{ customer.first_name }}',
+        '$last_name': '{{ customer.last_name }}'
+      }]);
+    {% endif %}
+  </script>
 </body>
 </html>

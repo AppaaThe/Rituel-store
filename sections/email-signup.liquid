@@ -7,10 +7,21 @@
       <input type="hidden" name="form_type" value="customer">
       <input type="hidden" name="utf8" value="✓">
       <input type="hidden" name="contact[tags]" value="newsletter">
-      <input class="email-input" type="email" name="contact[email]" placeholder="Your email address" required>
+      <input class="email-input" type="email" name="contact[email]" id="emailInput" placeholder="Your email address" required>
       <button type="submit" class="email-submit">Get the Free Guide</button>
     </form>
     <p class="email-note">No spam. Just the ritual. Unsubscribe anytime.</p>
+
+    <script>
+      // Also subscribe to Klaviyo when the Shopify form submits
+      document.getElementById('emailForm').addEventListener('submit', function() {
+        var email = document.getElementById('emailInput').value;
+        if (email && window._learnq) {
+          window._learnq.push(['identify', { '$email': email }]);
+          window._learnq.push(['track', 'Newsletter Signup', { source: 'footer_form' }]);
+        }
+      });
+    </script>
   </div>
 </section>
 

@@ -1,3 +1,14 @@
+<!-- Announcement Bar -->
+<div class="announcement-bar" id="announcementBar">
+  <div class="announcement-inner">
+    <span>Free shipping on all ritual bundles this week</span>
+    <span class="announcement-sep">✦</span>
+    <span>30-day money-back guarantee</span>
+    <span class="announcement-sep">✦</span>
+    <span>The only brand with the complete 4-tool ritual system</span>
+  </div>
+</div>
+
 <header class="site-header" id="siteHeader">
   <a href="{{ routes.root_url }}" class="header-logo">BY RITUEL</a>
 
@@ -188,10 +199,122 @@
 }
 .mobile-overlay.open { opacity: 1; pointer-events: all; }
 
+/* Announcement Bar */
+.announcement-bar {
+  background: var(--espresso, #2C1810);
+  color: var(--cream, #FAF6F0);
+  text-align: center;
+  padding: 10px 24px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+  z-index: 101;
+}
+.announcement-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  animation: announcement-scroll 20s linear infinite;
+  white-space: nowrap;
+}
+.announcement-sep { color: #C4714A; font-size: 8px; }
+@keyframes announcement-scroll {
+  0%, 100% { transform: translateX(0); }
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed; inset: 0;
+  background: rgba(30,18,10,0.55);
+  z-index: 500;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.popup-overlay.active { opacity: 1; pointer-events: all; }
+
+.popup-box {
+  background: var(--cream, #FAF6F0);
+  max-width: 440px;
+  width: 90%;
+  padding: 48px 40px;
+  position: relative;
+  text-align: center;
+  transform: translateY(24px) scale(0.96);
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.popup-overlay.active .popup-box {
+  transform: translateY(0) scale(1);
+}
+
+.popup-close {
+  position: absolute; top: 16px; right: 20px;
+  background: none; border: none; cursor: pointer;
+  font-size: 20px; color: #8A7060;
+  transition: color 0.3s;
+}
+.popup-close:hover { color: #2C1810; }
+
+.popup-eyebrow {
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: #C4714A; margin-bottom: 16px;
+}
+.popup-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 300; line-height: 1.1;
+  color: #2C1810; margin-bottom: 8px;
+}
+.popup-title em { font-style: italic; color: #C4714A; }
+.popup-desc {
+  font-size: 13px; color: #8A7060; line-height: 1.6;
+  margin-bottom: 24px;
+}
+.popup-form {
+  display: flex; gap: 8px; margin-bottom: 12px;
+}
+.popup-input {
+  flex: 1; padding: 14px 18px;
+  border: 1px solid #E8DDD0; background: white;
+  font-family: inherit; font-size: 13px; color: #2C1810;
+  outline: none; transition: border-color 0.3s;
+}
+.popup-input:focus { border-color: #C4714A; }
+.popup-btn {
+  padding: 14px 24px;
+  background: #2C1810; color: #FAF6F0;
+  border: none; cursor: pointer;
+  font-family: inherit; font-size: 11px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  transition: background 0.3s;
+}
+.popup-btn:hover { background: #C4714A; }
+.popup-note {
+  font-size: 10px; color: #B0A090; letter-spacing: 0.5px;
+}
+.popup-success {
+  display: none;
+}
+.popup-success.show {
+  display: block;
+}
+.popup-success p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 300; color: #2C1810;
+  margin-bottom: 8px;
+}
+.popup-success span {
+  font-size: 12px; color: #8A7060;
+}
+
 @media (max-width: 900px) {
   .site-header { padding: 0 32px; }
   .header-nav { display: none; }
   .hamburger { display: flex; }
+  .announcement-inner { font-size: 9px; gap: 12px; }
+  .popup-form { flex-direction: column; }
 }
 </style>
 
@@ -223,6 +346,77 @@ window.addEventListener('scroll', () => {
     header.classList.remove('scrolled');
   }
 });
+</script>
+
+<!-- Email Popup -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box">
+    <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
+    <div id="popupContent">
+      <div class="popup-eyebrow">Welcome to the ritual</div>
+      <h3 class="popup-title">Get 10% off<br><em>your first order</em></h3>
+      <p class="popup-desc">Plus a free Morning Ritual Guide — exactly how to sculpt, de-puff, and glow in 5 minutes every morning.</p>
+      <form class="popup-form" id="popupForm" action="/contact#contact_form" method="post" accept-charset="UTF-8">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[tags]" value="newsletter,popup,welcome10">
+        <input class="popup-input" type="email" name="contact[email]" id="popupEmail" placeholder="Your email address" required>
+        <button type="submit" class="popup-btn">Get 10% Off</button>
+      </form>
+      <p class="popup-note">No spam. Unsubscribe anytime.</p>
+    </div>
+    <div class="popup-success" id="popupSuccess">
+      <p>Welcome to the ritual.</p>
+      <span>Check your email for your 10% discount code.</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// Popup logic — show after 8 seconds, only once per session
+(function() {
+  var shown = sessionStorage.getItem('rituel_popup');
+  if (!shown) {
+    setTimeout(function() {
+      document.getElementById('popupOverlay').classList.add('active');
+      sessionStorage.setItem('rituel_popup', '1');
+    }, 8000);
+  }
+
+  document.getElementById('popupClose').addEventListener('click', function() {
+    document.getElementById('popupOverlay').classList.remove('active');
+  });
+
+  document.getElementById('popupOverlay').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+
+  document.getElementById('popupForm').addEventListener('submit', function(e) {
+    var email = document.getElementById('popupEmail').value;
+    // Track in Klaviyo
+    if (email && window._learnq) {
+      window._learnq.push(['identify', { '$email': email }]);
+      window._learnq.push(['track', 'Popup Signup', { source: 'popup', offer: '10_percent' }]);
+    }
+    // Show success state after short delay
+    setTimeout(function() {
+      document.getElementById('popupContent').style.display = 'none';
+      document.getElementById('popupSuccess').classList.add('show');
+      setTimeout(function() {
+        document.getElementById('popupOverlay').classList.remove('active');
+      }, 3000);
+    }, 500);
+  });
+})();
+
+// Adjust header position for announcement bar
+(function() {
+  var bar = document.getElementById('announcementBar');
+  var header = document.getElementById('siteHeader');
+  if (bar && header) {
+    header.style.top = bar.offsetHeight + 'px';
+  }
+})();
 </script>
 
 {% schema %}
