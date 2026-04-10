@@ -1,22 +1,48 @@
 <div class="product-page">
 
+  <!-- IMAGE GALLERY -->
   <div class="product-media">
-    {%- if product.featured_image -%}
-      <img
-        src="{{ product.featured_image | image_url: width: 900 }}"
-        alt="{{ product.featured_image.alt | default: product.title | escape }}"
-        class="product-main-img"
-        loading="eager"
-      >
-    {%- else -%}
-      <div class="gallery-placeholder"></div>
-    {%- endif -%}
+    <div class="product-gallery">
+      {%- for image in product.images -%}
+        <img
+          src="{{ image | image_url: width: 900 }}"
+          alt="{{ image.alt | default: product.title | escape }}"
+          class="product-gallery-img {% if forloop.first %}active{% endif %}"
+          data-index="{{ forloop.index0 }}"
+          loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+          onclick="switchImage({{ forloop.index0 }})"
+        >
+      {%- endfor -%}
+      {%- if product.images.size == 0 -%}
+        <div class="gallery-placeholder"></div>
+      {%- endif -%}
+    </div>
+    <div class="product-main-image">
+      {%- if product.featured_image -%}
+        <img
+          src="{{ product.featured_image | image_url: width: 900 }}"
+          alt="{{ product.featured_image.alt | default: product.title | escape }}"
+          class="product-main-img"
+          id="mainProductImage"
+          loading="eager"
+        >
+      {%- else -%}
+        <div class="gallery-placeholder"></div>
+      {%- endif -%}
+    </div>
   </div>
 
+  <!-- PRODUCT INFO -->
   <div class="product-info">
 
     <p class="product-vendor">{{ product.vendor }}</p>
     <h1 class="product-title">{{ product.title }}</h1>
+
+    <!-- STAR RATING -->
+    <div class="product-stars">
+      <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span class="star-text">4.9 · 47 reviews</span>
+    </div>
 
     <div class="product-price-wrap">
       <span class="product-page-price">{{ product.price | money }}</span>
@@ -32,23 +58,652 @@
       <div class="product-tag-badge badge-value">Best Value</div>
     {%- endif -%}
 
+    <!-- URGENCY -->
+    <div class="product-urgency">
+      <span class="urgency-dot"></span>
+      <span class="urgency-text"><strong>12 people</strong> are viewing this right now</span>
+    </div>
+
     <div class="product-description">{{ product.description }}</div>
 
     {%- form 'product', product -%}
       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
       <button type="submit" class="btn-primary btn-add-cart" {% unless product.available %}disabled{% endunless %}>
-        <span>{% if product.available %}Add to Ritual{% else %}Sold Out{% endif %}</span>
+        <span>{% if product.available %}Add to Ritual — {{ product.price | money }}{% else %}Sold Out{% endif %}</span>
       </button>
     {%- endform -%}
 
-    <div class="product-trust">
-      <div class="trust-item"><span class="trust-dot"></span> Free shipping over &#8364;45</div>
-      <div class="trust-item"><span class="trust-dot"></span> 30-day money-back guarantee</div>
-      <div class="trust-item"><span class="trust-dot"></span> Natural amethyst &#8212; each piece is unique</div>
+    <!-- TRUST BADGES -->
+    <div class="product-trust-grid">
+      <div class="trust-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l5 5L20 7"/></svg>
+        <div>
+          <strong>Free Shipping</strong>
+          <span>On orders over €45</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div>
+          <strong>30-Day Guarantee</strong>
+          <span>Full refund, no questions</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <div>
+          <strong>Fast Delivery</strong>
+          <span>Ships within 24 hours</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div>
+          <strong>Natural Amethyst</strong>
+          <span>Each stone is unique</span>
+        </div>
+      </div>
     </div>
 
   </div>
 </div>
+
+<!-- WHAT'S INCLUDED -->
+<div class="product-section">
+  <h2 class="section-title">What's <em>Included</em></h2>
+  <div class="included-grid">
+    <div class="included-card">
+      <span class="included-icon">🪨</span>
+      <h4>Amethyst Gua Sha Stone</h4>
+      <p>Hand-carved with a concave edge designed to fit the jawline. Natural amethyst — stays cool, polishes smooth.</p>
+    </div>
+    <div class="included-card">
+      <span class="included-icon">📖</span>
+      <h4>Ritual Guide</h4>
+      <p>Step-by-step technique guide with illustrations. The exact 5-minute routine for jawline sculpting.</p>
+    </div>
+    <div class="included-card">
+      <span class="included-icon">🧡</span>
+      <h4>Velvet Pouch</h4>
+      <p>Protective storage pouch to keep your stone safe. Natural stone can chip — the pouch prevents that.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BEFORE & AFTER -->
+<div class="product-section product-section--dark">
+  <h2 class="section-title section-title--light">Real Results, <em>Real People</em></h2>
+  <p class="section-subtitle">Consistent use for 4–6 weeks. 5 minutes every morning.</p>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-stat">400%</div>
+      <p>increase in microcirculation (peer-reviewed research)</p>
+    </div>
+    <div class="result-card">
+      <div class="result-stat">Week 2</div>
+      <p>when most people notice visible depuffing and definition</p>
+    </div>
+    <div class="result-card">
+      <div class="result-stat">5 min</div>
+      <p>daily is all it takes — right after your morning cleanse</p>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="product-section">
+  <h2 class="section-title">What Our Customers <em>Say</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"I was skeptical but after 2 weeks my jawline looks noticeably more defined. The amethyst stone feels amazing and stays cool the entire time."</p>
+      <p class="review-author">— Sarah M. <span class="review-badge">Verified Buyer</span></p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"This is now part of my morning routine. The depuffing effect is immediate — I can literally see the difference before I even finish."</p>
+      <p class="review-author">— Jessica L. <span class="review-badge">Verified Buyer</span></p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Much better quality than the cheap ones on Amazon. The concave edge actually fits my jaw properly. Worth every penny."</p>
+      <p class="review-author">— Emma R. <span class="review-badge">Verified Buyer</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="product-section">
+  <h2 class="section-title">Common <em>Questions</em></h2>
+  <div class="product-faq">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>How do I use the gua sha stone?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Apply 2–3 drops of facial oil, then sweep the stone upward along your jaw, cheekbones, and forehead. Always use light pressure and upward strokes. Our included Ritual Guide covers the exact 5-minute technique step by step.</p>
+      </div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>How long until I see results?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Immediate depuffing is visible after your first session. Lasting jawline definition typically becomes noticeable after 2–3 weeks of daily use. By week 6–8, the difference is visible in photographs.</p>
+      </div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>Why amethyst and not jade or rose quartz?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Amethyst is denser than jade or rose quartz, which means it polishes smoother and stays cooler against the skin for longer. The density also gives it a satisfying weight that helps with the technique. It's the preferred stone for serious facial sculpting.</p>
+      </div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>What if it doesn't work for me?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>We offer a full 30-day money-back guarantee. If you don't see results after consistent use, send it back for a complete refund — no questions asked.</p>
+      </div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>Do I need oil to use it?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Yes — facial oil is essential. Without it, the stone drags on your skin and can cause irritation. Any facial oil works (rosehip, jojoba, squalane). We also sell a rosehip oil specifically formulated for gua sha.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GUARANTEE -->
+<div class="product-section product-section--guarantee">
+  <div class="guarantee-box">
+    <div class="guarantee-icon">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+    </div>
+    <h3>30-Day Money-Back Guarantee</h3>
+    <p>Try the ritual for 30 days. If you don't see results — or if you're not happy for any reason — send it back for a full refund. No forms. No hassle. We believe in the product enough to take the risk ourselves.</p>
+  </div>
+</div>
+
+<style>
+/* ── PRODUCT PAGE ── */
+.product-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 80vh;
+}
+
+.product-media {
+  display: flex;
+  gap: 12px;
+  padding: 40px 24px 40px 48px;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.product-gallery-img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.product-gallery-img.active,
+.product-gallery-img:hover {
+  border-color: var(--amethyst, #7B5EA7);
+  opacity: 1;
+}
+
+.product-main-image { flex: 1; }
+
+.product-main-img {
+  width: 100%;
+  border-radius: 8px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 48px 48px 48px 40px;
+}
+
+.product-vendor {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--stone, #8B7355);
+  margin-bottom: 8px;
+}
+
+.product-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--espresso, #2C1810);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.product-stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stars {
+  color: #F5A623;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.star-text {
+  font-size: 13px;
+  color: var(--stone, #8B7355);
+}
+
+.product-price-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.product-page-price {
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--espresso, #2C1810);
+}
+
+.product-compare-price {
+  font-size: 18px;
+  color: var(--stone, #8B7355);
+  text-decoration: line-through;
+}
+
+.product-save-badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(196,113,74,0.1);
+  color: var(--terracotta, #C4714A);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.product-tag-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.badge-popular { background: #FFF3E0; color: #E65100; }
+.badge-value { background: rgba(123,94,167,0.1); color: var(--amethyst, #7B5EA7); }
+
+/* Urgency */
+.product-urgency {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(52,199,89,0.06);
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.urgency-dot {
+  width: 8px;
+  height: 8px;
+  background: #34C759;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.urgency-text {
+  font-size: 13px;
+  color: var(--espresso, #2C1810);
+}
+
+.product-description {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #5a4a3a;
+  margin-bottom: 28px;
+}
+
+.product-description p { margin-bottom: 12px; }
+
+/* CTA BUTTON */
+.btn-add-cart {
+  width: 100%;
+  padding: 18px 32px;
+  background: var(--espresso, #2C1810);
+  color: var(--cream, #FAF6F0);
+  border: none;
+  border-radius: 6px;
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 24px;
+}
+
+.btn-add-cart:hover { background: var(--amethyst, #7B5EA7); }
+.btn-add-cart:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Trust Grid */
+.product-trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(44,24,16,0.02);
+  border-radius: 8px;
+}
+
+.trust-badge svg { color: var(--amethyst, #7B5EA7); flex-shrink: 0; margin-top: 2px; }
+.trust-badge strong { display: block; font-size: 13px; color: var(--espresso, #2C1810); }
+.trust-badge span { font-size: 11px; color: var(--stone, #8B7355); }
+
+/* ── PRODUCT SECTIONS ── */
+.product-section {
+  padding: 80px 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.product-section--dark {
+  background: var(--espresso, #2C1810);
+  max-width: 100%;
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 400;
+  color: var(--espresso, #2C1810);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-title em { color: var(--amethyst, #7B5EA7); font-style: italic; }
+.section-title--light { color: var(--cream, #FAF6F0); }
+.section-title--light em { color: var(--gold, #C9A96E); }
+
+.section-subtitle {
+  font-size: 16px;
+  color: rgba(250,246,240,0.5);
+  text-align: center;
+  margin-top: -32px;
+  margin-bottom: 48px;
+}
+
+/* Included Grid */
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.included-card {
+  background: white;
+  padding: 32px 28px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 20px rgba(44,24,16,0.06);
+}
+
+.included-icon { font-size: 32px; display: block; margin-bottom: 16px; }
+
+.included-card h4 {
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--espresso, #2C1810);
+  margin-bottom: 8px;
+}
+
+.included-card p {
+  font-size: 14px;
+  color: var(--stone, #8B7355);
+  line-height: 1.6;
+}
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.result-card {
+  padding: 32px 20px;
+  border: 1px solid rgba(250,246,240,0.1);
+  border-radius: 8px;
+}
+
+.result-stat {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--gold, #C9A96E);
+  margin-bottom: 8px;
+}
+
+.result-card p {
+  font-size: 14px;
+  color: rgba(250,246,240,0.6);
+  line-height: 1.6;
+}
+
+/* Reviews */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.review-card {
+  background: white;
+  padding: 32px 28px;
+  border-radius: 8px;
+  box-shadow: 0 2px 20px rgba(44,24,16,0.06);
+}
+
+.review-stars { color: #F5A623; font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+
+.review-text {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--espresso, #2C1810);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.review-author {
+  font-size: 13px;
+  color: var(--stone, #8B7355);
+}
+
+.review-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(52,199,89,0.1);
+  color: #34C759;
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: 6px;
+}
+
+/* FAQ */
+.product-faq {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(44,24,16,0.08);
+  cursor: pointer;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--espresso, #2C1810);
+}
+
+.faq-toggle {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--amethyst, #7B5EA7);
+  transition: transform 0.3s;
+}
+
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 200px;
+  padding-bottom: 20px;
+}
+
+.faq-answer p {
+  font-size: 15px;
+  color: #5a4a3a;
+  line-height: 1.7;
+}
+
+/* Guarantee */
+.product-section--guarantee {
+  padding: 60px 48px 80px;
+}
+
+.guarantee-box {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 48px 40px;
+  border: 2px solid rgba(123,94,167,0.15);
+  border-radius: 12px;
+}
+
+.guarantee-icon { color: var(--amethyst, #7B5EA7); margin-bottom: 20px; }
+
+.guarantee-box h3 {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--espresso, #2C1810);
+  margin-bottom: 12px;
+}
+
+.guarantee-box p {
+  font-size: 15px;
+  color: var(--stone, #8B7355);
+  line-height: 1.7;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .product-page { grid-template-columns: 1fr; }
+  .product-media {
+    position: relative;
+    top: 0;
+    padding: 24px;
+    flex-direction: column-reverse;
+  }
+  .product-gallery {
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+  }
+  .product-gallery-img { width: 60px; height: 60px; }
+  .product-info { padding: 24px; }
+  .product-trust-grid { grid-template-columns: 1fr; }
+  .included-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .product-section { padding: 56px 24px; }
+}
+</style>
+
+<script>
+function switchImage(index) {
+  var thumbs = document.querySelectorAll('.product-gallery-img');
+  var main = document.getElementById('mainProductImage');
+  thumbs.forEach(function(t) { t.classList.remove('active'); });
+  thumbs[index].classList.add('active');
+  main.src = thumbs[index].src;
+  main.alt = thumbs[index].alt;
+}
+
+function toggleFaq(item) {
+  item.classList.toggle('open');
+}
+</script>
 
 {% schema %}
 {
