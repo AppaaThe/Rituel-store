@@ -478,15 +478,15 @@ window.addEventListener('scroll', () => {
   <div class="popup-box">
     <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
     <div id="popupContent">
-      <div class="popup-eyebrow">Welcome to the ritual</div>
-      <h3 class="popup-title">Get 10% off<br><em>your first order</em></h3>
-      <p class="popup-desc">Plus a free Morning Ritual Guide — exactly how to sculpt, de-puff, and glow in 5 minutes every morning.</p>
+      <div class="popup-eyebrow">Free guide + 10% off</div>
+      <h3 class="popup-title">The 5-Minute<br><em>Sculpting Ritual</em></h3>
+      <p class="popup-desc">Get our free Morning Ritual Guide — the exact technique for jawline definition, depuffing, and glowing skin in 5 minutes. Plus 10% off your first order.</p>
       <form class="popup-form" id="popupForm" action="/contact#contact_form" method="post" accept-charset="UTF-8">
         <input type="hidden" name="form_type" value="customer">
         <input type="hidden" name="utf8" value="✓">
         <input type="hidden" name="contact[tags]" value="newsletter,popup,welcome10">
         <input class="popup-input" type="email" name="contact[email]" id="popupEmail" placeholder="Your email address" required>
-        <button type="submit" class="popup-btn">Get 10% Off</button>
+        <button type="submit" class="popup-btn">Send Me the Free Guide</button>
       </form>
       <p class="popup-note">No spam. Unsubscribe anytime.</p>
     </div>
@@ -505,8 +505,16 @@ window.addEventListener('scroll', () => {
     setTimeout(function() {
       document.getElementById('popupOverlay').classList.add('active');
       sessionStorage.setItem('rituel_popup', '1');
-    }, 8000);
+    }, 5000);
   }
+
+  // Exit intent — show popup when mouse leaves viewport
+  document.addEventListener('mouseout', function(e) {
+    if (e.clientY < 10 && !sessionStorage.getItem('rituel_popup')) {
+      document.getElementById('popupOverlay').classList.add('active');
+      sessionStorage.setItem('rituel_popup', '1');
+    }
+  });
 
   document.getElementById('popupClose').addEventListener('click', function() {
     document.getElementById('popupOverlay').classList.remove('active');

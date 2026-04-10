@@ -16,6 +16,23 @@
     {{ article.content }}
   </div>
 
+  <!-- INLINE EMAIL CAPTURE -->
+  <div class="article-email-capture">
+    <div class="capture-box">
+      <p class="capture-eyebrow">Free guide</p>
+      <h3 class="capture-title">Get the Complete Morning Ritual Guide</h3>
+      <p class="capture-desc">The exact 5-minute gua sha technique for jawline definition, depuffing, and glowing skin. Plus 10% off your first order.</p>
+      <form class="capture-form" action="/contact#contact_form" method="post" accept-charset="UTF-8">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[tags]" value="newsletter,blog,ritual-guide">
+        <input class="capture-input" type="email" name="contact[email]" placeholder="Your email address" required>
+        <button type="submit" class="capture-btn">Send Me the Guide</button>
+      </form>
+      <p class="capture-note">Free. No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
   <div class="article-footer">
     <a href="{{ blog.url }}" class="back-link">← Back to {{ blog.title }}</a>
   </div>
@@ -127,7 +144,93 @@
 
   .back-link:hover { color: var(--amethyst, #7B5EA7); }
 
+  /* Article Email Capture */
+  .article-email-capture {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 32px 60px;
+  }
+
+  .capture-box {
+    background: var(--espresso, #2C1810);
+    padding: 48px 44px;
+    text-align: center;
+  }
+
+  .capture-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold, #C9A96E);
+    margin-bottom: 16px;
+  }
+
+  .capture-title {
+    font-family: var(--serif, 'Cormorant Garamond', serif);
+    font-size: 28px;
+    font-weight: 300;
+    color: #FAF6F0;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .capture-desc {
+    font-size: 14px;
+    color: rgba(250,246,240,0.6);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .capture-form {
+    display: flex;
+    gap: 8px;
+    max-width: 420px;
+    margin: 0 auto 12px;
+  }
+
+  .capture-input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 1px solid rgba(250,246,240,0.15);
+    background: rgba(250,246,240,0.08);
+    font-family: inherit;
+    font-size: 13px;
+    color: #FAF6F0;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .capture-input::placeholder { color: rgba(250,246,240,0.35); }
+  .capture-input:focus { border-color: var(--gold, #C9A96E); }
+
+  .capture-btn {
+    padding: 14px 24px;
+    background: var(--terracotta, #C4714A);
+    color: #FAF6F0;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.3s;
+  }
+
+  .capture-btn:hover { background: var(--amethyst, #7B5EA7); }
+
+  .capture-note {
+    font-size: 10px;
+    color: rgba(250,246,240,0.3);
+    text-align: center;
+  }
+
   @media (max-width: 768px) {
+    .capture-form { flex-direction: column; }
     .article-hero { padding: 80px 24px 60px; }
     .article-body { padding: 48px 20px 60px; }
   }
