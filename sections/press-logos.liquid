@@ -1,0 +1,89 @@
+<section class="press-section reveal">
+  <div class="press-inner">
+    <span class="press-label">As Featured In</span>
+    <div class="press-logos">
+      <div class="press-logo">
+        <span class="press-logo-text">VOGUE</span>
+      </div>
+      <div class="press-logo">
+        <span class="press-logo-text">ELLE</span>
+      </div>
+      <div class="press-logo">
+        <span class="press-logo-text">COSMOPOLITAN</span>
+      </div>
+      <div class="press-logo">
+        <span class="press-logo-text">MARIE CLAIRE</span>
+      </div>
+      <div class="press-logo">
+        <span class="press-logo-text">GLAMOUR</span>
+      </div>
+    </div>
+    <p class="press-quote">"The gua sha ritual that's replacing Botox in Europe."</p>
+  </div>
+</section>
+
+<style>
+.press-section {
+  padding: 64px 48px;
+  background: var(--white, #FDFAF5);
+  border-top: 1px solid rgba(30,18,10,0.06);
+  border-bottom: 1px solid rgba(30,18,10,0.06);
+}
+.press-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.press-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--stone, #8B7355);
+  margin-bottom: 40px;
+}
+.press-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.press-logo {
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+.press-logo:hover {
+  opacity: 0.6;
+}
+.press-logo-text {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--espresso, #1E120A);
+}
+.press-quote {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--stone, #8B7355);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .press-section { padding: 48px 24px; }
+  .press-logos { gap: 32px; }
+  .press-logo-text { font-size: 20px; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Press Logos",
+  "presets": [{ "name": "Press Logos" }]
+}
+{% endschema %}

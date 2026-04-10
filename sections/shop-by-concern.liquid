@@ -1,0 +1,158 @@
+<section class="concern-section">
+  <div class="concern-inner">
+    <span class="section-label reveal">Shop by Concern</span>
+    <h2 class="section-title reveal reveal-delay-1">What does your skin <em>need?</em></h2>
+
+    <div class="concern-grid">
+
+      <a href="{{ routes.collections_url }}/all?q=depuff" class="concern-card reveal">
+        <div class="concern-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            <line x1="9" y1="9" x2="9.01" y2="9"/>
+            <line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+        </div>
+        <h3 class="concern-title">De-puff</h3>
+        <p class="concern-desc">Wake up puffy? Drain overnight fluid and look sculpted by breakfast.</p>
+        <span class="concern-link">Ice Roller + Gua Sha &#8594;</span>
+      </a>
+
+      <a href="{{ routes.collections_url }}/all?q=sculpt" class="concern-card reveal reveal-delay-1">
+        <div class="concern-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+            <path d="M8 12h8"/>
+            <path d="M12 8v8"/>
+          </svg>
+        </div>
+        <h3 class="concern-title">Sculpt & Define</h3>
+        <p class="concern-desc">Sharpen your jawline and lift cheekbones. The 5-minute face workout.</p>
+        <span class="concern-link">Gua Sha Stone &#8594;</span>
+      </a>
+
+      <a href="{{ routes.collections_url }}/all?q=glow" class="concern-card reveal reveal-delay-2">
+        <div class="concern-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </div>
+        <h3 class="concern-title">Glow</h3>
+        <p class="concern-desc">Boost circulation for that lit-from-within look. No filters needed.</p>
+        <span class="concern-link">Full Ritual Set &#8594;</span>
+      </a>
+
+      <a href="{{ routes.collections_url }}/all?q=soothe" class="concern-card reveal reveal-delay-3">
+        <div class="concern-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <h3 class="concern-title">Soothe & Calm</h3>
+        <p class="concern-desc">Reduce tension, relax facial muscles, and release jaw tightness.</p>
+        <span class="concern-link">Jade Roller + Rosehip Oil &#8594;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.concern-section {
+  padding: 100px 80px;
+  background: var(--cream, #F7F2EA);
+}
+.concern-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.concern-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.concern-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 32px 40px;
+  background: var(--white, #FDFAF5);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.concern-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--terracotta, #B8704A);
+  transform: scaleX(0);
+  transition: transform 0.35s ease;
+  transform-origin: left;
+}
+.concern-card:hover {
+  background: var(--cream-dark, #EDE6D6);
+}
+.concern-card:hover::after {
+  transform: scaleX(1);
+}
+.concern-icon {
+  color: var(--terracotta, #B8704A);
+  margin-bottom: 24px;
+}
+.concern-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--espresso, #1E120A);
+  margin-bottom: 12px;
+}
+.concern-desc {
+  font-size: 13px;
+  color: var(--stone, #8B7355);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 220px;
+}
+.concern-link {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta, #B8704A);
+  transition: letter-spacing 0.3s;
+}
+.concern-card:hover .concern-link {
+  letter-spacing: 0.28em;
+}
+
+@media (max-width: 900px) {
+  .concern-section { padding: 64px 24px; }
+  .concern-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+}
+@media (max-width: 520px) {
+  .concern-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Shop by Concern",
+  "presets": [{ "name": "Shop by Concern" }]
+}
+{% endschema %}

@@ -235,6 +235,40 @@
   </div>
 </div>
 
+<!-- MATERIAL EDUCATION (INLINE) -->
+<div class="product-section product-section--material">
+  <h2 class="section-title">Why <em>Amethyst</em> Over Jade?</h2>
+  <div class="material-inline-grid">
+    <div class="material-inline-card">
+      <span class="material-inline-num">01</span>
+      <h4>Stays Cooler, Longer</h4>
+      <p>Higher thermal mass than jade or rose quartz. Stays cold throughout your entire ritual without re-chilling.</p>
+    </div>
+    <div class="material-inline-card">
+      <span class="material-inline-num">02</span>
+      <h4>Smoother Surface</h4>
+      <p>Denser crystal polishes smoother. Less friction, better glide, zero micro-scratches on skin.</p>
+    </div>
+    <div class="material-inline-card">
+      <span class="material-inline-num">03</span>
+      <h4>Genuinely Unique</h4>
+      <p>Every stone has its own natural pattern. No two are alike — your ritual tool is yours alone.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRESS TRUST (PRODUCT PAGE) -->
+<div class="product-section product-section--press">
+  <span class="press-label">Trusted by thousands. Featured in</span>
+  <div class="product-press-logos">
+    <span class="product-press-name">VOGUE</span>
+    <span class="product-press-name">ELLE</span>
+    <span class="product-press-name">COSMOPOLITAN</span>
+    <span class="product-press-name">MARIE CLAIRE</span>
+    <span class="product-press-name">GLAMOUR</span>
+  </div>
+</div>
+
 <style>
 /* ── PRODUCT PAGE ── */
 .product-page {
@@ -265,7 +299,7 @@
   width: 72px;
   height: 72px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 0;
   cursor: pointer;
   border: 2px solid transparent;
   opacity: 0.5;
@@ -282,8 +316,8 @@
 
 .product-main-img {
   width: 100%;
-  border-radius: 8px;
-  aspect-ratio: 1;
+  border-radius: 0;
+  aspect-ratio: 4/5;
   object-fit: cover;
 }
 
@@ -354,7 +388,7 @@
   background: rgba(196,113,74,0.1);
   color: var(--terracotta, #C4714A);
   padding: 4px 10px;
-  border-radius: 100px;
+  border-radius: 0;
 }
 
 .product-tag-badge {
@@ -364,7 +398,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 5px 14px;
-  border-radius: 100px;
+  border-radius: 0;
   margin-bottom: 16px;
 }
 
@@ -378,7 +412,7 @@
   gap: 8px;
   padding: 10px 16px;
   background: rgba(52,199,89,0.06);
-  border-radius: 6px;
+  border-radius: 0;
   margin-bottom: 20px;
 }
 
@@ -416,7 +450,7 @@
   background: var(--espresso, #2C1810);
   color: var(--cream, #FAF6F0);
   border: none;
-  border-radius: 6px;
+  border-radius: 0;
   font-family: var(--sans, 'Jost', sans-serif);
   font-size: 14px;
   font-weight: 600;
@@ -425,6 +459,23 @@
   cursor: pointer;
   transition: background 0.3s;
   margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.btn-add-cart::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--terracotta, #B8704A);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.btn-add-cart span {
+  position: relative;
+  z-index: 1;
+}
+.btn-add-cart:hover::after {
+  transform: translateY(0);
 }
 
 .btn-add-cart:hover { background: var(--amethyst, #7B5EA7); }
@@ -443,7 +494,8 @@
   gap: 12px;
   padding: 14px 16px;
   background: rgba(44,24,16,0.02);
-  border-radius: 8px;
+  border-radius: 0;
+  border: 1px solid rgba(44,24,16,0.06);
 }
 
 .trust-badge svg { color: var(--amethyst, #7B5EA7); flex-shrink: 0; margin-top: 2px; }
@@ -494,7 +546,7 @@
 .included-card {
   background: white;
   padding: 32px 28px;
-  border-radius: 8px;
+  border-radius: 0;
   text-align: center;
   box-shadow: 0 2px 20px rgba(44,24,16,0.06);
 }
@@ -529,7 +581,7 @@
 .result-card {
   padding: 32px 20px;
   border: 1px solid rgba(250,246,240,0.1);
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .result-stat {
@@ -556,7 +608,7 @@
 .review-card {
   background: white;
   padding: 32px 28px;
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: 0 2px 20px rgba(44,24,16,0.06);
 }
 
@@ -647,7 +699,7 @@
   text-align: center;
   padding: 48px 40px;
   border: 2px solid rgba(123,94,167,0.15);
-  border-radius: 12px;
+  border-radius: 0;
 }
 
 .guarantee-icon { color: var(--amethyst, #7B5EA7); margin-bottom: 20px; }
@@ -664,6 +716,86 @@
   font-size: 15px;
   color: var(--stone, #8B7355);
   line-height: 1.7;
+}
+
+/* ── Material Education (Product Page Inline) ── */
+.product-section--material {
+  background: var(--cream-dark, #EDE6D6);
+  max-width: 100%;
+  text-align: center;
+}
+.material-inline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.material-inline-card {
+  background: var(--white, #FDFAF5);
+  padding: 40px 28px;
+  text-align: center;
+  transition: background 0.3s;
+}
+.material-inline-card:hover {
+  background: var(--cream, #F7F2EA);
+}
+.material-inline-num {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 36px;
+  font-weight: 300;
+  color: rgba(30,18,10,0.08);
+  display: block;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.material-inline-card h4 {
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--espresso, #2C1810);
+  margin-bottom: 10px;
+}
+.material-inline-card p {
+  font-size: 14px;
+  color: var(--stone, #8B7355);
+  line-height: 1.7;
+}
+
+/* ── Press Trust (Product Page) ── */
+.product-section--press {
+  text-align: center;
+  padding: 48px 48px;
+  border-top: 1px solid rgba(30,18,10,0.06);
+}
+.product-section--press .press-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--stone, #8B7355);
+  margin-bottom: 28px;
+}
+.product-press-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.product-press-name {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--espresso, #1E120A);
+  opacity: 0.2;
+  transition: opacity 0.3s;
+}
+.product-press-name:hover {
+  opacity: 0.5;
 }
 
 /* ── RESPONSIVE ── */
@@ -687,6 +819,9 @@
   .results-grid { grid-template-columns: 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
   .product-section { padding: 56px 24px; }
+  .material-inline-grid { grid-template-columns: 1fr; }
+  .product-press-logos { gap: 28px; }
+  .product-press-name { font-size: 18px; }
 }
 </style>
 

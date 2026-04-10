@@ -8,8 +8,24 @@
         "subtitle": ""
       }
     },
+    "press-logos": {
+      "type": "press-logos",
+      "settings": {}
+    },
     "marquee": {
       "type": "marquee",
+      "settings": {}
+    },
+    "shop-by-concern": {
+      "type": "shop-by-concern",
+      "settings": {}
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {}
+    },
+    "value-props": {
+      "type": "value-props",
       "settings": {}
     },
     "problem": {
@@ -20,12 +36,12 @@
       "type": "before-after",
       "settings": {}
     },
-    "ritual-steps": {
-      "type": "ritual-steps",
+    "material-education": {
+      "type": "material-education",
       "settings": {}
     },
-    "featured-products": {
-      "type": "featured-products",
+    "ritual-steps": {
+      "type": "ritual-steps",
       "settings": {}
     },
     "testimonials": {
@@ -39,11 +55,15 @@
   },
   "order": [
     "hero",
+    "press-logos",
     "marquee",
+    "shop-by-concern",
+    "featured-products",
+    "value-props",
     "problem",
     "before-after",
+    "material-education",
     "ritual-steps",
-    "featured-products",
     "testimonials",
     "email-signup"
   ]
