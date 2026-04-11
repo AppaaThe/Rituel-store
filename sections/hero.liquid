@@ -1,70 +1,528 @@
-<section class="hero" id="home">
-  <div class="hero-visual">
-    <img
-      class="hero-photo"
-      src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-outdoor-lifestyle.png"
-      alt="Woman using amethyst gua sha stone with upward sculpting strokes"
-    >
-    <div class="hero-visual-overlay"></div>
-    <div class="hero-visual-brand">
-      <span class="hero-brand-line"></span>
-      <span class="hero-brand-name">BY RITUEL</span>
-      <span class="hero-brand-sub">The Morning Ritual</span>
-      <span class="hero-brand-line"></span>
+<section class="hero-v2" id="home">
+
+  <!-- LEFT: Product Visual -->
+  <div class="hero-v2-visual">
+    <div class="hero-v2-img-wrap">
+      <img
+        class="hero-v2-product"
+        src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-roller-set-amethyst.jpg"
+        alt="BY RITUEL Amethyst Gua Sha and Roller Set"
+        loading="eager"
+        id="hero-product-image"
+      >
+    </div>
+    <div class="hero-v2-img-badge">
+      <span>★ 4.9</span> from 127 reviews
     </div>
   </div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">{{ section.settings.eyebrow | default: 'The Morning Ritual' }}</p>
-    <h1 class="hero-title">{{ section.settings.title | default: 'Sculpt.<br><em>Glow.</em><br>Repeat.' }}</h1>
-    <p class="hero-subtitle">{{ section.settings.subtitle | default: 'Wake up puffy? Jawline softer than it used to be? Five minutes every morning physically moves fluid, sculpts your face, and makes people ask if you lost weight. No serum does that.' }}</p>
 
-    <div class="bundle-selector">
-      <a href="/products/rituel-starter-ritual" class="bundle-option active">
-        <div class="bundle-radio"></div>
-        <div class="bundle-info">
-          <div class="bundle-name">Starter Ritual</div>
-          <div class="bundle-includes">Gua Sha + Ice Roller</div>
-        </div>
-        <div class="bundle-price">&#8364;35 <span class="bundle-compare">&#8364;50</span></div>
-      </a>
-      <a href="/products/rituel-full-ritual" class="bundle-option">
-        <div class="bundle-badge">Most Popular</div>
-        <div class="bundle-radio"></div>
-        <div class="bundle-info">
-          <div class="bundle-name">Full Ritual</div>
-          <div class="bundle-includes">Gua Sha + Jade Roller + Ice Roller</div>
-        </div>
-        <div class="bundle-price">&#8364;48 <span class="bundle-compare">&#8364;66</span></div>
-      </a>
-      <a href="/products/rituel-complete-ritual" class="bundle-option">
-        <div class="bundle-radio"></div>
-        <div class="bundle-info">
-          <div class="bundle-name">Complete Ritual</div>
-          <div class="bundle-includes">All 4 Products — Best Value</div>
-        </div>
-        <div class="bundle-price">&#8364;58 <span class="bundle-compare">&#8364;80</span></div>
-      </a>
+  <!-- RIGHT: Product Info + Buy -->
+  <div class="hero-v2-content">
+
+    <p class="hero-v2-eyebrow">The 5-Minute Morning Ritual</p>
+
+    <h1 class="hero-v2-title">Sculpt your jawline.<br><em>Depuff your face.</em><br>Look like you slept 10 hours.</h1>
+
+    <p class="hero-v2-sub">Real amethyst crystal tools used every morning by women who refuse to spend an hour getting ready. Visible results from day one.</p>
+
+    <div class="hero-v2-social-proof">
+      <div class="hero-v2-stars">★★★★★</div>
+      <span class="hero-v2-review-count">"People asked if I lost weight. I hadn't lost a pound."</span>
     </div>
 
-    <a href="/products/rituel-starter-ritual" class="btn-primary" style="text-decoration:none;display:block;text-align:center;">
-      <span>Start Your Ritual &#8364;35</span>
-    </a>
-
-    <div class="hero-trust">
-      <div class="trust-item"><span class="trust-dot"></span> 30-day money-back guarantee</div>
-      <div class="trust-item"><span class="trust-dot"></span> Free shipping over &#8364;45</div>
-      <div class="trust-item"><span class="trust-dot"></span> Natural amethyst stone</div>
+    <!-- Bundle selector -->
+    <div class="hero-v2-bundles" id="hero-bundles">
+      <div class="hero-v2-option active" data-price="35" data-compare="50" data-handle="rituel-starter-ritual" data-img="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-roller-set-amethyst.jpg">
+        <div class="hero-v2-radio"></div>
+        <div class="hero-v2-option-body">
+          <div class="hero-v2-option-name">Starter Ritual <span class="hero-v2-option-tag">Gua Sha + Ice Roller</span></div>
+          <div class="hero-v2-option-price">&#8364;35 <span class="hero-v2-compare">&#8364;50</span> <span class="hero-v2-save-pct">Save 30%</span></div>
+        </div>
+      </div>
+      <div class="hero-v2-option" data-price="48" data-compare="66" data-handle="rituel-full-ritual" data-img="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-roller-set-amethyst.jpg">
+        <div class="hero-v2-badge-pop">Most Popular</div>
+        <div class="hero-v2-radio"></div>
+        <div class="hero-v2-option-body">
+          <div class="hero-v2-option-name">Full Ritual <span class="hero-v2-option-tag">Gua Sha + Jade Roller + Ice Roller</span></div>
+          <div class="hero-v2-option-price">&#8364;48 <span class="hero-v2-compare">&#8364;66</span> <span class="hero-v2-save-pct">Save 27%</span></div>
+        </div>
+      </div>
+      <div class="hero-v2-option" data-price="58" data-compare="80" data-handle="rituel-complete-ritual" data-img="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-roller-set-amethyst.jpg">
+        <div class="hero-v2-radio"></div>
+        <div class="hero-v2-option-body">
+          <div class="hero-v2-option-name">Complete Ritual <span class="hero-v2-option-tag">All 4 Products — Best Value</span></div>
+          <div class="hero-v2-option-price">&#8364;58 <span class="hero-v2-compare">&#8364;80</span> <span class="hero-v2-save-pct">Save 28%</span></div>
+        </div>
+      </div>
     </div>
+
+    <!-- CTA -->
+    <button class="hero-v2-atc" id="hero-add-to-cart" type="button">
+      <span id="hero-atc-text">Add to Cart — &#8364;35</span>
+    </button>
+    <p class="hero-v2-shipping-note">Free shipping over &#8364;45 · 30-day money-back guarantee</p>
+
+    <!-- Trust strip -->
+    <div class="hero-v2-trust">
+      <div class="hero-v2-trust-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        30-Day Guarantee
+      </div>
+      <div class="hero-v2-trust-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Free Shipping 45&#8364;+
+      </div>
+      <div class="hero-v2-trust-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Natural Amethyst
+      </div>
+    </div>
+
   </div>
 </section>
+
+<!-- Sticky mobile ATC -->
+<div class="hero-v2-sticky-atc" id="sticky-atc">
+  <div class="sticky-atc-info">
+    <span class="sticky-atc-name" id="sticky-name">Starter Ritual</span>
+    <span class="sticky-atc-price" id="sticky-price">&#8364;35 <s>&#8364;50</s></span>
+  </div>
+  <button class="sticky-atc-btn" id="sticky-btn">Add to Cart</button>
+</div>
+
+<style>
+/* ── HERO V2: Product-First Buy-Now ── */
+.hero-v2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+/* LEFT — Product image */
+.hero-v2-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream-dark);
+  overflow: hidden;
+}
+.hero-v2-img-wrap {
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.hero-v2-product {
+  max-width: 85%;
+  max-height: 75vh;
+  object-fit: contain;
+  opacity: 0;
+  animation: heroProductIn 0.8s ease forwards 0.2s;
+}
+@keyframes heroProductIn {
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.hero-v2-img-badge {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--stone);
+  background: var(--white);
+  padding: 8px 16px;
+  border-radius: 2px;
+  box-shadow: 0 2px 12px rgba(30,18,10,0.08);
+}
+.hero-v2-img-badge span {
+  color: var(--terracotta);
+  font-weight: 600;
+}
+
+/* RIGHT — Content + Buy */
+.hero-v2-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px 80px 56px;
+  max-width: 620px;
+}
+
+.hero-v2-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.1s;
+}
+
+.hero-v2-title {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.15;
+  font-weight: 300;
+  color: var(--espresso);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.2s;
+}
+.hero-v2-title em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+
+.hero-v2-sub {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--stone);
+  margin-bottom: 20px;
+  max-width: 420px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.3s;
+}
+
+.hero-v2-social-proof {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.35s;
+}
+.hero-v2-stars {
+  color: var(--terracotta);
+  font-size: 13px;
+  letter-spacing: 2px;
+  flex-shrink: 0;
+}
+.hero-v2-review-count {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--stone);
+  line-height: 1.4;
+}
+
+/* Bundle options */
+.hero-v2-bundles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.4s;
+}
+.hero-v2-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1.5px solid var(--cream-dark);
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+}
+.hero-v2-option:hover {
+  border-color: rgba(184,112,74,0.3);
+}
+.hero-v2-option.active {
+  border-color: var(--terracotta);
+  background: rgba(184,112,74,0.03);
+}
+.hero-v2-radio {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+}
+.hero-v2-option.active .hero-v2-radio {
+  border-color: var(--terracotta);
+  background: var(--terracotta);
+}
+.hero-v2-option.active .hero-v2-radio::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+}
+.hero-v2-option-body {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.hero-v2-option-name {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--espresso);
+}
+.hero-v2-option-tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--stone);
+  margin-top: 2px;
+}
+.hero-v2-option-price {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--espresso);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.hero-v2-compare {
+  font-size: 13px;
+  color: var(--stone);
+  text-decoration: line-through;
+  opacity: 0.5;
+  margin-left: 4px;
+}
+.hero-v2-save-pct {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+  margin-left: 6px;
+}
+.hero-v2-badge-pop {
+  position: absolute;
+  top: -1px;
+  right: 16px;
+  background: var(--terracotta);
+  color: white;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  font-weight: 500;
+}
+
+/* CTA Button */
+.hero-v2-atc {
+  width: 100%;
+  padding: 20px 48px;
+  background: var(--terracotta);
+  color: var(--cream);
+  border: none;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.5s;
+}
+.hero-v2-atc:hover {
+  background: var(--espresso);
+}
+
+.hero-v2-shipping-note {
+  font-size: 11px;
+  color: var(--stone);
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.55s;
+}
+
+/* Trust strip */
+.hero-v2-trust {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.6s;
+}
+.hero-v2-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--stone);
+  letter-spacing: 0.03em;
+}
+.hero-v2-trust-item svg {
+  color: var(--terracotta);
+  flex-shrink: 0;
+}
+
+/* ── Sticky Mobile ATC ── */
+.hero-v2-sticky-atc {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: var(--cream);
+  border-top: 1px solid var(--cream-dark);
+  padding: 12px 20px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 -4px 20px rgba(30,18,10,0.08);
+}
+.hero-v2-sticky-atc.visible {
+  display: flex;
+}
+.sticky-atc-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sticky-atc-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--espresso);
+}
+.sticky-atc-price {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--espresso);
+}
+.sticky-atc-price s {
+  font-size: 12px;
+  color: var(--stone);
+  margin-left: 4px;
+}
+.sticky-atc-btn {
+  padding: 14px 28px;
+  background: var(--terracotta);
+  color: var(--cream);
+  border: none;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.sticky-atc-btn:hover {
+  background: var(--espresso);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .hero-v2 {
+    grid-template-columns: 1fr;
+    padding-top: 72px;
+  }
+  .hero-v2-visual {
+    height: 50vh;
+    min-height: 320px;
+  }
+  .hero-v2-content {
+    padding: 40px 28px 120px;
+    max-width: 100%;
+  }
+  .hero-v2-title {
+    font-size: 28px;
+  }
+  .hero-v2-option-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .hero-v2-trust {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+</style>
+
+<script>
+(function() {
+  // Bundle selector
+  var bundles = document.querySelectorAll('#hero-bundles .hero-v2-option');
+  var atcBtn = document.getElementById('hero-add-to-cart');
+  var atcText = document.getElementById('hero-atc-text');
+  var stickyName = document.getElementById('sticky-name');
+  var stickyPrice = document.getElementById('sticky-price');
+  var stickyBtn = document.getElementById('sticky-btn');
+  var stickyBar = document.getElementById('sticky-atc');
+  var heroImg = document.getElementById('hero-product-image');
+
+  var selected = { handle: 'rituel-starter-ritual', price: '35', compare: '50', name: 'Starter Ritual' };
+
+  bundles.forEach(function(b) {
+    b.addEventListener('click', function() {
+      bundles.forEach(function(x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      selected.handle = b.getAttribute('data-handle');
+      selected.price = b.getAttribute('data-price');
+      selected.compare = b.getAttribute('data-compare');
+      selected.name = b.querySelector('.hero-v2-option-name').childNodes[0].textContent.trim();
+
+      atcText.innerHTML = 'Add to Cart &mdash; &euro;' + selected.price;
+      stickyName.textContent = selected.name;
+      stickyPrice.innerHTML = '&euro;' + selected.price + ' <s>&euro;' + selected.compare + '</s>';
+
+      // Swap image if different
+      var newImg = b.getAttribute('data-img');
+      if (newImg && heroImg) {
+        heroImg.style.opacity = '0';
+        setTimeout(function() {
+          heroImg.src = newImg;
+          heroImg.style.opacity = '1';
+        }, 200);
+      }
+    });
+  });
+
+  // Add to cart → go to product page
+  function goToProduct() {
+    window.location.href = '/products/' + selected.handle;
+  }
+  atcBtn.addEventListener('click', goToProduct);
+  stickyBtn.addEventListener('click', goToProduct);
+
+  // Sticky ATC on scroll (show when hero CTA leaves viewport)
+  var lastScroll = 0;
+  function checkSticky() {
+    var rect = atcBtn.getBoundingClientRect();
+    if (rect.bottom < 0) {
+      stickyBar.classList.add('visible');
+    } else {
+      stickyBar.classList.remove('visible');
+    }
+    lastScroll = requestAnimationFrame(checkSticky);
+  }
+  checkSticky();
+})();
+</script>
 
 {% schema %}
 {
   "name": "Hero",
   "settings": [
     { "type": "image_picker", "id": "hero_image", "label": "Hero Image" },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "The Morning Ritual" },
-    { "type": "textarea", "id": "title", "label": "Headline", "default": "Sculpt. Glow. Repeat." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "The 5-Minute Morning Ritual" },
+    { "type": "textarea", "id": "title", "label": "Headline", "default": "Sculpt your jawline. Depuff your face. Look like you slept 10 hours." },
     { "type": "textarea", "id": "subtitle", "label": "Subheadline" }
   ],
   "presets": [{ "name": "Hero" }]
