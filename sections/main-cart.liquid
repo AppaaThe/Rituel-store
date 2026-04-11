@@ -17,9 +17,7 @@
               {%- endif -%}
               <div class="cart-item-details">
                 <div class="cart-item-name">{{ item.product.title }}</div>
-                {%- if item.product.compare_at_price > item.product.price -%}
-                  <div class="cart-item-save">Save {{ item.product.compare_at_price | minus: item.product.price | money }}</div>
-                {%- endif -%}
+                <!-- Compare-at pricing removed -->
                 <div class="cart-item-qty">
                   <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="cart-qty-btn" aria-label="Remove one">&#8722;</a>
                   <span class="cart-qty-num">{{ item.quantity }}</span>
@@ -56,9 +54,7 @@
                     <div class="order-bump-sub">Your gua sha needs a glide. Pure rosehip oil doubles as your daily facial oil. One tick. No new checkout.</div>
                     <div class="order-bump-price">
                       <span class="bump-price">{{ bump_product.price | money }}</span>
-                      {%- if bump_product.compare_at_price > bump_product.price -%}
-                        <span class="bump-compare">{{ bump_product.compare_at_price | money }}</span>
-                      {%- endif -%}
+                      <!-- Compare-at pricing removed -->
                     </div>
                   </div>
                 </div>

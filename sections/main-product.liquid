@@ -46,10 +46,7 @@
 
     <div class="product-price-wrap">
       <span class="product-page-price">{{ product.price | money }}</span>
-      {%- if product.compare_at_price > product.price -%}
-        <span class="product-compare-price">{{ product.compare_at_price | money }}</span>
-        <span class="product-save-badge">Save {{ product.compare_at_price | minus: product.price | money }}</span>
-      {%- endif -%}
+      <!-- Compare-at pricing removed — clean single price, no fake sales -->
     </div>
 
     {%- if product.tags contains 'most popular' -%}
