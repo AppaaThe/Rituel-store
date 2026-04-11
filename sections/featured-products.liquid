@@ -3,108 +3,276 @@
 {%- assign ice     = all_products['rituel-ice-roller'] -%}
 {%- assign oil     = all_products['rituel-rosehip-oil'] -%}
 
-<section class="editorial-products" id="shop">
+<section class="fp" id="shop">
 
-  <div class="editorial-header reveal">
-    <span class="editorial-overline">The Tools</span>
-    <h2 class="editorial-title">Four objects.<br><em>One ritual.</em></h2>
-    <div class="editorial-title-rule"></div>
+  <!-- Header -->
+  <div class="fp-header reveal">
+    <span class="fp-overline">The Tools</span>
+    <h2 class="fp-title">Four objects.<br><em>One ritual.</em></h2>
   </div>
 
-  <div class="editorial-spread">
+  <!-- Product Grid: 4 equal cards -->
+  <div class="fp-grid">
 
-    {%- comment -%} ── HERO PRODUCT (left, large) ── {%- endcomment -%}
-    <a href="{{ gua_sha.url }}" class="editorial-hero reveal" style="text-decoration:none;">
-      <div class="editorial-hero-image">
+    <a href="{{ gua_sha.url }}" class="fp-card fp-card--hero reveal" style="text-decoration:none;">
+      <div class="fp-card-img">
         {%- if gua_sha.featured_image -%}
-          <img src="{{ gua_sha.featured_image | image_url: width: 900 }}" alt="{{ gua_sha.title }}" loading="lazy">
+          <img src="{{ gua_sha.featured_image | image_url: width: 600 }}" alt="{{ gua_sha.title }}" loading="lazy">
         {%- else -%}
-          <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-stone-amethyst.jpg" alt="Gua Sha Stone" loading="lazy">
+          <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-guasha-stone-amethyst.jpg" alt="Amethyst Gua Sha" loading="lazy">
         {%- endif -%}
-        <div class="editorial-hero-overlay"></div>
       </div>
-      <div class="editorial-hero-content">
-        <span class="editorial-product-label">The Foundation</span>
-        <h3 class="editorial-hero-name">Amethyst<br>Gua Sha</h3>
-        <p class="editorial-hero-benefit">Sculpts your jawline. Drains overnight puffiness. 5 minutes every morning.</p>
-        <div class="editorial-hero-footer">
-          <div class="editorial-price-block">
-            <span class="editorial-price">$22</span>
-          </div>
-          <span class="editorial-cta-link">Add to Ritual &#8594;</span>
+      <div class="fp-card-body">
+        <span class="fp-card-label">The Foundation</span>
+        <h3 class="fp-card-name">Amethyst Gua Sha</h3>
+        <p class="fp-card-desc">Sculpts jawline. Drains puffiness. The one tool you actually need.</p>
+        <div class="fp-card-footer">
+          <span class="fp-card-price">$22</span>
+          <span class="fp-card-cta">Shop →</span>
         </div>
       </div>
     </a>
 
-    {%- comment -%} ── SIDE PRODUCTS (right, stacked) ── {%- endcomment -%}
-    <div class="editorial-side">
-
-      <a href="{{ roller.url }}" class="editorial-side-card reveal" style="text-decoration:none;">
-        <div class="editorial-side-num">01</div>
-        <div class="editorial-side-img">
-          {%- if roller.featured_image -%}
-            <img src="{{ roller.featured_image | image_url: width: 300 }}" alt="{{ roller.title }}" loading="lazy">
-          {%- else -%}
-            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-facial-roller-amethyst.jpg" alt="Jade Roller" loading="lazy">
-          {%- endif -%}
-        </div>
-        <div class="editorial-side-body">
-          <span class="editorial-product-label">The Warm-Up</span>
-          <div class="editorial-side-name">Double-Sided Jade Roller</div>
-          <p class="editorial-side-desc">Two heads, zero puffiness. Preps skin for gua sha, targets the under-eye area.</p>
-        </div>
-        <div class="editorial-side-price-col">
-          <span class="editorial-price">$16</span>
-        </div>
-      </a>
-
-      <a href="{{ ice.url }}" class="editorial-side-card reveal reveal-delay-1" style="text-decoration:none;">
-        <div class="editorial-side-num">02</div>
-        <div class="editorial-side-img">
-          {%- if ice.featured_image -%}
-            <img src="{{ ice.featured_image | image_url: width: 300 }}" alt="{{ ice.title }}" loading="lazy">
-          {%- else -%}
-            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-ice-roller-rose-pink.jpg" alt="Rose Ice Roller" loading="lazy">
-          {%- endif -%}
-        </div>
-        <div class="editorial-side-body">
-          <span class="editorial-product-label">The Finisher</span>
-          <div class="editorial-side-name">Rose Ice Roller</div>
-          <p class="editorial-side-desc">Constricts. De-puffs. Seals everything in. Look like you slept 10 hours.</p>
-        </div>
-        <div class="editorial-side-price-col">
-          <span class="editorial-price">$19</span>
-        </div>
-      </a>
-
-      <a href="{{ oil.url }}" class="editorial-side-card reveal reveal-delay-2" style="text-decoration:none;">
-        <div class="editorial-side-num">03</div>
-        <div class="editorial-side-img">
-          {%- if oil.featured_image -%}
-            <img src="{{ oil.featured_image | image_url: width: 300 }}" alt="{{ oil.title }}" loading="lazy">
-          {%- else -%}
-            <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-rosehip-facial-oil-30ml.jpg" alt="Rosehip Oil" loading="lazy">
-          {%- endif -%}
-        </div>
-        <div class="editorial-side-body">
-          <span class="editorial-product-label">The Glide</span>
-          <div class="editorial-side-name">Pure Rosehip Oil 30ml</div>
-          <p class="editorial-side-desc">100% pure. Fades dark spots, hydrates deeply, never clogs pores. The only reorder you'll make.</p>
-        </div>
-        <div class="editorial-side-price-col">
-          <span class="editorial-price">$15</span>
-        </div>
-      </a>
-
-      <div class="editorial-side-footer">
-        <a href="{{ routes.collections_url }}/all" class="editorial-all-link">View all products &amp; ritual sets &#8594;</a>
+    <a href="{{ roller.url }}" class="fp-card reveal reveal-delay-1" style="text-decoration:none;">
+      <div class="fp-card-img">
+        {%- if roller.featured_image -%}
+          <img src="{{ roller.featured_image | image_url: width: 600 }}" alt="{{ roller.title }}" loading="lazy">
+        {%- else -%}
+          <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-facial-roller-amethyst.jpg" alt="Amethyst Roller" loading="lazy">
+        {%- endif -%}
       </div>
+      <div class="fp-card-body">
+        <span class="fp-card-label">The Warm-Up</span>
+        <h3 class="fp-card-name">Amethyst Roller</h3>
+        <p class="fp-card-desc">Double-ended. Preps skin, targets the under-eye area.</p>
+        <div class="fp-card-footer">
+          <span class="fp-card-price">$16</span>
+          <span class="fp-card-cta">Shop →</span>
+        </div>
+      </div>
+    </a>
 
-    </div>
+    <a href="{{ ice.url }}" class="fp-card reveal reveal-delay-2" style="text-decoration:none;">
+      <div class="fp-card-img">
+        {%- if ice.featured_image -%}
+          <img src="{{ ice.featured_image | image_url: width: 600 }}" alt="{{ ice.title }}" loading="lazy">
+        {%- else -%}
+          <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-ice-roller-rose-pink.jpg" alt="Rose Ice Roller" loading="lazy">
+        {%- endif -%}
+      </div>
+      <div class="fp-card-body">
+        <span class="fp-card-label">The Finisher</span>
+        <h3 class="fp-card-name">Rose Ice Roller</h3>
+        <p class="fp-card-desc">Constricts pores. De-puffs. Seals everything in.</p>
+        <div class="fp-card-footer">
+          <span class="fp-card-price">$19</span>
+          <span class="fp-card-cta">Shop →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="{{ oil.url }}" class="fp-card reveal reveal-delay-3" style="text-decoration:none;">
+      <div class="fp-card-img">
+        {%- if oil.featured_image -%}
+          <img src="{{ oil.featured_image | image_url: width: 600 }}" alt="{{ oil.title }}" loading="lazy">
+        {%- else -%}
+          <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-rosehip-facial-oil-30ml.jpg" alt="Rosehip Oil" loading="lazy">
+        {%- endif -%}
+      </div>
+      <div class="fp-card-body">
+        <span class="fp-card-label">The Glide</span>
+        <h3 class="fp-card-name">Rosehip Oil</h3>
+        <p class="fp-card-desc">Pure rosehip + vitamin C. The slip your stone needs.</p>
+        <div class="fp-card-footer">
+          <span class="fp-card-price">$15</span>
+          <span class="fp-card-cta">Shop →</span>
+        </div>
+      </div>
+    </a>
 
   </div>
 
+  <div class="fp-view-all reveal">
+    <a href="{{ routes.collections_url }}/all">View all products & ritual sets →</a>
+  </div>
+
 </section>
+
+<style>
+/* ── Featured Products: Editorial Grid ── */
+.fp {
+  background: var(--espresso);
+  padding: 120px 80px;
+}
+
+.fp-header {
+  max-width: 1300px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+.fp-overline {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 20px;
+}
+.fp-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+}
+.fp-title em {
+  font-style: italic;
+  color: var(--blush);
+}
+
+/* Grid */
+.fp-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+/* Card */
+.fp-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  overflow: hidden;
+  position: relative;
+  color: inherit;
+}
+.fp-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(184,112,74,0.3);
+  transform: translateY(-4px);
+}
+
+/* Card Image */
+.fp-card-img {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 60%, #C8A882, #8B6845);
+}
+.fp-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.fp-card:hover .fp-card-img img {
+  transform: scale(1.06);
+}
+
+/* Card Body */
+.fp-card-body {
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.fp-card-label {
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 8px;
+}
+.fp-card-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.fp-card-desc {
+  font-size: 12px;
+  color: rgba(247,242,234,0.4);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  flex: 1;
+}
+.fp-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(247,242,234,0.06);
+}
+.fp-card-price {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--cream);
+}
+.fp-card-cta {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  transition: letter-spacing 0.3s;
+}
+.fp-card:hover .fp-card-cta {
+  letter-spacing: 0.22em;
+}
+
+/* Hero card accent */
+.fp-card--hero {
+  border-color: rgba(184,112,74,0.2);
+}
+.fp-card--hero::after {
+  content: 'Best Seller';
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--terracotta);
+  color: var(--cream);
+  padding: 5px 12px;
+  z-index: 2;
+  font-family: var(--sans);
+  font-weight: 500;
+}
+
+/* View all */
+.fp-view-all {
+  text-align: center;
+  margin-top: 48px;
+}
+.fp-view-all a {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247,242,234,0.3);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.fp-view-all a:hover {
+  color: var(--terracotta);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .fp { padding: 80px 32px; }
+  .fp-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+}
+@media (max-width: 600px) {
+  .fp { padding: 64px 16px; }
+  .fp-grid { grid-template-columns: 1fr; gap: 2px; }
+  .fp-card-img { aspect-ratio: 4/3; }
+}
+</style>
 
 {% schema %}
 {

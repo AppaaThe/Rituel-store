@@ -87,12 +87,16 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 .ritual-step-title { font-family: var(--serif); font-size: 30px; font-weight: 300; margin-bottom: 16px; color: var(--espresso); }
 .ritual-step-desc { font-size: 14px; line-height: 1.85; color: var(--stone); margin-bottom: 0; }
 .ritual-step-line { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--terracotta); transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left; }
-.ritual-total { background: var(--espresso); padding: 48px 80px; }
-.ritual-total-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; gap: 40px; }
+.ritual-total { background: var(--espresso); padding: 56px 80px; border-top: 1px solid rgba(247,242,234,0.06); }
+.ritual-total-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; gap: 48px; }
+.ritual-total-left { display: flex; align-items: baseline; gap: 16px; flex-shrink: 0; }
 .ritual-total-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(247,242,234,0.35); }
-.ritual-total-num { font-family: var(--serif); font-size: 80px; font-weight: 300; color: var(--terracotta); line-height: 1; }
-.ritual-total-unit { font-size: 28px; margin-left: 4px; }
-.ritual-total-tag { font-family: var(--serif); font-size: 22px; font-style: italic; color: rgba(247,242,234,0.45); letter-spacing: 0.05em; }
+.ritual-total-num { font-family: var(--serif); font-size: 72px; font-weight: 300; color: var(--terracotta); line-height: 1; }
+.ritual-total-unit { font-size: 24px; margin-left: 4px; }
+.ritual-total-divider { width: 1px; height: 48px; background: rgba(247,242,234,0.1); flex-shrink: 0; }
+.ritual-total-right { display: flex; flex-direction: column; gap: 6px; }
+.ritual-total-tag { font-family: var(--serif); font-size: 22px; font-style: italic; color: rgba(247,242,234,0.55); letter-spacing: 0.05em; }
+.ritual-total-sub { font-size: 13px; color: rgba(247,242,234,0.25); letter-spacing: 0.03em; }
 
 /* ── Editorial Products (redesigned) ── */
 .editorial-products { background: var(--espresso); padding: 100px 80px; }
