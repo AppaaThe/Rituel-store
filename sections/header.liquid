@@ -485,7 +485,8 @@ window.addEventListener('scroll', () => {
         <input type="hidden" name="form_type" value="customer">
         <input type="hidden" name="utf8" value="✓">
         <input type="hidden" name="contact[tags]" value="newsletter,popup,welcome10">
-        <input class="popup-input" type="email" name="contact[email]" id="popupEmail" placeholder="Your email address" required>
+        <label for="popupEmail" class="sr-only">Email address</label>
+        <input class="popup-input" type="email" name="contact[email]" id="popupEmail" placeholder="Your email address" aria-label="Email address" autocomplete="email" required>
         <button type="submit" class="popup-btn">Send Me the Free Guide</button>
       </form>
       <p class="popup-note">No spam. Unsubscribe anytime.</p>
