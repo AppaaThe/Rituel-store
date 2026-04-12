@@ -8,16 +8,30 @@
     </div>
   </div>
 
+  {%- assign img_base = 'https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/pg-blog-' -%}
+  {%- assign fallback_imgs = '1-jawline,2-science,3-moisturiser,4-beginners' | split: ',' -%}
+
   <div class="blog-grid">
     {% for article in blog.articles %}
+      {%- assign custom_img = '' -%}
+      {%- assign handle = article.handle | downcase -%}
+      {%- if handle contains 'jawline' -%}
+        {%- assign custom_img = img_base | append: '1-jawline.png' -%}
+      {%- elsif handle contains 'science' or handle contains 'actually-work' -%}
+        {%- assign custom_img = img_base | append: '2-science.png' -%}
+      {%- elsif handle contains 'moisturiser' or handle contains 'moisturizer' or handle contains 'before-or-after' -%}
+        {%- assign custom_img = img_base | append: '3-moisturiser.png' -%}
+      {%- elsif handle contains 'beginner' -%}
+        {%- assign custom_img = img_base | append: '4-beginners.png' -%}
+      {%- else -%}
+        {%- assign cycle_i = forloop.index0 | modulo: 4 -%}
+        {%- assign custom_img = img_base | append: fallback_imgs[cycle_i] | append: '.png' -%}
+      {%- endif -%}
+
       <a href="{{ article.url }}" class="blog-card">
-        {% if article.image %}
-          <div class="blog-card-img">
-            <img src="{{ article.image | img_url: '600x400', crop: 'center' }}" alt="{{ article.image.alt | escape }}" loading="lazy" />
-          </div>
-        {% else %}
-          <div class="blog-card-img blog-card-img--placeholder"></div>
-        {% endif %}
+        <div class="blog-card-img">
+          <img src="{{ custom_img }}" alt="{{ article.title | escape }}" loading="lazy" />
+        </div>
         <div class="blog-card-body">
           <p class="blog-card-date">{{ article.published_at | date: "%B %d, %Y" }}</p>
           <h2>{{ article.title }}</h2>
