@@ -1,24 +1,72 @@
 <div class="product-page">
 
+  {%- comment -%} ── Custom editorial imagery matched by product handle ── {%- endcomment -%}
+  {%- assign img_base = 'https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/pg-prod-' -%}
+  {%- assign handle = product.handle | downcase -%}
+  {%- assign custom_images = '' -%}
+
+  {%- if handle contains 'gua' or handle contains 'stone' or handle contains 'amethyst-gua' -%}
+    {%- assign custom_images = 'guasha-hero,guasha-inuse,guasha-detail' -%}
+    {%- assign problem_set = 'guasha' -%}
+  {%- elsif handle contains 'ice' -%}
+    {%- assign custom_images = 'iceroller-hero,iceroller-inuse,iceroller-detail' -%}
+    {%- assign problem_set = 'iceroller' -%}
+  {%- elsif handle contains 'oil' or handle contains 'rosehip' -%}
+    {%- assign custom_images = 'oil-hero,oil-inuse,oil-detail' -%}
+    {%- assign problem_set = 'oil' -%}
+  {%- elsif handle contains 'roller' -%}
+    {%- assign custom_images = 'roller-hero,roller-inuse,roller-detail' -%}
+    {%- assign problem_set = 'roller' -%}
+  {%- elsif handle contains 'kit' or handle contains 'bundle' or handle contains 'ritual' -%}
+    {%- assign custom_images = 'guasha-hero,roller-hero,oil-hero,iceroller-hero' -%}
+    {%- assign problem_set = 'bundle' -%}
+  {%- endif -%}
+
+  {%- assign custom_image_list = custom_images | split: ',' -%}
+
   <!-- IMAGE GALLERY -->
   <div class="product-media">
     <div class="product-gallery">
-      {%- for image in product.images -%}
-        <img
-          src="{{ image | image_url: width: 900 }}"
-          alt="{{ image.alt | default: product.title | escape }}"
-          class="product-gallery-img {% if forloop.first %}active{% endif %}"
-          data-index="{{ forloop.index0 }}"
-          loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-          onclick="switchImage({{ forloop.index0 }})"
-        >
-      {%- endfor -%}
-      {%- if product.images.size == 0 -%}
-        <div class="gallery-placeholder"></div>
+      {%- if custom_image_list.size > 0 -%}
+        {%- for slug in custom_image_list -%}
+          <img
+            src="{{ img_base }}{{ slug }}.png"
+            alt="{{ product.title | escape }} — view {{ forloop.index }}"
+            class="product-gallery-img {% if forloop.first %}active{% endif %}"
+            data-index="{{ forloop.index0 }}"
+            data-src="{{ img_base }}{{ slug }}.png"
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+            onclick="switchImage({{ forloop.index0 }})"
+          >
+        {%- endfor -%}
+      {%- else -%}
+        {%- for image in product.images -%}
+          <img
+            src="{{ image | image_url: width: 900 }}"
+            alt="{{ image.alt | default: product.title | escape }}"
+            class="product-gallery-img {% if forloop.first %}active{% endif %}"
+            data-index="{{ forloop.index0 }}"
+            data-src="{{ image | image_url: width: 900 }}"
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+            onclick="switchImage({{ forloop.index0 }})"
+          >
+        {%- endfor -%}
+        {%- if product.images.size == 0 -%}
+          <div class="gallery-placeholder"></div>
+        {%- endif -%}
       {%- endif -%}
     </div>
     <div class="product-main-image">
-      {%- if product.featured_image -%}
+      {%- if custom_image_list.size > 0 -%}
+        {%- assign first_slug = custom_image_list[0] -%}
+        <img
+          src="{{ img_base }}{{ first_slug }}.png"
+          alt="{{ product.title | escape }}"
+          class="product-main-img"
+          id="mainProductImage"
+          loading="eager"
+        >
+      {%- elsif product.featured_image -%}
         <img
           src="{{ product.featured_image | image_url: width: 900 }}"
           alt="{{ product.featured_image.alt | default: product.title | escape }}"
@@ -100,6 +148,47 @@
 
   </div>
 </div>
+
+<!-- PROBLEMS SOLVED -->
+{%- if problem_set != blank -%}
+<div class="product-problems">
+  <div class="product-problems-inner">
+    <span class="section-label">What This Fixes</span>
+    <h2 class="section-title">Built to solve <em>real problems.</em></h2>
+    <p class="product-problems-sub">If any of these sound familiar, this is the tool for you.</p>
+
+    <div class="problems-grid">
+      {%- case problem_set -%}
+        {%- when 'guasha' -%}
+          <div class="problem-card"><span class="problem-icon">01</span><h4>Morning puffiness that won't budge</h4><p>Fluid pools in your face overnight. Gua sha physically drains your lymphatic system — puffiness is visibly reduced in minutes, not hours.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>A jawline that looks soft or undefined</h4><p>Consistent upward strokes along the mandible stimulate the muscles and lift fluid away. Visible definition shows up around week 2–3.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>Tension held in your face</h4><p>Your jaw, temples and brow carry the stress you don't even notice. Gua sha releases it — you'll feel lighter by the end of the first session.</p></div>
+          <div class="problem-card"><span class="problem-icon">04</span><h4>Dull, tired-looking skin</h4><p>Boosted circulation = oxygen and nutrients delivered to the surface. That's the glow people notice a week in.</p></div>
+        {%- when 'roller' -%}
+          <div class="problem-card"><span class="problem-icon">01</span><h4>Puffy under-eyes every morning</h4><p>The small roller head fits exactly where you need depuffing most. One minute per side and the bags are gone.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>Skincare that just sits on top of your skin</h4><p>Rolling gently pushes serums, creams and oils deeper — you get more out of every drop you apply.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>Tight, tense, stressed-looking face</h4><p>The cool stone relaxes your facial muscles instantly. It's a reset button you can keep on your nightstand.</p></div>
+          <div class="problem-card"><span class="problem-icon">04</span><h4>Inflammation after travel or late nights</h4><p>Lightweight lymphatic drainage without the pressure of gua sha — perfect for sensitive mornings.</p></div>
+        {%- when 'oil' -%}
+          <div class="problem-card"><span class="problem-icon">01</span><h4>Dry, tight skin that drinks everything</h4><p>Cold-pressed rosehip is rich in essential fatty acids that restore your skin barrier — hydration that actually stays.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>Uneven tone and dark spots</h4><p>Natural vitamin A (retinoic acid) and vitamin C work together to fade hyperpigmentation over weeks of consistent use.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>Fine lines starting to show</h4><p>Linoleic and linolenic acids plump the skin and soften the look of early lines — especially around the eyes and mouth.</p></div>
+          <div class="problem-card"><span class="problem-icon">04</span><h4>Gua sha dragging on dry skin</h4><p>Your stone needs slip. A few drops creates the perfect glide so the stone moves smoothly without tugging.</p></div>
+        {%- when 'iceroller' -%}
+          <div class="problem-card"><span class="problem-icon">01</span><h4>Puffy, heavy eyes in the morning</h4><p>Ice constricts blood vessels and shrinks fluid retention. Roll for 60 seconds and your eyes look wide awake.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>Redness, flushing and inflammation</h4><p>After a workout, a hot flight or a night out — the cold instantly calms inflamed skin and brings your tone back down.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>Large, visible pores</h4><p>Cold temporarily tightens pores and firms the skin surface — a natural primer before makeup.</p></div>
+          <div class="problem-card"><span class="problem-icon">04</span><h4>Tension headaches and tight temples</h4><p>Rolled along the temples and jaw, it's as much a wellness tool as a beauty one. You'll feel it immediately.</p></div>
+        {%- when 'bundle' -%}
+          <div class="problem-card"><span class="problem-icon">01</span><h4>Morning puffiness that won't go away</h4><p>The full ritual drains, firms and depuffs in 5 minutes flat. Every tool plays a role.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>A face that looks tired and undefined</h4><p>Gua sha sculpts, the roller smooths, the ice tightens. Together they transform how your face looks in the mirror.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>Expensive skincare that underperforms</h4><p>The oil primes. The stones push active ingredients deeper. You get more out of everything else in your routine.</p></div>
+          <div class="problem-card"><span class="problem-icon">04</span><h4>A morning routine that feels like nothing</h4><p>5 intentional minutes that belong entirely to you. Results you can see, a practice you'll actually keep.</p></div>
+      {%- endcase -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
 
 <!-- WHAT'S INCLUDED -->
 <div class="product-section">
@@ -554,6 +643,75 @@
 .trust-badge svg { color: var(--terracotta, #B8704A); flex-shrink: 0; margin-top: 2px; }
 .trust-badge strong { display: block; font-size: 13px; color: var(--espresso, #2C1810); }
 .trust-badge span { font-size: 11px; color: var(--stone, #8B7355); }
+
+/* ── PROBLEMS SOLVED ── */
+.product-problems {
+  background: var(--cream-dark, #EFE7DB);
+  padding: 100px 40px;
+  margin: 0;
+}
+.product-problems-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  text-align: center;
+}
+.product-problems .section-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin: 18px 0 18px;
+  color: var(--espresso);
+}
+.product-problems .section-title em { font-style: italic; color: var(--terracotta); }
+.product-problems-sub {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--stone);
+  max-width: 560px;
+  margin: 0 auto 56px;
+}
+.problems-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--cream);
+  text-align: left;
+}
+.problem-card {
+  background: var(--white);
+  padding: 44px 40px;
+  transition: transform 0.3s ease;
+}
+.problem-card:hover { transform: translateY(-4px); }
+.problem-icon {
+  display: block;
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--terracotta);
+  margin-bottom: 14px;
+  line-height: 1;
+}
+.problem-card h4 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--espresso);
+  line-height: 1.3;
+  margin: 0 0 12px;
+}
+.problem-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .product-problems { padding: 72px 20px; }
+  .problems-grid { grid-template-columns: 1fr; }
+  .problem-card { padding: 36px 28px; }
+}
 
 /* ── PRODUCT SECTIONS ── */
 .product-section {
