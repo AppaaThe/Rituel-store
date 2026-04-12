@@ -35,9 +35,6 @@
             <div class="collection-product-name">{{ product.title }}</div>
             <div class="collection-product-price">
               {{ product.price | money }}
-              {%- if product.compare_at_price > product.price -%}
-                <span class="collection-compare-price">{{ product.compare_at_price | money }}</span>
-              {%- endif -%}
             </div>
           </a>
         {%- endif -%}
@@ -67,9 +64,6 @@
             <div class="collection-product-name">{{ product.title }}</div>
             <div class="collection-product-price">
               {{ product.price | money }}
-              {%- if product.compare_at_price > product.price -%}
-                <span class="collection-compare-price">{{ product.compare_at_price | money }}</span>
-              {%- endif -%}
             </div>
           </a>
         {%- endunless -%}
