@@ -86,11 +86,15 @@
     <p class="product-vendor">{{ product.vendor }}</p>
     <h1 class="product-title">{{ product.title }}</h1>
 
-    <!-- Reviews will show here once real customers leave them -->
+    <!-- First-order offer banner -->
+    <div class="product-offer-banner">
+      <span class="offer-icon">&#127873;</span>
+      <span class="offer-text"><strong>New here?</strong> Get 10% off your first order</span>
+    </div>
 
     <div class="product-price-wrap">
       <span class="product-page-price">{{ product.price | money }}</span>
-      <!-- Compare-at pricing removed — clean single price, no fake sales -->
+      <span class="product-price-shipping">Free shipping over &#8364;45</span>
     </div>
 
     {%- if product.tags contains 'most popular' -%}
@@ -98,12 +102,6 @@
     {%- elsif product.tags contains 'best value' -%}
       <div class="product-tag-badge badge-value">Best Value</div>
     {%- endif -%}
-
-    <!-- URGENCY -->
-    <div class="product-urgency">
-      <span class="urgency-dot"></span>
-      <span class="urgency-text"><strong>12 people</strong> are viewing this right now</span>
-    </div>
 
     <div class="product-description">{{ product.description }}</div>
 
@@ -113,6 +111,15 @@
         <span>{% if product.available %}Add to Ritual — {{ product.price | money }}{% else %}Sold Out{% endif %}</span>
       </button>
     {%- endform -%}
+
+    <!-- Trust line directly under CTA -->
+    <div class="product-cta-trust">
+      <span>&#10003; 30-day guarantee</span>
+      <span class="cta-trust-dot">&bull;</span>
+      <span>&#10003; Ships in 24h</span>
+      <span class="cta-trust-dot">&bull;</span>
+      <span>&#10003; Free EU shipping &#8364;45+</span>
+    </div>
 
     <!-- TRUST BADGES -->
     <div class="product-trust-grid">
@@ -547,34 +554,44 @@
 .badge-popular { background: rgba(30,18,10,0.06); color: var(--espresso, #2C1810); }
 .badge-value { background: rgba(184,112,74,0.1); color: var(--terracotta, #B8704A); }
 
-/* Urgency */
-.product-urgency {
+/* First-order offer banner */
+.product-offer-banner {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: rgba(184,112,74,0.06);
-  border-radius: 0;
-  margin-bottom: 20px;
-}
-
-.urgency-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--terracotta, #B8704A);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-.urgency-text {
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(184,112,74,0.08);
+  border-left: 3px solid var(--terracotta, #B8704A);
+  margin-bottom: 18px;
   font-size: 13px;
-  color: var(--espresso, #2C1810);
+  color: var(--espresso, #1E120A);
 }
+.offer-icon { font-size: 16px; }
+.offer-text strong { font-weight: 600; color: var(--terracotta, #B8704A); }
+
+/* Price line with shipping hint */
+.product-price-shipping {
+  font-size: 12px;
+  color: var(--stone, #8B7355);
+  letter-spacing: 0.04em;
+  margin-left: 12px;
+}
+
+/* Trust row directly under CTA */
+.product-cta-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 4px 4px;
+  font-size: 12px;
+  color: var(--stone, #8B7355);
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+.product-cta-trust span { white-space: nowrap; }
+.cta-trust-dot { opacity: 0.4; }
 
 .product-description {
   font-size: 15px;
