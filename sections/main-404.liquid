@@ -1,10 +1,57 @@
 <div class="page-404">
-  <h1>404</h1>
-  <p>We couldn't find that page. The ritual continues elsewhere.</p>
-  <a href="{{ routes.root_url }}" class="btn-primary" style="display:inline-block;max-width:240px;text-decoration:none;text-align:center;padding:20px 40px;">
-    <span>Back to Home</span>
-  </a>
+  <img class="page-404-bg" src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/nbp-guasha-closeup.png" alt="" loading="eager">
+  <div class="page-404-overlay"></div>
+  <div class="page-404-content">
+    <span class="section-label">404</span>
+    <h1>This page drifted from the <em>ritual.</em></h1>
+    <p>We couldn't find what you were looking for — but your practice is still waiting.</p>
+    <a href="{{ routes.root_url }}" class="btn-primary" style="display:inline-block;max-width:240px;text-decoration:none;text-align:center;padding:20px 40px;">
+      <span>Back to Home</span>
+    </a>
+  </div>
 </div>
+
+<style>
+.page-404 {
+  position: relative;
+  min-height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 140px 40px 80px;
+}
+.page-404-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.page-404-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(30,18,10,0.55) 0%, rgba(30,18,10,0.82) 100%);
+}
+.page-404-content {
+  position: relative;
+  text-align: center;
+  max-width: 620px;
+  color: #FAF6F0;
+}
+.page-404-content .section-label { color: #E8C5B0; }
+.page-404-content h1 {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin: 18px 0 24px;
+}
+.page-404-content h1 em { font-style: italic; color: #E8C5B0; }
+.page-404-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(250,246,240,0.82);
+  margin-bottom: 40px;
+}
+</style>
 
 {% schema %}
 {

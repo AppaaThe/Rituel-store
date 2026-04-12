@@ -113,12 +113,56 @@
 
   {%- else -%}
     <div class="cart-empty">
-      <p class="cart-empty-title">Your bag is empty.</p>
-      <p class="cart-empty-sub">Start with the 5-minute ritual that changes how your face looks every morning.</p>
-      <a href="{{ routes.collections_url }}/all" class="btn-primary" style="display:inline-block;max-width:280px;text-decoration:none;text-align:center;padding:20px 40px;">
-        <span>Start Your Ritual</span>
-      </a>
+      <div class="cart-empty-img">
+        <img src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-flatlay-unboxing.jpg" alt="BY RITUEL unboxing flatlay with amethyst gua sha and facial roller" loading="lazy">
+      </div>
+      <div class="cart-empty-copy">
+        <span class="section-label">Your Bag</span>
+        <p class="cart-empty-title">Your bag is empty.</p>
+        <p class="cart-empty-sub">Start with the 5-minute ritual that changes how your face looks every morning.</p>
+        <a href="{{ routes.collections_url }}/all" class="btn-primary" style="display:inline-block;max-width:280px;text-decoration:none;text-align:center;padding:20px 40px;">
+          <span>Start Your Ritual</span>
+        </a>
+      </div>
     </div>
+
+    <style>
+      .cart-empty {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 0;
+        max-width: 1200px;
+        margin: 40px auto 120px;
+        background: var(--white);
+        min-height: 520px;
+      }
+      .cart-empty-img { position: relative; overflow: hidden; }
+      .cart-empty-img img {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+      }
+      .cart-empty-copy {
+        padding: 72px 64px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+      }
+      .cart-empty-title {
+        font-family: var(--serif);
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 300;
+        margin-top: 10px !important;
+        color: var(--espresso);
+      }
+      .cart-empty-sub { font-size: 16px; line-height: 1.7; color: var(--stone); max-width: 400px; }
+      @media (max-width: 900px) {
+        .cart-empty { grid-template-columns: 1fr; min-height: auto; }
+        .cart-empty-img { min-height: 320px; }
+        .cart-empty-copy { padding: 48px 32px; }
+      }
+    </style>
   {%- endif -%}
 
 </div>

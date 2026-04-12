@@ -1,8 +1,11 @@
 <div class="blog-page">
   <div class="blog-hero">
-    <p class="blog-eyebrow">The Ritual Guide</p>
-    <h1>{{ blog.title }}</h1>
-    <p class="blog-subtitle">Education, technique, and the science behind the ritual.</p>
+    <img class="blog-hero-bg" src="https://raw.githubusercontent.com/AppaaThe/Rituel-store/main/product-images/rituel-flatlay-unboxing.jpg" alt="" loading="eager">
+    <div class="blog-hero-content">
+      <p class="blog-eyebrow">The Ritual Guide</p>
+      <h1>{{ blog.title }}</h1>
+      <p class="blog-subtitle">Education, technique, and the science behind the ritual.</p>
+    </div>
   </div>
 
   <div class="blog-grid">
@@ -39,10 +42,30 @@
   }
 
   .blog-hero {
+    position: relative;
     background: var(--espresso, #2C1810);
-    padding: 100px 40px 80px;
+    padding: 140px 40px 120px;
     text-align: center;
+    overflow: hidden;
+    min-height: 58vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .blog-hero-bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.42;
+    filter: saturate(0.9);
+  }
+  .blog-hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(30,18,10,0.35) 0%, rgba(30,18,10,0.75) 100%);
+    pointer-events: none;
+  }
+  .blog-hero-content { position: relative; z-index: 2; max-width: 800px; }
 
   .blog-eyebrow {
     font-size: 11px;
@@ -96,7 +119,7 @@
 
   .blog-card-img {
     width: 100%;
-    height: 220px;
+    height: 300px;
     overflow: hidden;
   }
 
