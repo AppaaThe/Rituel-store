@@ -108,7 +108,7 @@
     {%- form 'product', product -%}
       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
       <button type="submit" class="btn-primary btn-add-cart" {% unless product.available %}disabled{% endunless %}>
-        <span>{% if product.available %}Add to Ritual — {{ product.price | money }}{% else %}Sold Out{% endif %}</span>
+        <span>{% if product.available %}Add to Bag{% else %}Sold Out{% endif %}</span>
       </button>
     {%- endform -%}
 
@@ -167,37 +167,38 @@
     <div class="problems-grid">
       {%- case problem_set -%}
         {%- when 'guasha' -%}
-          <div class="problem-card"><span class="problem-icon">01</span><h4>Morning puffiness that won't budge</h4><p>Fluid pools in your face overnight. Gua sha physically drains your lymphatic system — puffiness is visibly reduced in minutes, not hours.</p></div>
-          <div class="problem-card"><span class="problem-icon">02</span><h4>A jawline that looks soft or undefined</h4><p>Consistent upward strokes along the mandible stimulate the muscles and lift fluid away. Visible definition shows up around week 2–3.</p></div>
-          <div class="problem-card"><span class="problem-icon">03</span><h4>Tension held in your face</h4><p>Your jaw, temples and brow carry the stress you don't even notice. Gua sha releases it — you'll feel lighter by the end of the first session.</p></div>
-          <div class="problem-card"><span class="problem-icon">04</span><h4>Dull, tired-looking skin</h4><p>Boosted circulation = oxygen and nutrients delivered to the surface. That's the glow people notice a week in.</p></div>
+          <div class="problem-card"><span class="problem-icon">01</span><h4>Morning puffiness</h4><p>Five minutes of slow, upward strokes and your face visibly looks depuffed — the classic gua sha effect.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>A jawline that looks undefined</h4><p>Consistent strokes along the jawline help your face look more sculpted over time. Most people notice a difference around week 2–3.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>Tension you carry in your face</h4><p>Your jaw, temples and brow hold more tension than you think. The cool stone feels like a reset every morning.</p></div>
+          <div class="problem-card"><span class="problem-icon">04</span><h4>Tired, dull-looking skin</h4><p>Gentle massage leaves skin looking fresher, brighter and more awake — the glow people notice a week in.</p></div>
         {%- when 'roller' -%}
-          <div class="problem-card"><span class="problem-icon">01</span><h4>Puffy under-eyes every morning</h4><p>The small roller head fits exactly where you need depuffing most. One minute per side and the bags are gone.</p></div>
-          <div class="problem-card"><span class="problem-icon">02</span><h4>Skincare that just sits on top of your skin</h4><p>Rolling gently pushes serums, creams and oils deeper — you get more out of every drop you apply.</p></div>
-          <div class="problem-card"><span class="problem-icon">03</span><h4>Tight, tense, stressed-looking face</h4><p>The cool stone relaxes your facial muscles instantly. It's a reset button you can keep on your nightstand.</p></div>
-          <div class="problem-card"><span class="problem-icon">04</span><h4>Inflammation after travel or late nights</h4><p>Lightweight lymphatic drainage without the pressure of gua sha — perfect for sensitive mornings.</p></div>
+          <div class="problem-card"><span class="problem-icon">01</span><h4>Puffy under-eyes every morning</h4><p>The smaller roller head fits exactly under your eyes. One minute per side and you look rested again.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>Skincare that sits on top of your skin</h4><p>Rolling helps your serums, creams and oils glide evenly into your skin — you get more out of every drop.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>A tight, tense-looking face</h4><p>The cool stone instantly feels calming against your skin. A reset button you can keep on your nightstand.</p></div>
+          <div class="problem-card"><span class="problem-icon">04</span><h4>That groggy post-travel look</h4><p>Lightweight and gentle enough for sensitive mornings — perfect after a flight or a late night.</p></div>
         {%- when 'oil' -%}
-          <div class="problem-card"><span class="problem-icon">01</span><h4>Dry, tight skin that drinks everything</h4><p>Cold-pressed rosehip is rich in essential fatty acids that restore your skin barrier — hydration that actually stays.</p></div>
-          <div class="problem-card"><span class="problem-icon">02</span><h4>Uneven tone and dark spots</h4><p>Natural vitamin A (retinoic acid) and vitamin C work together to fade hyperpigmentation over weeks of consistent use.</p></div>
-          <div class="problem-card"><span class="problem-icon">03</span><h4>Fine lines starting to show</h4><p>Linoleic and linolenic acids plump the skin and soften the look of early lines — especially around the eyes and mouth.</p></div>
+          <div class="problem-card"><span class="problem-icon">01</span><h4>Dry, tight skin</h4><p>Cold-pressed rosehip is rich in fatty acids that leave skin feeling softer and more comfortable — hydration that lasts.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>Uneven-looking tone</h4><p>Natural vitamin A and C help skin look brighter and more even over time — the glowy, lit-from-within look.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>Early signs of fine lines</h4><p>Nourishing oils leave skin looking plumper and smoother, especially around the eyes and mouth.</p></div>
           <div class="problem-card"><span class="problem-icon">04</span><h4>Gua sha dragging on dry skin</h4><p>Your stone needs slip. A few drops creates the perfect glide so the stone moves smoothly without tugging.</p></div>
         {%- when 'iceroller' -%}
-          <div class="problem-card"><span class="problem-icon">01</span><h4>Puffy, heavy eyes in the morning</h4><p>Ice constricts blood vessels and shrinks fluid retention. Roll for 60 seconds and your eyes look wide awake.</p></div>
-          <div class="problem-card"><span class="problem-icon">02</span><h4>Redness, flushing and inflammation</h4><p>After a workout, a hot flight or a night out — the cold instantly calms inflamed skin and brings your tone back down.</p></div>
-          <div class="problem-card"><span class="problem-icon">03</span><h4>Large, visible pores</h4><p>Cold temporarily tightens pores and firms the skin surface — a natural primer before makeup.</p></div>
-          <div class="problem-card"><span class="problem-icon">04</span><h4>Tension headaches and tight temples</h4><p>Rolled along the temples and jaw, it's as much a wellness tool as a beauty one. You'll feel it immediately.</p></div>
+          <div class="problem-card"><span class="problem-icon">01</span><h4>Puffy, heavy-looking eyes</h4><p>The cool surface is an instant fix for morning puffiness. Roll for 60 seconds and you look wide awake.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>Flushed, overheated skin</h4><p>After a workout, a hot flight or a night out — the cold instantly calms the look of redness.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>Skin that looks uneven before makeup</h4><p>A cool pass over your face makes skin feel tighter and look smoother — the ideal natural primer.</p></div>
+          <div class="problem-card"><span class="problem-icon">04</span><h4>A tense, tired morning face</h4><p>Rolled along the temples and jaw, it's as much a wellness moment as a beauty one. You'll feel the reset immediately.</p></div>
         {%- when 'bundle' -%}
-          <div class="problem-card"><span class="problem-icon">01</span><h4>Morning puffiness that won't go away</h4><p>The full ritual drains, firms and depuffs in 5 minutes flat. Every tool plays a role.</p></div>
-          <div class="problem-card"><span class="problem-icon">02</span><h4>A face that looks tired and undefined</h4><p>Gua sha sculpts, the roller smooths, the ice tightens. Together they transform how your face looks in the mirror.</p></div>
-          <div class="problem-card"><span class="problem-icon">03</span><h4>Expensive skincare that underperforms</h4><p>The oil primes. The stones push active ingredients deeper. You get more out of everything else in your routine.</p></div>
-          <div class="problem-card"><span class="problem-icon">04</span><h4>A morning routine that feels like nothing</h4><p>5 intentional minutes that belong entirely to you. Results you can see, a practice you'll actually keep.</p></div>
+          <div class="problem-card"><span class="problem-icon">01</span><h4>A puffy, tired-looking morning face</h4><p>The full ritual leaves your skin looking visibly depuffed and refreshed in 5 minutes flat. Every tool plays a role.</p></div>
+          <div class="problem-card"><span class="problem-icon">02</span><h4>A face that looks undefined</h4><p>Gua sha sculpts, the roller smooths, the ice tightens. Together they transform how your face looks in the mirror.</p></div>
+          <div class="problem-card"><span class="problem-icon">03</span><h4>Skincare that feels like it's not doing enough</h4><p>The oil primes your skin. The stones help your serums glide evenly. You get more from your routine.</p></div>
+          <div class="problem-card"><span class="problem-icon">04</span><h4>A morning routine that feels like nothing</h4><p>5 intentional minutes that belong entirely to you. A practice you'll actually keep.</p></div>
       {%- endcase -%}
     </div>
   </div>
 </div>
 {%- endif -%}
 
-<!-- WHAT'S INCLUDED -->
+<!-- WHAT'S INCLUDED (gua sha and bundles only) -->
+{%- if problem_set == 'guasha' or problem_set == 'bundle' -%}
 <div class="product-section">
   <h2 class="section-title">What's <em>Included</em></h2>
   <div class="included-grid">
@@ -213,11 +214,12 @@
     </div>
     <div class="included-card">
       <span class="included-icon">🔮</span>
-      <h4>Amethyst Energy</h4>
-      <p>Amethyst has been used for centuries as a calming, protective stone. It carries a natural energy that promotes clarity and balance — turning your skincare into a true ritual.</p>
+      <h4>A Natural Stone, Uniquely Yours</h4>
+      <p>Every piece has its own natural pattern and veining. No two are the same — your ritual tool is yours alone.</p>
     </div>
   </div>
 </div>
+{%- endif -%}
 
 <!-- LIFESTYLE / USE IN RITUAL -->
 <div class="product-lifestyle">
@@ -302,24 +304,7 @@
   </div>
 </div>
 
-<!-- PRODUCT PROMISE -->
-<div class="product-section">
-  <h2 class="section-title">Our <em>Promise</em></h2>
-  <div class="reviews-grid">
-    <div class="review-card">
-      <p class="review-text" style="font-style:normal;">Try it for 30 days. Do the ritual every morning. If you don't see a difference in puffiness, jawline definition, or skin texture — we'll refund you in full. No questions.</p>
-      <p class="review-author">30-Day Money-Back Guarantee</p>
-    </div>
-    <div class="review-card">
-      <p class="review-text" style="font-style:normal;">Every stone is hand-carved from genuine amethyst crystal. Harder than jade (7 vs 6 on the Mohs scale), naturally cool to the touch, and polished to a medical-grade smooth finish.</p>
-      <p class="review-author">Real Amethyst, Not Dyed Glass</p>
-    </div>
-    <div class="review-card">
-      <p class="review-text" style="font-style:normal;">Your gua sha comes with a step-by-step ritual guide. No guessing, no YouTube rabbit holes. Just a clear 5-minute technique that works from day one.</p>
-      <p class="review-author">Ritual Guide Included</p>
-    </div>
-  </div>
-</div>
+<!-- (Promise section removed — merged into the single Guarantee section below) -->
 
 <!-- FAQ -->
 <div class="product-section">
@@ -384,7 +369,8 @@
   </div>
 </div>
 
-<!-- MATERIAL EDUCATION (INLINE) -->
+<!-- MATERIAL EDUCATION (gua sha and bundles only) -->
+{%- if problem_set == 'guasha' or problem_set == 'bundle' -%}
 <div class="product-section product-section--material">
   <h2 class="section-title">Why <em>Amethyst</em> Over Jade?</h2>
   <div class="material-inline-grid">
@@ -405,16 +391,17 @@
     </div>
   </div>
 </div>
+{%- endif -%}
 
-<!-- PRESS TRUST (PRODUCT PAGE) -->
+<!-- VALUES BAR (replaced celebrity name-drop for legal safety) -->
 <div class="product-section product-section--press">
-  <span class="press-label">Gua sha is used daily by</span>
+  <span class="press-label">The BY RITUEL standard</span>
   <div class="product-press-logos">
-    <span class="product-press-name">Kendall Jenner</span>
-    <span class="product-press-name">Hailey Bieber</span>
-    <span class="product-press-name">Kylie Jenner</span>
-    <span class="product-press-name">Emilia Clarke</span>
-    <span class="product-press-name">Gwyneth Paltrow</span>
+    <span class="product-press-name">Natural Stone</span>
+    <span class="product-press-name">Cruelty Free</span>
+    <span class="product-press-name">Hand Finished</span>
+    <span class="product-press-name">Eco Packaging</span>
+    <span class="product-press-name">Vegan</span>
   </div>
 </div>
 
@@ -906,7 +893,7 @@
 }
 
 .faq-item.open .faq-answer {
-  max-height: 200px;
+  max-height: 600px;
   padding-bottom: 20px;
 }
 
