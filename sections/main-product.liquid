@@ -550,6 +550,25 @@
 
     </div>
 
+    <div class="product-lineage-stats" role="list">
+      <div class="lineage-stat" role="listitem">
+        <div class="lineage-stat-num">Millions</div>
+        <div class="lineage-stat-label">Daily practitioners worldwide</div>
+      </div>
+      <div class="lineage-stat" role="listitem">
+        <div class="lineage-stat-num">Centuries</div>
+        <div class="lineage-stat-label">Of traditional heritage</div>
+      </div>
+      <div class="lineage-stat" role="listitem">
+        <div class="lineage-stat-num">Worldwide</div>
+        <div class="lineage-stat-label">From Shanghai to London</div>
+      </div>
+      <div class="lineage-stat" role="listitem">
+        <div class="lineage-stat-num">5 minutes</div>
+        <div class="lineage-stat-label">Every single morning</div>
+      </div>
+    </div>
+
     <p class="product-lineage-footnote">We stand on shoulders. Every stone is hand-finished from natural amethyst — a tribute to a practice older than any of us.</p>
 
   </div>
@@ -1480,8 +1499,45 @@
   color: var(--espresso, #1E120A);
 }
 
+/* Category-level credibility stat strip */
+.product-lineage-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(30,18,10,0.08);
+  margin: 64px 0 0;
+  border-top: 1px solid rgba(30,18,10,0.08);
+  border-bottom: 1px solid rgba(30,18,10,0.08);
+}
+.lineage-stat {
+  background: var(--cream, #F7F2EA);
+  padding: 38px 20px;
+  text-align: center;
+  transition: background 0.3s;
+}
+.lineage-stat:hover {
+  background: var(--white, #FFFFFF);
+}
+.lineage-stat-num {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(26px, 2.4vw, 36px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--terracotta, #B8704A);
+  margin-bottom: 10px;
+  letter-spacing: -0.005em;
+}
+.lineage-stat-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone, #8B7355);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
 .product-lineage-footnote {
-  margin: 64px auto 0;
+  margin: 48px auto 0;
   max-width: 620px;
   text-align: center;
   font-family: var(--serif, 'Cormorant Garamond', serif);
@@ -1497,7 +1553,9 @@
   .product-lineage-grid { grid-template-columns: 1fr; }
   .lineage-card { padding: 44px 32px 40px; }
   .lineage-num { font-size: 40px; margin-bottom: 18px; }
-  .product-lineage-footnote { margin-top: 44px; }
+  .product-lineage-stats { grid-template-columns: repeat(2, 1fr); margin-top: 48px; }
+  .lineage-stat { padding: 28px 14px; }
+  .product-lineage-footnote { margin-top: 40px; }
 }
 
 /* Reviews */
