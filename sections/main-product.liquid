@@ -20,8 +20,6 @@
       <div class="product-hero-wrap">
         <img
           src="{{ product.featured_image | image_url: width: 1600 }}"
-          srcset="{{ product.featured_image | image_url: width: 800 }} 800w, {{ product.featured_image | image_url: width: 1200 }} 1200w, {{ product.featured_image | image_url: width: 1800 }} 1800w"
-          sizes="(max-width: 900px) 100vw, 50vw"
           alt="{{ product.featured_image.alt | default: product.title | escape }}"
           class="product-hero-img"
           id="mainProductImage"
@@ -1597,6 +1595,8 @@ function switchImage(index) {
 
   if (src) {
     main.classList.add('swapping');
+    main.removeAttribute('srcset');
+    main.removeAttribute('sizes');
     main.src = src;
     main.alt = alt;
     setTimeout(function() {
