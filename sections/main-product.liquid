@@ -35,78 +35,177 @@
 
   <!-- PRODUCT INFO -->
   <div class="product-info">
+    <div class="product-info-inner">
 
-    <p class="product-vendor">{{ product.vendor }}</p>
-    <h1 class="product-title">{{ product.title }}</h1>
+      <p class="product-vendor">{{ product.vendor }}</p>
+      <h1 class="product-title">{{ product.title }}</h1>
 
-    <!-- First-order offer banner -->
-    <div class="product-offer-banner">
-      <span class="offer-icon">&#127873;</span>
-      <span class="offer-text"><strong>New here?</strong> Get 10% off your first order</span>
-    </div>
-
-    <div class="product-price-wrap">
-      <span class="product-page-price">{{ product.price | money }}</span>
-      <span class="product-price-shipping">Free shipping over $35</span>
-    </div>
-
-    {%- if product.tags contains 'most popular' -%}
-      <div class="product-tag-badge badge-popular">&#11088; Most Popular</div>
-    {%- elsif product.tags contains 'best value' -%}
-      <div class="product-tag-badge badge-value">Best Value</div>
-    {%- endif -%}
-
-    <div class="product-description">{{ product.description }}</div>
-
-    {%- form 'product', product -%}
-      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-      <button type="submit" class="btn-primary btn-add-cart" {% unless product.available %}disabled{% endunless %}>
-        <span>{% if product.available %}Add to Bag{% else %}Sold Out{% endif %}</span>
-      </button>
-    {%- endform -%}
-
-    <!-- Trust line directly under CTA -->
-    <div class="product-cta-trust">
-      <span>&#10003; 30-day guarantee</span>
-      <span class="cta-trust-dot">&bull;</span>
-      <span>&#10003; Ships in 24h</span>
-      <span class="cta-trust-dot">&bull;</span>
-      <span>&#10003; Free US shipping $35+</span>
-    </div>
-
-    <!-- TRUST BADGES -->
-    <div class="product-trust-grid">
-      <div class="trust-badge">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l5 5L20 7"/></svg>
-        <div>
-          <strong>Free Shipping</strong>
-          <span>On orders over $35</span>
-        </div>
+      <div class="product-rating-row">
+        <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}"></div>
       </div>
-      <div class="trust-badge">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <div>
-          <strong>30-Day Guarantee</strong>
-          <span>Full refund, no questions</span>
-        </div>
-      </div>
-      <div class="trust-badge">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <div>
-          <strong>Fast Delivery</strong>
-          <span>Ships within 24 hours</span>
-        </div>
-      </div>
-      <div class="trust-badge">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <div>
-          <strong>Natural Amethyst</strong>
-          <span>Each stone is unique</span>
-        </div>
-      </div>
-    </div>
 
+      <div class="product-price-wrap">
+        <span class="product-page-price">{{ product.price | money }}</span>
+        <span class="product-price-shipping">Free shipping over $35</span>
+      </div>
+
+      {%- if product.tags contains 'most popular' -%}
+        <div class="product-tag-badge badge-popular">&#11088; Most Popular</div>
+      {%- elsif product.tags contains 'best value' -%}
+        <div class="product-tag-badge badge-value">Best Value</div>
+      {%- endif -%}
+
+      {%- comment -%} Material chips — per-product ingredient/material strip {%- endcomment -%}
+      <ul class="product-chips">
+        {%- case problem_set -%}
+          {%- when 'guasha' -%}
+            <li>Natural Amethyst</li><li>Hand-Carved</li><li>Vegan</li><li>Cruelty-Free</li>
+          {%- when 'roller' -%}
+            <li>Natural Amethyst</li><li>Gold-Tone</li><li>Vegan</li><li>Cruelty-Free</li>
+          {%- when 'oil' -%}
+            <li>Cold-Pressed Rosehip</li><li>Vitamin C</li><li>Vegan</li><li>Non-Comedogenic</li>
+          {%- when 'iceroller' -%}
+            <li>Rose-Embedded</li><li>Freezer-Safe</li><li>Vegan</li><li>Cruelty-Free</li>
+          {%- when 'bundle' -%}
+            <li>Natural Amethyst</li><li>Full Ritual</li><li>Vegan</li><li>Gift Box</li>
+          {%- else -%}
+            <li>Natural</li><li>Vegan</li><li>Cruelty-Free</li><li>Eco Packaging</li>
+        {%- endcase -%}
+      </ul>
+
+      <p class="product-intro">{{ product.description | strip_html | truncate: 180 }}</p>
+
+      {%- form 'product', product -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="btn-primary btn-add-cart" {% unless product.available %}disabled{% endunless %}>
+          <span>{% if product.available %}Add to Bag &mdash; {{ product.price | money }}{% else %}Sold Out{% endif %}</span>
+        </button>
+      {%- endform -%}
+
+      <!-- Trust line directly under CTA -->
+      <div class="product-cta-trust">
+        <span>&#10003; 30-day guarantee</span>
+        <span class="cta-trust-dot">&bull;</span>
+        <span>&#10003; Ships in 24h</span>
+        <span class="cta-trust-dot">&bull;</span>
+        <span>&#10003; Free shipping $35+</span>
+      </div>
+
+      {%- comment -%} ── COMPLETE THE RITUAL — cross-sell block ── {%- endcomment -%}
+      {%- assign companion_handle = '' -%}
+      {%- case problem_set -%}
+        {%- when 'guasha' -%}{%- assign companion_handle = 'rituel-facial-oil' -%}
+        {%- when 'roller' -%}{%- assign companion_handle = 'rituel-facial-oil' -%}
+        {%- when 'iceroller' -%}{%- assign companion_handle = 'rituel-jade-roller' -%}
+        {%- when 'oil' -%}{%- assign companion_handle = 'rituel-jade-roller' -%}
+      {%- endcase -%}
+
+      {%- assign companion = all_products[companion_handle] -%}
+      {%- if companion != blank and companion != empty and companion.available -%}
+        <a href="{{ companion.url }}" class="complete-ritual">
+          <div class="complete-ritual-img">
+            {%- if companion.featured_image -%}
+              <img src="{{ companion.featured_image | image_url: width: 200 }}" alt="{{ companion.title | escape }}" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="complete-ritual-copy">
+            <span class="complete-ritual-label">Complete the Ritual</span>
+            <div class="complete-ritual-title">Add {{ companion.title }}</div>
+            <div class="complete-ritual-price">{{ companion.price | money }}</div>
+          </div>
+          <span class="complete-ritual-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      {%- endif -%}
+
+      {%- comment -%} ── INFO ACCORDIONS ── {%- endcomment -%}
+      <div class="info-accordions">
+
+        <details class="info-accordion" open>
+          <summary>
+            <span>Description</span>
+            <span class="info-accordion-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="info-accordion-body">{{ product.description }}</div>
+        </details>
+
+        <details class="info-accordion">
+          <summary>
+            <span>How to Use</span>
+            <span class="info-accordion-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="info-accordion-body">
+            <ol>
+              {%- case problem_set -%}
+                {%- when 'guasha' -%}
+                  <li>Cleanse your face and apply a few drops of facial oil for slip.</li>
+                  <li>Starting at the neck, sweep the stone upward with light, steady pressure.</li>
+                  <li>Move to the jawline, then cheekbones, then forehead — always upward and outward.</li>
+                  <li>Finish with the small curve under the eyes for depuffing. 5 minutes total.</li>
+                {%- when 'roller' -%}
+                  <li>Apply serum or oil to clean skin so the roller glides smoothly.</li>
+                  <li>Use the larger head on cheeks, forehead and neck in upward strokes.</li>
+                  <li>Use the smaller head under the eyes in gentle, outward motions.</li>
+                  <li>Roll for 2–3 minutes per side — morning or evening.</li>
+                {%- when 'oil' -%}
+                  <li>After cleansing, press 2–3 drops between your palms to warm the oil.</li>
+                  <li>Pat onto the face, neck and décolletage — do not rub.</li>
+                  <li>Pair with gua sha or a facial roller for a full ritual.</li>
+                  <li>Use morning and night. A little goes a long way.</li>
+                {%- when 'iceroller' -%}
+                  <li>Store in the freezer for 15+ minutes before use.</li>
+                  <li>Roll over cleansed skin in slow, deliberate passes — 60 seconds per area.</li>
+                  <li>Focus on under-eyes, cheeks and jawline for instant depuffing.</li>
+                  <li>Finish with your serum and moisturiser while skin is still cool.</li>
+                {%- else -%}
+                  <li>Cleanse your face thoroughly.</li>
+                  <li>Apply a few drops of facial oil for slip.</li>
+                  <li>Follow the included ritual guide — 5 minutes total.</li>
+                  <li>Do it every morning for 30 days to see results.</li>
+              {%- endcase -%}
+            </ol>
+          </div>
+        </details>
+
+        <details class="info-accordion">
+          <summary>
+            <span>Materials &amp; Care</span>
+            <span class="info-accordion-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="info-accordion-body">
+            <p>Hand-finished from natural materials. Each piece varies slightly — that's how you know it's real.</p>
+            <p><strong>Care:</strong> Rinse with warm water and a drop of mild soap after each use. Pat dry with a clean cloth. Never soak or expose to extreme heat. Store in the included pouch between uses.</p>
+          </div>
+        </details>
+
+        <details class="info-accordion">
+          <summary>
+            <span>Shipping &amp; Returns</span>
+            <span class="info-accordion-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="info-accordion-body">
+            <p><strong>Shipping:</strong> Orders ship within 24 hours from our warehouse. Standard delivery is 5–10 business days. Free shipping on orders over $35 — worldwide.</p>
+            <p><strong>Returns:</strong> 30-day money-back guarantee. If you don't love it, send it back for a full refund — no questions asked. Email <a href="mailto:hello@byrituel.com">hello@byrituel.com</a> to start a return.</p>
+          </div>
+        </details>
+
+      </div>
+
+    </div>
   </div>
+</div>
+
+{%- comment -%} ── STICKY MOBILE BUY BAR ── {%- endcomment -%}
+<div class="mobile-buy-bar" id="mobileBuyBar" aria-hidden="true">
+  <div class="mobile-buy-bar-info">
+    <div class="mobile-buy-bar-title">{{ product.title | truncate: 40 }}</div>
+    <div class="mobile-buy-bar-price">{{ product.price | money }}</div>
+  </div>
+  {%- form 'product', product -%}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    <button type="submit" class="mobile-buy-bar-btn" {% unless product.available %}disabled{% endunless %}>
+      {% if product.available %}Add to Bag{% else %}Sold Out{% endif %}
+    </button>
+  {%- endform -%}
 </div>
 
 <!-- PROBLEMS SOLVED -->
@@ -417,6 +516,210 @@
 .product-info::-webkit-scrollbar-track { background: transparent; }
 .product-info::-webkit-scrollbar-thumb { background: rgba(30,18,10,0.15); border-radius: 0; }
 .product-info::-webkit-scrollbar-thumb:hover { background: rgba(30,18,10,0.3); }
+
+.product-info-inner {
+  max-width: 460px;
+  margin: 0 auto 0 0;
+}
+
+/* Rating row */
+.product-rating-row {
+  margin: 10px 0 18px;
+  min-height: 18px;
+}
+
+/* Material chips */
+.product-chips {
+  list-style: none;
+  margin: 22px 0 26px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.product-chips li {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--espresso, #1E120A);
+  background: rgba(30,18,10,0.04);
+  padding: 7px 12px;
+  border: 1px solid rgba(30,18,10,0.08);
+  white-space: nowrap;
+}
+
+/* Intro paragraph (shorter than full description) */
+.product-intro {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--stone, #8B7355);
+  margin: 0 0 28px;
+}
+
+/* Complete the Ritual cross-sell */
+.complete-ritual {
+  display: grid;
+  grid-template-columns: 68px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  margin: 22px 0 0;
+  background: var(--white, #FFFFFF);
+  border: 1px solid rgba(184,112,74,0.25);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.complete-ritual:hover {
+  border-color: var(--terracotta, #B8704A);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(30,18,10,0.08);
+}
+.complete-ritual-img {
+  width: 68px;
+  height: 68px;
+  overflow: hidden;
+  background: var(--cream, #F7F2EA);
+}
+.complete-ritual-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.complete-ritual-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracotta, #B8704A);
+  margin-bottom: 4px;
+}
+.complete-ritual-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--espresso, #1E120A);
+  line-height: 1.3;
+}
+.complete-ritual-price {
+  font-size: 13px;
+  color: var(--stone, #8B7355);
+  margin-top: 3px;
+}
+.complete-ritual-arrow {
+  font-size: 22px;
+  color: var(--terracotta, #B8704A);
+  padding-right: 6px;
+  transition: transform 0.25s;
+}
+.complete-ritual:hover .complete-ritual-arrow {
+  transform: translateX(4px);
+}
+
+/* Info accordions */
+.info-accordions {
+  margin-top: 40px;
+  border-top: 1px solid rgba(30,18,10,0.08);
+}
+.info-accordion {
+  border-bottom: 1px solid rgba(30,18,10,0.08);
+}
+.info-accordion summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  cursor: pointer;
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 18px;
+  color: var(--espresso, #1E120A);
+  list-style: none;
+  transition: color 0.2s;
+}
+.info-accordion summary::-webkit-details-marker { display: none; }
+.info-accordion summary:hover { color: var(--terracotta, #B8704A); }
+.info-accordion-icon {
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--terracotta, #B8704A);
+  transition: transform 0.3s;
+  line-height: 1;
+}
+.info-accordion[open] .info-accordion-icon {
+  transform: rotate(45deg);
+}
+.info-accordion-body {
+  padding: 4px 0 26px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--stone, #8B7355);
+}
+.info-accordion-body p { margin: 0 0 12px; }
+.info-accordion-body p:last-child { margin-bottom: 0; }
+.info-accordion-body ol,
+.info-accordion-body ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.info-accordion-body li {
+  margin-bottom: 10px;
+}
+.info-accordion-body a {
+  color: var(--terracotta, #B8704A);
+  text-decoration: underline;
+}
+
+/* Sticky mobile buy bar */
+.mobile-buy-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: var(--white, #FFFFFF);
+  border-top: 1px solid rgba(30,18,10,0.08);
+  padding: 12px 16px;
+  box-shadow: 0 -8px 24px rgba(30,18,10,0.08);
+  align-items: center;
+  gap: 14px;
+}
+.mobile-buy-bar.visible { display: flex; }
+.mobile-buy-bar-info {
+  flex: 1;
+  min-width: 0;
+}
+.mobile-buy-bar-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 15px;
+  color: var(--espresso, #1E120A);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mobile-buy-bar-price {
+  font-size: 13px;
+  color: var(--terracotta, #B8704A);
+  font-weight: 500;
+}
+.mobile-buy-bar-btn {
+  flex-shrink: 0;
+  background: var(--terracotta, #B8704A);
+  color: #FFF;
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: none;
+  padding: 14px 22px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.mobile-buy-bar-btn:hover {
+  background: var(--espresso, #1E120A);
+}
 
 .product-vendor {
   font-size: 10px;
@@ -1004,6 +1307,22 @@
 </style>
 
 <script>
+/* Sticky mobile buy bar — appears once main Add-to-Bag CTA scrolls off screen */
+(function initMobileBuyBar() {
+  var bar = document.getElementById('mobileBuyBar');
+  var cta = document.querySelector('.btn-add-cart');
+  if (!bar || !cta) return;
+  function onScroll() {
+    if (window.innerWidth > 768) { bar.classList.remove('visible'); return; }
+    var rect = cta.getBoundingClientRect();
+    if (rect.bottom < 0) bar.classList.add('visible');
+    else bar.classList.remove('visible');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+
 function toggleFaq(btn) {
   var faqItem = btn.closest('.faq-item');
   if (!faqItem) return;
