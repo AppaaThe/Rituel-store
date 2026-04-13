@@ -149,7 +149,7 @@
       {%- comment -%} ── INFO ACCORDIONS ── {%- endcomment -%}
       <div class="info-accordions">
 
-        <details class="info-accordion" open>
+        <details class="info-accordion">
           <summary>
             <span>Description</span>
             <span class="info-accordion-icon" aria-hidden="true">+</span>
@@ -701,21 +701,13 @@
   background: linear-gradient(145deg, var(--cream-dark,#EFE7DB), var(--cream,#F7F2EA));
 }
 
-/* Product info: sticky so CTA always in view, scrollable if long */
+/* Product info: sticky, flows naturally with no internal scroll */
 .product-info {
   padding: 64px 56px 80px 48px;
   position: sticky;
   top: 100px;
   align-self: start;
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(30,18,10,0.15) transparent;
 }
-.product-info::-webkit-scrollbar { width: 6px; }
-.product-info::-webkit-scrollbar-track { background: transparent; }
-.product-info::-webkit-scrollbar-thumb { background: rgba(30,18,10,0.15); border-radius: 0; }
-.product-info::-webkit-scrollbar-thumb:hover { background: rgba(30,18,10,0.3); }
 
 .product-info-inner {
   max-width: 460px;
