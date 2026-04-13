@@ -39,7 +39,7 @@
 
   {% section 'footer' %}
 
-  {{ 'rituel.js' | asset_url | script_tag }}
+  <script src="{{ 'rituel.js' | asset_url }}" defer></script>
 
   <!-- Klaviyo onsite tracking (works with Shopify Klaviyo app) -->
   <script>

@@ -75,17 +75,17 @@
             <div class="cart-summary-row cart-shipping-row">
               <span>Shipping</span>
               <span>
-                {%- if cart.total_price >= 4500 -%}
+                {%- if cart.total_price >= 3500 -%}
                   <span class="cart-free-shipping">Free</span>
                 {%- else -%}
                   Calculated at checkout
                 {%- endif -%}
               </span>
             </div>
-            {%- if cart.total_price < 4500 -%}
-              {%- assign remaining = 4500 | minus: cart.total_price -%}
+            {%- if cart.total_price < 3500 -%}
+              {%- assign remaining = 3500 | minus: cart.total_price -%}
               <div class="cart-free-shipping-bar">
-                <div class="cart-free-bar-fill" style="width: {{ cart.total_price | times: 100 | divided_by: 4500 }}%"></div>
+                <div class="cart-free-bar-fill" style="width: {{ cart.total_price | times: 100 | divided_by: 3500 }}%"></div>
               </div>
               <p class="cart-free-shipping-note">Add {{ remaining | money }} more for free shipping</p>
             {%- endif -%}
