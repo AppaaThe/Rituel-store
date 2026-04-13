@@ -514,6 +514,48 @@
   </div>
 </div>
 
+<!-- LINEAGE — category + heritage credibility (gua sha, facial roller, bundles) -->
+{%- if problem_set == 'guasha' or problem_set == 'roller' or problem_set == 'bundle' -%}
+<section class="product-lineage">
+  <div class="product-lineage-inner">
+
+    <div class="product-lineage-header">
+      <span class="section-label">The Lineage</span>
+      <h2 class="product-lineage-title">A practice rooted in<br><em>centuries of tradition.</em></h2>
+      <p class="product-lineage-lede">We didn't invent gua sha. It's been quietly practiced for generations. We just made it a little more beautiful to keep on your vanity.</p>
+    </div>
+
+    <div class="product-lineage-grid">
+
+      <article class="lineage-card">
+        <div class="lineage-num" aria-hidden="true">壹</div>
+        <div class="lineage-label">Ancient origins</div>
+        <h3 class="lineage-card-title">A cornerstone of Traditional Chinese Medicine</h3>
+        <p>Gua sha (刮痧) has been documented and passed down through generations of TCM practitioners across East Asia. The name translates literally as <em>scrape</em> + <em>redness</em> — a reference to the rhythm of the technique, not the pressure.</p>
+      </article>
+
+      <article class="lineage-card">
+        <div class="lineage-num" aria-hidden="true">貳</div>
+        <div class="lineage-label">The technique</div>
+        <h3 class="lineage-card-title">Smooth stone, deliberate strokes</h3>
+        <p>Practitioners glide a polished stone along the neck, jaw, cheekbones and forehead in slow, upward passes. The movement matters more than the force — consistency over intensity is how results show up.</p>
+      </article>
+
+      <article class="lineage-card">
+        <div class="lineage-num" aria-hidden="true">叁</div>
+        <div class="lineage-label">Modern practice</div>
+        <h3 class="lineage-card-title">From Shanghai to your morning</h3>
+        <p>Today gua sha is a fixture in spas, dermatology clinics and daily rituals from East Asia to Europe and North America. The method hasn't changed. Only the design of the tools.</p>
+      </article>
+
+    </div>
+
+    <p class="product-lineage-footnote">We stand on shoulders. Every stone is hand-finished from natural amethyst — a tribute to a practice older than any of us.</p>
+
+  </div>
+</section>
+{%- endif -%}
+
 <!-- (Promise section removed — merged into the single Guarantee section below) -->
 
 <!-- FAQ -->
@@ -1270,6 +1312,9 @@
 .timeline-node.reveal { transition-delay: 0.08s; }
 .timeline-node.reveal:nth-child(3) { transition-delay: 0.18s; }
 .timeline-node.reveal:nth-child(4) { transition-delay: 0.28s; }
+.lineage-card.reveal { transition-delay: 0.05s; }
+.lineage-card.reveal:nth-child(2) { transition-delay: 0.14s; }
+.lineage-card.reveal:nth-child(3) { transition-delay: 0.23s; }
 
 /* Results Timeline */
 .results-timeline {
@@ -1333,6 +1378,126 @@
   color: rgba(250,246,240,0.6);
   max-width: 240px;
   margin: 0 auto;
+}
+
+/* ── Lineage / heritage section ── */
+.product-lineage {
+  background: var(--cream, #F7F2EA);
+  padding: 120px 32px;
+}
+.product-lineage-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.product-lineage-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 80px;
+}
+.product-lineage-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(38px, 4.5vw, 60px);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+  color: var(--espresso, #1E120A);
+  margin: 18px 0 24px;
+}
+.product-lineage-title em {
+  font-style: italic;
+  color: var(--terracotta, #B8704A);
+}
+.product-lineage-lede {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.7;
+  color: var(--stone, #8B7355);
+  font-style: italic;
+  margin: 0;
+}
+
+.product-lineage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--cream-dark, #EFE7DB);
+}
+.lineage-card {
+  background: var(--white, #FFFFFF);
+  padding: 56px 44px 50px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(.23,1,.32,1);
+}
+.lineage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--terracotta, #B8704A);
+  transition: width 0.7s cubic-bezier(.23,1,.32,1);
+}
+.lineage-card:hover { transform: translateY(-4px); }
+.lineage-card:hover::before { width: 100%; }
+
+.lineage-num {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--terracotta, #B8704A);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 22px;
+  letter-spacing: 0;
+}
+.lineage-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--terracotta, #B8704A);
+  margin-bottom: 14px;
+}
+.lineage-card-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.28;
+  color: var(--espresso, #1E120A);
+  margin: 0 0 16px;
+  max-width: 95%;
+}
+.lineage-card p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--stone, #8B7355);
+  margin: 0;
+}
+.lineage-card p em {
+  font-style: italic;
+  color: var(--espresso, #1E120A);
+}
+
+.product-lineage-footnote {
+  margin: 64px auto 0;
+  max-width: 620px;
+  text-align: center;
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(17px, 1.3vw, 20px);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--stone, #8B7355);
+}
+
+@media (max-width: 900px) {
+  .product-lineage { padding: 80px 20px; }
+  .product-lineage-header { margin-bottom: 52px; }
+  .product-lineage-grid { grid-template-columns: 1fr; }
+  .lineage-card { padding: 44px 32px 40px; }
+  .lineage-num { font-size: 40px; margin-bottom: 18px; }
+  .product-lineage-footnote { margin-top: 44px; }
 }
 
 /* Reviews */
@@ -1647,7 +1812,7 @@ document.addEventListener('keydown', function(e) {
 
 /* Scroll-reveal: fade + slide-up sections as they enter viewport */
 (function initScrollReveal() {
-  var targets = document.querySelectorAll('.product-problems, .product-section, .product-ritual, .results-timeline, .timeline-node, .problem-card, .material-inline-card');
+  var targets = document.querySelectorAll('.product-problems, .product-section, .product-ritual, .results-timeline, .timeline-node, .problem-card, .material-inline-card, .product-lineage, .lineage-card');
   if (!targets.length || typeof IntersectionObserver === 'undefined') return;
   targets.forEach(function(el) { el.classList.add('reveal'); });
   var io = new IntersectionObserver(function(entries) {
