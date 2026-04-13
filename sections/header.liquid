@@ -579,9 +579,9 @@ window.addEventListener('scroll', () => {
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
   }
 
-  // Auto-show after 5s
+  // Auto-show after 8s
   if (!sessionStorage.getItem('rituel_popup_seen')) {
-    setTimeout(openPopup, 5000);
+    setTimeout(openPopup, 8000);
   }
 
   // Exit intent
