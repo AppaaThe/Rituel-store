@@ -1,72 +1,39 @@
 <div class="product-page">
 
-  {%- comment -%} ── Custom editorial imagery matched by product handle ── {%- endcomment -%}
-  {%- assign img_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/pg-prod-' -%}
+  {%- comment -%} Handle-based problem_set for the Problems Solved + gated sections {%- endcomment -%}
   {%- assign handle = product.handle | downcase -%}
-  {%- assign custom_images = '' -%}
-
   {%- if handle contains 'gua' or handle contains 'stone' or handle contains 'amethyst-gua' -%}
-    {%- assign custom_images = 'guasha-hero,guasha-inuse,guasha-detail' -%}
     {%- assign problem_set = 'guasha' -%}
   {%- elsif handle contains 'ice' -%}
-    {%- assign custom_images = 'iceroller-hero,iceroller-inuse,iceroller-detail' -%}
     {%- assign problem_set = 'iceroller' -%}
   {%- elsif handle contains 'oil' or handle contains 'rosehip' -%}
-    {%- assign custom_images = 'oil-hero,oil-inuse,oil-detail' -%}
     {%- assign problem_set = 'oil' -%}
   {%- elsif handle contains 'roller' -%}
-    {%- assign custom_images = 'roller-hero,roller-inuse,roller-detail' -%}
     {%- assign problem_set = 'roller' -%}
   {%- elsif handle contains 'kit' or handle contains 'bundle' or handle contains 'ritual' -%}
-    {%- assign custom_images = 'guasha-hero,roller-hero,oil-hero,iceroller-hero' -%}
     {%- assign problem_set = 'bundle' -%}
   {%- endif -%}
 
-  {%- assign custom_image_list = custom_images | split: ',' -%}
-
-  <!-- IMAGE GALLERY -->
+  <!-- IMAGE GALLERY — uses Shopify admin product images only -->
   <div class="product-media">
     <div class="product-gallery">
-      {%- if custom_image_list.size > 0 -%}
-        {%- for slug in custom_image_list -%}
-          <img
-            src="{{ img_base }}{{ slug }}.png"
-            alt="{{ product.title | escape }} — view {{ forloop.index }}"
-            class="product-gallery-img {% if forloop.first %}active{% endif %}"
-            data-index="{{ forloop.index0 }}"
-            data-src="{{ img_base }}{{ slug }}.png"
-            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-            onclick="switchImage({{ forloop.index0 }})"
-          >
-        {%- endfor -%}
-      {%- else -%}
-        {%- for image in product.images -%}
-          <img
-            src="{{ image | image_url: width: 900 }}"
-            alt="{{ image.alt | default: product.title | escape }}"
-            class="product-gallery-img {% if forloop.first %}active{% endif %}"
-            data-index="{{ forloop.index0 }}"
-            data-src="{{ image | image_url: width: 900 }}"
-            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-            onclick="switchImage({{ forloop.index0 }})"
-          >
-        {%- endfor -%}
-        {%- if product.images.size == 0 -%}
-          <div class="gallery-placeholder"></div>
-        {%- endif -%}
+      {%- for image in product.images -%}
+        <img
+          src="{{ image | image_url: width: 900 }}"
+          alt="{{ image.alt | default: product.title | escape }}"
+          class="product-gallery-img {% if forloop.first %}active{% endif %}"
+          data-index="{{ forloop.index0 }}"
+          data-src="{{ image | image_url: width: 900 }}"
+          loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+          onclick="switchImage({{ forloop.index0 }})"
+        >
+      {%- endfor -%}
+      {%- if product.images.size == 0 -%}
+        <div class="gallery-placeholder"></div>
       {%- endif -%}
     </div>
     <div class="product-main-image">
-      {%- if custom_image_list.size > 0 -%}
-        {%- assign first_slug = custom_image_list[0] -%}
-        <img
-          src="{{ img_base }}{{ first_slug }}.png"
-          alt="{{ product.title | escape }}"
-          class="product-main-img"
-          id="mainProductImage"
-          loading="eager"
-        >
-      {%- elsif product.featured_image -%}
+      {%- if product.featured_image -%}
         <img
           src="{{ product.featured_image | image_url: width: 900 }}"
           alt="{{ product.featured_image.alt | default: product.title | escape }}"
