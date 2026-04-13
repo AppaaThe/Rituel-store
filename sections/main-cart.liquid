@@ -1,7 +1,4 @@
-{%- assign nbp_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/nbp2-' -%}
-
-{%- comment -%} Map a product handle to a GitHub-hosted hero image {%- endcomment -%}
-{%- capture handle_for_nbp -%}{%- endcapture -%}
+{%- assign real_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/' -%}
 
 <div class="cart-page">
   <h1 class="cart-title">Your Bag</h1>
@@ -16,14 +13,13 @@
           {%- for item in cart.items -%}
             {%- assign ch = item.product.handle | downcase -%}
             {%- assign nbp_img = '' -%}
-            {%- if ch contains 'starter' -%}{%- assign nbp_img = nbp_base | append: 'starter-kit-hero.png' -%}
-            {%- elsif ch contains 'full' -%}{%- assign nbp_img = nbp_base | append: 'ritual-kit-hero.png' -%}
-            {%- elsif ch contains 'ritual-kit' or ch contains 'kit' -%}{%- assign nbp_img = nbp_base | append: 'ritual-kit-hero.png' -%}
-            {%- elsif ch contains 'gua' or ch contains 'stone' -%}{%- assign nbp_img = nbp_base | append: 'guasha-hero.png' -%}
-            {%- elsif ch contains 'ice' -%}{%- assign nbp_img = nbp_base | append: 'iceroller-hero.png' -%}
-            {%- elsif ch contains 'oil' or ch contains 'rosehip' -%}{%- assign nbp_img = nbp_base | append: 'oil-hero.png' -%}
-            {%- elsif ch contains 'spray' or ch contains 'cleansing' -%}{%- assign nbp_img = nbp_base | append: 'spray-hero.png' -%}
-            {%- elsif ch contains 'roller' -%}{%- assign nbp_img = nbp_base | append: 'roller-hero.png' -%}
+            {%- if ch contains 'starter' -%}{%- assign nbp_img = real_base | append: 'rituel-guasha-roller-set-amethyst.jpg' -%}
+            {%- elsif ch contains 'full' -%}{%- assign nbp_img = real_base | append: 'rituel-guasha-amethyst-duo-white.png' -%}
+            {%- elsif ch contains 'ritual-kit' or ch contains 'kit' -%}{%- assign nbp_img = real_base | append: 'rituel-guasha-roller-duo-amethyst.jpg' -%}
+            {%- elsif ch contains 'gua' or ch contains 'stone' -%}{%- assign nbp_img = real_base | append: 'rituel-guasha-stone-amethyst.jpg' -%}
+            {%- elsif ch contains 'ice' -%}{%- assign nbp_img = real_base | append: 'rituel-ice-roller-rose-pink.jpg' -%}
+            {%- elsif ch contains 'oil' or ch contains 'rosehip' -%}{%- assign nbp_img = real_base | append: 'rituel-rosehip-facial-oil-30ml.jpg' -%}
+            {%- elsif ch contains 'roller' -%}{%- assign nbp_img = real_base | append: 'rituel-facial-roller-amethyst.jpg' -%}
             {%- endif -%}
             <div class="cart-item">
               {%- if nbp_img != '' -%}
@@ -64,7 +60,7 @@
                     <input type="checkbox" id="bumpCheck" class="order-bump-checkbox" onchange="handleBump(this)">
                     <label for="bumpCheck" class="order-bump-check-label"></label>
                   </div>
-                  <img class="order-bump-img" src="{{ nbp_base }}oil-hero.png" alt="{{ bump_product.title | escape }}">
+                  <img class="order-bump-img" src="{{ real_base }}rituel-rosehip-facial-oil-30ml.jpg" alt="{{ bump_product.title | escape }}">
 
                   <div class="order-bump-copy">
                     <div class="order-bump-headline">Yes — add the Rosehip Oil to my order</div>

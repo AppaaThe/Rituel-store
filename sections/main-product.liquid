@@ -1,33 +1,30 @@
 <div class="product-page">
 
-  {%- comment -%} ── Custom editorial imagery matched by product handle ── {%- endcomment -%}
-  {%- assign img_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/nbp2-' -%}
+  {%- comment -%} ── REAL product photos first, editorial gallery per handle ── {%- endcomment -%}
+  {%- assign img_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/' -%}
   {%- assign handle = product.handle | downcase -%}
   {%- assign custom_images = '' -%}
 
   {%- if handle contains 'starter' -%}
-    {%- assign custom_images = 'starter-kit-hero,starter-kit-lifestyle,starter-kit-macro' -%}
+    {%- assign custom_images = 'rituel-guasha-roller-set-amethyst.jpg,rituel-guasha-roller-duo-amethyst.jpg,rituel-guasha-amethyst-duo-white.png,rituel-guasha-outdoor-lifestyle.png' -%}
     {%- assign problem_set = 'bundle' -%}
   {%- elsif handle contains 'full' -%}
-    {%- assign custom_images = 'ritual-kit-hero,ritual-kit-lifestyle,ritual-kit-macro' -%}
+    {%- assign custom_images = 'rituel-guasha-amethyst-duo-white.png,rituel-guasha-roller-set-amethyst.jpg,rituel-guasha-roller-duo-amethyst.jpg,rituel-rosehip-facial-oil-30ml.jpg' -%}
     {%- assign problem_set = 'bundle' -%}
   {%- elsif handle contains 'ritual-kit' or handle contains 'kit' or handle contains 'bundle' -%}
-    {%- assign custom_images = 'ritual-kit-hero,ritual-kit-lifestyle,ritual-kit-macro' -%}
+    {%- assign custom_images = 'rituel-guasha-roller-duo-amethyst.jpg,rituel-guasha-roller-set-amethyst.jpg,rituel-guasha-amethyst-duo-white.png,rituel-rosehip-facial-oil-30ml.jpg' -%}
     {%- assign problem_set = 'bundle' -%}
   {%- elsif handle contains 'gua' or handle contains 'stone' -%}
-    {%- assign custom_images = 'guasha-hero,guasha-lifestyle,guasha-macro' -%}
+    {%- assign custom_images = 'rituel-guasha-stone-amethyst.jpg,rituel-guasha-closeup-landscape.png,rituel-guasha-cheek-sculpting.png,rituel-guasha-jawline-sculpting.png,rituel-guasha-forehead-closeup.png,rituel-guasha-outdoor-lifestyle.png' -%}
     {%- assign problem_set = 'guasha' -%}
   {%- elsif handle contains 'ice' -%}
-    {%- assign custom_images = 'iceroller-hero,iceroller-lifestyle,iceroller-macro' -%}
+    {%- assign custom_images = 'rituel-ice-roller-rose-pink.jpg,rituel-guasha-outdoor-lifestyle.png,rituel-guasha-cheek-sculpting.png' -%}
     {%- assign problem_set = 'iceroller' -%}
   {%- elsif handle contains 'oil' or handle contains 'rosehip' -%}
-    {%- assign custom_images = 'oil-hero,oil-lifestyle,oil-macro' -%}
+    {%- assign custom_images = 'rituel-rosehip-facial-oil-30ml.jpg,rituel-guasha-closeup-inuse.png,rituel-guasha-outdoor-lifestyle.png' -%}
     {%- assign problem_set = 'oil' -%}
-  {%- elsif handle contains 'spray' or handle contains 'cleansing' -%}
-    {%- assign custom_images = 'spray-hero,spray-lifestyle,spray-hero' -%}
-    {%- assign problem_set = 'guasha' -%}
   {%- elsif handle contains 'roller' -%}
-    {%- assign custom_images = 'roller-hero,roller-lifestyle,roller-macro' -%}
+    {%- assign custom_images = 'rituel-facial-roller-amethyst.jpg,rituel-guasha-roller-duo-amethyst.jpg,rituel-guasha-roller-set-amethyst.jpg,rituel-guasha-outdoor-lifestyle.png' -%}
     {%- assign problem_set = 'roller' -%}
   {%- endif -%}
 
@@ -37,13 +34,13 @@
   <div class="product-media">
     <div class="product-gallery">
       {%- if custom_image_list.size > 0 -%}
-        {%- for slug in custom_image_list -%}
+        {%- for filename in custom_image_list -%}
           <img
-            src="{{ img_base }}{{ slug }}.png"
+            src="{{ img_base }}{{ filename }}"
             alt="{{ product.title | escape }} — view {{ forloop.index }}"
             class="product-gallery-img {% if forloop.first %}active{% endif %}"
             data-index="{{ forloop.index0 }}"
-            data-src="{{ img_base }}{{ slug }}.png"
+            data-src="{{ img_base }}{{ filename }}"
             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
             onclick="switchImage({{ forloop.index0 }})"
           >
@@ -67,9 +64,9 @@
     </div>
     <div class="product-main-image">
       {%- if custom_image_list.size > 0 -%}
-        {%- assign first_slug = custom_image_list[0] -%}
+        {%- assign first_filename = custom_image_list[0] -%}
         <img
-          src="{{ img_base }}{{ first_slug }}.png"
+          src="{{ img_base }}{{ first_filename }}"
           alt="{{ product.title | escape }}"
           class="product-main-img"
           id="mainProductImage"
@@ -94,6 +91,13 @@
 
     <p class="product-vendor">{{ product.vendor }}</p>
     <h1 class="product-title">{{ product.title }}</h1>
+
+    <!-- Judge.me star rating preview -->
+    <div style="margin: 8px 0 14px;">
+      <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+        {{ product.metafields.judgeme.badge }}
+      </div>
+    </div>
 
     <!-- First-order offer banner -->
     <div class="product-offer-banner">
@@ -162,6 +166,13 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- JUDGE.ME REVIEWS WIDGET -->
+<div class="product-reviews-section" style="max-width: 1100px; margin: 60px auto; padding: 0 24px;">
+  <div class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}" data-product-handle="{{ product.handle }}">
+    {{ product.metafields.judgeme.widget }}
   </div>
 </div>
 
@@ -461,18 +472,20 @@
 .product-gallery {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 72px;
+  gap: 10px;
+  width: 92px;
   flex-shrink: 0;
 }
 
 .product-gallery-img {
-  width: 72px;
-  height: 72px;
+  width: 92px;
+  height: 92px;
   object-fit: cover;
   border-radius: 0;
   cursor: pointer;
   border: 2px solid transparent;
+  opacity: 0.7;
+  transition: opacity 0.2s, border-color 0.2s;
   opacity: 0.5;
   transition: all 0.3s;
 }
@@ -1175,14 +1188,16 @@
     position: relative;
     top: 0;
     padding: 24px;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
   .product-gallery {
     flex-direction: row;
     width: 100%;
     overflow-x: auto;
+    gap: 8px;
+    padding-top: 12px;
   }
-  .product-gallery-img { width: 60px; height: 60px; }
+  .product-gallery-img { width: 72px; height: 72px; flex-shrink: 0; }
   .product-info { padding: 24px; }
   .product-trust-grid { grid-template-columns: 1fr; }
   .included-grid { grid-template-columns: 1fr; }
