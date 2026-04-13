@@ -35,6 +35,10 @@
             <div class="collection-product-name">{{ product.title }}</div>
             <div class="collection-product-price">
               {{ product.price | money }}
+              {%- if product.compare_at_price > product.price -%}
+                {%- assign bundle_savings = product.compare_at_price | minus: product.price -%}
+                <span class="collection-savings-pill">Save {{ bundle_savings | money_without_trailing_zeros }}</span>
+              {%- endif -%}
             </div>
           </a>
         {%- endif -%}
@@ -122,6 +126,27 @@
 @media (max-width: 1024px) {
   .collection-hero { height: 54vh; min-height: 360px; margin-bottom: 48px; }
   .collection-hero-content { padding: 0 32px; }
+}
+
+/* Bundle savings pill (shown next to price when compare_at_price is set) */
+.collection-product-price {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.collection-savings-pill {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: var(--sans, 'Jost', sans-serif);
+  color: var(--terracotta, #B8704A);
+  background: rgba(184,112,74,0.09);
+  border: 1px solid rgba(184,112,74,0.25);
+  padding: 4px 10px;
+  line-height: 1.4;
 }
 </style>
 
