@@ -16,17 +16,25 @@
 
   <!-- IMAGE GALLERY — uses Shopify admin product images only -->
   <div class="product-media">
-    <div class="product-gallery">
+    <div class="product-gallery" role="tablist" aria-label="Product image thumbnails">
       {%- for image in product.images -%}
-        <img
-          src="{{ image | image_url: width: 900 }}"
-          alt="{{ image.alt | default: product.title | escape }}"
-          class="product-gallery-img {% if forloop.first %}active{% endif %}"
+        <button
+          type="button"
+          class="product-gallery-thumb {% if forloop.first %}active{% endif %}"
           data-index="{{ forloop.index0 }}"
           data-src="{{ image | image_url: width: 900 }}"
-          loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-label="View image {{ forloop.index }} of {{ product.images.size }}"
           onclick="switchImage({{ forloop.index0 }})"
         >
+          <img
+            src="{{ image | image_url: width: 900 }}"
+            alt=""
+            class="product-gallery-img"
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+          >
+        </button>
       {%- endfor -%}
       {%- if product.images.size == 0 -%}
         <div class="gallery-placeholder"></div>
@@ -43,6 +51,16 @@
         >
       {%- else -%}
         <div class="gallery-placeholder"></div>
+      {%- endif -%}
+
+      {%- if product.images.size > 1 -%}
+        <button type="button" class="gallery-arrow gallery-arrow-prev" aria-label="Previous image" onclick="cycleImage(-1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button type="button" class="gallery-arrow gallery-arrow-next" aria-label="Next image" onclick="cycleImage(1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="gallery-counter" id="galleryCounter">1 / {{ product.images.size }}</div>
       {%- endif -%}
     </div>
   </div>
@@ -277,47 +295,47 @@
 <div class="product-section">
   <h2 class="section-title">Common <em>Questions</em></h2>
   <div class="product-faq">
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">
+    <div class="faq-item">
+      <button type="button" class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
         <span>How do I use the gua sha stone?</span>
-        <span class="faq-toggle">+</span>
-      </div>
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
       <div class="faq-answer">
         <p>Apply 2–3 drops of facial oil, then sweep the stone upward along your jaw, cheekbones, and forehead. Always use light pressure and upward strokes. Our included Ritual Guide covers the exact 5-minute technique step by step.</p>
       </div>
     </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">
+    <div class="faq-item">
+      <button type="button" class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
         <span>How long until I see results?</span>
-        <span class="faq-toggle">+</span>
-      </div>
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
       <div class="faq-answer">
         <p>Immediate depuffing is visible after your first session. Lasting jawline definition typically becomes noticeable after 2–3 weeks of daily use. By week 6–8, the difference is visible in photographs.</p>
       </div>
     </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">
+    <div class="faq-item">
+      <button type="button" class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
         <span>Why amethyst and not jade or rose quartz?</span>
-        <span class="faq-toggle">+</span>
-      </div>
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
       <div class="faq-answer">
         <p>Amethyst is harder than jade (7 vs 6 on the Mohs scale), which means it polishes to a smoother finish and is more scratch-resistant over time. It also has a satisfying weight and each stone has a unique natural pattern. It's a premium choice for facial sculpting tools.</p>
       </div>
     </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">
+    <div class="faq-item">
+      <button type="button" class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
         <span>What if it doesn't work for me?</span>
-        <span class="faq-toggle">+</span>
-      </div>
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
       <div class="faq-answer">
         <p>We offer a full 30-day money-back guarantee. If you don't see results after consistent use, send it back for a complete refund — no questions asked.</p>
       </div>
     </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">
+    <div class="faq-item">
+      <button type="button" class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
         <span>Do I need oil to use it?</span>
-        <span class="faq-toggle">+</span>
-      </div>
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
       <div class="faq-answer">
         <p>Yes — facial oil is essential. Without it, the stone drags on your skin and can cause irritation. Any facial oil works (rosehip, jojoba, squalane). We also sell a rosehip oil specifically formulated for gua sha.</p>
       </div>
@@ -393,29 +411,86 @@
 .product-gallery {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 72px;
+  gap: 10px;
+  width: 96px;
   flex-shrink: 0;
 }
 
-.product-gallery-img {
-  width: 72px;
-  height: 72px;
-  object-fit: cover;
+.product-gallery-thumb {
+  display: block;
+  width: 96px;
+  height: 96px;
+  padding: 0;
+  border: 2px solid rgba(30,18,10,0.12);
+  background: none;
   border-radius: 0;
   cursor: pointer;
-  border: 2px solid transparent;
-  opacity: 0.5;
-  transition: all 0.3s;
+  opacity: 0.65;
+  transition: all 0.25s;
 }
 
-.product-gallery-img.active,
-.product-gallery-img:hover {
-  border-color: var(--terracotta, #B8704A);
+.product-gallery-thumb.active,
+.product-gallery-thumb:hover {
+  border-color: var(--terracotta, #A15E3C);
   opacity: 1;
 }
 
-.product-main-image { flex: 1; }
+.product-gallery-thumb:focus-visible {
+  outline: 2px solid var(--terracotta, #A15E3C);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+.product-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-main-image { flex: 1; position: relative; }
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(30,18,10,0.08);
+  color: var(--espresso, #1E120A);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(30,18,10,0.12);
+  transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+  z-index: 3;
+}
+.gallery-arrow:hover {
+  background: var(--terracotta, #B8704A);
+  color: #fff;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 20px rgba(30,18,10,0.18);
+}
+.gallery-arrow-prev { left: 14px; }
+.gallery-arrow-next { right: 14px; }
+
+.gallery-counter {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30,18,10,0.75);
+  color: #FAF6F0;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  padding: 6px 14px;
+  z-index: 3;
+  pointer-events: none;
+}
 
 .product-main-img {
   width: 100%;
@@ -831,18 +906,31 @@
 
 .faq-item {
   border-bottom: 1px solid rgba(44,24,16,0.08);
-  cursor: pointer;
 }
 
 .faq-question {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 20px 0;
   font-size: 16px;
   font-weight: 500;
   color: var(--espresso, #2C1810);
+  background: none;
+  border: 0;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  min-height: 44px;
 }
+
+.faq-question:focus-visible {
+  outline: 2px solid var(--terracotta, #A15E3C);
+  outline-offset: 4px;
+}
+
+.faq-question[aria-expanded="true"] .faq-toggle { transform: rotate(45deg); }
 
 .faq-toggle {
   font-size: 24px;
@@ -850,8 +938,6 @@
   color: var(--terracotta, #B8704A);
   transition: transform 0.3s;
 }
-
-.faq-item.open .faq-toggle { transform: rotate(45deg); }
 
 .faq-answer {
   max-height: 0;
@@ -994,7 +1080,8 @@
     width: 100%;
     overflow-x: auto;
   }
-  .product-gallery-img { width: 60px; height: 60px; }
+  .product-gallery { gap: 12px; }
+  .product-gallery-thumb { width: 64px; height: 64px; flex-shrink: 0; }
   .product-info { padding: 24px; }
   .product-trust-grid { grid-template-columns: 1fr; }
   .included-grid { grid-template-columns: 1fr; }
@@ -1009,16 +1096,52 @@
 
 <script>
 function switchImage(index) {
-  var thumbs = document.querySelectorAll('.product-gallery-img');
+  var thumbs = document.querySelectorAll('.product-gallery-thumb');
   var main = document.getElementById('mainProductImage');
-  thumbs.forEach(function(t) { t.classList.remove('active'); });
-  thumbs[index].classList.add('active');
-  main.src = thumbs[index].src;
-  main.alt = thumbs[index].alt;
+  if (!thumbs.length || !main) return;
+  if (index < 0) index = thumbs.length - 1;
+  if (index >= thumbs.length) index = 0;
+  thumbs.forEach(function(t) {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  var active = thumbs[index];
+  active.classList.add('active');
+  active.setAttribute('aria-selected', 'true');
+  var img = active.querySelector('img');
+  if (img) {
+    main.src = img.src;
+    main.alt = img.alt || '';
+  }
+  main.dataset.currentIndex = index;
+  var counter = document.getElementById('galleryCounter');
+  if (counter) counter.textContent = (index + 1) + ' / ' + thumbs.length;
 }
 
-function toggleFaq(item) {
-  item.classList.toggle('open');
+function cycleImage(delta) {
+  var main = document.getElementById('mainProductImage');
+  if (!main) return;
+  var current = parseInt(main.dataset.currentIndex || '0', 10);
+  switchImage(current + delta);
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.target.closest('input, textarea, select')) return;
+  if (!document.getElementById('mainProductImage')) return;
+  if (e.key === 'ArrowLeft') cycleImage(-1);
+  if (e.key === 'ArrowRight') cycleImage(1);
+});
+
+(function initGalleryIndex() {
+  var main = document.getElementById('mainProductImage');
+  if (main) main.dataset.currentIndex = '0';
+})();
+
+function toggleFaq(btn) {
+  var faqItem = btn.closest('.faq-item');
+  if (!faqItem) return;
+  var isOpen = faqItem.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
 </script>
 
