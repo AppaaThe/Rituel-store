@@ -1,3 +1,8 @@
+{%- assign nbp_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/nbp2-' -%}
+
+{%- comment -%} Map a product handle to a GitHub-hosted hero image {%- endcomment -%}
+{%- capture handle_for_nbp -%}{%- endcapture -%}
+
 <div class="cart-page">
   <h1 class="cart-title">Your Bag</h1>
 
@@ -9,8 +14,21 @@
         <div class="cart-items-col">
 
           {%- for item in cart.items -%}
+            {%- assign ch = item.product.handle | downcase -%}
+            {%- assign nbp_img = '' -%}
+            {%- if ch contains 'starter' -%}{%- assign nbp_img = nbp_base | append: 'starter-kit-hero.png' -%}
+            {%- elsif ch contains 'full' -%}{%- assign nbp_img = nbp_base | append: 'ritual-kit-hero.png' -%}
+            {%- elsif ch contains 'ritual-kit' or ch contains 'kit' -%}{%- assign nbp_img = nbp_base | append: 'ritual-kit-hero.png' -%}
+            {%- elsif ch contains 'gua' or ch contains 'stone' -%}{%- assign nbp_img = nbp_base | append: 'guasha-hero.png' -%}
+            {%- elsif ch contains 'ice' -%}{%- assign nbp_img = nbp_base | append: 'iceroller-hero.png' -%}
+            {%- elsif ch contains 'oil' or ch contains 'rosehip' -%}{%- assign nbp_img = nbp_base | append: 'oil-hero.png' -%}
+            {%- elsif ch contains 'spray' or ch contains 'cleansing' -%}{%- assign nbp_img = nbp_base | append: 'spray-hero.png' -%}
+            {%- elsif ch contains 'roller' -%}{%- assign nbp_img = nbp_base | append: 'roller-hero.png' -%}
+            {%- endif -%}
             <div class="cart-item">
-              {%- if item.image -%}
+              {%- if nbp_img != '' -%}
+                <img class="cart-item-image" src="{{ nbp_img }}" alt="{{ item.title | escape }}">
+              {%- elsif item.image -%}
                 <img class="cart-item-image" src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title }}">
               {%- else -%}
                 <div class="cart-item-image cart-item-image-placeholder"></div>
@@ -46,9 +64,8 @@
                     <input type="checkbox" id="bumpCheck" class="order-bump-checkbox" onchange="handleBump(this)">
                     <label for="bumpCheck" class="order-bump-check-label"></label>
                   </div>
-                  {%- if bump_product.featured_image -%}
-                    <img class="order-bump-img" src="{{ bump_product.featured_image | image_url: width: 160 }}" alt="{{ bump_product.title }}">
-                  {%- endif -%}
+                  <img class="order-bump-img" src="{{ nbp_base }}oil-hero.png" alt="{{ bump_product.title | escape }}">
+
                   <div class="order-bump-copy">
                     <div class="order-bump-headline">Yes — add the Rosehip Oil to my order</div>
                     <div class="order-bump-sub">Your gua sha needs a glide. Pure rosehip oil doubles as your daily facial oil. One tick. No new checkout.</div>

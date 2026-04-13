@@ -1,3 +1,6 @@
+{%- comment -%} ── Shared image-base for handle-matched hero images ── {%- endcomment -%}
+{%- assign nbp_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/nbp2-' -%}
+
 <div class="collection-page">
 
   {%- comment -%} HERO BANNER {%- endcomment -%}
@@ -19,9 +22,17 @@
     <div class="collection-grid collection-grid-bundles">
       {%- for product in collection.products -%}
         {%- if product.tags contains 'bundle' -%}
+          {%- assign h = product.handle | downcase -%}
+          {%- assign nbp_hero = '' -%}
+          {%- if h contains 'starter' -%}{%- assign nbp_hero = nbp_base | append: 'starter-kit-hero.png' -%}
+          {%- elsif h contains 'full' -%}{%- assign nbp_hero = nbp_base | append: 'ritual-kit-hero.png' -%}
+          {%- elsif h contains 'ritual-kit' or h contains 'kit' -%}{%- assign nbp_hero = nbp_base | append: 'ritual-kit-hero.png' -%}
+          {%- endif -%}
           <a href="{{ product.url }}" class="collection-product" style="text-decoration:none;color:inherit;">
             <div class="collection-product-image">
-              {%- if product.featured_image -%}
+              {%- if nbp_hero != '' -%}
+                <img src="{{ nbp_hero }}" alt="{{ product.title | escape }}" loading="lazy">
+              {%- elsif product.featured_image -%}
                 <img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.title }}" loading="lazy">
               {%- else -%}
                 <div style="width:100%;height:100%;background:radial-gradient(ellipse,#C8A882,#8B6845);"></div>
@@ -53,9 +64,19 @@
     <div class="collection-grid">
       {%- for product in collection.products -%}
         {%- unless product.tags contains 'bundle' -%}
+          {%- assign h = product.handle | downcase -%}
+          {%- assign nbp_hero = '' -%}
+          {%- if h contains 'gua' or h contains 'stone' -%}{%- assign nbp_hero = nbp_base | append: 'guasha-hero.png' -%}
+          {%- elsif h contains 'ice' -%}{%- assign nbp_hero = nbp_base | append: 'iceroller-hero.png' -%}
+          {%- elsif h contains 'oil' or h contains 'rosehip' -%}{%- assign nbp_hero = nbp_base | append: 'oil-hero.png' -%}
+          {%- elsif h contains 'spray' or h contains 'cleansing' -%}{%- assign nbp_hero = nbp_base | append: 'spray-hero.png' -%}
+          {%- elsif h contains 'roller' -%}{%- assign nbp_hero = nbp_base | append: 'roller-hero.png' -%}
+          {%- endif -%}
           <a href="{{ product.url }}" class="collection-product" style="text-decoration:none;color:inherit;">
             <div class="collection-product-image">
-              {%- if product.featured_image -%}
+              {%- if nbp_hero != '' -%}
+                <img src="{{ nbp_hero }}" alt="{{ product.title | escape }}" loading="lazy">
+              {%- elsif product.featured_image -%}
                 <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
               {%- else -%}
                 <div style="width:100%;height:100%;background:radial-gradient(ellipse,#C8A882,#8B6845);"></div>
