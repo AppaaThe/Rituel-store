@@ -25,7 +25,8 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background: var(--cream); color: var(--espresso); font-family: var(--sans); font-weight: 300; overflow-x: hidden; }
+:root { --announcement-h: 40px; --header-h: 72px; }
+body { background: var(--cream); color: var(--espresso); font-family: var(--sans); font-weight: 300; overflow-x: hidden; padding-top: calc(var(--announcement-h) + var(--header-h)); }
 
 /* Skip to content — visible only on keyboard focus */
 .skip-to-content {

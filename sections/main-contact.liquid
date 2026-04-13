@@ -33,21 +33,31 @@
     <div class="contact-form-wrap">
       {%- form 'contact', id: 'ContactForm' -%}
         {%- if form.posted_successfully? -%}
-          <div class="contact-success">
+          <div class="contact-success" role="status" aria-live="polite">
             <p>Thank you — we'll be in touch within 24 hours.</p>
+          </div>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <div class="contact-errors" role="alert" aria-live="assertive">
+            <p><strong>Please fix the following:</strong></p>
+            <ul>
+              {%- for field in form.errors -%}
+                <li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>
+              {%- endfor -%}
+            </ul>
           </div>
         {%- endif -%}
         <div class="contact-field">
           <label for="ContactForm-name">Name</label>
-          <input type="text" id="ContactForm-name" name="contact[name]" placeholder="Your name" value="{% if form.name %}{{ form.name }}{% endif %}">
+          <input type="text" id="ContactForm-name" name="contact[name]" placeholder="Your name" autocomplete="name" value="{% if form.name %}{{ form.name }}{% endif %}">
         </div>
         <div class="contact-field">
-          <label for="ContactForm-email">Email <span style="color:var(--terracotta);">*</span></label>
-          <input type="email" id="ContactForm-email" name="contact[email]" required placeholder="your@email.com" value="{% if form.email %}{{ form.email }}{% endif %}">
+          <label for="ContactForm-email">Email <span aria-hidden="true" style="color:var(--terracotta);">*</span></label>
+          <input type="email" id="ContactForm-email" name="contact[email]" required aria-required="true" autocomplete="email" placeholder="your@email.com" value="{% if form.email %}{{ form.email }}{% endif %}">
         </div>
         <div class="contact-field">
-          <label for="ContactForm-body">Message <span style="color:var(--terracotta);">*</span></label>
-          <textarea id="ContactForm-body" name="contact[body]" required placeholder="How can we help?" rows="6">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+          <label for="ContactForm-body">Message <span aria-hidden="true" style="color:var(--terracotta);">*</span></label>
+          <textarea id="ContactForm-body" name="contact[body]" required aria-required="true" placeholder="How can we help?" rows="6">{% if form.body %}{{ form.body }}{% endif %}</textarea>
         </div>
         <button type="submit" class="btn-primary">
           <span>Send Message</span>

@@ -634,15 +634,18 @@ window.addEventListener('scroll', () => {
   }
 })();
 
-// Adjust header position for announcement bar
+// Adjust header position for announcement bar (fine-tunes after CSS reserves space)
 (function() {
   var bar = document.getElementById('announcementBar');
   var header = document.getElementById('siteHeader');
-  if (bar && header) {
-    var barHeight = bar.offsetHeight;
-    header.style.top = barHeight + 'px';
-    document.body.style.paddingTop = (barHeight + 72) + 'px';
+  if (!bar || !header) return;
+  function applyOffset() {
+    var h = bar.offsetHeight;
+    document.documentElement.style.setProperty('--announcement-h', h + 'px');
+    header.style.top = h + 'px';
   }
+  applyOffset();
+  window.addEventListener('resize', applyOffset, { passive: true });
 })();
 </script>
 
