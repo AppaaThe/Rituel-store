@@ -528,12 +528,12 @@ window.addEventListener('scroll', () => {
 </script>
 
 <!-- Email Popup -->
-<div class="popup-overlay" id="popupOverlay">
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-hidden="true">
   <div class="popup-box">
-    <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
+    <button class="popup-close" id="popupClose" aria-label="Close popup">&times;</button>
     <div id="popupContent">
       <div class="popup-eyebrow">Free guide + 10% off</div>
-      <h3 class="popup-title">The 5-Minute<br><em>Sculpting Ritual</em></h3>
+      <h3 class="popup-title" id="popupTitle">The 5-Minute<br><em>Sculpting Ritual</em></h3>
       <p class="popup-desc">Get our free Morning Ritual Guide — the exact technique for jawline definition, depuffing, and glowing skin in 5 minutes. Plus 10% off your first order.</p>
       <form class="popup-form" id="popupForm" action="/contact#contact_form" method="post" accept-charset="UTF-8">
         <input type="hidden" name="form_type" value="customer">
@@ -553,48 +553,85 @@ window.addEventListener('scroll', () => {
 </div>
 
 <script>
-// Popup logic — show after 8 seconds, only once per session
+// Popup logic — show after delay, persist dismissal, focus-trap + Escape
 (function() {
-  var shown = sessionStorage.getItem('rituel_popup');
-  if (!shown) {
-    setTimeout(function() {
-      document.getElementById('popupOverlay').classList.add('active');
-      sessionStorage.setItem('rituel_popup', '1');
-    }, 5000);
+  var overlay = document.getElementById('popupOverlay');
+  var closeBtn = document.getElementById('popupClose');
+  var emailInput = document.getElementById('popupEmail');
+  var form = document.getElementById('popupForm');
+  if (!overlay || !closeBtn) return;
+
+  var lastFocused = null;
+  var FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+  function openPopup() {
+    if (sessionStorage.getItem('rituel_popup_seen')) return;
+    lastFocused = document.activeElement;
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    setTimeout(function() { if (emailInput) emailInput.focus(); }, 50);
   }
 
-  // Exit intent — show popup when mouse leaves viewport
+  function closePopup() {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    sessionStorage.setItem('rituel_popup_seen', '1');
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+  }
+
+  // Auto-show after 5s
+  if (!sessionStorage.getItem('rituel_popup_seen')) {
+    setTimeout(openPopup, 5000);
+  }
+
+  // Exit intent
   document.addEventListener('mouseout', function(e) {
-    if (e.clientY < 10 && !sessionStorage.getItem('rituel_popup')) {
-      document.getElementById('popupOverlay').classList.add('active');
-      sessionStorage.setItem('rituel_popup', '1');
+    if (e.clientY < 10) openPopup();
+  });
+
+  closeBtn.addEventListener('click', closePopup);
+
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closePopup();
+  });
+
+  // Escape closes + focus trap
+  document.addEventListener('keydown', function(e) {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closePopup();
+      return;
+    }
+    if (e.key === 'Tab') {
+      var focusables = overlay.querySelectorAll(FOCUSABLE);
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 
-  document.getElementById('popupClose').addEventListener('click', function() {
-    document.getElementById('popupOverlay').classList.remove('active');
-  });
-
-  document.getElementById('popupOverlay').addEventListener('click', function(e) {
-    if (e.target === this) this.classList.remove('active');
-  });
-
-  document.getElementById('popupForm').addEventListener('submit', function(e) {
-    var email = document.getElementById('popupEmail').value;
-    // Track in Klaviyo
-    if (email && window._learnq) {
-      window._learnq.push(['identify', { '$email': email }]);
-      window._learnq.push(['track', 'Popup Signup', { source: 'popup', offer: '10_percent' }]);
-    }
-    // Show success state after short delay
-    setTimeout(function() {
-      document.getElementById('popupContent').style.display = 'none';
-      document.getElementById('popupSuccess').classList.add('show');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      var email = emailInput ? emailInput.value : '';
+      if (email && window._learnq) {
+        window._learnq.push(['identify', { '$email': email }]);
+        window._learnq.push(['track', 'Popup Signup', { source: 'popup', offer: '10_percent' }]);
+      }
       setTimeout(function() {
-        document.getElementById('popupOverlay').classList.remove('active');
-      }, 3000);
-    }, 500);
-  });
+        document.getElementById('popupContent').style.display = 'none';
+        document.getElementById('popupSuccess').classList.add('show');
+        setTimeout(closePopup, 3000);
+      }, 500);
+    });
+  }
 })();
 
 // Adjust header position for announcement bar
