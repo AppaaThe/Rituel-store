@@ -1,0 +1,182 @@
+<section class="our-story">
+  <div class="our-story-inner">
+
+    <div class="our-story-media">
+      <img
+        src="https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/rituel-guasha-outdoor-lifestyle.png"
+        alt="BY RITUEL amethyst gua sha resting on warm linen"
+        loading="lazy"
+      >
+    </div>
+
+    <div class="our-story-body">
+      <span class="section-label">Our Story</span>
+
+      <h2 class="our-story-title">
+        We built BY RITUEL for a very<br><em>specific morning.</em>
+      </h2>
+
+      <div class="our-story-rule" aria-hidden="true"></div>
+
+      <p class="our-story-lede">
+        Most skincare is passive. You apply something, you wait, you hope. We wanted something that actually <em>changed</em> how we looked in the mirror — the way the old rituals used to.
+      </p>
+
+      <p>
+        So we took a practice that's been quietly working for generations across East Asia, and built the most beautiful version of it we could imagine. Hand-finished amethyst. Warm linen packaging. No shortcuts.
+      </p>
+
+      <p>
+        Five minutes every morning. That's the whole promise. We wake up and do this ourselves — and that's the only testimonial that matters to us.
+      </p>
+
+      <p class="our-story-signature">— The BY RITUEL Team</p>
+
+      <a href="{{ pages.about.url | default: '/pages/about' }}" class="our-story-link">
+        Read the full story &rarr;
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+.our-story {
+  background: var(--cream, #F7F2EA);
+  padding: 120px 0;
+}
+.our-story-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0 40px;
+  align-items: stretch;
+}
+
+.our-story-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream-dark, #EFE7DB);
+  min-height: 640px;
+}
+.our-story-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 2.2s cubic-bezier(.23,1,.32,1);
+}
+.our-story:hover .our-story-media img {
+  transform: scale(1.03);
+}
+
+.our-story-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px 80px 72px 96px;
+  background: var(--white, #FFFFFF);
+  max-width: 640px;
+}
+
+.our-story-body .section-label {
+  color: var(--terracotta, #B8704A);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.our-story-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(38px, 4.2vw, 58px);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+  color: var(--espresso, #1E120A);
+  margin: 0 0 32px;
+  max-width: 520px;
+}
+.our-story-title em {
+  font-style: italic;
+  color: var(--terracotta, #B8704A);
+}
+
+.our-story-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--terracotta, #B8704A);
+  margin-bottom: 28px;
+}
+
+.our-story-lede {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(19px, 1.5vw, 23px);
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--espresso, #1E120A);
+  margin: 0 0 22px;
+}
+.our-story-lede em {
+  font-style: italic;
+  color: var(--terracotta, #B8704A);
+}
+
+.our-story-body p:not(.our-story-lede):not(.our-story-signature) {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--stone, #8B7355);
+  margin: 0 0 18px;
+  max-width: 500px;
+}
+
+.our-story-signature {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 17px;
+  font-style: italic;
+  color: var(--terracotta, #B8704A);
+  margin: 14px 0 28px !important;
+}
+
+.our-story-link {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--espresso, #1E120A);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--terracotta, #B8704A);
+  transition: color 0.25s, letter-spacing 0.25s;
+}
+.our-story-link:hover {
+  color: var(--terracotta, #B8704A);
+  letter-spacing: 0.26em;
+}
+
+@media (max-width: 1024px) {
+  .our-story { padding: 80px 0; }
+  .our-story-inner {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+  .our-story-media { min-height: 420px; }
+  .our-story-body {
+    padding: 56px 28px 64px;
+    max-width: none;
+  }
+  .our-story-title { margin-bottom: 24px; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Our Story",
+  "presets": [{ "name": "Our Story" }]
+}
+{% endschema %}

@@ -131,6 +131,16 @@
 
       {%- form 'product', product -%}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        {%- if product.available -%}
+          <div class="product-express-checkout">
+            {{ form | payment_button }}
+          </div>
+          <div class="product-express-divider" aria-hidden="true">
+            <span>or</span>
+          </div>
+        {%- endif -%}
+
         <button type="submit" class="btn-primary btn-add-cart" {% unless product.available %}disabled{% endunless %}>
           <span>{% if product.available %}Add to Bag &mdash; {{ product.price | money }}{% else %}Sold Out{% endif %}</span>
         </button>
@@ -1107,6 +1117,43 @@
 }
 
 .product-description p { margin-bottom: 12px; }
+
+/* Express checkout (Apple Pay / Shop Pay / Google Pay / PayPal) */
+.product-express-checkout {
+  margin-bottom: 0;
+}
+.product-express-checkout .shopify-payment-button,
+.product-express-checkout .shopify-payment-button__button {
+  width: 100%;
+}
+.product-express-checkout .shopify-payment-button__button--unbranded {
+  display: none;
+}
+.product-express-checkout .shopify-payment-button__more-options {
+  display: none !important;
+}
+
+.product-express-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 0 14px;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--stone, #8B7355);
+}
+.product-express-divider::before,
+.product-express-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(30,18,10,0.1);
+}
+.product-express-divider span {
+  padding: 0 14px;
+}
 
 /* CTA BUTTON */
 .btn-add-cart {
