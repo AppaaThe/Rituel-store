@@ -1,31 +1,25 @@
 <div class="product-page">
 
-  {%- comment -%} ── REAL product photos first, editorial gallery per handle ── {%- endcomment -%}
-  {%- assign img_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/' -%}
+  {%- comment -%} ── Custom editorial imagery matched by product handle ── {%- endcomment -%}
+  {%- assign img_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/pg-prod-' -%}
   {%- assign handle = product.handle | downcase -%}
   {%- assign custom_images = '' -%}
 
-  {%- if handle contains 'starter' -%}
-    {%- assign custom_images = 'rituel-guasha-roller-set-amethyst.jpg,rituel-guasha-roller-duo-amethyst.jpg,rituel-guasha-amethyst-duo-white.png,rituel-guasha-outdoor-lifestyle.png' -%}
-    {%- assign problem_set = 'bundle' -%}
-  {%- elsif handle contains 'full' -%}
-    {%- assign custom_images = 'rituel-guasha-amethyst-duo-white.png,rituel-guasha-roller-set-amethyst.jpg,rituel-guasha-roller-duo-amethyst.jpg,rituel-rosehip-facial-oil-30ml.jpg' -%}
-    {%- assign problem_set = 'bundle' -%}
-  {%- elsif handle contains 'ritual-kit' or handle contains 'kit' or handle contains 'bundle' -%}
-    {%- assign custom_images = 'rituel-guasha-roller-duo-amethyst.jpg,rituel-guasha-roller-set-amethyst.jpg,rituel-guasha-amethyst-duo-white.png,rituel-rosehip-facial-oil-30ml.jpg' -%}
-    {%- assign problem_set = 'bundle' -%}
-  {%- elsif handle contains 'gua' or handle contains 'stone' -%}
-    {%- assign custom_images = 'rituel-guasha-stone-amethyst.jpg,rituel-guasha-closeup-landscape.png,rituel-guasha-cheek-sculpting.png,rituel-guasha-jawline-sculpting.png,rituel-guasha-forehead-closeup.png,rituel-guasha-outdoor-lifestyle.png' -%}
+  {%- if handle contains 'gua' or handle contains 'stone' or handle contains 'amethyst-gua' -%}
+    {%- assign custom_images = 'guasha-hero,guasha-inuse,guasha-detail' -%}
     {%- assign problem_set = 'guasha' -%}
   {%- elsif handle contains 'ice' -%}
-    {%- assign custom_images = 'rituel-ice-roller-rose-pink.jpg,rituel-guasha-outdoor-lifestyle.png,rituel-guasha-cheek-sculpting.png' -%}
+    {%- assign custom_images = 'iceroller-hero,iceroller-inuse,iceroller-detail' -%}
     {%- assign problem_set = 'iceroller' -%}
   {%- elsif handle contains 'oil' or handle contains 'rosehip' -%}
-    {%- assign custom_images = 'rituel-rosehip-facial-oil-30ml.jpg,rituel-guasha-closeup-inuse.png,rituel-guasha-outdoor-lifestyle.png' -%}
+    {%- assign custom_images = 'oil-hero,oil-inuse,oil-detail' -%}
     {%- assign problem_set = 'oil' -%}
   {%- elsif handle contains 'roller' -%}
-    {%- assign custom_images = 'rituel-facial-roller-amethyst.jpg,rituel-guasha-roller-duo-amethyst.jpg,rituel-guasha-roller-set-amethyst.jpg,rituel-guasha-outdoor-lifestyle.png' -%}
+    {%- assign custom_images = 'roller-hero,roller-inuse,roller-detail' -%}
     {%- assign problem_set = 'roller' -%}
+  {%- elsif handle contains 'kit' or handle contains 'bundle' or handle contains 'ritual' -%}
+    {%- assign custom_images = 'guasha-hero,roller-hero,oil-hero,iceroller-hero' -%}
+    {%- assign problem_set = 'bundle' -%}
   {%- endif -%}
 
   {%- assign custom_image_list = custom_images | split: ',' -%}
@@ -34,13 +28,13 @@
   <div class="product-media">
     <div class="product-gallery">
       {%- if custom_image_list.size > 0 -%}
-        {%- for filename in custom_image_list -%}
+        {%- for slug in custom_image_list -%}
           <img
-            src="{{ img_base }}{{ filename }}"
+            src="{{ img_base }}{{ slug }}.png"
             alt="{{ product.title | escape }} — view {{ forloop.index }}"
             class="product-gallery-img {% if forloop.first %}active{% endif %}"
             data-index="{{ forloop.index0 }}"
-            data-src="{{ img_base }}{{ filename }}"
+            data-src="{{ img_base }}{{ slug }}.png"
             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
             onclick="switchImage({{ forloop.index0 }})"
           >
@@ -64,9 +58,9 @@
     </div>
     <div class="product-main-image">
       {%- if custom_image_list.size > 0 -%}
-        {%- assign first_filename = custom_image_list[0] -%}
+        {%- assign first_slug = custom_image_list[0] -%}
         <img
-          src="{{ img_base }}{{ first_filename }}"
+          src="{{ img_base }}{{ first_slug }}.png"
           alt="{{ product.title | escape }}"
           class="product-main-img"
           id="mainProductImage"
@@ -91,13 +85,6 @@
 
     <p class="product-vendor">{{ product.vendor }}</p>
     <h1 class="product-title">{{ product.title }}</h1>
-
-    <!-- Judge.me star rating preview -->
-    <div style="margin: 8px 0 14px;">
-      <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
-        {{ product.metafields.judgeme.badge }}
-      </div>
-    </div>
 
     <!-- First-order offer banner -->
     <div class="product-offer-banner">
@@ -166,13 +153,6 @@
       </div>
     </div>
 
-  </div>
-</div>
-
-<!-- JUDGE.ME REVIEWS WIDGET -->
-<div class="product-reviews-section" style="max-width: 1100px; margin: 60px auto; padding: 0 24px;">
-  <div class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}" data-product-handle="{{ product.handle }}">
-    {{ product.metafields.judgeme.widget }}
   </div>
 </div>
 
@@ -378,32 +358,6 @@
   </div>
 </div>
 
-<!-- WHY WE BUILT THIS — founder voice (replace blocks with real reviews in theme editor when you have them) -->
-{%- assign review_blocks = section.blocks | where: "type", "review" -%}
-{%- if review_blocks.size > 0 -%}
-  <div class="product-section product-section--reviews">
-    <div class="reviews-header-row">
-      <span class="section-label">Why We Built This</span>
-      <h2 class="section-title">The ritual, <em>explained.</em></h2>
-      <p class="reviews-sub">Three things every first-time buyer should know before trying it.</p>
-    </div>
-
-    <div class="reviews-grid">
-      {%- for block in review_blocks -%}
-        <div class="review-card" {{ block.shopify_attributes }}>
-          {%- if block.settings.headline != blank -%}
-            <p class="review-headline">{{ block.settings.headline | escape }}</p>
-          {%- endif -%}
-          <p class="review-text">{{ block.settings.text | escape }}</p>
-          <div class="review-footer">
-            <span class="review-author">— {{ block.settings.author | escape }}{% if block.settings.location != blank %}, {{ block.settings.location | escape }}{% endif %}</span>
-          </div>
-        </div>
-      {%- endfor -%}
-    </div>
-  </div>
-{%- endif -%}
-
 <!-- GUARANTEE -->
 <div class="product-section product-section--guarantee">
   <div class="guarantee-box">
@@ -472,20 +426,18 @@
 .product-gallery {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 92px;
+  gap: 8px;
+  width: 72px;
   flex-shrink: 0;
 }
 
 .product-gallery-img {
-  width: 92px;
-  height: 92px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
   border-radius: 0;
   cursor: pointer;
   border: 2px solid transparent;
-  opacity: 0.7;
-  transition: opacity 0.2s, border-color 0.2s;
   opacity: 0.5;
   transition: all 0.3s;
 }
@@ -951,126 +903,6 @@
   line-height: 1.7;
 }
 
-/* Customer Reviews Section */
-.product-section--reviews {
-  background: var(--cream-dark, #EDE6D6);
-  max-width: 100%;
-  padding: 80px 48px;
-}
-.reviews-header-row {
-  max-width: 1100px;
-  margin: 0 auto 56px;
-  text-align: center;
-}
-.reviews-sub {
-  font-family: var(--serif, 'Cormorant Garamond', serif);
-  font-size: 18px;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--stone, #6B5A40);
-  max-width: 500px;
-  margin: 8px auto 0;
-  line-height: 1.5;
-}
-.product-section--reviews .section-label {
-  color: var(--terracotta, #A15E3C);
-}
-.product-section--reviews .section-title {
-  color: var(--espresso, #1E120A);
-  margin-bottom: 20px;
-}
-.reviews-summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.reviews-stars-big {
-  color: var(--terracotta, #A15E3C);
-  font-size: 22px;
-  letter-spacing: 3px;
-}
-.reviews-avg {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--espresso, #1E120A);
-  letter-spacing: 0.02em;
-}
-.reviews-count {
-  font-size: 14px;
-  color: var(--stone, #6B5A40);
-}
-.product-section--reviews .reviews-grid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.product-section--reviews .review-card {
-  background: var(--white, #FDFAF5);
-  padding: 32px 28px;
-  border-radius: 0;
-  box-shadow: 0 2px 20px rgba(30,18,10,0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.product-section--reviews .review-card:nth-child(2) { margin-top: 32px; }
-.product-section--reviews .review-card:nth-child(3) { margin-top: 16px; }
-.product-section--reviews .review-stars {
-  color: var(--terracotta, #A15E3C);
-  font-size: 16px;
-  letter-spacing: 2px;
-  margin-bottom: 0;
-}
-.review-headline {
-  font-family: var(--serif, 'Cormorant Garamond', serif);
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--espresso, #1E120A);
-  line-height: 1.3;
-  margin: 0;
-}
-.product-section--reviews .review-text {
-  font-family: var(--sans, 'Jost', sans-serif);
-  font-size: 14px;
-  font-weight: 300;
-  font-style: normal;
-  line-height: 1.7;
-  color: #5a4a3a;
-  margin: 0;
-}
-.review-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: auto;
-  padding-top: 10px;
-  border-top: 1px solid rgba(30,18,10,0.06);
-}
-.product-section--reviews .review-author {
-  font-size: 12px;
-  letter-spacing: 0.03em;
-  color: var(--stone, #6B5A40);
-  margin: 0;
-}
-.product-section--reviews .review-badge {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: rgba(52,199,89,0.1);
-  color: #2B7F3E;
-  padding: 3px 10px;
-  border-radius: 0;
-  margin-left: 0;
-  white-space: nowrap;
-}
-
 /* Guarantee */
 .product-section--guarantee {
   padding: 60px 48px 80px;
@@ -1188,25 +1020,19 @@
     position: relative;
     top: 0;
     padding: 24px;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
   .product-gallery {
     flex-direction: row;
     width: 100%;
     overflow-x: auto;
-    gap: 8px;
-    padding-top: 12px;
   }
-  .product-gallery-img { width: 72px; height: 72px; flex-shrink: 0; }
+  .product-gallery-img { width: 60px; height: 60px; }
   .product-info { padding: 24px; }
   .product-trust-grid { grid-template-columns: 1fr; }
   .included-grid { grid-template-columns: 1fr; }
   .results-grid { grid-template-columns: 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
-  .product-section--reviews .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
-  .product-section--reviews .review-card:nth-child(2),
-  .product-section--reviews .review-card:nth-child(3) { margin-top: 0; }
-  .product-section--reviews { padding: 56px 24px; }
   .product-section { padding: 56px 24px; }
   .material-inline-grid { grid-template-columns: 1fr; }
   .product-press-logos { gap: 28px; }
@@ -1232,72 +1058,6 @@ function toggleFaq(item) {
 {% schema %}
 {
   "name": "Product",
-  "max_blocks": 20,
-  "blocks": [
-    {
-      "type": "review",
-      "name": "Note / Review block",
-      "settings": [
-        {
-          "type": "text",
-          "id": "headline",
-          "label": "Headline",
-          "info": "Short attention-grabber. Example: 'Most serums sit on top.'"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Body text",
-          "info": "Founder note, truth statement, or real customer review."
-        },
-        {
-          "type": "text",
-          "id": "author",
-          "label": "Author / signature",
-          "info": "E.g. 'Doriano, Founder' or real customer first name + last initial"
-        },
-        {
-          "type": "text",
-          "id": "location",
-          "label": "Role or location (optional)",
-          "info": "E.g. 'BY RITUEL' or a city"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product",
-      "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "headline": "Most serums sit on top.",
-            "text": "I tried every serum in my 20s. Watched them pool on my skin and do nothing for the puffiness I'd wake up with every morning. Nothing topical can physically move lymph fluid — only mechanical stimulation can. That's why I built this brand around a stone, not a bottle.",
-            "author": "Doriano, Founder",
-            "location": "BY RITUEL"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "headline": "Why amethyst, not jade.",
-            "text": "Most cheap gua sha stones are dyed glass or low-grade Xiuyan jade. They warm up in 30 seconds and scratch your skin. We picked amethyst because it's denser, polishes smoother, and stays cool for the full five-minute ritual. You'll feel the difference on the first pull.",
-            "author": "Doriano, Founder",
-            "location": "BY RITUEL"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "headline": "5 minutes is the whole thing.",
-            "text": "The point isn't adding one more step to your routine. It's replacing three with one that actually works. Oil, sweep, ice. Five minutes. Every morning. If you can't see a difference by day 14, send it back — we cover the return.",
-            "author": "Doriano, Founder",
-            "location": "BY RITUEL"
-          }
-        }
-      ]
-    }
-  ]
+  "presets": [{ "name": "Product" }]
 }
 {% endschema %}

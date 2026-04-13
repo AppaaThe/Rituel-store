@@ -1,6 +1,3 @@
-{%- comment -%} ── Shared image-base: use REAL product photos, not AI-generated ── {%- endcomment -%}
-{%- assign real_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/' -%}
-
 <div class="collection-page">
 
   {%- comment -%} HERO BANNER {%- endcomment -%}
@@ -22,17 +19,9 @@
     <div class="collection-grid collection-grid-bundles">
       {%- for product in collection.products -%}
         {%- if product.tags contains 'bundle' -%}
-          {%- assign h = product.handle | downcase -%}
-          {%- assign nbp_hero = '' -%}
-          {%- if h contains 'starter' -%}{%- assign nbp_hero = real_base | append: 'rituel-guasha-roller-set-amethyst.jpg' -%}
-          {%- elsif h contains 'full' -%}{%- assign nbp_hero = real_base | append: 'rituel-guasha-amethyst-duo-white.png' -%}
-          {%- elsif h contains 'ritual-kit' or h contains 'kit' -%}{%- assign nbp_hero = real_base | append: 'rituel-guasha-roller-duo-amethyst.jpg' -%}
-          {%- endif -%}
           <a href="{{ product.url }}" class="collection-product" style="text-decoration:none;color:inherit;">
             <div class="collection-product-image">
-              {%- if nbp_hero != '' -%}
-                <img src="{{ nbp_hero }}" alt="{{ product.title | escape }}" loading="lazy">
-              {%- elsif product.featured_image -%}
+              {%- if product.featured_image -%}
                 <img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.title }}" loading="lazy">
               {%- else -%}
                 <div style="width:100%;height:100%;background:radial-gradient(ellipse,#C8A882,#8B6845);"></div>
@@ -64,18 +53,9 @@
     <div class="collection-grid">
       {%- for product in collection.products -%}
         {%- unless product.tags contains 'bundle' -%}
-          {%- assign h = product.handle | downcase -%}
-          {%- assign nbp_hero = '' -%}
-          {%- if h contains 'gua' or h contains 'stone' -%}{%- assign nbp_hero = real_base | append: 'rituel-guasha-stone-amethyst.jpg' -%}
-          {%- elsif h contains 'ice' -%}{%- assign nbp_hero = real_base | append: 'rituel-ice-roller-rose-pink.jpg' -%}
-          {%- elsif h contains 'oil' or h contains 'rosehip' -%}{%- assign nbp_hero = real_base | append: 'rituel-rosehip-facial-oil-30ml.jpg' -%}
-          {%- elsif h contains 'roller' -%}{%- assign nbp_hero = real_base | append: 'rituel-facial-roller-amethyst.jpg' -%}
-          {%- endif -%}
           <a href="{{ product.url }}" class="collection-product" style="text-decoration:none;color:inherit;">
             <div class="collection-product-image">
-              {%- if nbp_hero != '' -%}
-                <img src="{{ nbp_hero }}" alt="{{ product.title | escape }}" loading="lazy">
-              {%- elsif product.featured_image -%}
+              {%- if product.featured_image -%}
                 <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
               {%- else -%}
                 <div style="width:100%;height:100%;background:radial-gradient(ellipse,#C8A882,#8B6845);"></div>
