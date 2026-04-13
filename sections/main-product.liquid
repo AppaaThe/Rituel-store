@@ -280,90 +280,186 @@
 </div>
 {%- endif -%}
 
-<!-- WHAT'S INCLUDED (gua sha and bundles only) -->
-{%- if problem_set == 'guasha' or problem_set == 'bundle' -%}
-<div class="product-section">
-  <h2 class="section-title">What's <em>Included</em></h2>
-  <div class="included-grid">
-    <div class="included-card">
-      <span class="included-icon">💎</span>
-      <h4>Amethyst Gua Sha Stone</h4>
-      <p>Hand-carved with a concave edge designed to fit the jawline. Natural amethyst — stays cool, polishes smooth.</p>
-    </div>
-    <div class="included-card">
-      <span class="included-icon">📖</span>
-      <h4>Ritual Guide</h4>
-      <p>Step-by-step technique guide with illustrations. The exact 5-minute routine for jawline sculpting.</p>
-    </div>
-    <div class="included-card">
-      <span class="included-icon">🔮</span>
-      <h4>A Natural Stone, Uniquely Yours</h4>
-      <p>Every piece has its own natural pattern and veining. No two are the same — your ritual tool is yours alone.</p>
-    </div>
+<!-- THE RITUAL — full-bleed editorial moment (replaces What's Included + Lifestyle) -->
+<section class="product-ritual">
+  <div class="product-ritual-media">
+    <img
+      src="https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/pg-product-lifestyle-use.png"
+      alt="Woman with glowing skin using an amethyst gua sha on her cheekbone"
+      loading="lazy"
+    >
   </div>
-</div>
-{%- endif -%}
 
-<!-- LIFESTYLE / USE IN RITUAL -->
-<div class="product-lifestyle">
-  <div class="product-lifestyle-img">
-    <img src="https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/pg-product-lifestyle-use.png" alt="Woman with glowing skin using an amethyst gua sha on her cheekbone" loading="lazy">
+  <div class="product-ritual-body">
+    <div class="product-ritual-inner">
+
+      <span class="product-ritual-eyebrow">The 5-Minute Ritual</span>
+
+      <h2 class="product-ritual-title">Five minutes.<br><em>Every morning.</em></h2>
+
+      <div class="product-ritual-rule" aria-hidden="true"></div>
+
+      <p class="product-ritual-lede">
+        Apply a few drops of facial oil, then glide the stone upward and outward in slow, deliberate strokes — forehead, cheeks, jawline, neck.
+      </p>
+
+      <p class="product-ritual-body-copy">
+        Three minutes later your face looks depuffed, your skin is glowing, and you've started your day with something that belongs entirely to you.
+      </p>
+
+      {%- if problem_set == 'guasha' or problem_set == 'bundle' -%}
+        <div class="product-ritual-inbox">
+          <span class="inbox-label">In the box</span>
+          <ul class="inbox-list">
+            <li><span class="inbox-num">01</span>Amethyst gua sha stone</li>
+            <li><span class="inbox-num">02</span>Ritual technique guide</li>
+            <li><span class="inbox-num">03</span>Cotton travel pouch</li>
+          </ul>
+        </div>
+      {%- endif -%}
+
+      <p class="product-ritual-meta">Best done after cleansing, before makeup — every single morning.</p>
+
+    </div>
   </div>
-  <div class="product-lifestyle-copy">
-    <span class="section-label">The 5-Minute Ritual</span>
-    <h2>Five minutes. <em>Every morning.</em></h2>
-    <p>Apply a few drops of facial oil, then glide the stone upward and outward in slow, deliberate strokes — forehead, cheeks, jawline, neck. Three minutes later, your face looks depuffed, your skin is glowing, and you've started your day with something that belongs entirely to you.</p>
-    <p class="product-lifestyle-meta">Works best when done consistently after your morning cleanse, before makeup.</p>
-  </div>
-</div>
+</section>
 
 <style>
-.product-lifestyle {
+.product-ritual {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.15fr 1fr;
   align-items: stretch;
-  max-width: 1400px;
-  margin: 80px auto;
-  gap: 0;
-  background: var(--white);
+  max-width: 1440px;
+  margin: 120px auto;
+  background: var(--white, #FFFFFF);
+  overflow: hidden;
 }
-.product-lifestyle-img { position: relative; min-height: 560px; overflow: hidden; }
-.product-lifestyle-img img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
+.product-ritual-media {
+  position: relative;
+  overflow: hidden;
+  min-height: 720px;
+  background: var(--cream-dark, #EFE7DB);
+}
+.product-ritual-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: transform 2s cubic-bezier(.23,1,.32,1);
 }
-.product-lifestyle-copy {
-  padding: 80px 72px;
+.product-ritual:hover .product-ritual-media img {
+  transform: scale(1.025);
+}
+.product-ritual-body {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  padding: 120px 96px;
+  background: var(--white, #FFFFFF);
 }
-.product-lifestyle-copy h2 {
-  font-family: var(--serif);
-  font-size: clamp(36px, 4vw, 56px);
+.product-ritual-inner {
+  max-width: 480px;
+}
+.product-ritual-eyebrow {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--terracotta, #B8704A);
+  margin-bottom: 28px;
+}
+.product-ritual-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(46px, 5.6vw, 76px);
   font-weight: 300;
-  line-height: 1.1;
-  margin: 18px 0 28px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--espresso, #1E120A);
+  margin: 0 0 42px;
 }
-.product-lifestyle-copy h2 em { font-style: italic; color: var(--terracotta); }
-.product-lifestyle-copy p {
-  font-size: 16px;
+.product-ritual-title em {
+  font-style: italic;
+  color: var(--terracotta, #B8704A);
+}
+.product-ritual-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--terracotta, #B8704A);
+  margin-bottom: 34px;
+}
+.product-ritual-lede {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(20px, 1.6vw, 24px);
+  font-weight: 400;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--espresso, #1E120A);
+  margin: 0 0 24px;
+}
+.product-ritual-body-copy {
+  font-size: 15px;
   line-height: 1.9;
-  color: var(--stone);
+  color: var(--stone, #8B7355);
+  margin: 0 0 36px;
+}
+
+/* In the box — inline callout, only rendered for gua sha / bundles */
+.product-ritual-inbox {
+  padding: 28px 0 30px;
+  border-top: 1px solid rgba(30,18,10,0.09);
+  border-bottom: 1px solid rgba(30,18,10,0.09);
+  margin-bottom: 28px;
+}
+.inbox-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--terracotta, #B8704A);
   margin-bottom: 18px;
 }
-.product-lifestyle-meta {
-  font-size: 13px !important;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--terracotta) !important;
-  margin-top: 12px !important;
+.inbox-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+.inbox-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 18px;
+  color: var(--espresso, #1E120A);
+  border-bottom: 1px dashed rgba(30,18,10,0.07);
+}
+.inbox-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.inbox-num {
+  flex-shrink: 0;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  color: var(--terracotta, #B8704A);
+  font-family: var(--sans, 'Jost', sans-serif);
+  min-width: 24px;
+}
+
+.product-ritual-meta {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stone, #8B7355);
+  margin: 0;
+}
+
 @media (max-width: 1024px) {
-  .product-lifestyle { grid-template-columns: 1fr; margin: 56px 0; }
-  .product-lifestyle-img { min-height: 380px; }
-  .product-lifestyle-copy { padding: 48px 32px; }
+  .product-ritual {
+    grid-template-columns: 1fr;
+    margin: 72px 0;
+  }
+  .product-ritual-media { min-height: 520px; }
+  .product-ritual-body { padding: 72px 28px; }
+  .product-ritual-inner { max-width: none; }
 }
 </style>
 
@@ -1135,39 +1231,6 @@
   margin-bottom: 48px;
 }
 
-/* Included Grid */
-.included-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.included-card {
-  background: white;
-  padding: 32px 28px;
-  border-radius: 0;
-  text-align: center;
-  box-shadow: 0 2px 20px rgba(44,24,16,0.06);
-}
-
-.included-icon { font-size: 32px; display: block; margin-bottom: 16px; }
-
-.included-card h4 {
-  font-family: var(--sans, 'Jost', sans-serif);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--espresso, #2C1810);
-  margin-bottom: 8px;
-}
-
-.included-card p {
-  font-size: 14px;
-  color: var(--stone, #8B7355);
-  line-height: 1.6;
-}
-
 .section-label--light {
   color: var(--blush, #E8C5B0);
 }
@@ -1495,7 +1558,6 @@
     overflow: visible;
   }
   .product-trust-grid { grid-template-columns: 1fr; }
-  .included-grid { grid-template-columns: 1fr; }
   .results-grid { grid-template-columns: 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
   .product-section { padding: 56px 24px; }
@@ -1555,7 +1617,7 @@ document.addEventListener('keydown', function(e) {
 
 /* Scroll-reveal: fade + slide-up sections as they enter viewport */
 (function initScrollReveal() {
-  var targets = document.querySelectorAll('.product-problems, .product-section, .product-lifestyle, .results-timeline, .timeline-node, .problem-card, .included-card, .material-inline-card');
+  var targets = document.querySelectorAll('.product-problems, .product-section, .product-ritual, .results-timeline, .timeline-node, .problem-card, .material-inline-card');
   if (!targets.length || typeof IntersectionObserver === 'undefined') return;
   targets.forEach(function(el) { el.classList.add('reveal'); });
   var io = new IntersectionObserver(function(entries) {
