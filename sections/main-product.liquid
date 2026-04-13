@@ -14,20 +14,51 @@
     {%- assign problem_set = 'bundle' -%}
   {%- endif -%}
 
-  <!-- IMAGE GALLERY — editorial stacked layout, all Shopify admin images inline -->
+  <!-- IMAGE GALLERY — Mount Lai pattern: single hero + horizontal thumb strip below -->
   <div class="product-media">
     {%- if product.images.size > 0 -%}
-      {%- for image in product.images -%}
-        <figure class="product-stack-img">
-          <img
-            src="{{ image | image_url: width: 1400 }}"
-            srcset="{{ image | image_url: width: 700 }} 700w, {{ image | image_url: width: 1100 }} 1100w, {{ image | image_url: width: 1600 }} 1600w"
-            sizes="(max-width: 900px) 100vw, 50vw"
-            alt="{{ image.alt | default: product.title | escape }}"
-            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-          >
-        </figure>
-      {%- endfor -%}
+      <div class="product-hero-wrap">
+        <img
+          src="{{ product.featured_image | image_url: width: 1600 }}"
+          srcset="{{ product.featured_image | image_url: width: 800 }} 800w, {{ product.featured_image | image_url: width: 1200 }} 1200w, {{ product.featured_image | image_url: width: 1800 }} 1800w"
+          sizes="(max-width: 900px) 100vw, 50vw"
+          alt="{{ product.featured_image.alt | default: product.title | escape }}"
+          class="product-hero-img"
+          id="mainProductImage"
+          loading="eager"
+        >
+        {%- if product.images.size > 1 -%}
+          <button type="button" class="hero-arrow hero-arrow-prev" aria-label="Previous image" onclick="cycleImage(-1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button type="button" class="hero-arrow hero-arrow-next" aria-label="Next image" onclick="cycleImage(1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        {%- endif -%}
+      </div>
+
+      {%- if product.images.size > 1 -%}
+        <div class="product-thumbs" role="tablist" aria-label="Product image thumbnails">
+          {%- for image in product.images -%}
+            <button
+              type="button"
+              class="product-thumb {% if forloop.first %}active{% endif %}"
+              data-src="{{ image | image_url: width: 1600 }}"
+              data-alt="{{ image.alt | default: product.title | escape }}"
+              role="tab"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-label="View image {{ forloop.index }} of {{ product.images.size }}"
+              onclick="switchImage({{ forloop.index0 }})"
+            >
+              <img
+                src="{{ image | image_url: width: 240 }}"
+                alt=""
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              >
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     {%- else -%}
       <div class="gallery-placeholder"></div>
     {%- endif -%}
@@ -466,38 +497,105 @@
   min-height: 80vh;
 }
 
-/* ── Editorial stacked gallery ── */
+/* ── Mount Lai pattern: single hero + horizontal thumb strip ── */
 .product-media {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 0 0 0 0;
+  gap: 16px;
+  padding: 40px 24px 40px 40px;
   background: var(--cream, #F7F2EA);
 }
 
-.product-stack-img {
-  margin: 0;
+.product-hero-wrap {
+  position: relative;
   width: 100%;
   background: var(--cream-dark, #EFE7DB);
   overflow: hidden;
 }
 
-.product-stack-img img {
+.product-hero-img {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
+  aspect-ratio: 3/4;
   object-fit: cover;
-  aspect-ratio: 4/5;
-  transition: transform 1.2s cubic-bezier(.23,1,.32,1);
+  transition: opacity 0.35s ease;
 }
 
-.product-stack-img:hover img {
-  transform: scale(1.015);
+.product-hero-img.swapping { opacity: 0.35; }
+
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.94);
+  border: 1px solid rgba(30,18,10,0.08);
+  color: var(--espresso, #1E120A);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(30,18,10,0.1);
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  z-index: 3;
+}
+.hero-arrow:hover {
+  background: var(--terracotta, #B8704A);
+  color: #fff;
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 6px 18px rgba(30,18,10,0.16);
+}
+.hero-arrow-prev { left: 14px; }
+.hero-arrow-next { right: 14px; }
+
+.product-thumbs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 2px 0 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(30,18,10,0.15) transparent;
+}
+.product-thumbs::-webkit-scrollbar { height: 4px; }
+.product-thumbs::-webkit-scrollbar-track { background: transparent; }
+.product-thumbs::-webkit-scrollbar-thumb { background: rgba(30,18,10,0.15); }
+
+.product-thumb {
+  flex: 0 0 auto;
+  width: 88px;
+  height: 88px;
+  padding: 0;
+  background: var(--cream-dark, #EFE7DB);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0.75;
+  transition: all 0.25s;
+}
+.product-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.product-thumb:hover { opacity: 1; }
+.product-thumb.active {
+  border-color: var(--espresso, #1E120A);
+  opacity: 1;
+}
+.product-thumb:focus-visible {
+  outline: 2px solid var(--terracotta, #B8704A);
+  outline-offset: 2px;
+  opacity: 1;
 }
 
 .gallery-placeholder {
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 3/4;
   background: linear-gradient(145deg, var(--cream-dark,#EFE7DB), var(--cream,#F7F2EA));
 }
 
@@ -1307,6 +1405,53 @@
 </style>
 
 <script>
+/* Gallery: single hero swaps when a thumbnail is clicked or arrows pressed */
+function switchImage(index) {
+  var thumbs = document.querySelectorAll('.product-thumb');
+  var main = document.getElementById('mainProductImage');
+  if (!thumbs.length || !main) return;
+  if (index < 0) index = thumbs.length - 1;
+  if (index >= thumbs.length) index = 0;
+  thumbs.forEach(function(t) {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  var active = thumbs[index];
+  active.classList.add('active');
+  active.setAttribute('aria-selected', 'true');
+  var src = active.getAttribute('data-src');
+  var alt = active.getAttribute('data-alt') || '';
+  if (src) {
+    main.classList.add('swapping');
+    setTimeout(function() {
+      main.src = src;
+      main.alt = alt;
+      main.classList.remove('swapping');
+    }, 150);
+  }
+  main.dataset.currentIndex = index;
+  active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+
+function cycleImage(delta) {
+  var main = document.getElementById('mainProductImage');
+  if (!main) return;
+  var current = parseInt(main.dataset.currentIndex || '0', 10);
+  switchImage(current + delta);
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.target.closest('input, textarea, select')) return;
+  if (!document.getElementById('mainProductImage')) return;
+  if (e.key === 'ArrowLeft') cycleImage(-1);
+  if (e.key === 'ArrowRight') cycleImage(1);
+});
+
+(function initGalleryIndex() {
+  var main = document.getElementById('mainProductImage');
+  if (main) main.dataset.currentIndex = '0';
+})();
+
 /* Sticky mobile buy bar — appears once main Add-to-Bag CTA scrolls off screen */
 (function initMobileBuyBar() {
   var bar = document.getElementById('mobileBuyBar');
