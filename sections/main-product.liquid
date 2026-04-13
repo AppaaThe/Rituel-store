@@ -1569,38 +1569,51 @@
 
 <script>
 /* Gallery: single hero swaps when a thumbnail is clicked or arrows pressed */
+window.productGalleryIndex = 0;
+
 function switchImage(index) {
   var thumbs = document.querySelectorAll('.product-thumb');
   var main = document.getElementById('mainProductImage');
   if (!thumbs.length || !main) return;
-  if (index < 0) index = thumbs.length - 1;
-  if (index >= thumbs.length) index = 0;
-  thumbs.forEach(function(t) {
-    t.classList.remove('active');
-    t.setAttribute('aria-selected', 'false');
-  });
+
+  var total = thumbs.length;
+  index = ((index % total) + total) % total;
+
+  for (var i = 0; i < thumbs.length; i++) {
+    thumbs[i].classList.remove('active');
+    thumbs[i].setAttribute('aria-selected', 'false');
+  }
+
   var active = thumbs[index];
   active.classList.add('active');
   active.setAttribute('aria-selected', 'true');
+
   var src = active.getAttribute('data-src');
-  var alt = active.getAttribute('data-alt') || '';
+  if (!src) {
+    var innerImg = active.querySelector('img');
+    if (innerImg) src = innerImg.src;
+  }
+  var alt = active.getAttribute('data-alt') || main.alt || '';
+
   if (src) {
     main.classList.add('swapping');
+    main.src = src;
+    main.alt = alt;
     setTimeout(function() {
-      main.src = src;
-      main.alt = alt;
       main.classList.remove('swapping');
-    }, 150);
+    }, 200);
   }
+
+  window.productGalleryIndex = index;
   main.dataset.currentIndex = index;
-  active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+  if (active.scrollIntoView) {
+    active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
 }
 
 function cycleImage(delta) {
-  var main = document.getElementById('mainProductImage');
-  if (!main) return;
-  var current = parseInt(main.dataset.currentIndex || '0', 10);
-  switchImage(current + delta);
+  switchImage(window.productGalleryIndex + delta);
 }
 
 document.addEventListener('keydown', function(e) {
