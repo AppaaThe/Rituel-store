@@ -15,8 +15,8 @@
   <nav class="header-nav" role="navigation">
     <a href="{{ routes.root_url }}">Home</a>
     <div class="nav-dropdown-wrap">
-      <a href="{{ routes.collections_url }}/all" class="nav-dropdown-trigger">Shop</a>
-      <div class="nav-mega-menu">
+      <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="megaMenu" onclick="toggleMegaMenu(this)">Shop <span aria-hidden="true">▾</span></button>
+      <div class="nav-mega-menu" id="megaMenu" role="menu">
         <div class="mega-col">
           <span class="mega-col-title">Shop by Concern</span>
           <a href="/products/rituel-ice-roller" class="mega-link">De-puff & Drain</a>
@@ -78,6 +78,20 @@
       <a href="/products/rituel-ice-roller" onclick="toggleMenu()" class="mobile-menu-sub">De-puff & Drain</a>
       <a href="/products/rituel-gua-sha" onclick="toggleMenu()" class="mobile-menu-sub">Sculpt & Define</a>
       <a href="/products/rituel-full-ritual" onclick="toggleMenu()" class="mobile-menu-sub">Glow & Radiance</a>
+      <a href="/products/rituel-jade-roller" onclick="toggleMenu()" class="mobile-menu-sub">Soothe & Calm</a>
+    </div>
+    <div class="mobile-menu-section">
+      <span class="mobile-menu-label">Shop by Product</span>
+      <a href="/products/rituel-gua-sha" onclick="toggleMenu()" class="mobile-menu-sub">Amethyst Gua Sha</a>
+      <a href="/products/rituel-jade-roller" onclick="toggleMenu()" class="mobile-menu-sub">Amethyst Roller</a>
+      <a href="/products/rituel-ice-roller" onclick="toggleMenu()" class="mobile-menu-sub">Ice Roller</a>
+      <a href="/products/rituel-rosehip-oil" onclick="toggleMenu()" class="mobile-menu-sub">Rosehip Oil</a>
+    </div>
+    <div class="mobile-menu-section">
+      <span class="mobile-menu-label">Ritual Sets</span>
+      <a href="/products/rituel-starter-ritual" onclick="toggleMenu()" class="mobile-menu-sub">Starter Ritual — $35</a>
+      <a href="/products/rituel-full-ritual" onclick="toggleMenu()" class="mobile-menu-sub">Full Ritual — $48</a>
+      <a href="/products/rituel-complete-ritual" onclick="toggleMenu()" class="mobile-menu-sub">Complete Ritual — $58</a>
     </div>
     <a href="{{ pages['about-us'].url | default: '/pages/about-us' }}" onclick="toggleMenu()">About Us</a>
     <a href="{{ pages['faq'].url | default: '/pages/faq' }}" onclick="toggleMenu()">FAQ</a>
@@ -378,6 +392,17 @@
 }
 .nav-dropdown-trigger {
   cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+.nav-dropdown-trigger:focus-visible {
+  outline: 2px solid var(--terracotta, #A15E3C);
+  outline-offset: 4px;
 }
 .nav-mega-menu {
   position: absolute;
@@ -397,7 +422,9 @@
   transition: opacity 0.25s ease, transform 0.25s ease;
   z-index: 200;
 }
-.nav-dropdown-wrap:hover .nav-mega-menu {
+.nav-dropdown-wrap:hover .nav-mega-menu,
+.nav-dropdown-wrap:focus-within .nav-mega-menu,
+.nav-dropdown-wrap.is-open .nav-mega-menu {
   opacity: 1;
   pointer-events: all;
   transform: translateX(-50%) translateY(0);
@@ -453,6 +480,32 @@ function toggleMenu() {
   overlay.classList.toggle('open');
   burger.classList.toggle('open');
 }
+
+// Mega menu toggle (keyboard + click accessible)
+function toggleMegaMenu(btn) {
+  var wrap = btn.closest('.nav-dropdown-wrap');
+  if (!wrap) return;
+  var isOpen = wrap.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+// Close mega menu on Escape or outside click
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Escape') return;
+  document.querySelectorAll('.nav-dropdown-wrap.is-open').forEach(function(w) {
+    w.classList.remove('is-open');
+    var t = w.querySelector('.nav-dropdown-trigger');
+    if (t) { t.setAttribute('aria-expanded', 'false'); t.focus(); }
+  });
+});
+document.addEventListener('click', function(e) {
+  document.querySelectorAll('.nav-dropdown-wrap.is-open').forEach(function(w) {
+    if (!w.contains(e.target)) {
+      w.classList.remove('is-open');
+      var t = w.querySelector('.nav-dropdown-trigger');
+      if (t) t.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
 
 // Highlight active nav link
 const currentPath = window.location.pathname;

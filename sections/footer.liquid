@@ -28,6 +28,18 @@
     </ul>
   </div>
 </footer>
+<div class="footer-payments" aria-label="Accepted payment methods">
+  <span class="footer-payments-label">We accept</span>
+  <ul class="footer-payments-list">
+    <li><svg role="img" aria-label="Visa" viewBox="0 0 38 24" width="38" height="24"><rect width="38" height="24" rx="3" fill="#fff" stroke="rgba(30,18,10,0.12)"/><text x="19" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#1A1F71">VISA</text></svg></li>
+    <li><svg role="img" aria-label="Mastercard" viewBox="0 0 38 24" width="38" height="24"><rect width="38" height="24" rx="3" fill="#fff" stroke="rgba(30,18,10,0.12)"/><circle cx="16" cy="12" r="6" fill="#EB001B"/><circle cx="22" cy="12" r="6" fill="#F79E1B" fill-opacity="0.85"/></svg></li>
+    <li><svg role="img" aria-label="American Express" viewBox="0 0 38 24" width="38" height="24"><rect width="38" height="24" rx="3" fill="#2E77BC"/><text x="19" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#fff">AMEX</text></svg></li>
+    <li><svg role="img" aria-label="PayPal" viewBox="0 0 38 24" width="38" height="24"><rect width="38" height="24" rx="3" fill="#fff" stroke="rgba(30,18,10,0.12)"/><text x="19" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#003087">Pay<tspan fill="#009CDE">Pal</tspan></text></svg></li>
+    <li><svg role="img" aria-label="Apple Pay" viewBox="0 0 38 24" width="38" height="24"><rect width="38" height="24" rx="3" fill="#000"/><text x="19" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="600" fill="#fff">  Pay</text></svg></li>
+    <li><svg role="img" aria-label="Google Pay" viewBox="0 0 38 24" width="38" height="24"><rect width="38" height="24" rx="3" fill="#fff" stroke="rgba(30,18,10,0.12)"/><text x="19" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="#5F6368">G Pay</text></svg></li>
+    <li><svg role="img" aria-label="Shop Pay" viewBox="0 0 38 24" width="38" height="24"><rect width="38" height="24" rx="3" fill="#5A31F4"/><text x="19" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="#fff">shop</text></svg></li>
+  </ul>
+</div>
 <div class="footer-bottom">
   <p>&copy; {{ 'now' | date: '%Y' }} BY RITUEL. All rights reserved.</p>
   <div class="footer-legal">
@@ -36,3 +48,42 @@
     <a href="{{ shop.terms_of_service.url | default: '/pages/terms' }}">Terms of Service</a>
   </div>
 </div>
+
+<style>
+.footer-payments {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(30,18,10,0.06);
+}
+.footer-payments-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone, #6B5A40);
+  font-weight: 500;
+}
+.footer-payments-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-payments-list li {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .footer-payments { padding: 20px 16px 4px; gap: 12px; }
+  .footer-payments-label { font-size: 10px; }
+}
+</style>
