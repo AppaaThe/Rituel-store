@@ -10,7 +10,9 @@
 </div>
 
 <header class="site-header" id="siteHeader">
-  <a href="{{ routes.root_url }}" class="header-logo">BY RITUEL</a>
+  <a href="{{ routes.root_url }}" class="header-logo" aria-label="BY RITUEL home">
+    <img src="{{ 'rituel-logo.png' | asset_url }}" alt="BY RITUEL" width="120" height="120" loading="eager">
+  </a>
 
   <nav class="header-nav" role="navigation">
     <a href="{{ routes.root_url }}">Home</a>
@@ -125,17 +127,24 @@
 }
 
 .header-logo {
-  font-family: var(--serif);
-  font-size: 20px;
-  letter-spacing: 0.28em;
-  color: var(--espresso);
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  font-weight: 400;
   position: relative;
   z-index: 1;
-  transition: color 0.3s;
+  line-height: 0;
+  transition: opacity 0.3s;
 }
-.header-logo:hover { color: var(--terracotta); }
+.header-logo img {
+  display: block;
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+.header-logo:hover { opacity: 0.8; }
+@media (max-width: 900px) {
+  .header-logo img { height: 48px; }
+}
 
 .header-nav {
   display: flex; align-items: center; gap: 36px;
