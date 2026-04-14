@@ -33,8 +33,75 @@
     </div>
   </div>
 
+  <!-- SHOP THE RITUAL — conversion block for every blog reader -->
+  <section class="article-shop" aria-labelledby="article-shop-title">
+    <div class="article-shop-inner">
+      <span class="article-shop-eyebrow">Shop The Ritual</span>
+      <h2 id="article-shop-title" class="article-shop-title">The tools <em>we use every morning.</em></h2>
+      <p class="article-shop-sub">Four hand-finished pieces. One 5-minute ritual. Free US shipping over $35.</p>
+
+      <div class="article-shop-grid">
+        <a href="/products/rituel-gua-sha" class="article-shop-card">
+          <div class="article-shop-img article-shop-img--guasha"></div>
+          <div class="article-shop-card-body">
+            <span class="article-shop-card-label">Amethyst Gua Sha</span>
+            <span class="article-shop-card-price">$22</span>
+          </div>
+        </a>
+        <a href="/products/rituel-jade-roller" class="article-shop-card">
+          <div class="article-shop-img article-shop-img--roller"></div>
+          <div class="article-shop-card-body">
+            <span class="article-shop-card-label">Amethyst Roller</span>
+            <span class="article-shop-card-price">$16</span>
+          </div>
+        </a>
+        <a href="/products/rituel-ice-roller" class="article-shop-card">
+          <div class="article-shop-img article-shop-img--ice"></div>
+          <div class="article-shop-card-body">
+            <span class="article-shop-card-label">Rose Ice Roller</span>
+            <span class="article-shop-card-price">$19</span>
+          </div>
+        </a>
+        <a href="/products/rituel-rosehip-oil" class="article-shop-card">
+          <div class="article-shop-img article-shop-img--oil"></div>
+          <div class="article-shop-card-body">
+            <span class="article-shop-card-label">Rosehip Oil</span>
+            <span class="article-shop-card-price">$15</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="article-shop-cta-row">
+        <a href="/collections/all" class="article-shop-cta-primary">Shop the Full Ritual</a>
+        <a href="/products/rituel-complete-ritual" class="article-shop-cta-secondary">Or get the Complete Set — $58 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related reading — internal linking boost -->
+  {%- if blog.articles.size > 1 -%}
+    <section class="article-related">
+      <div class="article-related-inner">
+        <span class="article-related-eyebrow">Keep Reading</span>
+        <h2 class="article-related-title">More from <em>The Ritual Guide</em></h2>
+        <div class="article-related-grid">
+          {%- assign count = 0 -%}
+          {%- for related in blog.articles -%}
+            {%- if related.id != article.id and count < 3 -%}
+              <a href="{{ related.url }}" class="article-related-card">
+                <span class="article-related-card-label">{{ related.title }}</span>
+                <span class="article-related-card-read">Read →</span>
+              </a>
+              {%- assign count = count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
   <div class="article-footer">
-    <a href="{{ blog.url }}" class="back-link">← Back to {{ blog.title }}</a>
+    <a href="/collections/all" class="article-footer-cta">Shop BY RITUEL →</a>
   </div>
 
 </article>
@@ -124,25 +191,197 @@
     border-bottom: 1px solid rgba(123,94,167,0.3);
   }
 
+  /* SHOP THE RITUAL block */
+  .article-shop {
+    background: var(--white, #FDFAF5);
+    padding: 80px 32px;
+    border-top: 1px solid rgba(30,18,10,0.08);
+    border-bottom: 1px solid rgba(30,18,10,0.08);
+  }
+  .article-shop-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .article-shop-eyebrow {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta, #A15E3C);
+    margin-bottom: 18px;
+  }
+  .article-shop-title {
+    font-family: var(--serif, 'Cormorant Garamond', serif);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    color: var(--espresso, #1E120A);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .article-shop-title em { font-style: italic; color: var(--terracotta, #A15E3C); }
+  .article-shop-sub {
+    font-size: 15px;
+    color: var(--stone, #6B5A40);
+    margin-bottom: 48px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .article-shop-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .article-shop-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(30,18,10,0.06);
+    background: var(--cream, #F7F2EA);
+  }
+  .article-shop-card:hover { transform: translateY(-4px); }
+  .article-shop-img {
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--cream-dark, #EDE6D6);
+  }
+  .article-shop-img--guasha { background-image: url('https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/nbp-guasha-hero.png'); }
+  .article-shop-img--roller { background-image: url('https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/nbp-roller-closeup.png'); }
+  .article-shop-img--ice { background-image: url('https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/nbp-ice-roller-hero.png'); }
+  .article-shop-img--oil { background-image: url('https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/nbp-rosehip-oil-hero.png'); }
+  .article-shop-card-body {
+    padding: 18px 16px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+  }
+  .article-shop-card-label {
+    font-family: var(--serif, 'Cormorant Garamond', serif);
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--espresso, #1E120A);
+  }
+  .article-shop-card-price {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--terracotta, #A15E3C);
+  }
+  .article-shop-cta-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .article-shop-cta-primary {
+    display: inline-block;
+    padding: 18px 44px;
+    background: var(--espresso, #1E120A);
+    color: var(--cream, #F7F2EA);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+  .article-shop-cta-primary:hover { background: var(--terracotta, #A15E3C); }
+  .article-shop-cta-secondary {
+    font-size: 13px;
+    color: var(--stone, #6B5A40);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(107,90,64,0.3);
+    padding-bottom: 2px;
+    transition: color 0.3s;
+  }
+  .article-shop-cta-secondary:hover { color: var(--terracotta, #A15E3C); }
+
+  /* RELATED READING block */
+  .article-related {
+    background: var(--cream, #F7F2EA);
+    padding: 72px 32px;
+  }
+  .article-related-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .article-related-eyebrow {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta, #A15E3C);
+    margin-bottom: 14px;
+  }
+  .article-related-title {
+    font-family: var(--serif, 'Cormorant Garamond', serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 300;
+    margin-bottom: 44px;
+    color: var(--espresso, #1E120A);
+  }
+  .article-related-title em { font-style: italic; color: var(--terracotta, #A15E3C); }
+  .article-related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .article-related-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 28px;
+    background: var(--white, #FDFAF5);
+    border: 1px solid rgba(30,18,10,0.06);
+    text-decoration: none;
+    color: inherit;
+    min-height: 160px;
+    transition: border-color 0.3s;
+    text-align: left;
+  }
+  .article-related-card:hover { border-color: var(--terracotta, #A15E3C); }
+  .article-related-card-label {
+    font-family: var(--serif, 'Cormorant Garamond', serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--espresso, #1E120A);
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+  .article-related-card-read {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta, #A15E3C);
+  }
+
   .article-footer {
     max-width: 740px;
     margin: 0 auto;
-    padding: 0 32px 80px;
-    border-top: 1px solid rgba(44,24,16,0.1);
-    padding-top: 40px;
+    padding: 60px 32px 80px;
+    text-align: center;
   }
-
-  .back-link {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+  .article-footer-cta {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--stone, #8B7355);
+    color: var(--espresso, #1E120A);
     text-decoration: none;
-    transition: color 0.3s;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--espresso, #1E120A);
+    transition: color 0.3s, border-color 0.3s;
   }
-
-  .back-link:hover { color: var(--terracotta, #B8704A); }
+  .article-footer-cta:hover {
+    color: var(--terracotta, #A15E3C);
+    border-color: var(--terracotta, #A15E3C);
+  }
 
   /* Article Email Capture */
   .article-email-capture {
@@ -233,6 +472,12 @@
     .capture-form { flex-direction: column; }
     .article-hero { padding: 80px 24px 60px; }
     .article-body { padding: 48px 20px 60px; }
+    .article-shop { padding: 60px 20px; }
+    .article-shop-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 36px; }
+    .article-shop-cta-primary { padding: 16px 32px; font-size: 11px; }
+    .article-related { padding: 56px 20px; }
+    .article-related-grid { grid-template-columns: 1fr; gap: 14px; }
+    .article-related-card { min-height: auto; padding: 24px 22px; }
   }
 </style>
 
