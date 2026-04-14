@@ -9,7 +9,7 @@
         <div class="cart-items-col">
 
           {%- for item in cart.items -%}
-            <div class="cart-item">
+            <div class="cart-item" data-line="{{ forloop.index }}">
               {%- if item.image -%}
                 <img class="cart-item-image" src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title }}">
               {%- else -%}
@@ -17,11 +17,11 @@
               {%- endif -%}
               <div class="cart-item-details">
                 <div class="cart-item-name">{{ item.product.title }}</div>
-                <!-- Compare-at pricing removed -->
                 <div class="cart-item-qty">
-                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="cart-qty-btn" aria-label="Remove one">&#8722;</a>
-                  <span class="cart-qty-num">{{ item.quantity }}</span>
-                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="cart-qty-btn" aria-label="Add one">&#43;</a>
+                  <button type="button" class="cart-qty-btn" data-action="decrease" data-line="{{ forloop.index }}" aria-label="Decrease quantity">&#8722;</button>
+                  <span class="cart-qty-num" data-qty-display="{{ forloop.index }}">{{ item.quantity }}</span>
+                  <button type="button" class="cart-qty-btn" data-action="increase" data-line="{{ forloop.index }}" aria-label="Increase quantity">&#43;</button>
+                  <button type="button" class="cart-remove-btn" data-action="remove" data-line="{{ forloop.index }}" aria-label="Remove {{ item.product.title | escape }} from cart">Remove</button>
                 </div>
               </div>
               <div class="cart-item-price">{{ item.final_line_price | money }}</div>
@@ -169,16 +169,62 @@
 
 <script>
 function handleBump(checkbox) {
-  if (checkbox.checked) {
-    fetch('/cart/add.js', {
+  if (!checkbox.checked) return;
+  checkbox.disabled = true;
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: {{ all_products['rituel-rosehip-oil'].selected_or_first_available_variant.id | json }}, quantity: 1 })
+  })
+    .then(function(r) { if (!r.ok) throw new Error('add failed'); return r.json(); })
+    .then(function() { window.location.reload(); })
+    .catch(function() {
+      checkbox.checked = false;
+      checkbox.disabled = false;
+      alert('Could not add the item. Please try again.');
+    });
+}
+
+// Cart quantity +/− and remove — uses /cart/change.js (the working POST endpoint)
+(function() {
+  function updateLine(line, quantity) {
+    return fetch('/cart/change.js', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: {{ all_products['rituel-rosehip-oil'].selected_or_first_available_variant.id | json }}, quantity: 1 })
-    }).then(() => {
-      window.location.reload();
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ line: parseInt(line, 10), quantity: quantity })
+    }).then(function(r) {
+      if (!r.ok) throw new Error('change failed');
+      return r.json();
     });
   }
-}
+
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-action][data-line]');
+    if (!btn) return;
+    e.preventDefault();
+
+    var line = btn.getAttribute('data-line');
+    var action = btn.getAttribute('data-action');
+    var display = document.querySelector('[data-qty-display="' + line + '"]');
+    var currentQty = display ? parseInt(display.textContent, 10) : 1;
+    var nextQty;
+
+    if (action === 'increase') nextQty = currentQty + 1;
+    else if (action === 'decrease') nextQty = Math.max(0, currentQty - 1);
+    else if (action === 'remove') nextQty = 0;
+    else return;
+
+    // Disable all cart buttons while the request is in flight
+    document.querySelectorAll('.cart-qty-btn, .cart-remove-btn').forEach(function(b) { b.disabled = true; });
+
+    updateLine(line, nextQty)
+      .then(function() { window.location.reload(); })
+      .catch(function() {
+        document.querySelectorAll('.cart-qty-btn, .cart-remove-btn').forEach(function(b) { b.disabled = false; });
+        alert('Could not update the cart. Please try again.');
+      });
+  });
+})();
 </script>
 
 {% schema %}

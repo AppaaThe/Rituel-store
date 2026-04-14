@@ -316,8 +316,14 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 .cart-item-name { font-family: var(--serif); font-size: 20px; margin-bottom: 4px; }
 .cart-item-save { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 12px; }
 .cart-item-qty { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
-.cart-qty-btn { font-size: 18px; color: var(--stone); text-decoration: none; line-height: 1; transition: color 0.2s; }
-.cart-qty-btn:hover { color: var(--terracotta); }
+.cart-qty-btn { font-size: 18px; color: var(--stone); background: none; border: 0; padding: 8px 10px; cursor: pointer; line-height: 1; transition: color 0.2s; min-width: 36px; min-height: 36px; font-family: inherit; }
+.cart-qty-btn:hover:not(:disabled) { color: var(--terracotta); }
+.cart-qty-btn:disabled { opacity: 0.4; cursor: wait; }
+.cart-qty-btn:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 2px; }
+.cart-remove-btn { background: none; border: 0; padding: 8px 12px; margin-left: 12px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); cursor: pointer; transition: color 0.2s; }
+.cart-remove-btn:hover:not(:disabled) { color: var(--terracotta); }
+.cart-remove-btn:disabled { opacity: 0.4; cursor: wait; }
+.cart-remove-btn:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 2px; }
 .cart-qty-num { font-size: 14px; min-width: 20px; text-align: center; }
 .cart-item-price { font-family: var(--serif); font-size: 22px; }
 
