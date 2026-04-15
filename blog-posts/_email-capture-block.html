@@ -1,0 +1,47 @@
+<!--
+==========================================================================
+BY RITUEL — BLOG EMAIL CAPTURE BLOCK (reusable)
+==========================================================================
+HOW TO WIRE IT UP TO KLAVIYO:
+
+Option A (recommended — native Klaviyo embed):
+  1. In Klaviyo: Sign-up Forms → Create Form → Embed
+  2. Name it "Blog Lead Magnet — Gua Sha Ritual PDF"
+  3. Connect it to a list (e.g. "Blog Subscribers")
+  4. In the flow builder, replace the <form> below with Klaviyo's embed code:
+     <div class="klaviyo-form-XXXXXX"></div>
+  5. Klaviyo's welcome flow + PDF delivery fires automatically.
+
+Option B (native HTML form that POSTs to Klaviyo):
+  Replace action URL below with your Klaviyo list signup endpoint:
+  https://manage.kmail-lists.com/subscriptions/subscribe?a=YOUR_ACCOUNT_ID&g=YOUR_LIST_ID
+
+==========================================================================
+-->
+
+<!-- ===== MID-ARTICLE CAPTURE (compact, sits inside blog content) ===== -->
+
+<aside class="br-capture-mid" style="margin:40px 0;padding:28px 32px;background:#f7f2ea;border-left:4px solid #b8704a;font-family:'Jost',sans-serif;">
+  <p style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:#1e120a;line-height:1.2;">
+    Get the free 5-minute morning ritual (printable PDF)
+  </p>
+  <p style="margin:0 0 16px;font-size:14px;color:#5a4a3c;line-height:1.5;">
+    The exact stroke sequence we use every morning — with a 14-day tracker so you actually stick to it. Free, no spam, unsubscribe in one click.
+  </p>
+  <div class="klaviyo-form-TpBtCX"></div>
+</aside>
+
+<!-- ===== END-OF-ARTICLE CAPTURE (larger, final CTA) ===== -->
+
+<aside class="br-capture-end" style="margin:56px 0 16px;padding:40px 36px;background:#1e120a;color:#f7f2ea;font-family:'Jost',sans-serif;text-align:center;">
+  <p style="margin:0 0 6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#b8704a;">Free printable</p>
+  <p style="margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;line-height:1.15;color:#f7f2ea;">
+    The 5-Minute Morning Gua Sha Ritual
+  </p>
+  <p style="margin:0 auto 24px;max-width:460px;font-size:15px;line-height:1.6;color:#d4c9b8;">
+    A one-page PDF with the stroke diagram, full sequence, and a 14-day tracker. Everything you need to actually build the habit. Yours free.
+  </p>
+  <div class="klaviyo-form-TpBtCX"></div>
+  <p style="margin:16px 0 0;font-size:11px;color:#8b7355;">No spam. Unsubscribe in one click.</p>
+</aside>
+</content>
