@@ -2,7 +2,7 @@
 
   <div class="about-hero">
     <div class="about-hero-visual">
-      <img src="https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/pg-page-hero-about.png" alt="Woman in white linen robe practicing the BY RITUEL morning ritual with an amethyst gua sha" loading="eager">
+      <img src="{{ 'br-hero-about.webp' | asset_url }}" alt="Woman in white linen robe practicing the BY RITUEL morning ritual with an amethyst gua sha" loading="eager">
     </div>
     <div class="about-hero-content">
       <span class="section-label">Our Story</span>
@@ -213,7 +213,7 @@
 .about-cta-section {
   background:
     linear-gradient(135deg, rgba(184,112,74,0.88) 0%, rgba(139,74,42,0.92) 100%),
-    url('https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/pg-page-hero-contact.png');
+    url('{{ 'br-hero-contact.webp' | asset_url }}');
   background-size: cover;
   background-position: center;
   padding: 120px 80px;

@@ -1,6 +1,6 @@
 <div class="blog-page">
   <div class="blog-hero">
-    <img class="blog-hero-bg" src="https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/pg-page-hero-blog.png" alt="" loading="eager">
+    <img class="blog-hero-bg" src="{{ 'br-hero-blog.webp' | asset_url }}" alt="" loading="eager">
     <div class="blog-hero-content">
       <p class="blog-eyebrow">The Ritual Guide</p>
       <h1>{{ blog.title }}</h1>
@@ -8,24 +8,25 @@
     </div>
   </div>
 
-  {%- assign img_base = 'https://cdn.jsdelivr.net/gh/AppaaThe/Rituel-store@main/product-images/pg-blog-' -%}
-  {%- assign fallback_imgs = '1-jawline,2-science,3-moisturiser,4-beginners' | split: ',' -%}
+  {%- assign fallback_imgs = 'br-blog-jawline.webp,br-blog-science.webp,br-blog-routine.webp,br-blog-beginners.webp' | split: ',' -%}
 
   <div class="blog-grid">
     {% for article in blog.articles %}
       {%- assign custom_img = '' -%}
       {%- assign handle = article.handle | downcase -%}
-      {%- if handle contains 'jawline' -%}
-        {%- assign custom_img = img_base | append: '1-jawline.png' -%}
-      {%- elsif handle contains 'science' or handle contains 'actually-work' -%}
-        {%- assign custom_img = img_base | append: '2-science.png' -%}
-      {%- elsif handle contains 'moisturiser' or handle contains 'moisturizer' or handle contains 'before-or-after' -%}
-        {%- assign custom_img = img_base | append: '3-moisturiser.png' -%}
-      {%- elsif handle contains 'beginner' -%}
-        {%- assign custom_img = img_base | append: '4-beginners.png' -%}
+      {%- if article.image -%}
+        {%- assign custom_img = article.image | image_url: width: 1000 -%}
+      {%- elsif handle contains 'jawline' or handle contains 'nasolabial' or handle contains 'tmj' -%}
+        {%- assign custom_img = 'br-blog-jawline.webp' | asset_url -%}
+      {%- elsif handle contains 'science' or handle contains 'comedogenic' or handle contains 'amethyst-gua-sha-vs-jade' or handle contains 'rose-quartz' -%}
+        {%- assign custom_img = 'br-blog-science.webp' | asset_url -%}
+      {%- elsif handle contains 'moisturizer' or handle contains 'sunscreen' or handle contains 'routine' or handle contains 'morning' -%}
+        {%- assign custom_img = 'br-blog-routine.webp' | asset_url -%}
+      {%- elsif handle contains 'red-marks' or handle contains 'under-eye' or handle contains 'acne' or handle contains 'hangover' or handle contains 'puffiness' or handle contains 'how-often' -%}
+        {%- assign custom_img = 'br-blog-beginners.webp' | asset_url -%}
       {%- else -%}
         {%- assign cycle_i = forloop.index0 | modulo: 4 -%}
-        {%- assign custom_img = img_base | append: fallback_imgs[cycle_i] | append: '.png' -%}
+        {%- assign custom_img = fallback_imgs[cycle_i] | asset_url -%}
       {%- endif -%}
 
       <a href="{{ article.url }}" class="blog-card">
