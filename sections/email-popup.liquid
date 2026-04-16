@@ -1,0 +1,281 @@
+<!-- Exit-intent / timed email capture popup — subscribes directly to Klaviyo -->
+<div class="br-popup-overlay" id="brPopupOverlay">
+  <div class="br-popup">
+    <button class="br-popup-close" id="brPopupClose" aria-label="Close">&times;</button>
+    <div class="br-popup-inner">
+      <span class="br-popup-eyebrow">Before you go</span>
+      <h2 class="br-popup-title">15% off your<br><em>first ritual</em></h2>
+      <p class="br-popup-desc">Join 500+ women who start every morning with the 5-minute gua sha ritual. Get 15% off + our free Morning Ritual Guide.</p>
+      <form class="br-popup-form" id="brPopupForm">
+        <input class="br-popup-input" type="email" id="brPopupEmail" placeholder="Your email address" required autocomplete="email">
+        <button type="submit" class="br-popup-btn" id="brPopupBtn">Get 15% Off</button>
+      </form>
+      <p class="br-popup-note">No spam. Unsubscribe anytime.</p>
+      <div class="br-popup-success" id="brPopupSuccess" style="display:none;">
+        <p class="br-popup-success-title">You're in!</p>
+        <p class="br-popup-success-code">Use code <strong>WELCOME15</strong> at checkout</p>
+        <p class="br-popup-success-sub">Check your inbox for the Morning Ritual Guide.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.br-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(30,18,10,0.6);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.br-popup-overlay.visible {
+  display: flex;
+  opacity: 1;
+}
+.br-popup {
+  position: relative;
+  background: var(--cream, #F7F2EA);
+  max-width: 440px;
+  width: 100%;
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(30,18,10,0.3);
+  animation: brPopupIn 0.4s ease forwards;
+}
+@keyframes brPopupIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.br-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--espresso, #1E120A);
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+  line-height: 1;
+}
+.br-popup-close:hover { opacity: 1; }
+.br-popup-eyebrow {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terracotta, #B8704A);
+  margin-bottom: 16px;
+}
+.br-popup-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--espresso, #1E120A);
+  margin: 0 0 16px;
+}
+.br-popup-title em {
+  font-style: italic;
+  color: var(--terracotta, #B8704A);
+}
+.br-popup-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5a4a3c;
+  margin: 0 0 24px;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.br-popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.br-popup-input {
+  padding: 14px 16px;
+  border: 1px solid #d4c9b8;
+  background: #fff;
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 14px;
+  color: var(--espresso, #1E120A);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.br-popup-input:focus {
+  border-color: var(--terracotta, #B8704A);
+}
+.br-popup-input::placeholder {
+  color: #b8a99a;
+}
+.br-popup-btn {
+  padding: 16px 24px;
+  background: var(--terracotta, #B8704A);
+  color: var(--cream, #F7F2EA);
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.br-popup-btn:hover {
+  background: var(--espresso, #1E120A);
+}
+.br-popup-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.br-popup-note {
+  font-size: 11px;
+  color: #8b7355;
+  margin: 12px 0 0;
+}
+.br-popup-success-title {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--espresso, #1E120A);
+  margin: 0 0 12px;
+}
+.br-popup-success-code {
+  font-size: 18px;
+  color: var(--terracotta, #B8704A);
+  margin: 0 0 8px;
+}
+.br-popup-success-code strong {
+  font-size: 22px;
+  letter-spacing: 0.1em;
+}
+.br-popup-success-sub {
+  font-size: 13px;
+  color: #5a4a3c;
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .br-popup { padding: 36px 24px; }
+  .br-popup-title { font-size: 26px; }
+}
+</style>
+
+<script>
+(function() {
+  var KLAVIYO_LIST_ID = 'UHk4RB';
+  var POPUP_DELAY_MS = 30000; // 30 seconds
+  var STORAGE_KEY = 'br_popup_dismissed';
+
+  // Don't show if already dismissed or subscribed
+  if (localStorage.getItem(STORAGE_KEY)) return;
+
+  var overlay = document.getElementById('brPopupOverlay');
+  var closeBtn = document.getElementById('brPopupClose');
+  var form = document.getElementById('brPopupForm');
+  var emailInput = document.getElementById('brPopupEmail');
+  var submitBtn = document.getElementById('brPopupBtn');
+  var successDiv = document.getElementById('brPopupSuccess');
+
+  function showPopup() {
+    if (localStorage.getItem(STORAGE_KEY)) return;
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hidePopup() {
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+    localStorage.setItem(STORAGE_KEY, Date.now());
+  }
+
+  // Trigger 1: After 30 seconds on page
+  setTimeout(showPopup, POPUP_DELAY_MS);
+
+  // Trigger 2: Exit intent (mouse leaves viewport at top)
+  document.addEventListener('mouseout', function(e) {
+    if (e.clientY < 5 && !localStorage.getItem(STORAGE_KEY)) {
+      showPopup();
+    }
+  });
+
+  // Close handlers
+  closeBtn.addEventListener('click', hidePopup);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) hidePopup();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') hidePopup();
+  });
+
+  // Form submit — subscribe to Klaviyo
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = emailInput.value.trim();
+    if (!email) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Subscribing...';
+
+    // Klaviyo client-side subscribe API
+    fetch('https://a.klaviyo.com/client/subscriptions/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'revision': '2024-02-15' },
+      body: JSON.stringify({
+        data: {
+          type: 'subscription',
+          attributes: {
+            custom_source: 'Popup - 15% Off',
+            profile: {
+              data: {
+                type: 'profile',
+                attributes: { email: email }
+              }
+            }
+          },
+          relationships: {
+            list: {
+              data: { type: 'list', id: KLAVIYO_LIST_ID }
+            }
+          }
+        }
+      })
+    }).then(function() {
+      // Also identify for Klaviyo tracking
+      if (window._learnq) {
+        window._learnq.push(['identify', { '$email': email }]);
+        window._learnq.push(['track', 'Popup Signup', { source: 'exit_intent_popup', discount: 'WELCOME15' }]);
+      }
+
+      // Show success state
+      form.style.display = 'none';
+      document.querySelector('.br-popup-eyebrow').style.display = 'none';
+      document.querySelector('.br-popup-title').style.display = 'none';
+      document.querySelector('.br-popup-desc').style.display = 'none';
+      document.querySelector('.br-popup-note').style.display = 'none';
+      successDiv.style.display = 'block';
+
+      localStorage.setItem(STORAGE_KEY, 'subscribed');
+    }).catch(function() {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Try Again';
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Email Popup",
+  "presets": [{ "name": "Email Popup" }]
+}
+{% endschema %}
