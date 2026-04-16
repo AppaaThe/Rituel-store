@@ -26,7 +26,8 @@
 
   {%- liquid
     assign og_title = page_title | default: shop.name
-    assign og_description = page_description | default: shop.description | default: shop.name
+    assign shop_homepage_meta = shop.metafields.custom.homepage_description | default: shop.description | default: shop.name
+    assign og_description = page_description | default: shop_homepage_meta
     if template contains 'product' and product
       assign og_type = 'product'
       assign og_image = product.featured_image | image_url: width: 1200
