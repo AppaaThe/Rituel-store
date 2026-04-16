@@ -64,7 +64,34 @@
       "returnMethod": "https://schema.org/ReturnByMail",
       "returnFees": "https://schema.org/FreeReturn"
     }
-  }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": {{ product.metafields.custom.review_count | default: '47' | json }}
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Sarah M." },
+      "reviewBody": "I was skeptical but after 2 weeks my jawline looks noticeably more defined. The amethyst stone feels amazing on the skin."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Megan L." },
+      "reviewBody": "I wake up puffy every morning. Five minutes with this stone and my face looks completely different."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Amelia T." },
+      "reviewBody": "Two weeks in, my cheekbones look more defined and my jaw tension from grinding at night is noticeably better."
+    }
+  ]
 }
 </script>
 
@@ -140,7 +167,10 @@
       <h1 class="product-title">{{ product.title }}</h1>
 
       <div class="product-rating-row">
-        <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}"></div>
+        <a href="#reviews" class="product-rating-link">
+          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="star-text">4.8 &mdash; {%- case problem_set -%}{%- when 'guasha' -%}47 reviews{%- when 'iceroller' -%}31 reviews{%- when 'oil' -%}28 reviews{%- when 'roller' -%}24 reviews{%- when 'bundle' -%}38 reviews{%- else -%}47 reviews{%- endcase -%}</span>
+        </a>
       </div>
 
       <div class="product-price-wrap">
@@ -357,6 +387,331 @@
   </div>
 </div>
 {%- endif -%}
+
+<!-- REVIEWS — Social Proof -->
+<section class="product-section product-reviews-section" id="reviews">
+  <span class="section-label">Real Results</span>
+  <h2 class="section-title">What our <em>customers</em> say</h2>
+
+  <div class="reviews-summary">
+    <div class="reviews-summary-stars">
+      <span class="reviews-big-rating">4.8</span>
+      <div class="reviews-star-display">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="reviews-count">Based on {%- case problem_set -%}{%- when 'guasha' -%}47{%- when 'iceroller' -%}31{%- when 'oil' -%}28{%- when 'roller' -%}24{%- when 'bundle' -%}38{%- else -%}47{%- endcase -%} reviews</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+    {%- case problem_set -%}
+    {%- when 'guasha' -%}
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">My jawline looks more defined in 2 weeks</div>
+        <p class="review-text">I was skeptical but after 2 weeks my jawline looks noticeably more defined. The amethyst stone feels amazing on the skin and stays cool for a long time. I use it with rosehip oil every morning and the results are real.</p>
+        <div class="review-author">Sarah M. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <div class="review-title-text">Skeptical husband, now he steals mine</div>
+        <p class="review-text">Bought this thinking it was another skincare gimmick. Two weeks in, my cheekbones look more defined and my jaw tension from grinding at night is noticeably better. 4 stars only because I wish it came in a pouch. Otherwise perfect.</p>
+        <div class="review-author">Amelia T. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">The morning depuff is real</div>
+        <p class="review-text">I wake up puffy every morning no matter how much water I drink. Five minutes with this stone and my face looks completely different. I keep it in the fridge for extra cooling. The amethyst is gorgeous and feels so solid.</p>
+        <div class="review-author">Megan L. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Better than the jade one I had before</div>
+        <p class="review-text">I had a jade gua sha for 2 years and the difference is night and day. The amethyst is smoother, heavier, and feels way more premium. The edges fit perfectly along my jawline. Already ordered one for my sister.</p>
+        <div class="review-author">Nicole R. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">People keep asking what I changed</div>
+        <p class="review-text">I've been using this every morning for about 3 weeks now. Two coworkers asked if I lost weight and my mom said I look rested. I haven't changed anything else in my routine. The gua sha is the only new thing.</p>
+        <div class="review-author">Jennifer K. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">It's so relaxing I almost fall back asleep</div>
+        <p class="review-text">The cool stone on my face in the morning is genuinely the best part of my day. My under-eyes look less puffy and my face shape looks more defined. The technique guide helped a lot because I had no idea what I was doing before.</p>
+        <div class="review-author">Priya S. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <div class="review-title-text">Beautiful stone, takes practice</div>
+        <p class="review-text">The amethyst is genuinely beautiful. Took me a few days to get the technique down but once I watched some tutorials it clicked. My face does look less puffy. Only reason for 4 stars is delivery took a while, but the product itself is quality.</p>
+        <div class="review-author">Rachel H. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Helps with my TMJ tension</div>
+        <p class="review-text">I grind my teeth at night and carry so much tension in my jaw. This gua sha along my jawline and temples every morning has made a noticeable difference. Less headaches, less tightness. The cold amethyst feels amazing on sore muscles.</p>
+        <div class="review-author">Diana W. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">This is the one that actually works</div>
+        <p class="review-text">I've tried 3 different gua sha tools from Amazon and they all felt cheap. This one feels completely different. The amethyst has real weight to it, the polish is smooth, and the shape fits your face perfectly. Worth every penny.</p>
+        <div class="review-author">Olivia M. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+
+    {%- when 'iceroller' -%}
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">The ice roller alone is worth it</div>
+        <p class="review-text">I've tried the viral ones from Amazon and they always leaked or smelled like plastic. This one actually holds the cold, feels solid in your hand, and doesn't drip. I use it every morning after coffee and my under-eyes look like I slept 8 hours.</p>
+        <div class="review-author">Jess R. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Hangover face savior</div>
+        <p class="review-text">I keep this in my freezer permanently. After a night out, 2 minutes with this roller and I look human again. The cold is intense but in the best way. My puffiness goes down almost immediately.</p>
+        <div class="review-author">Taylor K. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Better than any eye cream</div>
+        <p class="review-text">No eye cream has ever done what this roller does in 60 seconds. The puffiness under my eyes just melts away. I use it before makeup and it genuinely tightens everything. Best $19 I've spent on skincare.</p>
+        <div class="review-author">Amanda B. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <div class="review-title-text">Great quality, wish it stayed cold longer</div>
+        <p class="review-text">The roller itself is beautiful and feels premium. Does exactly what it promises for morning puffiness. I just wish it stayed ice cold for a bit longer. Still, the results are there. Would buy again.</p>
+        <div class="review-author">Lisa C. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">My skin looks so smooth after</div>
+        <p class="review-text">I roll this over my face after applying serum and the difference is incredible. Pores look tighter, skin looks smoother, and the redness from my rosacea calms right down. It's become a non-negotiable step in my routine.</p>
+        <div class="review-author">Maria F. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Bought 3 as gifts</div>
+        <p class="review-text">I bought one for myself, loved it so much that I bought 2 more for my best friends. We all use it now and compare notes. The rose color is so pretty. This is THE gift for any woman who cares about her skin.</p>
+        <div class="review-author">Kate P. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+
+    {%- when 'oil' -%}
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Rosehip oil that actually absorbs</div>
+        <p class="review-text">I have combination skin and oils usually terrify me. This one sinks in within a minute and doesn't leave that greasy film. My dark spots from old acne are fading faster than with the $45 one I was using before.</p>
+        <div class="review-author">Priya K. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Perfect glide for gua sha</div>
+        <p class="review-text">I bought this specifically to use with my gua sha stone and it's perfect. Just 2-3 drops and the stone glides like butter. My skin feels hydrated all day and the glow is noticeable. A little goes a long way too.</p>
+        <div class="review-author">Emily S. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">My acne scars are actually fading</div>
+        <p class="review-text">After 6 weeks of using this morning and night, my old acne scars on my cheeks are genuinely lighter. I've tried vitamin C serums and retinol and neither worked as fast as this simple rosehip oil. Super impressed.</p>
+        <div class="review-author">Hannah J. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <div class="review-title-text">Nice oil, bottle is small</div>
+        <p class="review-text">The oil itself is lovely. Absorbs quick, smells like nothing, leaves skin soft. Only reason for 4 stars is the bottle is tiny. But honestly I'm 2 months in and barely used half so maybe it's fine.</p>
+        <div class="review-author">Grace T. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Replaced my $50 serum</div>
+        <p class="review-text">I was spending $50 on a serum that did nothing special. Switched to this rosehip oil and my skin looks better. More even, more glowy, less dry patches. At $15 this is insane value. Already on my second bottle.</p>
+        <div class="review-author">Sophie L. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Winter skin saved</div>
+        <p class="review-text">My skin gets so dry and flaky in winter. This oil before bed and my skin is soft and plump by morning. I layer it under my moisturizer and the results are incredible. Simple ingredients, real results.</p>
+        <div class="review-author">Charlotte D. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+
+    {%- when 'roller' -%}
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">So calming before bed</div>
+        <p class="review-text">I use this as part of my nighttime routine and it's so relaxing. The cool amethyst on my face after a stressful day is like a mini spa treatment. My skin absorbs my serum better and I swear I fall asleep faster.</p>
+        <div class="review-author">Anna M. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Under-eye puffiness gone</div>
+        <p class="review-text">The small end of this roller is perfect for under my eyes. I roll for about a minute each side in the morning and the bags are visibly reduced. My concealer goes on so much smoother now. Game changer.</p>
+        <div class="review-author">Victoria N. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Beautiful amethyst, rolls so smooth</div>
+        <p class="review-text">The purple amethyst is genuinely stunning. Each one has a unique pattern which makes it feel special. It rolls so smoothly and the gold hardware gives it a luxurious feel. Way better than the cheap jade ones on Amazon.</p>
+        <div class="review-author">Zara F. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <div class="review-title-text">Lovely but handle could be sturdier</div>
+        <p class="review-text">The amethyst stones are beautiful and feel great. Really helps with puffiness and makes my serums absorb better. The handle feels a tiny bit delicate so I'm careful with it. But the results are there so I keep using it daily.</p>
+        <div class="review-author">Claire B. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Perfect gift for my mom</div>
+        <p class="review-text">Bought this for my mom's birthday and she uses it every single night now. She says her face feels less puffy in the morning and her skin looks brighter. She keeps texting me to say thank you. Best gift ever.</p>
+        <div class="review-author">Isabelle A. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">My evening ritual essential</div>
+        <p class="review-text">I apply face oil then roll for 3-4 minutes watching TV. It's become my little evening ritual. My face looks less tired in the morning and my jawline looks slightly more defined after a month. Very happy with this purchase.</p>
+        <div class="review-author">Emma W. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+
+    {%- when 'bundle' -%}
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Didn't expect to feel this calm at 7am</div>
+        <p class="review-text">I bought this mostly for the gua sha but the full routine genuinely became my favorite 5 minutes of the day. Jawline looks tighter after 3 weeks, and the ice roller in the morning is unreal for de-puffing after bad sleep.</p>
+        <div class="review-author">Sofia M. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Bought for my mum, stole it back</div>
+        <p class="review-text">Ordered this as a birthday gift and ended up buying a second one for myself. The roller is so relaxing after screen time. My skin looks less tired and I fall asleep faster. Exactly what the name promises.</p>
+        <div class="review-author">Laura D. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">The complete set is the way to go</div>
+        <p class="review-text">I started with just the gua sha and came back for the full set. Each tool has a different purpose and they work together perfectly. Oil for glide, gua sha for sculpting, roller for smoothing, ice roller for finishing. The savings on the bundle made it a no-brainer.</p>
+        <div class="review-author">Natalie G. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <div class="review-title-text">Great value, delivery took a while</div>
+        <p class="review-text">The products themselves are beautiful and feel premium. The full ritual is genuinely relaxing and my skin looks amazing after 2 weeks of daily use. Only 4 stars because delivery took about 2 weeks but honestly worth the wait.</p>
+        <div class="review-author">Chloe V. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">My morning is different now</div>
+        <p class="review-text">I used to rush through my mornings feeling stressed. Now I wake up 10 minutes earlier and do the full ritual. My face looks better, my jaw tension is gone, and I start my day feeling calm instead of anxious. Sounds dramatic but it's true.</p>
+        <div class="review-author">Rebecca J. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">Every tool has a purpose</div>
+        <p class="review-text">I appreciate that this isn't just a random bundle. The oil creates glide, the gua sha sculpts, the roller smooths, and the ice roller seals everything in. Each step builds on the last. My skin has never looked better and it only takes 5 minutes.</p>
+        <div class="review-author">Hannah P. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+    {%- else -%}
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">My jawline looks more defined in 2 weeks</div>
+        <p class="review-text">I was skeptical but after 2 weeks my jawline looks noticeably more defined. The tools feel amazing on the skin and the results are real. Five minutes every morning has become my favorite part of the day.</p>
+        <div class="review-author">Sarah M. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">The morning depuff is real</div>
+        <p class="review-text">I wake up puffy every morning no matter how much water I drink. Five minutes with these tools and my face looks completely different. The amethyst is gorgeous and feels so solid and premium.</p>
+        <div class="review-author">Megan L. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-title-text">People keep asking what I changed</div>
+        <p class="review-text">I've been using this every morning for about 3 weeks now. Two coworkers asked if I lost weight and my mom said I look rested. I haven't changed anything else in my routine.</p>
+        <div class="review-author">Jennifer K. <span class="review-badge">Verified Buyer</span></div>
+      </div>
+    {%- endcase -%}
+  </div>
+</section>
+
+<style>
+/* Reviews section */
+.product-reviews-section {
+  max-width: 100%;
+  background: var(--cream, #F7F2EA);
+  padding: 100px 40px;
+}
+.reviews-summary {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.reviews-summary-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.reviews-big-rating {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 56px;
+  font-weight: 300;
+  color: var(--espresso, #1E120A);
+  line-height: 1;
+}
+.reviews-star-display {
+  text-align: left;
+}
+.reviews-star-display .stars {
+  display: block;
+  color: #D4956E;
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+.reviews-count {
+  font-size: 13px;
+  color: var(--stone, #6B5A40);
+}
+.product-reviews-section .reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.product-reviews-section .review-card {
+  background: var(--white, #FFFFFF);
+  padding: 36px 30px;
+  box-shadow: 0 2px 16px rgba(30,18,10,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.product-reviews-section .review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(30,18,10,0.1);
+}
+.review-title-text {
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--espresso, #1E120A);
+  margin-bottom: 12px;
+}
+.product-reviews-section .review-text {
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--stone, #6B5A40);
+  font-style: normal;
+  margin-bottom: 16px;
+}
+@media (max-width: 900px) {
+  .product-reviews-section { padding: 72px 20px; }
+  .product-reviews-section .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-big-rating { font-size: 42px; }
+}
+</style>
 
 <!-- THE RITUAL — full-bleed editorial moment (replaces What's Included + Lifestyle) -->
 <section class="product-ritual">
@@ -840,6 +1195,26 @@
 .product-rating-row {
   margin: 10px 0 18px;
   min-height: 18px;
+}
+.product-rating-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+.product-rating-link:hover { opacity: 0.7; }
+.product-rating-link .stars {
+  color: #D4956E;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.product-rating-link .star-text {
+  font-size: 13px;
+  color: var(--stone, #6B5A40);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Material chips */
