@@ -95,7 +95,12 @@
   </main>
 
   {% section 'footer' %}
-  {% section 'email-popup' %}
+  {%- comment -%}
+    Custom exit-intent popup removed 2026-04-19 — Klaviyo client API call was missing
+    company_id query param, so subscribes silently failed. Klaviyo-dashboard popup
+    remains as the single working email capture. File kept at sections/email-popup.liquid
+    for future re-enable after fixing the API URL.
+  {%- endcomment -%}
 
   <script src="{{ 'rituel.js' | asset_url }}" defer></script>
 
