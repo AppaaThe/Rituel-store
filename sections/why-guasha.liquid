@@ -1,0 +1,166 @@
+<section class="why-guasha reveal">
+  <div class="why-guasha-inner">
+
+    <header class="why-guasha-head">
+      <p class="why-guasha-eyebrow">Why Gua Sha</p>
+      <h2 class="why-guasha-title">What five minutes of pressure<br>actually does.</h2>
+    </header>
+
+    <ol class="why-guasha-cols">
+      <li class="why-guasha-col">
+        <span class="why-guasha-num">01</span>
+        <p class="why-guasha-label">Puffiness</p>
+        <p class="why-guasha-mech">Sweeping strokes drain the fluid that pools under your eyes overnight.</p>
+        <p class="why-guasha-outcome">By 9am, the bloat is gone.</p>
+      </li>
+      <li class="why-guasha-col">
+        <span class="why-guasha-num">02</span>
+        <p class="why-guasha-label">Tension</p>
+        <p class="why-guasha-mech">Targeted pressure releases the jaw muscle that clenches in your sleep.</p>
+        <p class="why-guasha-outcome">Softer profile, fewer headaches.</p>
+      </li>
+      <li class="why-guasha-col">
+        <span class="why-guasha-num">03</span>
+        <p class="why-guasha-label">Circulation</p>
+        <p class="why-guasha-mech">Five minutes of stone-work multiplies blood flow at the surface.</p>
+        <p class="why-guasha-outcome">The flush you'd usually need a long walk to find.</p>
+      </li>
+    </ol>
+
+    <a href="/blogs/news/gua-sha-statistics-research" class="why-guasha-cite">See the research &rarr;</a>
+
+  </div>
+</section>
+
+<style>
+.why-guasha {
+  background: var(--white, #FDFAF5);
+  padding: clamp(64px, 9vw, 120px) clamp(20px, 5vw, 80px);
+  border-top: 1px solid rgba(30,18,10,0.06);
+  border-bottom: 1px solid rgba(30,18,10,0.06);
+}
+.why-guasha-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Head */
+.why-guasha-head {
+  text-align: center;
+  margin-bottom: clamp(48px, 7vw, 88px);
+}
+.why-guasha-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 20px;
+}
+.why-guasha-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.6vw, 46px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--espresso);
+  max-width: 22ch;
+  margin: 0 auto;
+}
+
+/* Columns */
+.why-guasha-cols {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(40px, 5vw, 72px);
+  margin: 0 0 clamp(40px, 5vw, 64px);
+  padding: 0;
+}
+.why-guasha-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+.why-guasha-num {
+  font-family: var(--serif);
+  font-size: clamp(40px, 4vw, 56px);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--terracotta);
+  opacity: 0.32;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.why-guasha-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--espresso);
+}
+.why-guasha-mech {
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.5vw, 20px);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--espresso);
+  max-width: 32ch;
+}
+.why-guasha-outcome {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--stone);
+  letter-spacing: 0.01em;
+  max-width: 32ch;
+}
+
+/* Citation link */
+.why-guasha-cite {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding: 8px 0;
+  transition: color 0.3s var(--ease-premium);
+}
+.why-guasha-cite:hover {
+  color: var(--espresso);
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .why-guasha-cols {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .why-guasha-col {
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(30,18,10,0.08);
+  }
+  .why-guasha-col:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .why-guasha-num {
+    font-size: 36px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Why Gua Sha",
+  "presets": [{ "name": "Why Gua Sha" }]
+}
+{% endschema %}

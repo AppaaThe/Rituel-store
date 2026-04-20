@@ -18,8 +18,8 @@
         "subtitle": ""
       }
     },
-    "press-logos": {
-      "type": "press-logos",
+    "why-guasha": {
+      "type": "why-guasha",
       "settings": {}
     },
     "marquee": {
@@ -73,7 +73,7 @@
   },
   "order": [
     "hero",
-    "press-logos",
+    "why-guasha",
     "marquee",
     "featured-products",
     "value-props",
