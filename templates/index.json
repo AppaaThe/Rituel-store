@@ -58,8 +58,8 @@
       "type": "our-story",
       "settings": {}
     },
-    "testimonials": {
-      "type": "testimonials",
+    "promise": {
+      "type": "promise",
       "settings": {}
     },
     "customer-reviews": {
@@ -83,7 +83,7 @@
     "shop-by-concern",
     "ritual-steps",
     "our-story",
-    "testimonials",
+    "promise",
     "customer-reviews",
     "email-signup"
   ]
