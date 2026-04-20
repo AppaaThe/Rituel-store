@@ -19,36 +19,12 @@
 
     <div class="hero-v3-copy hero-v3-copy--centered">
       <p class="hero-v3-eyebrow">The 5-Minute Morning Ritual</p>
-      <h1 class="hero-v3-title">Sculpt your jawline.<br><em>Depuff your face.</em></h1>
-      <p class="hero-v3-sub">A real amethyst crystal gua sha used every morning by women who refuse to spend an hour getting ready.</p>
-      <a href="/products/amethyst-gua-sha" class="hero-v3-cta" style="text-decoration:none;">
-        Shop Now — $22
-      </a>
+      <h1 class="hero-v3-title">Sculpt your jawline.<br><span class="hero-v3-title-accent">Depuff your face.</span></h1>
+      <p class="hero-v3-sub">Real amethyst. Five minutes every morning. No appointments.</p>
+      <a href="/products/amethyst-gua-sha" class="hero-v3-cta">Shop the Ritual — $22</a>
+      <p class="hero-v3-trust">Hand-carved real amethyst · 2-year warranty</p>
     </div>
 
-  </div>
-
-  <!-- Bottom trust bar -->
-  <div class="hero-v3-trust-bar">
-    <div class="hero-v3-trust-item">
-      <svg aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      30-Day Money Back
-    </div>
-    <div class="hero-v3-trust-sep"></div>
-    <div class="hero-v3-trust-item">
-      <svg aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      Free Shipping $35+
-    </div>
-    <div class="hero-v3-trust-sep"></div>
-    <div class="hero-v3-trust-item">
-      <svg aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      Natural Crystal
-    </div>
-    <div class="hero-v3-trust-sep"></div>
-    <div class="hero-v3-trust-item">
-      <svg aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-      Hand-Carved Stone
-    </div>
   </div>
 
 </section>
@@ -59,14 +35,14 @@
     <span class="hero-v3-sticky-name">Amethyst Gua Sha</span>
     <span class="hero-v3-sticky-price">$22</span>
   </div>
-  <a href="/products/amethyst-gua-sha" class="hero-v3-sticky-btn" style="text-decoration:none;">Add to Cart</a>
+  <a href="/products/amethyst-gua-sha" class="hero-v3-sticky-btn">Shop Now</a>
 </div>
 
 <style>
 /* ── HERO V3: Editorial Lifestyle + Floating Product Card ── */
 .hero-v3 {
   position: relative;
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
 }
@@ -108,7 +84,7 @@
 /* Copy */
 .hero-v3-copy {
   opacity: 0;
-  animation: fadeUp 0.9s var(--ease-premium) forwards 0.2s;
+  animation: fadeUp 0.5s var(--ease-premium) forwards 0.15s;
 }
 .hero-v3-eyebrow {
   font-size: 10px;
@@ -119,22 +95,29 @@
 }
 .hero-v3-title {
   font-family: var(--serif);
-  font-size: clamp(40px, 5vw, 72px);
-  font-weight: 300;
-  line-height: 1.08;
+  font-size: clamp(44px, 5.2vw, 76px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   color: var(--cream);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
-.hero-v3-title em {
-  font-style: italic;
+.hero-v3-title-accent {
   color: var(--blush);
 }
 .hero-v3-sub {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.7;
+  color: rgba(247,242,234,0.72);
+  max-width: 420px;
+  margin-bottom: 32px;
+}
+.hero-v3-trust {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: rgba(247,242,234,0.55);
-  max-width: 440px;
-  margin-bottom: 36px;
+  margin-top: 20px;
 }
 
 /* CTA Button */
@@ -148,51 +131,16 @@
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: all 0.5s var(--ease-premium);
+  transition: background 0.3s var(--ease-premium), transform 0.2s var(--ease-premium);
 }
 .hero-v3-cta:hover {
   background: var(--espresso);
 }
 .hero-v3-cta:active {
   transform: scale(0.98);
-}
-
-/* Bottom trust bar */
-.hero-v3-trust-bar {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  padding: 18px 40px;
-  background: rgba(30,18,10,0.6);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(247,242,234,0.08);
-}
-.hero-v3-trust-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: rgba(247,242,234,0.5);
-}
-.hero-v3-trust-item svg {
-  color: var(--terracotta);
-  flex-shrink: 0;
-}
-.hero-v3-trust-stars {
-  color: var(--terracotta);
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-.hero-v3-trust-sep {
-  width: 1px;
-  height: 14px;
-  background: rgba(247,242,234,0.12);
 }
 
 /* Sticky mobile ATC */
@@ -237,6 +185,7 @@
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
@@ -245,8 +194,11 @@
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
+  .hero-v3 {
+    min-height: 85svh;
+  }
   .hero-v3-inner {
-    padding: 120px 24px 40px;
+    padding: 96px 24px 48px;
     justify-content: center;
     text-align: center;
   }
@@ -254,16 +206,12 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .hero-v3-title {
-    font-size: 32px;
-  }
-  .hero-v3-trust-bar {
-    flex-wrap: wrap;
-    gap: 12px 20px;
-    padding: 16px 24px;
-  }
-  .hero-v3-trust-sep {
-    display: none;
+}
+@media (max-width: 540px) {
+  .hero-v3-cta {
+    padding: 18px 40px;
+    width: 100%;
+    max-width: 320px;
   }
 }
 </style>
