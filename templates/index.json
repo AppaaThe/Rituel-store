@@ -5,7 +5,7 @@
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
- * Cache-bust: 2026-04-15-1
+ * Cache-bust: 2026-04-20-1
  * ------------------------------------------------------------
  */
 {
@@ -62,6 +62,10 @@
       "type": "testimonials",
       "settings": {}
     },
+    "customer-reviews": {
+      "type": "customer-reviews",
+      "settings": {}
+    },
     "email-signup": {
       "type": "email-signup",
       "settings": {}
@@ -71,15 +75,16 @@
     "hero",
     "press-logos",
     "marquee",
-    "shop-by-concern",
     "featured-products",
     "value-props",
     "problem",
     "before-after",
     "material-education",
+    "shop-by-concern",
     "ritual-steps",
     "our-story",
     "testimonials",
+    "customer-reviews",
     "email-signup"
   ]
 }
