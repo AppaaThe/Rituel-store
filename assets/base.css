@@ -125,11 +125,7 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 .trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--terracotta); flex-shrink: 0; }
 
 /* Marquee */
-.marquee-bar { background: var(--espresso); padding: 14px 0; overflow: hidden; white-space: nowrap; }
-.marquee-track { display: inline-block; animation: marquee 30s linear infinite; }
-.marquee-track span { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--blush); margin: 0 28px; }
-.marquee-track .marquee-star { font-style: normal; font-size: 10px; color: var(--terracotta); margin: 0 4px; }
-@keyframes marquee { to { transform: translateX(-50%); } }
+/* marquee styles moved into sections/marquee.liquid for self-containment */
 
 /* Sections */
 .section { padding: var(--space-section-y) var(--space-section-x); max-width: 1400px; margin: 0 auto; }

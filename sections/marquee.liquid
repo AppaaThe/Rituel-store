@@ -1,9 +1,77 @@
-<div class="marquee-bar">
+<div class="marquee-bar" aria-label="Brand">
   <div class="marquee-track">
-    <span>5 Minutes Every Morning</span><span class="marquee-star">✦</span><span>Natural Amethyst Crystal</span><span class="marquee-star">✦</span><span>De-Puff in 60 Seconds</span><span class="marquee-star">✦</span><span>Jawline Definition</span><span class="marquee-star">✦</span><span>30-Day Guarantee</span><span class="marquee-star">✦</span><span>Free US Shipping $35+</span><span class="marquee-star">✦</span><span>Harder Than Jade</span><span class="marquee-star">✦</span>
-    <span>5 Minutes Every Morning</span><span class="marquee-star">✦</span><span>Natural Amethyst Crystal</span><span class="marquee-star">✦</span><span>De-Puff in 60 Seconds</span><span class="marquee-star">✦</span><span>Jawline Definition</span><span class="marquee-star">✦</span><span>30-Day Guarantee</span><span class="marquee-star">✦</span><span>Free US Shipping $35+</span><span class="marquee-star">✦</span><span>Harder Than Jade</span><span class="marquee-star">✦</span>
+    <span class="marquee-phrase">Five minutes. Real stone. Visible by Friday.</span>
+    <span class="marquee-sep" aria-hidden="true">—</span>
+    <span class="marquee-phrase">Pressure, not products.</span>
+    <span class="marquee-sep" aria-hidden="true">—</span>
+    <span class="marquee-phrase" aria-hidden="true">Five minutes. Real stone. Visible by Friday.</span>
+    <span class="marquee-sep" aria-hidden="true">—</span>
+    <span class="marquee-phrase" aria-hidden="true">Pressure, not products.</span>
+    <span class="marquee-sep" aria-hidden="true">—</span>
   </div>
 </div>
+
+<style>
+.marquee-bar {
+  background: var(--espresso);
+  padding: 16px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-block;
+  animation: marquee-scroll 38s linear infinite;
+  will-change: transform;
+}
+.marquee-phrase {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--cream);
+  letter-spacing: 0.005em;
+  margin: 0 28px;
+}
+.marquee-sep {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--terracotta);
+  margin: 0 4px;
+  opacity: 0.7;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Accessibility: respect motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-bar {
+    white-space: normal;
+    text-align: center;
+    padding: 16px 24px;
+  }
+  .marquee-track {
+    animation: none;
+    transform: none;
+    display: block;
+  }
+  .marquee-track > [aria-hidden="true"] {
+    display: none;
+  }
+}
+
+/* Mobile: smaller type so phrases breathe */
+@media (max-width: 540px) {
+  .marquee-phrase {
+    font-size: 14px;
+    margin: 0 18px;
+  }
+  .marquee-sep {
+    margin: 0 2px;
+  }
+}
+</style>
 
 {% schema %}
 {
