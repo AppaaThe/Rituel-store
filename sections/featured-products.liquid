@@ -5,113 +5,111 @@
 
 <section class="fp" id="shop">
 
-  <!-- Header -->
-  <div class="fp-header reveal">
-    <span class="fp-overline">The Tools</span>
-    <h2 class="fp-title">Four objects.<br><em>One ritual.</em></h2>
-  </div>
+  <header class="fp-head reveal">
+    <p class="fp-eyebrow">The Tools</p>
+    <h2 class="fp-title">Four objects.<br>One ritual.</h2>
+  </header>
 
-  <!-- Product Grid: 4 equal cards -->
-  <div class="fp-grid">
+  <div class="fp-layout">
 
-    <a href="{{ gua_sha.url }}" class="fp-card fp-card--hero reveal" style="text-decoration:none;">
-      <div class="fp-card-img">
+    <!-- Hero card: Amethyst Gua Sha -->
+    <a href="{{ gua_sha.url }}" class="fp-hero reveal" aria-label="Shop Amethyst Gua Sha — $22">
+      <div class="fp-hero-img">
         {%- if gua_sha.featured_image -%}
-          <img src="{{ gua_sha.featured_image | image_url: width: 600 }}" alt="{{ gua_sha.title }}" loading="lazy">
+          <img src="{{ gua_sha.featured_image | image_url: width: 900 }}" alt="{{ gua_sha.title }}" loading="lazy" width="900" height="1125">
         {%- else -%}
           <img src="{{ 'br-thumb-guasha.webp' | asset_url }}" alt="Amethyst Gua Sha" loading="lazy">
         {%- endif -%}
+        <span class="fp-hero-badge">Best Seller</span>
       </div>
-      <div class="fp-card-body">
-        <span class="fp-card-label">The Foundation</span>
-        <h3 class="fp-card-name">Amethyst Gua Sha</h3>
-        <p class="fp-card-desc">Sculpts jawline. Drains puffiness. The one tool you actually need.</p>
-        <div class="fp-card-footer">
-          <span class="fp-card-price">$22</span>
-          <span class="fp-card-cta">Shop →</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="{{ roller.url }}" class="fp-card reveal reveal-delay-1" style="text-decoration:none;">
-      <div class="fp-card-img">
-        {%- if roller.featured_image -%}
-          <img src="{{ roller.featured_image | image_url: width: 600 }}" alt="{{ roller.title }}" loading="lazy">
-        {%- else -%}
-          <img src="{{ 'br-thumb-roller.webp' | asset_url }}" alt="Amethyst Roller" loading="lazy">
-        {%- endif -%}
-      </div>
-      <div class="fp-card-body">
-        <span class="fp-card-label">The Warm-Up</span>
-        <h3 class="fp-card-name">Amethyst Roller</h3>
-        <p class="fp-card-desc">Double-ended amethyst. Preps skin, targets the under-eye area.</p>
-        <div class="fp-card-footer">
-          <span class="fp-card-price">$16</span>
-          <span class="fp-card-cta">Shop →</span>
-        </div>
+      <div class="fp-hero-body">
+        <p class="fp-hero-label">The Foundation</p>
+        <h3 class="fp-hero-name">Amethyst Gua Sha</h3>
+        <p class="fp-hero-copy">The single tool that does the most work. Sculpts the jawline, drains morning puffiness, releases the jaw clench you didn't know you were holding.</p>
+        <span class="fp-hero-cta">
+          <span class="fp-hero-cta-label">Shop the Foundation</span>
+          <span class="fp-hero-cta-meta">$22 &nbsp;·&nbsp; <span class="fp-hero-cta-arrow" aria-hidden="true">&rarr;</span></span>
+        </span>
       </div>
     </a>
 
-    <a href="{{ ice.url }}" class="fp-card reveal reveal-delay-2" style="text-decoration:none;">
-      <div class="fp-card-img">
-        {%- if ice.featured_image -%}
-          <img src="{{ ice.featured_image | image_url: width: 600 }}" alt="{{ ice.title }}" loading="lazy">
-        {%- else -%}
-          <img src="{{ 'br-thumb-ice.webp' | asset_url }}" alt="Ice Roller" loading="lazy">
-        {%- endif -%}
-      </div>
-      <div class="fp-card-body">
-        <span class="fp-card-label">The Finisher</span>
-        <h3 class="fp-card-name">Ice Roller</h3>
-        <p class="fp-card-desc">Constricts pores. De-puffs. Seals everything in.</p>
-        <div class="fp-card-footer">
-          <span class="fp-card-price">$19</span>
-          <span class="fp-card-cta">Shop →</span>
-        </div>
-      </div>
-    </a>
+    <!-- Stack of 3 supporting cards -->
+    <div class="fp-stack reveal reveal-delay-1">
 
-    <a href="{{ oil.url }}" class="fp-card reveal reveal-delay-3" style="text-decoration:none;">
-      <div class="fp-card-img">
-        {%- if oil.featured_image -%}
-          <img src="{{ oil.featured_image | image_url: width: 600 }}" alt="{{ oil.title }}" loading="lazy">
-        {%- else -%}
-          <img src="{{ 'br-thumb-oil.webp' | asset_url }}" alt="Rosehip Oil" loading="lazy">
-        {%- endif -%}
-      </div>
-      <div class="fp-card-body">
-        <span class="fp-card-label">The Glide</span>
-        <h3 class="fp-card-name">Rosehip Oil</h3>
-        <p class="fp-card-desc">Pure rosehip + vitamin C. The slip your stone needs.</p>
-        <div class="fp-card-footer">
-          <span class="fp-card-price">$15</span>
-          <span class="fp-card-cta">Shop →</span>
+      <a href="{{ oil.url }}" class="fp-row" aria-label="Shop Rosehip Oil — $15">
+        <div class="fp-row-img">
+          {%- if oil.featured_image -%}
+            <img src="{{ oil.featured_image | image_url: width: 400 }}" alt="{{ oil.title }}" loading="lazy" width="400" height="400">
+          {%- else -%}
+            <img src="{{ 'br-thumb-oil.webp' | asset_url }}" alt="Rosehip Oil" loading="lazy">
+          {%- endif -%}
         </div>
-      </div>
-    </a>
+        <div class="fp-row-body">
+          <p class="fp-row-label">Glide</p>
+          <h3 class="fp-row-name">Rosehip Oil</h3>
+          <p class="fp-row-copy">The slip your stone needs. Two drops, every time.</p>
+          <p class="fp-row-meta"><span class="fp-row-price">$15</span><span class="fp-row-arrow" aria-hidden="true">&rarr;</span></p>
+        </div>
+      </a>
+
+      <a href="{{ ice.url }}" class="fp-row" aria-label="Shop Ice Roller — $19">
+        <div class="fp-row-img">
+          {%- if ice.featured_image -%}
+            <img src="{{ ice.featured_image | image_url: width: 400 }}" alt="{{ ice.title }}" loading="lazy" width="400" height="400">
+          {%- else -%}
+            <img src="{{ 'br-thumb-ice.webp' | asset_url }}" alt="Ice Roller" loading="lazy">
+          {%- endif -%}
+        </div>
+        <div class="fp-row-body">
+          <p class="fp-row-label">Finisher</p>
+          <h3 class="fp-row-name">Ice Roller</h3>
+          <p class="fp-row-copy">Pore-tightening 30-second finisher. Constricts, calms, locks it in.</p>
+          <p class="fp-row-meta"><span class="fp-row-price">$19</span><span class="fp-row-arrow" aria-hidden="true">&rarr;</span></p>
+        </div>
+      </a>
+
+      <a href="{{ roller.url }}" class="fp-row" aria-label="Shop Amethyst Roller — $16">
+        <div class="fp-row-img">
+          {%- if roller.featured_image -%}
+            <img src="{{ roller.featured_image | image_url: width: 400 }}" alt="{{ roller.title }}" loading="lazy" width="400" height="400">
+          {%- else -%}
+            <img src="{{ 'br-thumb-roller.webp' | asset_url }}" alt="Amethyst Roller" loading="lazy">
+          {%- endif -%}
+        </div>
+        <div class="fp-row-body">
+          <p class="fp-row-label">Targeted</p>
+          <h3 class="fp-row-name">Amethyst Roller</h3>
+          <p class="fp-row-copy">Cool double-ended amethyst. Under-eye depuff, anywhere a roller fits.</p>
+          <p class="fp-row-meta"><span class="fp-row-price">$16</span><span class="fp-row-arrow" aria-hidden="true">&rarr;</span></p>
+        </div>
+      </a>
+
+    </div>
 
   </div>
 
-  <div class="fp-view-all reveal">
-    <a href="{{ routes.collections_url }}/all">View all products & ritual sets →</a>
-  </div>
+  <a href="{{ routes.collections_url }}/all" class="fp-viewall reveal">
+    View all tools &amp; ritual sets &rarr;
+  </a>
 
 </section>
 
 <style>
-/* ── Featured Products: Editorial Grid ── */
+/* ── Featured Products: Hero-led asymmetric ── */
 .fp {
   background: var(--espresso);
-  padding: 120px 80px;
+  padding: clamp(72px, 9vw, 120px) clamp(20px, 5vw, 80px);
+  color: var(--cream);
 }
 
-.fp-header {
-  max-width: 1300px;
-  margin: 0 auto 72px;
+/* Header */
+.fp-head {
+  max-width: 1320px;
+  margin: 0 auto clamp(48px, 6vw, 80px);
   text-align: center;
 }
-.fp-overline {
-  display: block;
+.fp-eyebrow {
+  font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.4em;
   text-transform: uppercase;
@@ -120,157 +118,274 @@
 }
 .fp-title {
   font-family: var(--serif);
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 300;
+  font-size: clamp(36px, 4.4vw, 60px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   color: var(--cream);
-  line-height: 1.1;
-}
-.fp-title em {
-  font-style: italic;
-  color: var(--blush);
+  margin: 0;
 }
 
-/* Grid */
-.fp-grid {
-  max-width: 1300px;
+/* Layout: hero + stack */
+.fp-layout {
+  max-width: 1320px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
 }
 
-/* Card */
-.fp-card {
-  display: flex;
-  flex-direction: column;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: all 0.5s var(--ease-premium);
-  overflow: hidden;
-  position: relative;
+/* Shared link reset */
+.fp-hero,
+.fp-row {
+  text-decoration: none;
   color: inherit;
-}
-.fp-card:hover {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(184,112,74,0.3);
-  transform: translateY(-4px);
+  display: block;
 }
 
-/* Card Image */
-.fp-card-img {
-  aspect-ratio: 3/4;
+/* ── Hero card (gua sha) ── */
+.fp-hero {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(247,242,234,0.07);
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 60%, #C8A882, #8B6845);
+  transition: border-color 0.4s var(--ease-premium), background 0.4s var(--ease-premium);
 }
-.fp-card-img img {
+.fp-hero:hover {
+  border-color: rgba(184,112,74,0.4);
+  background: rgba(255,255,255,0.045);
+}
+.fp-hero-img {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #2a1a10;
+}
+.fp-hero-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.8s var(--ease-smooth);
+  transition: transform 0.7s var(--ease-smooth);
 }
-.fp-card:hover .fp-card-img img {
-  transform: scale(1.06);
+.fp-hero:hover .fp-hero-img img {
+  transform: scale(1.03);
 }
-
-/* Card Body */
-.fp-card-body {
-  padding: 24px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.fp-card-label {
-  font-size: 9px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 8px;
-}
-.fp-card-name {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 300;
-  color: var(--cream);
-  margin-bottom: 8px;
-  line-height: 1.2;
-}
-.fp-card-desc {
-  font-size: 12px;
-  color: rgba(247,242,234,0.4);
-  line-height: 1.7;
-  margin-bottom: 16px;
-  flex: 1;
-}
-.fp-card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 16px;
-  border-top: 1px solid rgba(247,242,234,0.06);
-}
-.fp-card-price {
-  font-family: var(--serif);
-  font-size: 22px;
-  color: var(--cream);
-}
-.fp-card-cta {
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--terracotta);
-  transition: letter-spacing 0.5s var(--ease-premium);
-}
-.fp-card:hover .fp-card-cta {
-  letter-spacing: 0.22em;
-}
-
-/* Hero card accent */
-.fp-card--hero {
-  border-color: rgba(184,112,74,0.2);
-}
-.fp-card--hero::after {
-  content: 'Best Seller';
+.fp-hero-badge {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  top: 20px;
+  left: 20px;
   background: var(--terracotta);
   color: var(--cream);
-  padding: 5px 12px;
-  z-index: 2;
   font-family: var(--sans);
+  font-size: 10px;
   font-weight: 500;
-}
-
-/* View all */
-.fp-view-all {
-  text-align: center;
-  margin-top: 48px;
-}
-.fp-view-all a {
-  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(247,242,234,0.3);
-  text-decoration: none;
-  transition: color 0.5s var(--ease-premium);
+  padding: 7px 14px;
 }
-.fp-view-all a:hover {
+.fp-hero-body {
+  padding: clamp(28px, 3vw, 44px) clamp(28px, 3vw, 44px) clamp(28px, 3vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fp-hero-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
   color: var(--terracotta);
+}
+.fp-hero-name {
+  font-family: var(--serif);
+  font-size: clamp(28px, 2.6vw, 38px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  color: var(--cream);
+  margin: 0;
+}
+.fp-hero-copy {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.3vw, 18px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(247,242,234,0.78);
+  max-width: 38ch;
+}
+.fp-hero-cta {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--terracotta);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 18px 24px;
+  transition: background 0.3s var(--ease-premium);
+}
+.fp-hero:hover .fp-hero-cta {
+  background: #8B4F33;
+}
+.fp-hero-cta-meta {
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.1em;
+}
+.fp-hero-cta-arrow {
+  display: inline-block;
+  transition: transform 0.3s var(--ease-premium);
+}
+.fp-hero:hover .fp-hero-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Stack of 3 supporting rows ── */
+.fp-stack {
+  display: grid;
+  grid-auto-rows: auto;
+  align-content: space-between;
+  gap: clamp(12px, 1.5vw, 16px);
+}
+.fp-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 38%) 1fr;
+  gap: clamp(16px, 2vw, 24px);
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(247,242,234,0.07);
+  overflow: hidden;
+  transition: border-color 0.4s var(--ease-premium), background 0.4s var(--ease-premium);
+}
+.fp-row:hover {
+  border-color: rgba(184,112,74,0.4);
+  background: rgba(255,255,255,0.045);
+}
+.fp-row-img {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #2a1a10;
+}
+.fp-row-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--ease-smooth);
+}
+.fp-row:hover .fp-row-img img {
+  transform: scale(1.04);
+}
+.fp-row-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(16px, 2vw, 24px) clamp(20px, 2.4vw, 28px) clamp(16px, 2vw, 24px) 0;
+  gap: 6px;
+}
+.fp-row-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+.fp-row-name {
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--cream);
+  margin: 0;
+}
+.fp-row-copy {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(247,242,234,0.7);
+  margin-top: 2px;
+}
+.fp-row-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+.fp-row-price {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+}
+.fp-row-arrow {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--terracotta);
+  transition: transform 0.3s var(--ease-premium);
+  display: inline-block;
+}
+.fp-row:hover .fp-row-arrow {
+  transform: translateX(4px);
+}
+
+/* View-all link */
+.fp-viewall {
+  display: block;
+  width: max-content;
+  margin: clamp(48px, 6vw, 72px) auto 0;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding: 8px 0;
+  transition: color 0.3s var(--ease-premium);
+}
+.fp-viewall:hover {
+  color: var(--cream);
 }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
-  .fp { padding: 80px 32px; }
-  .fp-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+@media (max-width: 900px) {
+  .fp-layout {
+    grid-template-columns: 1fr;
+    gap: clamp(16px, 3vw, 24px);
+  }
+  .fp-hero-img {
+    aspect-ratio: 5 / 4;
+  }
 }
-@media (max-width: 600px) {
-  .fp { padding: 64px 16px; }
-  .fp-grid { grid-template-columns: 1fr; gap: 2px; }
-  .fp-card-img { aspect-ratio: 4/3; }
+@media (max-width: 540px) {
+  .fp-row {
+    grid-template-columns: 110px 1fr;
+    gap: 14px;
+  }
+  .fp-row-body {
+    padding: 14px 14px 14px 0;
+  }
+  .fp-row-copy {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .fp-hero-cta {
+    padding: 16px 20px;
+    font-size: 11px;
+  }
+  .fp-hero-cta-label {
+    letter-spacing: 0.15em;
+  }
 }
 </style>
 
