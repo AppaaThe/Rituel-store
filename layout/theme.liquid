@@ -21,8 +21,13 @@
     <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap">
   </noscript>
 
+  {%- comment -%} Favicons — hardcoded to the actual BY RITUEL logo (rituel-logo-optimized.png). Falls back to settings.favicon only if the asset is somehow missing. {%- endcomment -%}
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ 'rituel-logo-optimized.png' | asset_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ 'rituel-logo-optimized.png' | asset_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ 'rituel-logo-optimized.png' | asset_url }}">
+  <link rel="shortcut icon" href="{{ 'rituel-logo-optimized.png' | asset_url }}" type="image/png">
   {%- if settings.favicon != blank -%}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    <link rel="mask-icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" color="#c7744a">
   {%- endif -%}
 
   <title>{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
