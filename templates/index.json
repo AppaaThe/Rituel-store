@@ -34,10 +34,6 @@
       "type": "featured-products",
       "settings": {}
     },
-    "value-props": {
-      "type": "value-props",
-      "settings": {}
-    },
     "problem": {
       "type": "problem",
       "settings": {}
@@ -76,7 +72,6 @@
     "why-guasha",
     "marquee",
     "featured-products",
-    "value-props",
     "problem",
     "before-after",
     "material-education",
