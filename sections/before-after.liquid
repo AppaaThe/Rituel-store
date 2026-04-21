@@ -1,87 +1,134 @@
-<section class="before-after-section">
-  <div class="before-after-inner">
+<section class="ba">
+  <div class="ba-inner">
 
-    <div class="before-after-header">
-      <span class="section-label">Real Results</span>
-      <h2 class="before-after-title">5 Minutes.<br><em>Every Morning.</em></h2>
-      <p class="before-after-sub">Drag the slider to see the difference. Same woman, same day — before and after the ritual.</p>
-    </div>
+    <header class="ba-head">
+      <p class="ba-eyebrow">Real Results</p>
+      <h2 class="ba-title">5 Minutes.<br><span class="ba-title-accent">Every Morning.</span></h2>
+      <p class="ba-sub">Drag the slider to see the difference. Same woman, same day &mdash; before and after the ritual.</p>
+    </header>
 
-    <div class="ba-slider-wrap">
-      <div class="ba-slider" id="baSlider">
-        <!-- After image (full, sits behind) -->
+    <div
+      class="ba-slider"
+      id="baSlider"
+      role="slider"
+      tabindex="0"
+      aria-label="Before and after gua sha comparison. Drag or use arrow keys to reveal."
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="50"
+      style="--ba-pos: 0.5;"
+    >
+      <img
+        class="ba-img ba-img-after"
+        src="{{ 'br-result-1.webp' | asset_url }}"
+        alt="After the gua sha ritual: sculpted, depuffed, glowing skin"
+        loading="lazy"
+        draggable="false"
+      >
+      <div class="ba-before-clip" id="baBeforeClip">
         <img
-          class="ba-img ba-img-after"
-          src="{{ 'br-result-1.webp' | asset_url }}"
-          alt="After gua sha ritual — sculpted, glowing skin"
+          class="ba-img ba-img-before"
+          src="{{ 'br-result-2.webp' | asset_url }}"
+          alt="Before the gua sha ritual: morning puffiness, undefined jawline"
           loading="lazy"
           draggable="false"
         >
-        <!-- Before image (clipped) -->
-        <div class="ba-before-clip" id="baBeforeClip">
-          <img
-            class="ba-img ba-img-before"
-            src="{{ 'br-result-2.webp' | asset_url }}"
-            alt="Before gua sha ritual — before the ritual"
-            loading="lazy"
-            draggable="false"
-          >
-        </div>
-        <!-- Labels -->
-        <div class="ba-label ba-label-before">Before</div>
-        <div class="ba-label ba-label-after">After</div>
-        <!-- Drag handle -->
-        <div class="ba-handle" id="baHandle">
-          <div class="ba-handle-line"></div>
-          <div class="ba-handle-knob">
-            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(6,0)"/></svg>
-          </div>
-          <div class="ba-handle-line"></div>
-        </div>
       </div>
 
-      <div class="ba-notes">
-        <div class="ba-notes-col">
-          <div class="comparison-note">&#x25CB; Under-eye puffiness</div>
-          <div class="comparison-note">&#x25CB; Undefined jawline</div>
-          <div class="comparison-note">&#x25CB; Dull, flat skin tone</div>
+      <span class="ba-label ba-label-before" aria-hidden="true">Before</span>
+      <span class="ba-label ba-label-after" aria-hidden="true">After</span>
+
+      <div class="ba-handle" id="baHandle" aria-hidden="true">
+        <div class="ba-handle-line"></div>
+        <div class="ba-handle-knob">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"/>
+            <polyline points="9 18 15 12 9 6" transform="translate(6,0)"/>
+          </svg>
         </div>
-        <div class="ba-notes-col ba-notes-after">
-          <div class="comparison-note comparison-note-after">&#x2713; De-puffed, smooth under-eye</div>
-          <div class="comparison-note comparison-note-after">&#x2713; Defined, sculpted jawline</div>
-          <div class="comparison-note comparison-note-after">&#x2713; Lifted, glowing complexion</div>
-        </div>
+        <div class="ba-handle-line"></div>
       </div>
     </div>
 
-    <div class="before-after-cta">
-      <p class="before-after-quote">&ldquo;I never skipped a morning after day 3. I couldn't — the difference is too obvious.&rdquo;</p>
-      <a href="#shop" class="btn-primary" style="display:inline-block;width:auto;padding:20px 56px;text-decoration:none;">
-        <span>Start Your Ritual</span>
-      </a>
-    </div>
+    <ul class="ba-notes">
+      <li class="ba-note ba-note-before">Morning puffiness</li>
+      <li class="ba-note ba-note-after">Depuffed, smooth</li>
+      <li class="ba-note ba-note-before">Undefined jawline</li>
+      <li class="ba-note ba-note-after">Defined, sculpted</li>
+      <li class="ba-note ba-note-before">Dull, flat skin tone</li>
+      <li class="ba-note ba-note-after">Lifted, glowing</li>
+    </ul>
+
+    <a href="#shop" class="ba-cta">Start Your Ritual</a>
 
   </div>
 </section>
 
 <style>
-/* ── Before/After Slider ── */
-.ba-slider-wrap {
-  max-width: 520px;
-  margin: 0 auto 72px;
+.ba {
+  background: var(--espresso);
+  padding: var(--space-section-y) var(--space-section-x);
+  color: var(--cream);
 }
+.ba-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Head */
+.ba-head {
+  text-align: center;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.ba-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--blush);
+  margin-bottom: 18px;
+}
+.ba-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.4vw, 60px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin: 0 0 18px;
+}
+.ba-title-accent {
+  color: var(--blush);
+}
+.ba-sub {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(247,242,234,0.72);
+  max-width: 44ch;
+  margin: 0 auto;
+}
+
+/* Slider */
 .ba-slider {
   position: relative;
+  max-width: 640px;
+  margin: 0 auto clamp(32px, 4vw, 48px);
   overflow: hidden;
   cursor: ew-resize;
   user-select: none;
   -webkit-user-select: none;
-  border-radius: 4px;
+  touch-action: pan-y;
+  outline: none;
+}
+.ba-slider:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 4px;
 }
 .ba-img {
   display: block;
   width: 100%;
-  aspect-ratio: 3/4;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   pointer-events: none;
 }
@@ -89,53 +136,51 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%;
+  width: calc(var(--ba-pos, 0.5) * 100%);
   height: 100%;
   overflow: hidden;
 }
-.ba-img-before {
+.ba-before-clip .ba-img-before {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  /* Match the container width so the image lines up exactly */
-  min-width: 0;
-}
-.ba-before-clip .ba-img-before {
-  /* Image must be sized to the full slider, not the clip */
   width: calc(100% / var(--ba-pos, 0.5));
+  height: 100%;
+  object-fit: cover;
   max-width: none;
 }
+
 /* Labels */
 .ba-label {
   position: absolute;
-  bottom: 20px;
+  bottom: 18px;
+  font-family: var(--sans);
   font-size: 10px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 2px;
   font-weight: 500;
+  padding: 6px 14px;
   pointer-events: none;
   z-index: 3;
 }
 .ba-label-before {
   left: 16px;
-  background: rgba(30,18,10,0.7);
-  color: var(--cream, #FAF6F0);
+  background: rgba(30,18,10,0.75);
+  color: var(--cream);
+  backdrop-filter: blur(6px);
 }
 .ba-label-after {
   right: 16px;
-  background: var(--terracotta, #B8704A);
-  color: #fff;
+  background: var(--terracotta);
+  color: var(--cream);
 }
+
 /* Handle */
 .ba-handle {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
+  left: calc(var(--ba-pos, 0.5) * 100%);
   transform: translateX(-50%);
   width: 44px;
   display: flex;
@@ -148,44 +193,101 @@
 .ba-handle-line {
   flex: 1;
   width: 2px;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.85);
 }
 .ba-handle-knob {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--cream, #FAF6F0);
-  border: 2px solid rgba(255,255,255,0.9);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  background: var(--cream);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--espresso, #2C1810);
+  color: var(--espresso);
   flex-shrink: 0;
 }
-/* Notes below slider */
+
+/* Notes */
 .ba-notes {
+  list-style: none;
+  padding: 0;
+  max-width: 640px;
+  margin: 0 auto clamp(40px, 5vw, 56px);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 24px;
+  column-gap: 32px;
+  row-gap: 12px;
 }
-.ba-notes-col {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.ba-note {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 22px;
 }
-.ba-notes-after {
-  text-align: right;
+.ba-note::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--serif);
+  line-height: 1.15;
+}
+.ba-note-before {
+  color: rgba(247,242,234,0.5);
+}
+.ba-note-before::before {
+  content: '—';
+  color: rgba(247,242,234,0.4);
+}
+.ba-note-after {
+  color: var(--cream);
+  text-align: left;
+}
+.ba-note-after::before {
+  content: '+';
+  color: var(--terracotta);
+  font-weight: 400;
+  font-size: 1.1em;
 }
 
-@media (max-width: 1024px) {
-  .ba-slider-wrap { max-width: 100%; }
-  .ba-notes { gap: 16px; }
+/* CTA */
+.ba-cta {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--cream);
+  background: var(--terracotta);
+  padding: 20px 56px;
+  transition: background 0.3s var(--ease-premium), transform 0.2s var(--ease-premium);
 }
-@media (max-width: 520px) {
-  .ba-notes { grid-template-columns: 1fr; gap: 20px; }
-  .ba-notes-after { text-align: left; }
+.ba-cta:hover {
+  background: #8B4F33;
+}
+.ba-cta:focus-visible {
+  outline: 2px solid var(--blush);
+  outline-offset: 3px;
+}
+.ba-cta:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .ba-cta {
+    width: auto;
+    display: block;
+    max-width: 320px;
+    padding: 18px 40px;
+  }
 }
 </style>
 
@@ -193,50 +295,52 @@
 (function() {
   var slider = document.getElementById('baSlider');
   if (!slider) return;
-  var clip = document.getElementById('baBeforeClip');
-  var handle = document.getElementById('baHandle');
   var dragging = false;
 
-  function setPosition(x) {
-    var rect = slider.getBoundingClientRect();
-    var pos = (x - rect.left) / rect.width;
-    pos = Math.max(0.05, Math.min(0.95, pos));
-    clip.style.width = (pos * 100) + '%';
-    handle.style.left = (pos * 100) + '%';
-    slider.style.setProperty('--ba-pos', pos);
+  function setPct(pct) {
+    pct = Math.max(0.05, Math.min(0.95, pct));
+    slider.style.setProperty('--ba-pos', pct);
+    slider.setAttribute('aria-valuenow', Math.round(pct * 100));
   }
-
-  // Set initial position
-  setPosition(0);
-  setTimeout(function() {
+  function setFromClientX(x) {
     var rect = slider.getBoundingClientRect();
-    setPosition(rect.left + rect.width * 0.5);
-  }, 100);
+    setPct((x - rect.left) / rect.width);
+  }
 
   slider.addEventListener('mousedown', function(e) {
     e.preventDefault();
     dragging = true;
-    setPosition(e.clientX);
+    setFromClientX(e.clientX);
   });
   document.addEventListener('mousemove', function(e) {
     if (!dragging) return;
-    setPosition(e.clientX);
+    setFromClientX(e.clientX);
   });
-  document.addEventListener('mouseup', function() {
-    dragging = false;
-  });
+  document.addEventListener('mouseup', function() { dragging = false; });
 
-  // Touch support
   slider.addEventListener('touchstart', function(e) {
     dragging = true;
-    setPosition(e.touches[0].clientX);
+    setFromClientX(e.touches[0].clientX);
   }, { passive: true });
   document.addEventListener('touchmove', function(e) {
     if (!dragging) return;
-    setPosition(e.touches[0].clientX);
+    setFromClientX(e.touches[0].clientX);
   }, { passive: true });
-  document.addEventListener('touchend', function() {
-    dragging = false;
+  document.addEventListener('touchend', function() { dragging = false; });
+
+  // Keyboard support
+  slider.addEventListener('keydown', function(e) {
+    var current = parseFloat(slider.style.getPropertyValue('--ba-pos')) || 0.5;
+    var step = e.shiftKey ? 0.1 : 0.05;
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+      setPct(current - step); e.preventDefault();
+    } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+      setPct(current + step); e.preventDefault();
+    } else if (e.key === 'Home') {
+      setPct(0.05); e.preventDefault();
+    } else if (e.key === 'End') {
+      setPct(0.95); e.preventDefault();
+    }
   });
 })();
 </script>
