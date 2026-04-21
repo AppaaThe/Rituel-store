@@ -1,47 +1,177 @@
-<section class="problem-section">
+<section class="problem">
   <div class="problem-inner">
 
-    <div class="problem-image">
+    <figure class="problem-media">
       <img
         src="{{ 'br-technique-diagram.webp' | asset_url }}"
-        alt="Gua sha technique diagram showing how it lifts brows, depuffs undereye, contours cheeks, and defines jawline"
+        alt="Gua sha technique diagram showing how the stroke path lifts brows, depuffs the under-eye, contours cheeks, and defines the jawline"
         loading="lazy"
       >
-    </div>
+    </figure>
 
     <div class="problem-copy">
-      <span class="section-label">Sound Familiar?</span>
+      <p class="problem-eyebrow">Sound Familiar?</p>
 
-      <h2 class="problem-title">You wake up looking<br><em>more tired than you feel.</em></h2>
+      <h2 class="problem-title">You wake up looking<br><span class="problem-title-accent">more tired than you feel.</span></h2>
 
-      <div class="problem-list">
-        <div class="problem-item">
-          <span class="problem-dash">—</span>
-          <p>Your face is puffy. Every morning. No matter how much water you drank or how early you went to bed.</p>
-        </div>
-        <div class="problem-item">
-          <span class="problem-dash">—</span>
-          <p>Your jawline has softened. You see it in photos. You don't say anything but you notice.</p>
-        </div>
-        <div class="problem-item">
-          <span class="problem-dash">—</span>
-          <p>You've spent money on serums, creams, eye patches. Your skin still looks the same at 7am.</p>
-        </div>
-        <div class="problem-item">
-          <span class="problem-dash">—</span>
-          <p>You want to look like yourself — just the best version. Without a full makeup routine before 8am.</p>
-        </div>
-      </div>
+      <ul class="problem-list">
+        <li>Your face is puffy. Every morning. No matter how much water you drank or how early you went to bed.</li>
+        <li>Your jawline has softened. You see it in photos. You don't say anything but you notice.</li>
+        <li>You've spent money on serums, creams, eye patches. Your skin still looks the same at 7am.</li>
+        <li>You want to look like yourself — just the best version. Without a full makeup routine before 8am.</li>
+      </ul>
 
       <p class="problem-pivot">
-        The problem isn't your skin. It's that no cream can physically move fluid, drain puffiness, or lift your facial muscles. Only mechanical stimulation can do that. That's what gua sha is.
+        <span class="problem-pivot-lead" aria-hidden="true">—</span>
+        The problem isn't your skin. It's that no cream can physically move fluid, drain puffiness, or lift facial muscles. Only mechanical stimulation can do that. That's what gua sha is.
       </p>
 
-      <a href="#shop" class="btn-problem">Start the Ritual</a>
+      <a href="#shop" class="problem-cta">Start the Ritual</a>
     </div>
 
   </div>
 </section>
+
+<style>
+.problem {
+  background: var(--cream);
+  padding: var(--space-section-y) var(--space-section-x);
+}
+.problem-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 7vw, 100px);
+  align-items: center;
+}
+
+/* Media */
+.problem-media {
+  margin: 0;
+}
+.problem-media img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+/* Copy column */
+.problem-copy {
+  display: flex;
+  flex-direction: column;
+}
+.problem-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 18px;
+}
+.problem-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 3.6vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--espresso);
+  margin: 0 0 clamp(28px, 4vw, 44px);
+}
+.problem-title-accent {
+  color: var(--terracotta);
+}
+
+/* Pain list */
+.problem-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 clamp(32px, 4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.problem-list li {
+  position: relative;
+  padding-left: 28px;
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.6;
+  color: var(--espresso);
+  max-width: 54ch;
+}
+.problem-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--serif);
+  color: var(--terracotta);
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* Pivot paragraph — editorial pull-quote, no bordered box */
+.problem-pivot {
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.55;
+  color: var(--espresso);
+  letter-spacing: -0.002em;
+  max-width: 44ch;
+  margin: 0 0 clamp(32px, 4vw, 44px);
+  position: relative;
+}
+.problem-pivot-lead {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--terracotta);
+  font-weight: 400;
+}
+
+/* CTA */
+.problem-cta {
+  align-self: flex-start;
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--cream);
+  background: var(--terracotta);
+  padding: 18px 44px;
+  transition: background 0.3s var(--ease-premium), transform 0.2s var(--ease-premium);
+}
+.problem-cta:hover {
+  background: var(--espresso);
+}
+.problem-cta:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 3px;
+}
+.problem-cta:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .problem-inner {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 6vw, 56px);
+  }
+  .problem-media img {
+    aspect-ratio: 4 / 3;
+    max-height: 440px;
+  }
+  .problem-cta {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+</style>
 
 {% schema %}
 {

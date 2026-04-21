@@ -404,22 +404,7 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 .page-content p { font-size: 16px; line-height: 1.9; color: var(--stone); margin-bottom: 20px; }
 .page-content strong { color: var(--espresso); font-weight: 500; }
 
-/* Problem Section */
-.problem-section { background: var(--cream); padding: var(--space-section-y) var(--space-section-x); }
-.problem-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
-.problem-image { position: relative; }
-.problem-image img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; display: block; }
-.problem-copy { display: flex; flex-direction: column; gap: 0; }
-.problem-title { font-family: var(--serif); font-size: 48px; font-weight: 300; line-height: 1.15; margin: 16px 0 40px; color: var(--espresso); }
-.problem-title em { font-style: italic; color: var(--terracotta); }
-.problem-list { display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px; }
-.problem-item { display: flex; gap: 20px; align-items: flex-start; }
-.problem-dash { font-family: var(--serif); font-size: 24px; color: var(--terracotta); line-height: 1.6; flex-shrink: 0; }
-.problem-item p { font-size: 15px; line-height: 1.8; color: var(--stone); }
-.problem-pivot { font-size: 14px; line-height: 1.9; color: var(--espresso); padding: 28px; border-left: 2px solid var(--terracotta); background: var(--cream-dark); border-radius: 0 4px 4px 0; margin-bottom: 36px; }
-.btn-problem { display: inline-block; text-decoration: none; background: var(--terracotta); color: var(--cream); padding: 18px 44px; font-family: var(--sans); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; border-radius: 2px; transition: all 0.5s var(--ease-premium); align-self: flex-start; }
-.btn-problem:hover { background: var(--espresso); }
-.btn-problem:active { transform: scale(0.98); }
+/* Problem section styles moved into sections/problem.liquid for self-containment */
 
 /* Before / After */
 .before-after-section { background: var(--espresso); padding: var(--space-section-y) var(--space-section-x); }
@@ -467,9 +452,7 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
   .cart-layout { grid-template-columns: 1fr; gap: 40px; }
   .cart-summary-col { position: static; }
   .order-bump-inner { grid-template-columns: auto auto 1fr; gap: 12px; }
-  .problem-section, .before-after-section { padding: 80px 32px; }
-  .problem-inner { grid-template-columns: 1fr; gap: 48px; }
-  .problem-title { font-size: 36px; }
+  .before-after-section { padding: 80px 32px; }
   .before-after-title { font-size: 40px; }
   /* Ritual steps responsive */
   .ritual-section { padding: 80px 32px; }
