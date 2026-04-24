@@ -107,6 +107,10 @@
   </main>
 
   {% section 'footer' %}
+
+  {%- if template.name == 'index' -%}
+    {% render 'sticky-cta' %}
+  {%- endif -%}
   {%- comment -%}
     Custom exit-intent popup removed 2026-04-19 — Klaviyo client API call was missing
     company_id query param, so subscribes silently failed. Klaviyo-dashboard popup

@@ -1,0 +1,132 @@
+{%- comment -%}
+  Sticky mobile Shop CTA — homepage only.
+  Fades in after user scrolls past the hero (~80vh), fades out near the
+  email signup section to avoid blocking the form.
+{%- endcomment -%}
+
+{%- assign hero_product = all_products['amethyst-gua-sha'] -%}
+
+<a href="{{ hero_product.url | default: '/products/amethyst-gua-sha' }}"
+   class="sticky-cta"
+   id="StickyCta"
+   aria-label="Shop Amethyst Gua Sha from $22"
+   hidden>
+  <span class="sticky-cta-label">Shop the Ritual</span>
+  <span class="sticky-cta-meta">
+    <span class="sticky-cta-price">from $22</span>
+    <span class="sticky-cta-arrow" aria-hidden="true">&rarr;</span>
+  </span>
+</a>
+
+<style>
+  .sticky-cta {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(140%);
+    z-index: 95;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    width: min(calc(100% - 32px), 420px);
+    padding: 14px 20px;
+    background: var(--espresso, #1E120A);
+    color: var(--cream, #F7F2EA);
+    text-decoration: none;
+    border-radius: 999px;
+    box-shadow: 0 12px 32px -12px rgba(30, 18, 10, 0.5);
+    font-family: var(--sans), system-ui, sans-serif;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    opacity: 0;
+  }
+  .sticky-cta[hidden] {
+    display: none !important;
+  }
+  .sticky-cta.is-visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  .sticky-cta-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .sticky-cta-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blush, #E8C5B0);
+  }
+  .sticky-cta-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  .sticky-cta:active .sticky-cta-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Only render on mobile / tablet */
+  @media (max-width: 768px) {
+    .sticky-cta {
+      display: flex;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sticky-cta {
+      transition: opacity 0.2s ease;
+    }
+    .sticky-cta.is-visible {
+      transform: translateX(-50%);
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var cta = document.getElementById('StickyCta');
+    if (!cta) return;
+
+    // Only home template
+    var isHome = document.documentElement.classList.contains('template-index')
+              || document.body.classList.contains('template-index')
+              || /^(\/|\/\?|\/#)/.test(window.location.pathname);
+    // Fallback: check for the #shop anchor (only exists on homepage)
+    var shopAnchor = document.getElementById('shop');
+    if (!shopAnchor && !isHome) { cta.remove(); return; }
+
+    var signup = document.getElementById('signup');
+    var heroThreshold = 0;
+    var signupThreshold = Infinity;
+
+    function computeThresholds() {
+      var hero = document.querySelector('.hero-v3, #home');
+      heroThreshold = hero ? hero.offsetTop + hero.offsetHeight * 0.6 : window.innerHeight * 0.5;
+      signupThreshold = signup ? signup.offsetTop - 120 : Infinity;
+    }
+
+    function onScroll() {
+      var y = window.scrollY || window.pageYOffset;
+      if (y > heroThreshold && y < signupThreshold) {
+        cta.classList.add('is-visible');
+      } else {
+        cta.classList.remove('is-visible');
+      }
+    }
+
+    // Reveal in DOM (was hidden to avoid flash before JS ready)
+    cta.removeAttribute('hidden');
+    computeThresholds();
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () {
+      computeThresholds();
+      onScroll();
+    }, { passive: true });
+  })();
+</script>
