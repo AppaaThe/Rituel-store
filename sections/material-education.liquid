@@ -12,6 +12,9 @@
         <span class="material-hero-label">The material</span>
         <h3 class="material-hero-title">Not all stones are equal.</h3>
         <p class="material-hero-text">Most gua sha sold online is <strong>Xiuyan jade, nephrite, or dyed glass</strong> &mdash; cheap materials that polish unevenly and leave <strong>micro-ridges that drag</strong> across skin. Amethyst sits at <strong>7 on the Mohs scale</strong>: <strong>harder than nephrite jade</strong>, smoother after finishing, and <strong>naturally cool to the touch</strong> without refrigeration.</p>
+        <figure class="material-hero-media" aria-hidden="true">
+          <img src="{{ 'br-guasha-closeup.webp' | asset_url }}" alt="" loading="lazy" width="560" height="420">
+        </figure>
         <p class="material-hero-stat"><span>7 Mohs hardness</span><span class="dot" aria-hidden="true">&middot;</span><span>Hand-finished</span></p>
       </article>
 
@@ -149,8 +152,21 @@
     font-size: 15px;
     line-height: 1.75;
     color: rgba(247, 242, 234, 0.78);
-    margin: 0 0 32px;
+    margin: 0 0 24px;
     max-width: 52ch;
+  }
+  .material-hero-media {
+    margin: 0 0 32px;
+    overflow: hidden;
+    border-radius: 2px;
+    aspect-ratio: 16 / 10;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  .material-hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .material-hero-stat {
     margin: auto 0 0;
