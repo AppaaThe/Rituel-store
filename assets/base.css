@@ -200,28 +200,7 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 .product-price { font-family: var(--serif); font-size: 24px; color: var(--cream); margin-bottom: 16px; }
 .product-price-orig { font-size: 14px; color: rgba(247,242,234,0.3); text-decoration: line-through; margin-left: 10px; }
 
-/* Reviews */
-.reviews-hero-img { max-width: 480px; margin: 0 auto 48px; border-radius: 0; overflow: hidden; }
-.reviews-hero-img img { width: 100%; height: auto; display: block; aspect-ratio: 4/5; object-fit: cover; }
-.reviews-section { padding: var(--space-section-y) var(--space-section-x); max-width: 1400px; margin: 0 auto; }
-.reviews-header { text-align: center; margin-bottom: 16px; }
-.reviews-sub { text-align: center; font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--stone); margin-bottom: 64px; }
-.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 48px; }
-.review-card { padding: 40px; background: var(--white); border-radius: 0; transition: transform 0.5s var(--ease-premium); }
-.review-card:hover { transform: translateY(-6px); }
-.review-card:nth-child(2) { margin-top: 40px; background: var(--cream-dark); }
-.review-card:nth-child(3) { margin-top: 20px; }
-.review-stars { color: var(--terracotta); font-size: 14px; letter-spacing: 3px; margin-bottom: 20px; }
-.review-text { font-family: var(--serif); font-size: 18px; line-height: 1.7; font-style: italic; margin-bottom: 24px; }
-.review-author { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); }
-/* Featured money quote */
-.reviews-money-quote { background: var(--espresso); border-radius: 0; padding: 56px; max-width: 800px; margin: 0 auto; }
-.money-quote-inner { display: flex; flex-direction: column; gap: 0; }
-.money-quote-mark { font-family: var(--serif); font-size: 80px; color: var(--terracotta); line-height: 0.6; margin-bottom: 24px; }
-.money-quote-text { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--cream); line-height: 1.7; margin-bottom: 28px; }
-.money-quote-author { display: flex; flex-direction: column; gap: 4px; }
-.money-quote-name { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; color: var(--blush); }
-.money-quote-detail { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,242,234,0.3); }
+/* Reviews + money-quote styles moved to sections/customer-reviews.liquid (section #13 rebuild). Money-quote + reviews-hero-img variants are unused. */
 
 /* Email Club */
 .club-section { background: linear-gradient(135deg, var(--terracotta) 0%, #8B6845 100%); padding: var(--space-section-y) var(--space-section-x); position: relative; overflow: hidden; text-align: center; }
@@ -397,8 +376,7 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
   .header-nav { display: none; }
   .section { padding: 80px 40px; }
   .section-header { grid-template-columns: 1fr; gap: 24px; }
-  .steps-grid, .products-grid, .products-grid-4, .reviews-grid, .collection-grid, .collection-grid-bundles { grid-template-columns: 1fr; }
-  .review-card:nth-child(2), .review-card:nth-child(3) { margin-top: 0; }
+  .steps-grid, .products-grid, .products-grid-4, .collection-grid, .collection-grid-bundles { grid-template-columns: 1fr; }
   .site-footer { grid-template-columns: 1fr 1fr; padding: 60px 40px; }
   .footer-bottom { padding: 24px 40px; }
   .products-section, .club-section { padding: 80px 40px; }
