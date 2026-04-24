@@ -12,26 +12,55 @@
 
   <div class="fp-layout">
 
-    <!-- Hero card: Amethyst Gua Sha -->
-    <a href="{{ gua_sha.url }}" class="fp-hero reveal" aria-label="Shop Amethyst Gua Sha — $22">
-      <div class="fp-hero-img">
-        {%- if gua_sha.featured_image -%}
-          <img src="{{ gua_sha.featured_image | image_url: width: 900 }}" alt="{{ gua_sha.title }}" loading="lazy" width="900" height="1125">
-        {%- else -%}
-          <img src="{{ 'br-thumb-guasha.webp' | asset_url }}" alt="Amethyst Gua Sha" loading="lazy">
-        {%- endif -%}
+    <!-- Hero card: Amethyst Gua Sha (with slideshow) -->
+    <article class="fp-hero reveal" data-fp-slideshow>
+      <div class="fp-hero-slideshow">
+        <div class="fp-hero-slides" aria-roledescription="carousel" aria-label="Amethyst Gua Sha product photos">
+          {%- assign gs_images = gua_sha.images -%}
+          {%- if gs_images.size >= 2 -%}
+            {%- for img in gs_images limit: 5 -%}
+              <a href="{{ gua_sha.url }}"
+                 class="fp-hero-slide{% if forloop.first %} is-active{% endif %}"
+                 aria-label="Shop Amethyst Gua Sha — $22"
+                 aria-roledescription="slide"
+                 aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+                 tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
+                <img src="{{ img | image_url: width: 900 }}"
+                     alt="Amethyst gua sha — view {{ forloop.index }} of {{ gs_images.size }}"
+                     loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                     width="900" height="1125">
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            {%- assign fallback = 'br-prod-guasha-hero.webp|br-guasha-closeup.webp|br-card-guasha-lifestyle.webp|br-hero-guasha-outdoor.webp' | split: '|' -%}
+            {%- for asset in fallback -%}
+              <a href="{{ gua_sha.url }}"
+                 class="fp-hero-slide{% if forloop.first %} is-active{% endif %}"
+                 aria-label="Shop Amethyst Gua Sha — $22"
+                 aria-roledescription="slide"
+                 aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+                 tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
+                <img src="{{ asset | asset_url }}"
+                     alt="Amethyst gua sha — view {{ forloop.index }} of {{ fallback.size }}"
+                     loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                     width="900" height="1125">
+              </a>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
         <span class="fp-hero-badge">Best Seller</span>
+        <div class="fp-hero-dots" role="tablist" aria-label="Product photo navigation"></div>
       </div>
       <div class="fp-hero-body">
         <p class="fp-hero-label">The Foundation</p>
         <h3 class="fp-hero-name">Amethyst Gua Sha</h3>
         <p class="fp-hero-copy">The single tool that does the most work. Sculpts the jawline, drains morning puffiness, releases the jaw clench you didn't know you were holding.</p>
-        <span class="fp-hero-cta">
+        <a href="{{ gua_sha.url }}" class="fp-hero-cta" aria-label="Shop Amethyst Gua Sha — $22">
           <span class="fp-hero-cta-label">Shop the Foundation</span>
           <span class="fp-hero-cta-meta">$22 &nbsp;·&nbsp; <span class="fp-hero-cta-arrow" aria-hidden="true">&rarr;</span></span>
-        </span>
+        </a>
       </div>
-    </a>
+    </article>
 
     <!-- Stack of 3 supporting cards -->
     <div class="fp-stack reveal reveal-delay-1">
@@ -135,15 +164,15 @@
   gap: clamp(20px, 2.5vw, 32px);
 }
 
-/* Shared link reset */
-.fp-hero,
-.fp-row {
+/* Shared link reset (for anchor descendants of cards) */
+.fp-row,
+.fp-hero-slide {
   text-decoration: none;
   color: inherit;
   display: block;
 }
 
-/* ── Hero card (gua sha) ── */
+/* ── Hero card (gua sha with slideshow) ── */
 .fp-hero {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -156,21 +185,45 @@
   border-color: rgba(184,112,74,0.4);
   background: rgba(255,255,255,0.045);
 }
-.fp-hero-img {
+.fp-hero-slideshow {
   position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: #2a1a10;
+  touch-action: pan-y;
 }
-.fp-hero-img img {
+.fp-hero-slides {
+  position: absolute;
+  inset: 0;
+}
+.fp-hero-slide {
+  position: absolute;
+  inset: 0;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s var(--ease-premium), visibility 0s linear 0.6s;
+  display: block;
+}
+.fp-hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s var(--ease-premium), visibility 0s linear 0s;
+}
+.fp-hero-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.7s var(--ease-smooth);
+  transition: transform 1.2s var(--ease-smooth);
 }
-.fp-hero:hover .fp-hero-img img {
+.fp-hero:hover .fp-hero-slide.is-active img {
   transform: scale(1.03);
+}
+.fp-hero-slide:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: -6px;
 }
 .fp-hero-badge {
   position: absolute;
@@ -184,6 +237,45 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 7px 14px;
+  z-index: 2;
+  pointer-events: none;
+}
+.fp-hero-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+  padding: 8px 12px;
+  background: rgba(30, 18, 10, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 999px;
+}
+.fp-hero-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: rgba(247, 242, 234, 0.4);
+  cursor: pointer;
+  transition: background 0.3s var(--ease-premium), transform 0.3s var(--ease-premium);
+}
+.fp-hero-dot:hover,
+.fp-hero-dot:focus-visible {
+  background: rgba(247, 242, 234, 0.75);
+  transform: scale(1.2);
+}
+.fp-hero-dot:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
+}
+.fp-hero-dot.is-active {
+  background: var(--cream);
+  transform: scale(1.2);
 }
 .fp-hero-body {
   padding: clamp(28px, 3vw, 44px) clamp(28px, 3vw, 44px) clamp(28px, 3vw, 44px);
@@ -358,16 +450,16 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .fp-layout {
     grid-template-columns: 1fr;
     gap: clamp(16px, 3vw, 24px);
   }
-  .fp-hero-img {
+  .fp-hero-slideshow {
     aspect-ratio: 5 / 4;
   }
 }
-@media (max-width: 540px) {
+@media (max-width: 640px) {
   .fp-row {
     grid-template-columns: 110px 1fr;
     gap: 14px;
@@ -386,8 +478,139 @@
   .fp-hero-cta-label {
     letter-spacing: 0.15em;
   }
+  .fp-hero-dots {
+    bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fp-hero,
+  .fp-row,
+  .fp-hero-slide,
+  .fp-hero-slide img,
+  .fp-row-img img,
+  .fp-hero-cta,
+  .fp-hero-cta-arrow,
+  .fp-row-arrow,
+  .fp-hero-dot {
+    transition: none !important;
+  }
 }
 </style>
+
+<script>
+  (function () {
+    function initSlideshow(root) {
+      var slides = root.querySelectorAll('.fp-hero-slide');
+      if (slides.length < 2) return;
+      var dotsContainer = root.querySelector('.fp-hero-dots');
+      var slideshow = root.querySelector('.fp-hero-slideshow');
+      var current = 0;
+      var autoplayTimer = null;
+      var AUTOPLAY_MS = 7000;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var dots = [];
+      for (var i = 0; i < slides.length; i++) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'fp-hero-dot' + (i === 0 ? ' is-active' : '');
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-label', 'Show product photo ' + (i + 1) + ' of ' + slides.length);
+        btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        btn.dataset.index = String(i);
+        dotsContainer.appendChild(btn);
+        dots.push(btn);
+      }
+
+      function goTo(index) {
+        index = (index + slides.length) % slides.length;
+        if (index === current) return;
+        slides[current].classList.remove('is-active');
+        slides[current].setAttribute('aria-hidden', 'true');
+        slides[current].setAttribute('tabindex', '-1');
+        dots[current].classList.remove('is-active');
+        dots[current].setAttribute('aria-selected', 'false');
+        current = index;
+        slides[current].classList.add('is-active');
+        slides[current].setAttribute('aria-hidden', 'false');
+        slides[current].setAttribute('tabindex', '0');
+        dots[current].classList.add('is-active');
+        dots[current].setAttribute('aria-selected', 'true');
+      }
+      function next() { goTo(current + 1); }
+
+      function startAutoplay() {
+        if (reduceMotion) return;
+        stopAutoplay();
+        autoplayTimer = setInterval(next, AUTOPLAY_MS);
+      }
+      function stopAutoplay() {
+        if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+      }
+
+      dotsContainer.addEventListener('click', function (e) {
+        var target = e.target.closest('.fp-hero-dot');
+        if (!target) return;
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(parseInt(target.dataset.index, 10));
+        stopAutoplay();
+        startAutoplay();
+      });
+
+      dotsContainer.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); stopAutoplay(); startAutoplay(); dots[current].focus(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); stopAutoplay(); startAutoplay(); dots[current].focus(); }
+      });
+
+      slideshow.addEventListener('mouseenter', stopAutoplay);
+      slideshow.addEventListener('mouseleave', startAutoplay);
+      slideshow.addEventListener('focusin', stopAutoplay);
+      slideshow.addEventListener('focusout', function (e) {
+        // Only resume if focus actually left the slideshow container
+        if (!slideshow.contains(e.relatedTarget)) startAutoplay();
+      });
+
+      var touchStartX = 0;
+      slideshow.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+      }, { passive: true });
+      slideshow.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(dx) > 40) {
+          if (dx < 0) next();
+          else goTo(current - 1);
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      // Pause when tab hidden (bind once per instance, guard against dup mounts)
+      if (!root.__fpVisBound) {
+        root.__fpVisBound = true;
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) stopAutoplay(); else startAutoplay();
+        });
+      }
+
+      startAutoplay();
+    }
+
+    function init() {
+      document.querySelectorAll('[data-fp-slideshow]').forEach(function (el) {
+        if (el.__fpInit) return;
+        el.__fpInit = true;
+        initSlideshow(el);
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
 
 {% schema %}
 {
