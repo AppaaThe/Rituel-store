@@ -5,7 +5,7 @@
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
- * Cache-bust: 2026-04-24-1
+ * Cache-bust: 2026-04-24-2
  * ------------------------------------------------------------
  */
 {
@@ -50,10 +50,6 @@
       "type": "material-education",
       "settings": {}
     },
-    "ritual-steps": {
-      "type": "ritual-steps",
-      "settings": {}
-    },
     "our-story": {
       "type": "our-story",
       "settings": {}
@@ -81,7 +77,6 @@
     "before-after",
     "material-education",
     "shop-by-concern",
-    "ritual-steps",
     "our-story",
     "promise",
     "customer-reviews",
