@@ -28,6 +28,22 @@ html { scroll-behavior: smooth; }
 :root { --announcement-h: 40px; --header-h: 72px; }
 body { background: var(--cream); color: var(--espresso); font-family: var(--sans); font-weight: 300; overflow-x: hidden; padding-top: calc(var(--announcement-h) + var(--header-h)); }
 
+/* Keyword scan-anchors — <strong> in body copy gets a branded color + 700 weight for
+   visual punch. Default is terracotta (works on cream/white). Dark-bg sections shift
+   to blush via --strong-color override so bolded text stays readable.
+   Higher-specificity overrides (e.g. .reviews-summary-text strong) win naturally. */
+:root {
+  --strong-color: var(--terracotta, #A15E3C);
+}
+.material-section,
+.signup-section {
+  --strong-color: var(--blush, #E8C5B0);
+}
+strong {
+  font-weight: 700;
+  color: var(--strong-color);
+}
+
 /* Skip to content — visible only on keyboard focus */
 .skip-to-content {
   position: absolute;
