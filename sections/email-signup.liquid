@@ -1,14 +1,106 @@
-<section class="club-section" id="club">
-  <div class="club-inner">
-    <span class="section-label reveal">Free Ritual Guidebook + 15% Off</span>
-    <h2 class="section-title reveal reveal-delay-1">Wake up.<br><em>Look better.</em><br>5 minutes.</h2>
-    <p class="club-desc reveal reveal-delay-2">Get the free BY RITUEL Morning Ritual Guide — exactly how to use each tool, in what order, for maximum de-puffing and jawline definition. Plus 15% off your first order.</p>
-    <div class="reveal reveal-delay-3">
+<section class="signup-section" id="signup">
+  <div class="signup-inner">
+    <span class="signup-label reveal">Free Ritual Guidebook + 15% off</span>
+    <h2 class="signup-title reveal reveal-delay-1">Wake up.<br>Look better.<br><span class="signup-title-accent">Five minutes.</span></h2>
+    <p class="signup-desc reveal reveal-delay-2">Get the BY RITUEL Morning Ritual Guide &mdash; exactly how to use each tool, in what order, for maximum de-puffing and jawline definition. Plus 15% off your first order.</p>
+    <div class="signup-form reveal reveal-delay-3">
       <div class="klaviyo-form-TpBtCX"></div>
     </div>
-    <p class="email-note">No spam. Just the ritual. Unsubscribe anytime.</p>
+    <p class="signup-note">No spam. Just the ritual. Unsubscribe anytime.</p>
   </div>
 </section>
+
+<style>
+  .signup-section {
+    position: relative;
+    overflow: hidden;
+    padding: 112px 80px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--terracotta, #B8704A) 0%, var(--espresso, #1E120A) 100%);
+    color: var(--cream, #F7F2EA);
+  }
+  .signup-section::before {
+    content: "RITUEL";
+    position: absolute;
+    font-family: var(--serif), Georgia, serif;
+    font-size: clamp(180px, 30vw, 320px);
+    color: rgba(247, 242, 234, 0.05);
+    letter-spacing: 0.3em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .signup-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .signup-label {
+    display: inline-block;
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blush, #E8C5B0);
+    margin-bottom: 20px;
+  }
+
+  .signup-title {
+    font-family: var(--serif), Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5.5vw, 56px);
+    line-height: 1.08;
+    color: var(--cream, #F7F2EA);
+    margin: 0 0 24px;
+  }
+  .signup-title-accent {
+    color: var(--blush, #E8C5B0);
+  }
+
+  .signup-desc {
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(247, 242, 234, 0.92);
+    margin: 0 0 40px;
+    max-width: 48ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .signup-form {
+    margin-bottom: 20px;
+  }
+
+  .signup-note {
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 12px;
+    color: rgba(247, 242, 234, 0.82);
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .signup-section {
+      padding: 80px 24px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .signup-section {
+      padding: 64px 20px;
+    }
+    .signup-section::before {
+      font-size: 180px;
+    }
+  }
+</style>
 
 {% schema %}
 {
