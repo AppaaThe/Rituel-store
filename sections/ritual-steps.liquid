@@ -1,61 +1,60 @@
-<div class="ritual-section" id="ritual">
+<section class="ritual-section" id="ritual">
   <div class="ritual-inner">
 
-    <div class="ritual-header">
-      <span class="section-label reveal">How It Works</span>
-      <h2 class="ritual-title reveal reveal-delay-1">The 5-Minute<br><em>Morning Ritual</em></h2>
-      <p class="ritual-subtitle reveal reveal-delay-2">Three steps. Visible results from day one. Used every morning by women who refuse to spend an hour getting ready.</p>
+    <div class="ritual-header reveal">
+      <div class="ritual-header-title">
+        <span class="section-label">How it works</span>
+        <h2 class="ritual-title">The five-minute<br><span class="ritual-title-accent">morning ritual.</span></h2>
+      </div>
+      <p class="ritual-subtitle">Three steps. Visible change from the first morning. For women who refuse to spend an hour getting ready.</p>
     </div>
 
     <div class="ritual-steps">
 
-      <div class="ritual-step reveal">
+      <article class="ritual-step reveal">
         <div class="ritual-step-img">
-          <img src="{{ 'br-card-oil-lifestyle.webp' | asset_url }}" alt="Apply rosehip oil to prep skin for gua sha" loading="lazy">
+          <img src="{{ 'br-card-oil-lifestyle.webp' | asset_url }}" alt="Applying rosehip oil as the first step of the morning ritual" loading="lazy" width="400" height="300">
         </div>
-        <div class="ritual-step-bg-num">01</div>
+        <span class="ritual-step-bg-num" aria-hidden="true">01</span>
         <div class="ritual-step-inner">
           <div class="ritual-step-top">
-            <span class="ritual-step-num">01</span>
+            <span class="ritual-step-num" aria-hidden="true">01</span>
             <span class="ritual-step-time">60 sec</span>
           </div>
-          <h3 class="ritual-step-title">Oil &amp; Prep</h3>
-          <p class="ritual-step-desc">Apply a few drops of rosehip oil to clean skin. The oil creates the perfect glide — the stone should never drag.</p>
-          <div class="ritual-step-line"></div>
+          <h3 class="ritual-step-title">Oil &amp; prep</h3>
+          <p class="ritual-step-desc">A few drops of rosehip oil on clean skin. The oil creates the glide &mdash; the stone should never drag.</p>
         </div>
-      </div>
+      </article>
 
-      <div class="ritual-step reveal reveal-delay-1">
+      <article class="ritual-step reveal reveal-delay-1">
         <div class="ritual-step-img">
-          <img src="{{ 'br-card-guasha-lifestyle.webp' | asset_url }}" alt="Sculpting jawline with amethyst gua sha stone" loading="lazy">
+          <img src="{{ 'br-card-guasha-lifestyle.webp' | asset_url }}" alt="Sculpting along the jawline with the amethyst gua sha" loading="lazy" width="400" height="300">
         </div>
-        <div class="ritual-step-bg-num">02</div>
+        <span class="ritual-step-bg-num" aria-hidden="true">02</span>
         <div class="ritual-step-inner">
           <div class="ritual-step-top">
-            <span class="ritual-step-num">02</span>
+            <span class="ritual-step-num" aria-hidden="true">02</span>
             <span class="ritual-step-time">3 min</span>
           </div>
           <h3 class="ritual-step-title">Sculpt</h3>
-          <p class="ritual-step-desc">Sweep upward and outward along your jawline, cheekbones, forehead. Always upward. Always toward your ears. Gentle pressure.</p>
-          <div class="ritual-step-line"></div>
+          <p class="ritual-step-desc">Sweep upward and outward along the jawline, cheekbones, and forehead. Always upward. Always toward the ears. Gentle pressure.</p>
         </div>
-      </div>
+      </article>
 
-      <div class="ritual-step reveal reveal-delay-2">
+      <article class="ritual-step reveal reveal-delay-2">
         <div class="ritual-step-img">
-          <img src="{{ 'br-card-ice-lifestyle.webp' | asset_url }}" alt="Finishing the ritual with ice roller" loading="lazy">
+          <img src="{{ 'br-card-ice-lifestyle.webp' | asset_url }}" alt="Finishing the ritual with a chilled ice roller" loading="lazy" width="400" height="300">
         </div>
-        <div class="ritual-step-bg-num">03</div>
+        <span class="ritual-step-bg-num" aria-hidden="true">03</span>
         <div class="ritual-step-inner">
           <div class="ritual-step-top">
-            <span class="ritual-step-num">03</span>
+            <span class="ritual-step-num" aria-hidden="true">03</span>
             <span class="ritual-step-time">90 sec</span>
           </div>
-          <h3 class="ritual-step-title">Ice &amp; Seal</h3>
-          <p class="ritual-step-desc">Roll the chilled ice roller from the centre of your face outward. Pores close. Redness fades. You look like you slept 10 hours.</p>
-          <div class="ritual-step-line"></div>
+          <h3 class="ritual-step-title">Ice &amp; seal</h3>
+          <p class="ritual-step-desc">Roll the chilled ice roller from the centre of the face outward. Skin tightens, pores look refined, redness fades. You look like you slept ten hours.</p>
         </div>
-      </div>
+      </article>
 
     </div>
 
@@ -65,16 +64,244 @@
           <span class="ritual-total-label">Total time</span>
           <span class="ritual-total-num">5<span class="ritual-total-unit">min</span></span>
         </div>
-        <div class="ritual-total-divider"></div>
+        <div class="ritual-total-divider" aria-hidden="true"></div>
         <div class="ritual-total-right">
           <span class="ritual-total-tag">Every. Single. Morning.</span>
-          <span class="ritual-total-sub">That's less time than brewing coffee.</span>
+          <span class="ritual-total-sub">That&rsquo;s less time than brewing coffee.</span>
         </div>
       </div>
     </div>
 
   </div>
-</div>
+</section>
+
+<style>
+  .ritual-section {
+    background: var(--cream, #F7F2EA);
+    padding: 112px 80px 0;
+  }
+  .ritual-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .ritual-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 72px;
+  }
+  .ritual-header-title {
+    display: flex;
+    flex-direction: column;
+  }
+  .ritual-header .section-label {
+    display: inline-block;
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta, #B8704A);
+    margin-bottom: 18px;
+  }
+  .ritual-title {
+    font-family: var(--serif), Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 56px);
+    line-height: 1.08;
+    color: var(--espresso, #1E120A);
+    margin: 0;
+  }
+  .ritual-title-accent {
+    color: var(--terracotta, #B8704A);
+  }
+  .ritual-subtitle {
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #6E5A42;
+    max-width: 420px;
+    padding-bottom: 8px;
+    margin: 0;
+  }
+
+  .ritual-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+  .ritual-step {
+    position: relative;
+    overflow: hidden;
+    background: var(--white, #FDFAF5);
+    display: flex;
+    flex-direction: column;
+  }
+  .ritual-step-img {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--cream-dark, #EDE6D6);
+  }
+  .ritual-step-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .ritual-step-bg-num {
+    font-family: var(--serif), Georgia, serif;
+    font-size: 200px;
+    color: var(--espresso, #1E120A);
+    opacity: 0.045;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .ritual-step-inner {
+    position: relative;
+    padding: 48px 36px 44px;
+    z-index: 1;
+  }
+  .ritual-step-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+  }
+  .ritual-step-num {
+    font-family: var(--serif), Georgia, serif;
+    font-size: 42px;
+    color: var(--terracotta, #B8704A);
+    line-height: 1;
+  }
+  .ritual-step-time {
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #6E5A42;
+    border: 1px solid var(--cream-dark, #EDE6D6);
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+  .ritual-step-title {
+    font-family: var(--serif), Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(24px, 2.4vw, 28px);
+    margin: 0 0 14px;
+    color: var(--espresso, #1E120A);
+    line-height: 1.2;
+  }
+  .ritual-step-desc {
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #6E5A42;
+    margin: 0;
+    max-width: 42ch;
+  }
+
+  .ritual-total {
+    background: var(--espresso, #1E120A);
+    padding: 48px 80px;
+    margin: 0 -80px;
+  }
+  .ritual-total-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .ritual-total-left {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  .ritual-total-label {
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(247, 242, 234, 0.55);
+  }
+  .ritual-total-num {
+    font-family: var(--serif), Georgia, serif;
+    font-size: clamp(56px, 7vw, 72px);
+    color: var(--terracotta, #B8704A);
+    line-height: 1;
+  }
+  .ritual-total-unit {
+    font-size: 0.34em;
+    margin-left: 6px;
+    color: var(--blush, #E8C5B0);
+  }
+  .ritual-total-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(247, 242, 234, 0.14);
+    flex-shrink: 0;
+  }
+  .ritual-total-right {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ritual-total-tag {
+    font-family: var(--serif), Georgia, serif;
+    font-size: clamp(20px, 2vw, 24px);
+    color: var(--blush, #E8C5B0);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+  .ritual-total-sub {
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 13px;
+    color: rgba(247, 242, 234, 0.6);
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .ritual-section {
+      padding: 72px 24px 0;
+    }
+    .ritual-header {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 40px;
+    }
+    .ritual-subtitle {
+      padding-bottom: 0;
+    }
+    .ritual-steps {
+      grid-template-columns: 1fr;
+    }
+    .ritual-step-inner {
+      padding: 36px 28px 36px;
+    }
+    .ritual-step-bg-num {
+      font-size: 140px;
+    }
+    .ritual-total {
+      padding: 40px 24px;
+      margin: 0 -24px;
+    }
+    .ritual-total-inner {
+      gap: 24px;
+    }
+    .ritual-total-divider {
+      display: none;
+    }
+  }
+</style>
 
 {% schema %}
 {

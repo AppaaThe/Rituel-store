@@ -135,38 +135,7 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
 .section-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px; align-items: end; }
 .section-desc { font-size: 15px; line-height: 1.9; color: var(--stone); max-width: 400px; }
 
-/* ── Ritual Steps (redesigned) ── */
-.ritual-section { background: var(--cream); padding: var(--space-section-y) var(--space-section-x); }
-.ritual-inner { max-width: 1300px; margin: 0 auto; }
-.ritual-header { display: grid; grid-template-columns: auto 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
-.ritual-title { font-family: var(--serif); font-size: 56px; font-weight: 300; line-height: 1.1; }
-.ritual-title em { font-style: italic; color: var(--terracotta); }
-.ritual-subtitle { font-size: 14px; line-height: 1.9; color: var(--stone); max-width: 380px; padding-bottom: 8px; }
-.ritual-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px; }
-.ritual-step { position: relative; overflow: hidden; background: var(--white); display: flex; flex-direction: column; }
-.ritual-step-img { aspect-ratio: 4/3; overflow: hidden; }
-.ritual-step-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s var(--ease-smooth); }
-.ritual-step:hover .ritual-step-img img { transform: scale(1.04); }
-.ritual-step:hover .ritual-step-bg-num { opacity: 0.07; transform: translateY(-10px) scale(1.05); }
-.ritual-step:hover .ritual-step-line { transform: scaleX(1); }
-.ritual-step-bg-num { font-family: var(--serif); font-size: 200px; font-weight: 300; color: var(--espresso); opacity: 0.035; position: absolute; top: -20px; right: -20px; line-height: 1; pointer-events: none; transition: opacity 0.5s, transform 0.5s; }
-.ritual-step-inner { position: relative; padding: 56px 40px 48px; z-index: 1; }
-.ritual-step-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; }
-.ritual-step-num { font-family: var(--serif); font-size: 48px; font-weight: 300; color: var(--terracotta); line-height: 1; }
-.ritual-step-time { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--stone); border: 1px solid var(--cream-dark); padding: 5px 12px; border-radius: 20px; }
-.ritual-step-title { font-family: var(--serif); font-size: 30px; font-weight: 300; margin-bottom: 16px; color: var(--espresso); }
-.ritual-step-desc { font-size: 14px; line-height: 1.85; color: var(--stone); margin-bottom: 0; }
-.ritual-step-line { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--terracotta); transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left; }
-.ritual-total { background: var(--espresso); padding: 56px 80px; border-top: 1px solid rgba(247,242,234,0.06); }
-.ritual-total-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; gap: 48px; }
-.ritual-total-left { display: flex; align-items: baseline; gap: 16px; flex-shrink: 0; }
-.ritual-total-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(247,242,234,0.35); }
-.ritual-total-num { font-family: var(--serif); font-size: 72px; font-weight: 300; color: var(--terracotta); line-height: 1; }
-.ritual-total-unit { font-size: 24px; margin-left: 4px; }
-.ritual-total-divider { width: 1px; height: 48px; background: rgba(247,242,234,0.1); flex-shrink: 0; }
-.ritual-total-right { display: flex; flex-direction: column; gap: 6px; }
-.ritual-total-tag { font-family: var(--serif); font-size: 22px; font-style: italic; color: rgba(247,242,234,0.55); letter-spacing: 0.05em; }
-.ritual-total-sub { font-size: 13px; color: rgba(247,242,234,0.25); letter-spacing: 0.03em; }
+/* Ritual Steps styles moved to sections/ritual-steps.liquid (section #10 rebuild) */
 
 /* ── Editorial Products (redesigned) ── */
 .editorial-products { background: var(--espresso); padding: var(--space-section-y) var(--space-section-x); }
@@ -441,15 +410,7 @@ body::after { content: ''; position: fixed; inset: 0; background-image: url("dat
   .cart-layout { grid-template-columns: 1fr; gap: 40px; }
   .cart-summary-col { position: static; }
   .order-bump-inner { grid-template-columns: auto auto 1fr; gap: 12px; }
-  /* Ritual steps responsive */
-  .ritual-section { padding: 80px 32px; }
-  .ritual-header { grid-template-columns: 1fr; gap: 16px; }
-  .ritual-steps { grid-template-columns: 1fr; gap: 2px; }
-  .ritual-step-bg-num { font-size: 140px; }
-  .ritual-title { font-size: 40px; }
-  .ritual-total { padding: 40px 32px; }
-  .ritual-total-inner { gap: 24px; }
-  .ritual-total-num { font-size: 60px; }
+  /* Ritual steps responsive — moved to sections/ritual-steps.liquid */
   /* Editorial products responsive */
   .editorial-products { padding: 80px 32px; }
   .editorial-spread { grid-template-columns: 1fr; }
