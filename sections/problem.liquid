@@ -90,11 +90,12 @@
   margin: 0 0 clamp(32px, 4vw, 44px);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
+  counter-reset: problem-counter;
 }
 .problem-list li {
   position: relative;
-  padding-left: 28px;
+  padding-left: 48px;
   font-family: var(--serif);
   font-size: clamp(15px, 1.3vw, 17px);
   line-height: 1.6;
@@ -102,14 +103,17 @@
   max-width: 54ch;
 }
 .problem-list li::before {
-  content: '—';
+  counter-increment: problem-counter;
+  content: counter(problem-counter, decimal-leading-zero);
   position: absolute;
   left: 0;
-  top: 0;
-  font-family: var(--serif);
-  color: var(--terracotta);
-  font-size: 1em;
+  top: 0.1em;
+  font-family: var(--sans);
+  font-size: 0.78em;
+  font-weight: 500;
   line-height: 1.6;
+  letter-spacing: 0.12em;
+  color: var(--terracotta);
 }
 
 /* Pivot paragraph — editorial pull-quote, no bordered box */
