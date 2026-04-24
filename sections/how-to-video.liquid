@@ -1,0 +1,280 @@
+<section class="how-to-section" aria-labelledby="how-to-heading">
+  <div class="how-to-inner">
+    <div class="how-to-media" data-yt-id="eAdE2ZQk8W8" data-yt-title="How to do gua sha safely — technique demonstration by Dr. Abby Waldman, board-certified dermatologist">
+
+      <div class="how-to-poster">
+        <img
+          src="{{ 'br-card-guasha-lifestyle.webp' | asset_url }}"
+          alt=""
+          loading="lazy"
+          width="1600"
+          height="900">
+      </div>
+
+      <div class="how-to-overlay" aria-hidden="true"></div>
+
+      <div class="how-to-copy">
+        <span class="how-to-eyebrow">Watch the technique</span>
+        <h2 id="how-to-heading" class="how-to-title">See <span class="how-to-title-accent">five minutes of pressure.</span></h2>
+        <p class="how-to-sub">A board-certified dermatologist walks through the safe technique &mdash; no bruising, no guesswork.</p>
+      </div>
+
+      <button type="button" class="how-to-play" aria-label="Play gua sha technique video by Dr. Abby Waldman">
+        <span class="how-to-play-ring" aria-hidden="true"></span>
+        <svg class="how-to-play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <p class="how-to-credit">Video &middot; Dr. Abby Waldman &middot; YouTube <span class="how-to-disclaimer">&nbsp;&middot;&nbsp; Educational only. Not affiliated with BY RITUEL.</span></p>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-to-section {
+    background: var(--cream, #F7F2EA);
+    padding: var(--space-section-y) var(--space-section-x);
+  }
+  .how-to-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  .how-to-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--espresso, #1E120A);
+    isolation: isolate;
+  }
+  .how-to-media.is-playing .how-to-poster,
+  .how-to-media.is-playing .how-to-overlay,
+  .how-to-media.is-playing .how-to-copy,
+  .how-to-media.is-playing .how-to-play,
+  .how-to-media.is-playing .how-to-credit {
+    display: none;
+  }
+
+  .how-to-poster {
+    position: absolute;
+    inset: 0;
+  }
+  .how-to-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .how-to-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(30, 18, 10, 0.25) 0%,
+      rgba(30, 18, 10, 0.55) 60%,
+      rgba(30, 18, 10, 0.72) 100%
+    );
+    z-index: 1;
+  }
+
+  .how-to-copy {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 32px 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .how-to-eyebrow {
+    display: inline-block;
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--blush, #E8C5B0);
+    margin-bottom: 20px;
+  }
+  .how-to-title {
+    font-family: var(--serif), Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(34px, 5vw, 60px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--cream, #F7F2EA);
+    margin: 0 0 18px;
+    max-width: 20ch;
+  }
+  .how-to-title-accent {
+    color: var(--blush, #E8C5B0);
+  }
+  .how-to-sub {
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: clamp(14px, 1.1vw, 16px);
+    line-height: 1.6;
+    color: rgba(247, 242, 234, 0.88);
+    max-width: 46ch;
+    margin: 0;
+  }
+
+  .how-to-play {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(32px, 6vw, 56px);
+    transform: translateX(-50%);
+    width: clamp(64px, 7vw, 84px);
+    height: clamp(64px, 7vw, 84px);
+    border: 0;
+    padding: 0;
+    background: var(--cream, #F7F2EA);
+    color: var(--espresso, #1E120A);
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .how-to-play-ring {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(247, 242, 234, 0.45);
+    pointer-events: none;
+    transition: inset 0.4s ease, border-color 0.4s ease;
+  }
+  .how-to-play:hover,
+  .how-to-play:focus-visible {
+    transform: translateX(-50%) scale(1.05);
+    background: var(--cream, #F7F2EA);
+  }
+  .how-to-play:hover .how-to-play-ring,
+  .how-to-play:focus-visible .how-to-play-ring {
+    inset: -14px;
+    border-color: rgba(247, 242, 234, 0.75);
+  }
+  .how-to-play:focus-visible {
+    outline: 2px solid var(--cream, #F7F2EA);
+    outline-offset: 4px;
+  }
+  .how-to-play-icon {
+    width: 38%;
+    height: 38%;
+    margin-left: 6%;
+    display: block;
+  }
+
+  .how-to-credit {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--sans), system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(247, 242, 234, 0.85);
+    margin: 0;
+    z-index: 2;
+    pointer-events: none;
+    max-width: calc(100% - 32px);
+    text-align: center;
+  }
+  .how-to-disclaimer {
+    opacity: 0.78;
+  }
+  @media (max-width: 640px) {
+    .how-to-credit {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      bottom: 10px;
+    }
+    .how-to-disclaimer {
+      display: block;
+      margin-top: 4px;
+    }
+  }
+
+  .how-to-media iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  @media (max-width: 1024px) {
+    .how-to-copy {
+      padding: 32px 24px 110px;
+    }
+  }
+  @media (max-width: 640px) {
+    .how-to-media {
+      aspect-ratio: 4 / 5;
+    }
+    .how-to-copy {
+      padding: 28px 20px 100px;
+    }
+    .how-to-title {
+      max-width: 14ch;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .how-to-play,
+    .how-to-play-ring {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    function initHowTo(root) {
+      if (root.__htInit) return;
+      root.__htInit = true;
+      var btn = root.querySelector('.how-to-play');
+      var ytId = root.dataset.ytId;
+      var ytTitle = root.dataset.ytTitle || 'Gua sha technique video';
+      if (!btn || !ytId) return;
+
+      btn.addEventListener('click', function () {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(ytId) + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+        iframe.title = ytTitle;
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('loading', 'eager');
+        iframe.setAttribute('tabindex', '0');
+        iframe.addEventListener('load', function () {
+          try { iframe.focus(); } catch (e) {}
+        });
+        root.appendChild(iframe);
+        root.classList.add('is-playing');
+      });
+    }
+
+    function init() {
+      document.querySelectorAll('.how-to-media[data-yt-id]').forEach(initHowTo);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "How-To Video",
+  "presets": [{ "name": "How-To Video" }]
+}
+{% endschema %}
