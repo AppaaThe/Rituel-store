@@ -14,7 +14,7 @@
   .signup-section {
     position: relative;
     overflow: hidden;
-    padding: 112px 80px;
+    padding: var(--space-section-y) var(--space-section-x);
     text-align: center;
     background: linear-gradient(135deg, var(--terracotta, #B8704A) 0%, var(--espresso, #1E120A) 100%);
     color: var(--cream, #F7F2EA);
@@ -86,16 +86,7 @@
     margin: 0;
   }
 
-  @media (max-width: 900px) {
-    .signup-section {
-      padding: 80px 24px;
-    }
-  }
-
-  @media (max-width: 520px) {
-    .signup-section {
-      padding: 64px 20px;
-    }
+  @media (max-width: 640px) {
     .signup-section::before {
       font-size: 180px;
     }

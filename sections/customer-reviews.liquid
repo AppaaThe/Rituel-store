@@ -89,7 +89,7 @@
 <style>
   .reviews-section {
     background: var(--cream, #F7F2EA);
-    padding: 112px 80px;
+    padding: var(--space-section-y) var(--space-section-x);
   }
   .reviews-inner {
     max-width: 1280px;
@@ -224,9 +224,6 @@
   }
 
   @media (max-width: 1024px) {
-    .reviews-section {
-      padding: 80px 32px;
-    }
     .reviews-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
@@ -237,9 +234,6 @@
   }
 
   @media (max-width: 640px) {
-    .reviews-section {
-      padding: 64px 20px;
-    }
     .reviews-grid {
       grid-template-columns: 1fr;
       gap: 16px;

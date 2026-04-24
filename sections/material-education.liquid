@@ -73,7 +73,7 @@
 
 <style>
   .material-section {
-    padding: 112px 80px;
+    padding: var(--space-section-y) var(--space-section-x);
     background: var(--espresso, #1E120A);
     color: var(--cream, #F7F2EA);
   }
@@ -248,10 +248,7 @@
     color: rgba(247, 242, 234, 0.50);
   }
 
-  @media (max-width: 900px) {
-    .material-section {
-      padding: 72px 24px;
-    }
+  @media (max-width: 1024px) {
     .material-header {
       margin-bottom: 40px;
     }

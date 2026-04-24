@@ -62,7 +62,7 @@
 
 <style>
   .concern-section {
-    padding: 112px 80px;
+    padding: var(--space-section-y) var(--space-section-x);
     background: var(--cream, #F7F2EA);
   }
   .concern-inner {
@@ -191,10 +191,7 @@
     transform: translateX(4px);
   }
 
-  @media (max-width: 900px) {
-    .concern-section {
-      padding: 72px 24px;
-    }
+  @media (max-width: 1024px) {
     .concern-header {
       margin-bottom: 40px;
     }
@@ -213,7 +210,7 @@
     }
   }
 
-  @media (max-width: 520px) {
+  @media (max-width: 640px) {
     .concern-card {
       grid-template-columns: 1fr;
     }
