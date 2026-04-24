@@ -5,7 +5,7 @@
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
- * Cache-bust: 2026-04-24-3
+ * Cache-bust: 2026-04-24-4
  * ------------------------------------------------------------
  */
 {
@@ -69,16 +69,16 @@
   },
   "order": [
     "hero",
-    "why-guasha",
-    "marquee",
-    "featured-products",
     "problem",
+    "why-guasha",
     "before-after",
     "material-education",
-    "shop-by-concern",
-    "our-story",
-    "promise",
     "how-to-video",
+    "marquee",
+    "featured-products",
+    "shop-by-concern",
+    "promise",
+    "our-story",
     "customer-reviews",
     "email-signup"
   ]
