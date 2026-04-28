@@ -347,9 +347,29 @@
 .popup-close:hover { color: #2C1810; }
 
 .popup-eyebrow {
-  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
-  color: #C4714A; margin-bottom: 16px;
+  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: #C4714A; margin-bottom: 14px;
+  font-weight: 500;
 }
+.popup-discount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(60px, 14vw, 92px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: #FF3B1F;
+  margin: 0 0 6px;
+}
+.popup-subhead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 400;
+  color: #2C1810;
+  margin: 0 0 18px;
+  line-height: 1.2;
+}
+/* Legacy class kept for backwards-compat if older sessions still reference it */
 .popup-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 32px; font-weight: 300; line-height: 1.1;
@@ -543,9 +563,10 @@ window.addEventListener('scroll', () => {
   <div class="popup-box">
     <button class="popup-close" id="popupClose" aria-label="Close popup">&times;</button>
     <div id="popupContent">
-      <div class="popup-eyebrow">Free guide + 15% off</div>
-      <h3 class="popup-title" id="popupTitle">The 5-Minute<br><em>Sculpting Ritual</em></h3>
-      <p class="popup-desc">Get our free Morning Ritual Guide — the exact technique for jawline definition, depuffing, and glowing skin in 5 minutes. Plus 15% off your first order.</p>
+      <div class="popup-eyebrow">Join the ritual</div>
+      <p class="popup-discount" id="popupTitle">15% off</p>
+      <h3 class="popup-subhead">your first ritual.</h3>
+      <p class="popup-desc">Plus the free <strong>BY RITUEL Morning Ritual Guide</strong> — the exact technique for jawline definition, depuffing, and glowing skin in 5 minutes.</p>
       <form class="popup-form" id="popupForm" action="/contact#contact_form" method="post" accept-charset="UTF-8">
         <input type="hidden" name="form_type" value="customer">
         <input type="hidden" name="utf8" value="✓">
