@@ -15,16 +15,26 @@
   </div>
 
   <!-- Content layer -->
-  <div class="hero-v3-inner hero-v3-inner--centered">
+  <div class="hero-v3-inner">
 
-    <div class="hero-v3-copy hero-v3-copy--centered">
-      <p class="hero-v3-eyebrow">Wake up puffy · tired · undefined</p>
-      <h1 class="hero-v3-title">Five minutes. One stone.<br><span class="hero-v3-title-accent">A face that looks rested.</span></h1>
-      <p class="hero-v3-sub">The amethyst gua sha is a hand-carved stone you sweep upward across your face every morning. It drains puffiness, sculpts your jawline, and releases the jaw tension you sleep with.</p>
+    <div class="hero-v3-copy">
+      <p class="hero-v3-eyebrow">Wake up puffy · tired · undefined?</p>
+      <h1 class="hero-v3-title">Five&nbsp;minutes.<br>One&nbsp;stone.</h1>
+      <p class="hero-v3-sublead">A face that looks rested.</p>
+      <p class="hero-v3-sub">A hand-carved amethyst gua sha. Sweep upward every morning — drains puffiness, sculpts your jawline, releases the jaw tension you slept with.</p>
       <a href="/products/amethyst-gua-sha" class="hero-v3-cta">Shop the Amethyst Gua Sha — $22</a>
       <p class="hero-v3-trust">Hand-carved real amethyst · 30-day guarantee</p>
     </div>
 
+  </div>
+
+  <!-- Right-side editorial label -->
+  <div class="hero-v3-accent" aria-hidden="true">
+    <span>5 MIN</span>
+    <span class="hero-v3-accent-dot">·</span>
+    <span>1 STONE</span>
+    <span class="hero-v3-accent-dot">·</span>
+    <span>GUA SHA</span>
   </div>
 
 </section>
@@ -57,17 +67,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% 55%;
+  object-position: 70% 50%;
 }
 .hero-v3-bg-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(105deg, rgba(30,18,10,0.78) 0%, rgba(30,18,10,0.5) 45%, rgba(30,18,10,0.15) 100%);
+    linear-gradient(95deg, rgba(30,18,10,0.88) 0%, rgba(30,18,10,0.72) 30%, rgba(30,18,10,0.35) 60%, rgba(30,18,10,0.05) 100%);
 }
 
-/* Inner layout */
-/* Centered layout */
+/* Inner layout — left-anchored editorial */
 .hero-v3-inner {
   position: relative;
   z-index: 1;
@@ -75,49 +84,87 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 140px 80px 100px;
   width: 100%;
+  padding: clamp(120px, 16vh, 180px) clamp(28px, 7vw, 110px) clamp(80px, 10vh, 120px);
 }
 
 /* Copy */
 .hero-v3-copy {
+  max-width: 640px;
   opacity: 0;
-  animation: fadeUp 0.5s var(--ease-premium) forwards 0.15s;
+  animation: fadeUp 0.6s var(--ease-premium) forwards 0.15s;
 }
 .hero-v3-eyebrow {
-  font-size: 10px;
-  letter-spacing: 0.4em;
+  font-family: var(--sans);
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 24px;
+  color: var(--blush);
+  margin-bottom: 28px;
 }
 .hero-v3-title {
   font-family: var(--serif);
-  font-size: clamp(44px, 5.2vw, 76px);
+  font-size: clamp(60px, 8vw, 124px);
   font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
   color: var(--cream);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 .hero-v3-title-accent {
   color: var(--blush);
 }
+.hero-v3-sublead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1.25;
+  color: var(--blush);
+  margin: 0 0 28px;
+}
 .hero-v3-sub {
-  font-size: 15px;
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.15vw, 17px);
   line-height: 1.7;
-  color: rgba(247,242,234,0.72);
-  max-width: 420px;
-  margin-bottom: 32px;
+  color: rgba(247,242,234,0.85);
+  max-width: 480px;
+  margin-bottom: 36px;
 }
 .hero-v3-trust {
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(247,242,234,0.55);
-  margin-top: 20px;
+  color: rgba(247,242,234,0.6);
+  margin-top: 22px;
+}
+
+/* Right-side editorial accent label (desktop only) */
+.hero-v3-accent {
+  position: absolute;
+  top: 50%;
+  right: clamp(20px, 3vw, 48px);
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(247,242,234,0.85);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  opacity: 0;
+  animation: fadeUp 0.6s var(--ease-premium) forwards 0.45s;
+}
+.hero-v3-accent-dot {
+  color: var(--blush);
+  letter-spacing: 0;
+  font-size: 9px;
 }
 
 /* CTA Button */
@@ -195,23 +242,43 @@
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .hero-v3 {
-    min-height: 85svh;
+    min-height: 88svh;
+  }
+  .hero-v3-bg-overlay {
+    background:
+      linear-gradient(180deg, rgba(30,18,10,0.55) 0%, rgba(30,18,10,0.78) 60%, rgba(30,18,10,0.92) 100%);
   }
   .hero-v3-inner {
-    padding: 96px 24px 48px;
-    justify-content: center;
-    text-align: center;
+    padding: clamp(100px, 14vh, 140px) 24px clamp(56px, 8vh, 88px);
+    justify-content: flex-start;
+    align-items: flex-end;
   }
-  .hero-v3-sub {
-    margin-left: auto;
-    margin-right: auto;
+  .hero-v3-copy {
+    max-width: none;
+  }
+  .hero-v3-title {
+    font-size: clamp(52px, 12vw, 84px);
+  }
+  .hero-v3-sublead {
+    font-size: clamp(20px, 4.5vw, 28px);
+  }
+  .hero-v3-accent {
+    display: none;
   }
 }
 @media (max-width: 540px) {
   .hero-v3-cta {
-    padding: 18px 40px;
+    padding: 18px 28px;
     width: 100%;
-    max-width: 320px;
+    max-width: none;
+    text-align: center;
+  }
+  .hero-v3-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+  }
+  .hero-v3-sub {
+    font-size: 15px;
   }
 }
 </style>
