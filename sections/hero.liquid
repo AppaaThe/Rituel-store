@@ -204,16 +204,18 @@
 .hero-v3-sticky-btn:hover { background: var(--espresso); }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
+
+/* Tablet — keep full-image overlay but flip overlay to top-down */
+@media (max-width: 1024px) and (min-width: 881px) {
   .hero-v3 {
-    min-height: 88svh;
+    min-height: 80svh;
   }
   .hero-v3-bg-overlay {
     background:
       linear-gradient(180deg, rgba(30,18,10,0.55) 0%, rgba(30,18,10,0.78) 60%, rgba(30,18,10,0.92) 100%);
   }
   .hero-v3-inner {
-    padding: clamp(100px, 14vh, 140px) 24px clamp(56px, 8vh, 88px);
+    padding: clamp(100px, 14vh, 140px) 32px clamp(56px, 8vh, 88px);
     justify-content: flex-start;
     align-items: flex-end;
   }
@@ -221,25 +223,75 @@
     max-width: none;
   }
   .hero-v3-title {
-    font-size: clamp(52px, 12vw, 84px);
+    font-size: clamp(56px, 9vw, 84px);
   }
   .hero-v3-sublead {
-    font-size: clamp(20px, 4.5vw, 28px);
+    font-size: clamp(22px, 3.4vw, 28px);
   }
 }
-@media (max-width: 540px) {
-  .hero-v3-cta {
-    padding: 18px 28px;
+
+/* Phone & small tablet — SPLIT LAYOUT: image up top, text below on solid */
+@media (max-width: 880px) {
+  .hero-v3 {
+    min-height: 0;
+    flex-direction: column;
+  }
+  .hero-v3-bg {
+    position: relative;
+    inset: auto;
     width: 100%;
+    height: clamp(360px, 50vh, 460px);
+    flex-shrink: 0;
+  }
+  .hero-v3-bg img {
+    object-position: 50% 60%;
+  }
+  .hero-v3-bg-overlay {
+    background: linear-gradient(180deg, rgba(30,18,10,0) 65%, rgba(30,18,10,0.35) 100%);
+  }
+  .hero-v3-inner {
+    position: relative;
+    z-index: 1;
+    background: var(--espresso, #1E120A);
+    padding: clamp(36px, 6vh, 56px) 24px clamp(40px, 6vh, 56px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 0 1 auto;
+  }
+  .hero-v3-copy {
     max-width: none;
-    text-align: center;
+    width: 100%;
   }
   .hero-v3-eyebrow {
-    font-size: 14px;
-    letter-spacing: 0.16em;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    margin-bottom: 22px;
+  }
+  .hero-v3-title {
+    font-size: clamp(40px, 10vw, 60px);
+    line-height: 1.0;
+    margin-bottom: 18px;
+  }
+  .hero-v3-sublead {
+    font-size: clamp(19px, 4.6vw, 24px);
+    margin-bottom: 22px;
   }
   .hero-v3-sub {
     font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+  .hero-v3-cta {
+    padding: 16px 28px;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    font-size: 12px;
+  }
+  .hero-v3-trust {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    margin-top: 18px;
   }
 }
 </style>
