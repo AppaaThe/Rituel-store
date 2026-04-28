@@ -5,7 +5,7 @@
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
- * Cache-bust: 2026-04-24-4
+ * Cache-bust: 2026-04-28-1
  * ------------------------------------------------------------
  */
 {
@@ -18,16 +18,12 @@
         "subtitle": ""
       }
     },
-    "why-guasha": {
-      "type": "why-guasha",
+    "culture-bar": {
+      "type": "culture-bar",
       "settings": {}
     },
-    "marquee": {
-      "type": "marquee",
-      "settings": {}
-    },
-    "shop-by-concern": {
-      "type": "shop-by-concern",
+    "before-after": {
+      "type": "before-after",
       "settings": {}
     },
     "featured-products": {
@@ -38,24 +34,32 @@
       "type": "problem",
       "settings": {}
     },
-    "before-after": {
-      "type": "before-after",
+    "why-guasha": {
+      "type": "why-guasha",
       "settings": {}
     },
     "material-education": {
       "type": "material-education",
       "settings": {}
     },
-    "our-story": {
-      "type": "our-story",
+    "how-to-video": {
+      "type": "how-to-video",
+      "settings": {}
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {}
+    },
+    "shop-by-concern": {
+      "type": "shop-by-concern",
       "settings": {}
     },
     "promise": {
       "type": "promise",
       "settings": {}
     },
-    "how-to-video": {
-      "type": "how-to-video",
+    "our-story": {
+      "type": "our-story",
       "settings": {}
     },
     "customer-reviews": {
@@ -69,13 +73,14 @@
   },
   "order": [
     "hero",
+    "culture-bar",
+    "before-after",
+    "featured-products",
     "problem",
     "why-guasha",
-    "before-after",
     "material-education",
     "how-to-video",
     "marquee",
-    "featured-products",
     "shop-by-concern",
     "promise",
     "our-story",

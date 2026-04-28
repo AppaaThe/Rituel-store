@@ -1,0 +1,97 @@
+<section class="culture-bar" aria-label="Gua sha in celebrity routines">
+  <div class="culture-bar-inner">
+
+    <p class="culture-bar-label">Gua sha is a practice used by</p>
+
+    <ul class="culture-bar-names">
+      <li>Kylie Jenner</li>
+      <li class="culture-bar-dot" aria-hidden="true">✦</li>
+      <li>Hailey Bieber</li>
+      <li class="culture-bar-dot" aria-hidden="true">✦</li>
+      <li>Meghan Markle</li>
+      <li class="culture-bar-dot" aria-hidden="true">✦</li>
+      <li>Jennifer Aniston</li>
+      <li class="culture-bar-dot" aria-hidden="true">✦</li>
+      <li>Gwyneth Paltrow</li>
+    </ul>
+
+  </div>
+</section>
+
+<style>
+.culture-bar {
+  background: var(--cream, #F7F2EA);
+  border-bottom: 1px solid rgba(30,18,10,0.08);
+  padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 80px);
+}
+.culture-bar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+.culture-bar-label {
+  font-family: var(--sans, 'Jost', sans-serif);
+  font-size: clamp(10px, 0.85vw, 12px);
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--terracotta, #A15E3C);
+  margin: 0 0 22px;
+}
+.culture-bar-names {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(14px, 2.2vw, 32px);
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: clamp(18px, 1.8vw, 26px);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--espresso, #1E120A);
+}
+.culture-bar-names li {
+  white-space: nowrap;
+}
+.culture-bar-dot {
+  font-size: clamp(8px, 0.7vw, 10px);
+  color: var(--terracotta, #A15E3C);
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .culture-bar-names {
+    font-size: 17px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 560px) {
+  .culture-bar {
+    padding: 28px 16px;
+  }
+  .culture-bar-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    margin-bottom: 16px;
+  }
+  .culture-bar-names {
+    font-size: 15px;
+    gap: 8px;
+  }
+  .culture-bar-dot {
+    font-size: 7px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Culture Bar",
+  "settings": [],
+  "presets": [{ "name": "Culture Bar" }]
+}
+{% endschema %}
