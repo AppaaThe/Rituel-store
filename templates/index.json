@@ -5,7 +5,7 @@
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
- * Cache-bust: 2026-04-28-1
+ * Cache-bust: 2026-04-28-2
  * ------------------------------------------------------------
  */
 {
@@ -76,6 +76,7 @@
     "culture-bar",
     "before-after",
     "featured-products",
+    "customer-reviews",
     "problem",
     "why-guasha",
     "material-education",
@@ -84,7 +85,6 @@
     "shop-by-concern",
     "promise",
     "our-story",
-    "customer-reviews",
     "email-signup"
   ]
 }

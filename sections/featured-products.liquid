@@ -6,8 +6,8 @@
 <section class="fp" id="shop">
 
   <header class="fp-head reveal">
-    <p class="fp-eyebrow">The Tools</p>
-    <h2 class="fp-title">Four objects.<br>One ritual.</h2>
+    <p class="fp-eyebrow">The Tool</p>
+    <h2 class="fp-title">One stone.<br>One ritual.</h2>
   </header>
 
   <div class="fp-layout">
@@ -62,64 +62,22 @@
       </div>
     </article>
 
-    <!-- Stack of 3 supporting cards -->
-    <div class="fp-stack reveal reveal-delay-1">
-
-      <a href="{{ oil.url }}" class="fp-row" aria-label="Shop Rosehip Oil — $15">
-        <div class="fp-row-img">
-          {%- if oil.featured_image -%}
-            <img src="{{ oil.featured_image | image_url: width: 400 }}" alt="{{ oil.title }}" loading="lazy" width="400" height="400">
-          {%- else -%}
-            <img src="{{ 'br-thumb-oil.webp' | asset_url }}" alt="Rosehip Oil" loading="lazy">
-          {%- endif -%}
-        </div>
-        <div class="fp-row-body">
-          <p class="fp-row-label">Glide</p>
-          <h3 class="fp-row-name">Rosehip Oil</h3>
-          <p class="fp-row-copy">The slip your stone needs. Two drops, every time.</p>
-          <p class="fp-row-meta"><span class="fp-row-price">$15</span><span class="fp-row-arrow" aria-hidden="true">&rarr;</span></p>
-        </div>
-      </a>
-
-      <a href="{{ ice.url }}" class="fp-row" aria-label="Shop Ice Roller — $19">
-        <div class="fp-row-img">
-          {%- if ice.featured_image -%}
-            <img src="{{ ice.featured_image | image_url: width: 400 }}" alt="{{ ice.title }}" loading="lazy" width="400" height="400">
-          {%- else -%}
-            <img src="{{ 'br-thumb-ice.webp' | asset_url }}" alt="Ice Roller" loading="lazy">
-          {%- endif -%}
-        </div>
-        <div class="fp-row-body">
-          <p class="fp-row-label">Finisher</p>
-          <h3 class="fp-row-name">Ice Roller</h3>
-          <p class="fp-row-copy">Pore-tightening 30-second finisher. Constricts, calms, locks it in.</p>
-          <p class="fp-row-meta"><span class="fp-row-price">$19</span><span class="fp-row-arrow" aria-hidden="true">&rarr;</span></p>
-        </div>
-      </a>
-
-      <a href="{{ roller.url }}" class="fp-row" aria-label="Shop Amethyst Roller — $16">
-        <div class="fp-row-img">
-          {%- if roller.featured_image -%}
-            <img src="{{ roller.featured_image | image_url: width: 400 }}" alt="{{ roller.title }}" loading="lazy" width="400" height="400">
-          {%- else -%}
-            <img src="{{ 'br-thumb-roller.webp' | asset_url }}" alt="Amethyst Roller" loading="lazy">
-          {%- endif -%}
-        </div>
-        <div class="fp-row-body">
-          <p class="fp-row-label">Targeted</p>
-          <h3 class="fp-row-name">Amethyst Roller</h3>
-          <p class="fp-row-copy">Cool double-ended amethyst. Under-eye depuff, anywhere a roller fits.</p>
-          <p class="fp-row-meta"><span class="fp-row-price">$16</span><span class="fp-row-arrow" aria-hidden="true">&rarr;</span></p>
-        </div>
-      </a>
-
-    </div>
+    {%- comment -%}
+      Supporting product stack hidden — gua-sha-only homepage focus.
+      Bring back when other products are launch-ready.
+      <div class="fp-stack reveal reveal-delay-1">
+        ... rosehip oil / ice roller / amethyst roller cards ...
+      </div>
+    {%- endcomment -%}
 
   </div>
 
-  <a href="{{ routes.collections_url }}/all" class="fp-viewall reveal">
-    View all tools &amp; ritual sets &rarr;
-  </a>
+  {%- comment -%}
+    "View all" link hidden alongside the stack — keep funnel focused on gua sha.
+    <a href="{{ routes.collections_url }}/all" class="fp-viewall reveal">
+      View all tools &amp; ritual sets &rarr;
+    </a>
+  {%- endcomment -%}
 
 </section>
 
@@ -155,13 +113,11 @@
   margin: 0;
 }
 
-/* Layout: hero + stack */
+/* Layout: solo gua sha — full-width centered hero card */
 .fp-layout {
-  max-width: 1320px;
+  max-width: 1180px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: clamp(20px, 2.5vw, 32px);
+  display: block;
 }
 
 /* Shared link reset (for anchor descendants of cards) */
@@ -172,14 +128,20 @@
   display: block;
 }
 
-/* ── Hero card (gua sha with slideshow) ── */
+/* ── Hero card (gua sha with slideshow) — horizontal solo layout ── */
 .fp-hero {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   background: rgba(255,255,255,0.025);
   border: 1px solid rgba(247,242,234,0.07);
   overflow: hidden;
   transition: border-color 0.4s var(--ease-premium), background 0.4s var(--ease-premium);
+}
+@media (max-width: 880px) {
+  .fp-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
 }
 .fp-hero:hover {
   border-color: rgba(184,112,74,0.4);
@@ -278,10 +240,17 @@
   transform: scale(1.2);
 }
 .fp-hero-body {
-  padding: clamp(28px, 3vw, 44px) clamp(28px, 3vw, 44px) clamp(28px, 3vw, 44px);
+  padding: clamp(40px, 5vw, 72px) clamp(36px, 4.5vw, 60px);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  justify-content: center;
+  gap: 18px;
+}
+@media (max-width: 880px) {
+  .fp-hero-body {
+    padding: clamp(28px, 5vw, 40px) clamp(24px, 5vw, 36px) clamp(32px, 6vw, 44px);
+    gap: 16px;
+  }
 }
 .fp-hero-label {
   font-family: var(--sans);
