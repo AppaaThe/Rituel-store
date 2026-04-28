@@ -230,33 +230,25 @@
   }
 }
 
-/* Phone & small tablet — SPLIT LAYOUT: image up top, text below on solid */
+/* Phone & small tablet — minimal: hook + solution + CTA only */
 @media (max-width: 880px) {
   .hero-v3 {
-    min-height: 0;
-    flex-direction: column;
-  }
-  .hero-v3-bg {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: clamp(360px, 50vh, 460px);
-    flex-shrink: 0;
+    min-height: 88svh;
   }
   .hero-v3-bg img {
-    object-position: 50% 60%;
+    object-position: 45% 50%;
   }
   .hero-v3-bg-overlay {
-    background: linear-gradient(180deg, rgba(30,18,10,0) 65%, rgba(30,18,10,0.35) 100%);
+    background: linear-gradient(180deg,
+      rgba(30,18,10,0.15) 0%,
+      rgba(30,18,10,0.05) 32%,
+      rgba(30,18,10,0.45) 62%,
+      rgba(30,18,10,0.92) 100%);
   }
   .hero-v3-inner {
-    position: relative;
-    z-index: 1;
-    background: var(--espresso, #1E120A);
-    padding: clamp(36px, 6vh, 56px) 24px clamp(40px, 6vh, 56px);
-    align-items: flex-start;
+    padding: clamp(80px, 10vh, 120px) 24px clamp(40px, 6vh, 56px);
     justify-content: flex-start;
-    flex: 0 1 auto;
+    align-items: flex-end;
   }
   .hero-v3-copy {
     max-width: none;
@@ -265,33 +257,27 @@
   .hero-v3-eyebrow {
     font-size: 13px;
     letter-spacing: 0.18em;
-    margin-bottom: 22px;
-  }
-  .hero-v3-title {
-    font-size: clamp(40px, 10vw, 60px);
-    line-height: 1.0;
     margin-bottom: 18px;
   }
-  .hero-v3-sublead {
-    font-size: clamp(19px, 4.6vw, 24px);
-    margin-bottom: 22px;
+  .hero-v3-title {
+    font-size: clamp(44px, 11vw, 64px);
+    line-height: 1.0;
+    margin-bottom: 24px;
   }
-  .hero-v3-sub {
-    font-size: 15px;
-    line-height: 1.65;
-    margin-bottom: 28px;
+  /* Hide everything that's not hook / solution / CTA on mobile */
+  .hero-v3-sublead,
+  .hero-v3-sub,
+  .hero-v3-trust {
+    display: none;
   }
   .hero-v3-cta {
-    padding: 16px 28px;
-    width: 100%;
+    display: inline-block;
+    width: auto;
     max-width: none;
+    padding: 14px 32px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
     text-align: center;
-    font-size: 12px;
-  }
-  .hero-v3-trust {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    margin-top: 18px;
   }
 }
 </style>
