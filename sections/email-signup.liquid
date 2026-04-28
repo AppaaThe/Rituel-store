@@ -1,8 +1,9 @@
 <section class="signup-section" id="signup">
   <div class="signup-inner">
-    <span class="signup-label reveal">Free Ritual Guidebook + 15% off</span>
-    <h2 class="signup-title reveal reveal-delay-1">Wake up.<br>Look better.<br><span class="signup-title-accent">Five minutes.</span></h2>
-    <p class="signup-desc reveal reveal-delay-2">Get the <strong>BY RITUEL Morning Ritual Guide</strong> &mdash; exactly how to use each tool, in what order, for <strong>maximum de-puffing and jawline definition</strong>. Plus <strong>15% off your first order</strong>.</p>
+    <span class="signup-label reveal">Join the ritual</span>
+    <p class="signup-discount reveal reveal-delay-1">15% off</p>
+    <h2 class="signup-subhead reveal reveal-delay-2">your first ritual.</h2>
+    <p class="signup-desc reveal reveal-delay-3">Plus the free <strong>BY RITUEL Morning Ritual Guide</strong> &mdash; exactly how to use each tool, in what order. Sent straight to your inbox.</p>
     <div class="signup-form reveal reveal-delay-3">
       <div class="klaviyo-form-TpBtCX"></div>
     </div>
@@ -44,23 +45,33 @@
   .signup-label {
     display: inline-block;
     font-family: var(--sans), system-ui, sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 12px;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--blush, #E8C5B0);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
-  .signup-title {
+  /* THE DISCOUNT — dominant red display element */
+  .signup-discount {
+    font-family: var(--serif), Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(80px, 13vw, 168px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    color: #FF3B1F;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+    margin: 0 0 12px;
+  }
+
+  .signup-subhead {
     font-family: var(--serif), Georgia, serif;
     font-weight: 400;
-    font-size: clamp(40px, 5.5vw, 56px);
-    line-height: 1.08;
+    font-style: italic;
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1.1;
     color: var(--cream, #F7F2EA);
-    margin: 0 0 24px;
-  }
-  .signup-title-accent {
-    color: var(--blush, #E8C5B0);
+    margin: 0 0 28px;
   }
 
   .signup-desc {
@@ -89,6 +100,12 @@
   @media (max-width: 640px) {
     .signup-section::before {
       font-size: 180px;
+    }
+    .signup-discount {
+      font-size: clamp(72px, 22vw, 120px);
+    }
+    .signup-subhead {
+      font-size: clamp(22px, 6vw, 32px);
     }
   }
 </style>
