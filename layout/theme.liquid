@@ -127,6 +127,78 @@
       item_list_name: {{ collection.title | json }}
     });
     {%- endif %}
+
+    // ── add_to_cart (intercepts every Shopify cart/add — AJAX + form submit) ──
+    (function () {
+      var origFetch = window.fetch;
+      window.fetch = function () {
+        var args = arguments;
+        var url = args[0];
+        var urlStr = (typeof url === 'string') ? url : (url && url.url) || '';
+        var isAdd = urlStr.indexOf('/cart/add') !== -1;
+        var p = origFetch.apply(this, args);
+        if (isAdd) {
+          p.then(function (r) { return r.clone().json().catch(function () { return null; }); })
+           .then(function (data) {
+             if (!data) return;
+             var items = (data.items || [data]).map(function (it) {
+               return {
+                 item_id: String(it.product_id || it.id || ''),
+                 item_name: it.product_title || it.title || '',
+                 item_variant: it.variant_title || '',
+                 price: (it.price || 0) / 100,
+                 quantity: it.quantity || 1
+               };
+             });
+             var value = items.reduce(function (s, i) { return s + (i.price * i.quantity); }, 0);
+             gtag('event', 'add_to_cart', { currency: '{{ cart.currency.iso_code }}', value: value, items: items });
+           }).catch(function () {});
+        }
+        return p;
+      };
+
+      // Fallback: traditional form-submit add-to-cart (non-AJAX themes)
+      document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (form && form.action && form.action.indexOf('/cart/add') !== -1) {
+          var qty = parseInt((form.querySelector('[name="quantity"]') || {}).value || 1, 10);
+          gtag('event', 'add_to_cart', {
+            currency: '{{ cart.currency.iso_code }}',
+            items: [{ item_id: (form.querySelector('[name="id"]') || {}).value || '', quantity: qty }]
+          });
+        }
+      }, true);
+    })();
+
+    // ── begin_checkout (fires when user navigates to /checkout) ──
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest && e.target.closest('a, button, input[type="submit"]');
+      if (!t) return;
+      var href = t.getAttribute && (t.getAttribute('href') || '');
+      var name = (t.getAttribute && t.getAttribute('name')) || '';
+      var goesToCheckout = href.indexOf('/checkout') !== -1 || name === 'checkout';
+      if (goesToCheckout) {
+        // Pull current cart for items + value (best-effort, non-blocking)
+        fetch('/cart.js').then(function (r) { return r.json(); }).then(function (cart) {
+          var items = (cart.items || []).map(function (it) {
+            return {
+              item_id: String(it.product_id || ''),
+              item_name: it.product_title || it.title || '',
+              item_variant: it.variant_title || '',
+              price: (it.price || 0) / 100,
+              quantity: it.quantity || 1
+            };
+          });
+          gtag('event', 'begin_checkout', {
+            currency: cart.currency || '{{ cart.currency.iso_code }}',
+            value: (cart.total_price || 0) / 100,
+            items: items
+          });
+        }).catch(function () {
+          gtag('event', 'begin_checkout', { currency: '{{ cart.currency.iso_code }}' });
+        });
+      }
+    }, true);
   </script>
   <!-- /Google Analytics 4 -->
 </head>
