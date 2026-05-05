@@ -1,0 +1,44 @@
+{
+  "batch_id": "tier1.5",
+  "created": "2026-05-03",
+  "purpose": "Rework all 18 indexed-but-not-yet-rewritten blog posts. Tier 1 (29 posts) was rewritten 2026-04-29 and is in measurement freeze until 2026-05-14 — DO NOT touch those.",
+  "shopify_store": "vwzgzv-41.myshopify.com",
+  "blog_handle": "news",
+  "ctr_levers_reference": "C:/Users/doria/.claude/projects/c--Users-doria-Downloads-CLAUDE/memory/project_ctr_levers_framework.md",
+  "brand_facts_reference": "C:/Users/doria/.claude/projects/c--Users-doria-Downloads-CLAUDE/memory/project_byrituel_brand_facts.md",
+  "constraints": {
+    "title_max_chars": 60,
+    "meta_max_chars": 155,
+    "no_france_origin": true,
+    "no_derm_approved": true,
+    "warranty_max_years": 2,
+    "no_doriano_first_person": true,
+    "products_use_literal_names": true
+  },
+  "posts": [
+    { "slug": "gua-sha-strokes-for-beginners", "file": "blog-posts/63-gua-sha-strokes-for-beginners.html", "tier": "cold", "imp_28d": 181, "pos": 68.9, "ctr": 0, "diagnosis": "image-search bleed; needs image alt + structured data + new title angle" },
+    { "slug": "gua-sha-during-pregnancy-safe", "file": "blog-posts/65-gua-sha-during-pregnancy-safe.html", "tier": "hot", "imp_28d": 65, "pos": 10.4, "ctr": 0, "diagnosis": "page 1 edge — title rewrite high leverage" },
+    { "slug": "gua-sha-direction-of-strokes", "file": "blog-posts/66-gua-sha-direction-of-strokes.html", "tier": "hot", "imp_28d": 41, "pos": 6.7, "ctr": 0, "diagnosis": "page 1 — title is the only barrier" },
+    { "slug": "rosehip-oil-vs-hyaluronic-acid", "file": "blog-posts/64-rosehip-oil-vs-hyaluronic-acid.html", "tier": "hot", "imp_28d": 36, "pos": 6.6, "ctr": 0, "diagnosis": "page 1 — title needs verdict" },
+    { "slug": "ice-roller-before-makeup", "file": "blog-posts/71-ice-roller-before-makeup.html", "tier": "warm", "imp_28d": 31, "pos": 57.8, "ctr": 0, "diagnosis": "stuck deep — needs body + internal linking + title" },
+    { "slug": "rosehip-oil-for-rosacea", "file": "blog-posts/68-rosehip-oil-for-rosacea.html", "tier": "warm", "imp_28d": 22, "pos": 19.6, "ctr": 0, "diagnosis": "page 2 — title + intro hook" },
+    { "slug": "rosehip-oil-vs-jojoba-oil-face", "file": "blog-posts/42-rosehip-oil-vs-jojoba-oil-face.html", "tier": "warm", "imp_28d": 21, "pos": 33.3, "ctr": 0, "diagnosis": "page 3 — title + body" },
+    { "slug": "does-gua-sha-slim-your-face", "file": "blog-posts/47-does-gua-sha-slim-your-face.html", "tier": "warm", "imp_28d": 12, "pos": 27.5, "ctr": 0, "diagnosis": "page 3 — title needs honest answer" },
+    { "slug": "gua-sha-for-jowls", "file": "blog-posts/69-gua-sha-for-jowls.html", "tier": "warm", "imp_28d": 11, "pos": 18.2, "ctr": 0, "diagnosis": "page 2 — title + body hook" },
+    { "slug": "gua-sha-for-neck-lines-tech-neck", "file": "blog-posts/43-gua-sha-for-neck-lines-tech-neck.html", "tier": "warm", "imp_28d": 10, "pos": 30.7, "ctr": 0, "diagnosis": "page 3 — title + body" },
+    { "slug": "rosehip-oil-for-hyperpigmentation", "file": "blog-posts/49-rosehip-oil-for-hyperpigmentation.html", "tier": "cold", "imp_28d": 10, "pos": 29.3, "ctr": 0, "diagnosis": "page 3 — needs structural rework" },
+    { "slug": "gua-sha-night-routine", "file": "blog-posts/72-gua-sha-night-routine.html", "tier": "cold", "imp_28d": 7, "pos": 67.6, "ctr": 0, "diagnosis": "page 6+ — likely thin/duplicate content" },
+    { "slug": "ice-roller-benefits-for-skin", "file": "blog-posts/44-ice-roller-benefits-for-skin.html", "tier": "cold", "imp_28d": 7, "pos": 63.7, "ctr": 0, "diagnosis": "page 6+ — needs full rework" },
+    { "slug": "gua-sha-morning-routine-steps", "file": "blog-posts/48-gua-sha-morning-routine-steps.html", "tier": "cold", "imp_28d": 6, "pos": 27, "ctr": 0, "diagnosis": "page 3 — body work needed" },
+    { "slug": "rosehip-oil-for-dry-skin", "file": "blog-posts/46-rosehip-oil-for-dry-skin.html", "tier": "cold", "imp_28d": 6, "pos": 17.5, "ctr": 0, "diagnosis": "page 2 — title + body" },
+    { "slug": "gua-sha-lymphatic-drainage-face", "file": "blog-posts/41-gua-sha-lymphatic-drainage-face.html", "tier": "cold", "imp_28d": 5, "pos": 46.6, "ctr": 0, "diagnosis": "page 5 — full rework" },
+    { "slug": "gua-sha-for-forehead-wrinkles", "file": "blog-posts/45-gua-sha-for-forehead-wrinkles.html", "tier": "cold", "imp_28d": 1, "pos": 58, "ctr": 0, "diagnosis": "barely indexed — needs full rework" },
+    { "slug": "gua-sha-stone-feels-draggy", "file": "blog-posts/88-gua-sha-stone-feels-draggy.html", "tier": "cold", "imp_28d": 1, "pos": 6, "ctr": 0, "diagnosis": "page 1 but no impression volume — niche query" }
+  ],
+  "phase_status": {
+    "phase_1_briefs": "completed",
+    "phase_2_rewrites": "completed",
+    "phase_3_qa": "in_progress",
+    "phase_4_deploy": "pending"
+  }
+}
