@@ -20,9 +20,13 @@
       <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="megaMenu" onclick="toggleMegaMenu(this)">Shop <span aria-hidden="true">▾</span></button>
       <div class="nav-mega-menu" id="megaMenu" role="menu">
         <a href="/products/amethyst-gua-sha" class="mega-hero">
-          <span class="mega-hero-eyebrow">Start here · Our hero</span>
           <span class="mega-hero-title">Amethyst Gua Sha</span>
-          <span class="mega-hero-sub">Depuff &amp; sculpt your jawline in 5 minutes a day</span>
+          <span class="mega-hero-slogan">The only gua sha you'll ever need.</span>
+          <span class="mega-hero-points">
+            <span class="mega-hero-point">100% real amethyst — never glass or resin</span>
+            <span class="mega-hero-point">Stays cold &amp; glides without dragging</span>
+            <span class="mega-hero-point">Depuffs &amp; sculpts in just 5 minutes</span>
+          </span>
           <span class="mega-hero-arrow">Shop the gua sha →</span>
         </a>
         <div class="mega-cols">
@@ -73,7 +77,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-inner">
     <a href="{{ routes.root_url }}" onclick="toggleMenu()">Home</a>
-    <a href="/products/amethyst-gua-sha" onclick="toggleMenu()" class="mobile-menu-hero">Amethyst Gua Sha — our hero →</a>
+    <a href="/products/amethyst-gua-sha" onclick="toggleMenu()" class="mobile-menu-hero">Amethyst Gua Sha →</a>
     <a href="{{ routes.collections_url }}/all" onclick="toggleMenu()">Shop All</a>
     <div class="mobile-menu-section">
       <span class="mobile-menu-label">More Tools</span>
@@ -447,7 +451,10 @@
   z-index: 200;
 }
 .mega-hero {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
   background: var(--cream, #F7F2EA);
   border: 1px solid rgba(30,18,10,0.07);
   border-radius: 6px;
@@ -456,34 +463,46 @@
   transition: background 0.2s ease, transform 0.2s ease;
 }
 .mega-hero:hover { background: var(--cream-dark, #EDE6D6); transform: translateY(-1px); }
-.mega-hero-eyebrow {
-  display: block;
-  font-size: 9px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--terracotta, #B8704A);
-  font-weight: 600;
-  margin-bottom: 6px;
-}
 .mega-hero-title {
-  display: block;
   font-family: var(--serif, Georgia, serif);
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.05;
   color: var(--espresso, #1E120A);
-  margin-bottom: 5px;
 }
-.mega-hero-sub {
-  display: block;
-  font-size: 12px;
-  line-height: 1.4;
+.mega-hero-slogan {
+  font-family: var(--serif, Georgia, serif);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--terracotta, #B8704A);
+}
+.mega-hero-points {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 3px 0;
+}
+.mega-hero-point {
+  position: relative;
+  padding-left: 16px;
+  font-size: 11.5px;
+  line-height: 1.45;
   color: var(--stone, #8B7355);
-  margin-bottom: 9px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.mega-hero-point::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--terracotta, #B8704A);
+  font-size: 10px;
 }
 .mega-hero-arrow {
-  display: inline-block;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   color: var(--terracotta, #B8704A);
 }
 .mega-cols {
