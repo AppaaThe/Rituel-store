@@ -169,7 +169,7 @@
       <div class="product-rating-row">
         <a href="#reviews" class="product-rating-link">
           <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <span class="star-text">4.8 &mdash; {%- case problem_set -%}{%- when 'guasha' -%}47 reviews{%- when 'iceroller' -%}31 reviews{%- when 'oil' -%}28 reviews{%- when 'roller' -%}24 reviews{%- when 'bundle' -%}38 reviews{%- else -%}47 reviews{%- endcase -%}</span>
+          <span class="star-text">4.8 &mdash; {% case problem_set -%}{%- when 'guasha' -%}47 reviews{%- when 'iceroller' -%}31 reviews{%- when 'oil' -%}28 reviews{%- when 'roller' -%}24 reviews{%- when 'bundle' -%}38 reviews{%- else -%}47 reviews{%- endcase -%}</span>
         </a>
       </div>
 
@@ -228,6 +228,8 @@
         <span>&#10003; Tracked worldwide</span>
         <span class="cta-trust-dot">&bull;</span>
         <span>&#10003; Free US shipping $25+</span>
+        <span class="cta-trust-dot">&bull;</span>
+        <span>&#10003; Secure checkout</span>
       </div>
 
       {%- comment -%} ── COMPLETE THE RITUAL — cross-sell block ── {%- endcomment -%}
@@ -258,14 +260,6 @@
 
       {%- comment -%} ── INFO ACCORDIONS ── {%- endcomment -%}
       <div class="info-accordions">
-
-        <details class="info-accordion">
-          <summary>
-            <span>Description</span>
-            <span class="info-accordion-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="info-accordion-body">{{ product.description }}</div>
-        </details>
 
         <details class="info-accordion">
           <summary>
@@ -322,8 +316,8 @@
             <span class="info-accordion-icon" aria-hidden="true">+</span>
           </summary>
           <div class="info-accordion-body">
-            <p><strong>Shipping:</strong> Orders are processed in 2–4 business days. Standard delivery is typically 7–14 business days with tracking. Free shipping on orders over $25 in the US.</p>
-            <p><strong>Returns:</strong> 30-day money-back guarantee. If you don't love it, email us for a full refund — no need to send anything back. <a href="mailto:hello@byrituel.com">hello@byrituel.com</a></p>
+            <p><strong>Shipping:</strong> Orders ship with tracking and typically arrive within 4–7 business days. Free shipping on orders over $25 in the US.</p>
+            <p><strong>Returns:</strong> 30-day money-back guarantee. If you don't love it, email us within 30 days for a full refund. <a href="mailto:hello@byrituel.com">hello@byrituel.com</a></p>
           </div>
         </details>
 
@@ -350,12 +344,24 @@
 <!-- PROBLEMS SOLVED -->
 {%- if problem_set != blank -%}
 <div class="product-problems">
+  {%- assign problems_img = 'br-card-guasha-lifestyle.webp' -%}
+  {%- case problem_set -%}
+    {%- when 'roller' -%}{%- assign problems_img = 'br-card-roller-lifestyle.webp' -%}
+    {%- when 'oil' -%}{%- assign problems_img = 'br-card-oil-lifestyle.webp' -%}
+    {%- when 'iceroller' -%}{%- assign problems_img = 'br-card-ice-lifestyle.webp' -%}
+    {%- when 'bundle' -%}{%- assign problems_img = 'br-prod-lifestyle-use.webp' -%}
+  {%- endcase -%}
   <div class="product-problems-inner">
-    <span class="section-label">What This Fixes</span>
-    <h2 class="section-title">Built to solve <em>real problems.</em></h2>
-    <p class="product-problems-sub">If any of these sound familiar, this is the tool for you.</p>
+    <div class="problems-layout">
+      <figure class="problems-media">
+        <img src="{{ problems_img | asset_url }}" alt="The BY RITUEL ritual in practice" loading="lazy" width="900" height="1100">
+      </figure>
+      <div class="problems-content">
+        <span class="section-label">What This Fixes</span>
+        <h2 class="section-title">Built to solve <em>real problems.</em></h2>
+        <p class="product-problems-sub">If any of these sound familiar, this is the tool for you.</p>
 
-    <div class="problems-grid">
+        <div class="problems-grid">
       {%- case problem_set -%}
         {%- when 'guasha' -%}
           <div class="problem-card"><span class="problem-icon">01</span><h4>Morning puffiness</h4><p>Five minutes of slow, upward strokes and your face visibly looks depuffed — the classic gua sha effect.</p></div>
@@ -383,6 +389,8 @@
           <div class="problem-card"><span class="problem-icon">03</span><h4>Skincare that feels like it's not doing enough</h4><p>The oil primes your skin. The stones help your serums glide evenly. You get more from your routine.</p></div>
           <div class="problem-card"><span class="problem-icon">04</span><h4>A morning routine that feels like nothing</h4><p>5 intentional minutes that belong entirely to you. A practice you'll actually keep.</p></div>
       {%- endcase -%}
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -398,7 +406,7 @@
       <span class="reviews-big-rating">4.8</span>
       <div class="reviews-star-display">
         <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span class="reviews-count">Based on {%- case problem_set -%}{%- when 'guasha' -%}47{%- when 'iceroller' -%}31{%- when 'oil' -%}28{%- when 'roller' -%}24{%- when 'bundle' -%}38{%- else -%}47{%- endcase -%} reviews</span>
+        <span class="reviews-count">Based on {% case problem_set %}{%- when 'guasha' -%}47{%- when 'iceroller' -%}31{%- when 'oil' -%}28{%- when 'roller' -%}24{%- when 'bundle' -%}38{%- else -%}47{%- endcase %} reviews</span>
       </div>
     </div>
   </div>
@@ -710,189 +718,6 @@
   .product-reviews-section { padding: 72px 20px; }
   .product-reviews-section .reviews-grid { grid-template-columns: 1fr; }
   .reviews-big-rating { font-size: 42px; }
-}
-</style>
-
-<!-- THE RITUAL — full-bleed editorial moment (replaces What's Included + Lifestyle) -->
-<section class="product-ritual">
-  <div class="product-ritual-media">
-    <img
-      src="{{ 'br-prod-lifestyle-use.webp' | asset_url }}"
-      alt="Woman with glowing skin using an amethyst gua sha on her cheekbone"
-      loading="lazy"
-    >
-  </div>
-
-  <div class="product-ritual-body">
-    <div class="product-ritual-inner">
-
-      <span class="product-ritual-eyebrow">The 5-Minute Ritual</span>
-
-      <h2 class="product-ritual-title">Five minutes.<br><em>Every morning.</em></h2>
-
-      <div class="product-ritual-rule" aria-hidden="true"></div>
-
-      <p class="product-ritual-lede">
-        Apply a few drops of facial oil, then glide the stone upward and outward in slow, deliberate strokes — forehead, cheeks, jawline, neck.
-      </p>
-
-      <p class="product-ritual-body-copy">
-        Three minutes later your face looks depuffed, your skin is glowing, and you've started your day with something that belongs entirely to you.
-      </p>
-
-      {%- if problem_set == 'guasha' or problem_set == 'bundle' -%}
-        <div class="product-ritual-inbox">
-          <span class="inbox-label">In the box</span>
-          <ul class="inbox-list">
-            <li><span class="inbox-num">01</span>Amethyst gua sha stone</li>
-            <li><span class="inbox-num">02</span>Ritual technique guide</li>
-            <li><span class="inbox-num">03</span>Cotton travel pouch</li>
-          </ul>
-        </div>
-      {%- endif -%}
-
-      <p class="product-ritual-meta">Best done after cleansing, before makeup — every single morning.</p>
-
-    </div>
-  </div>
-</section>
-
-<style>
-.product-ritual {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  align-items: stretch;
-  max-width: 1440px;
-  margin: 120px auto;
-  background: var(--white, #FFFFFF);
-  overflow: hidden;
-}
-.product-ritual-media {
-  position: relative;
-  overflow: hidden;
-  min-height: 720px;
-  background: var(--cream-dark, #EDE6D6);
-}
-.product-ritual-media img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 2s cubic-bezier(.23,1,.32,1);
-}
-.product-ritual:hover .product-ritual-media img {
-  transform: scale(1.025);
-}
-.product-ritual-body {
-  display: flex;
-  align-items: center;
-  padding: 120px 96px;
-  background: var(--white, #FFFFFF);
-}
-.product-ritual-inner {
-  max-width: 480px;
-}
-.product-ritual-eyebrow {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--terracotta, #A15E3C);
-  margin-bottom: 28px;
-}
-.product-ritual-title {
-  font-family: var(--serif, 'Cormorant Garamond', serif);
-  font-size: clamp(46px, 5.6vw, 76px);
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  color: var(--espresso, #1E120A);
-  margin: 0 0 42px;
-}
-.product-ritual-title em {
-  font-style: italic;
-  color: var(--terracotta, #A15E3C);
-}
-.product-ritual-rule {
-  width: 40px;
-  height: 1px;
-  background: var(--terracotta, #A15E3C);
-  margin-bottom: 34px;
-}
-.product-ritual-lede {
-  font-family: var(--serif, 'Cormorant Garamond', serif);
-  font-size: clamp(20px, 1.6vw, 24px);
-  font-weight: 400;
-  line-height: 1.55;
-  font-style: italic;
-  color: var(--espresso, #1E120A);
-  margin: 0 0 24px;
-}
-.product-ritual-body-copy {
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--stone, #6B5A40);
-  margin: 0 0 36px;
-}
-
-/* In the box — inline callout, only rendered for gua sha / bundles */
-.product-ritual-inbox {
-  padding: 28px 0 30px;
-  border-top: 1px solid rgba(30,18,10,0.09);
-  border-bottom: 1px solid rgba(30,18,10,0.09);
-  margin-bottom: 28px;
-}
-.inbox-label {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--terracotta, #A15E3C);
-  margin-bottom: 18px;
-}
-.inbox-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.inbox-list li {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  padding: 10px 0;
-  font-family: var(--serif, 'Cormorant Garamond', serif);
-  font-size: 18px;
-  color: var(--espresso, #1E120A);
-  border-bottom: 1px dashed rgba(30,18,10,0.07);
-}
-.inbox-list li:last-child { border-bottom: none; padding-bottom: 0; }
-.inbox-num {
-  flex-shrink: 0;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  font-weight: 500;
-  color: var(--terracotta, #A15E3C);
-  font-family: var(--sans, 'Jost', sans-serif);
-  min-width: 24px;
-}
-
-.product-ritual-meta {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--stone, #6B5A40);
-  margin: 0;
-}
-
-@media (max-width: 1024px) {
-  .product-ritual {
-    grid-template-columns: 1fr;
-    margin: 72px 0;
-  }
-  .product-ritual-media { min-height: 520px; }
-  .product-ritual-body { padding: 72px 28px; }
-  .product-ritual-inner { max-width: none; }
 }
 </style>
 
@@ -1643,36 +1468,67 @@
   margin: 0;
 }
 .product-problems-inner {
-  max-width: 1180px;
+  max-width: 1240px;
   margin: 0 auto;
-  text-align: center;
+}
+.problems-layout {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 52px;
+  align-items: stretch;
+}
+.problems-media {
+  position: relative;
+  margin: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 540px;
+  background: var(--cream, #F7F2EA);
+}
+.problems-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s cubic-bezier(.23,1,.32,1);
+}
+.product-problems:hover .problems-media img { transform: scale(1.045); }
+.problems-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 }
 .product-problems .section-title {
   font-family: var(--serif);
-  font-size: clamp(36px, 4.5vw, 56px);
+  font-size: clamp(32px, 3.2vw, 48px);
   font-weight: 300;
-  line-height: 1.1;
-  margin: 18px 0 18px;
+  line-height: 1.08;
+  margin: 14px 0 14px;
   color: var(--espresso);
+  text-align: left;
 }
 .product-problems .section-title em { font-style: italic; color: var(--terracotta); }
 .product-problems-sub {
   font-size: 16px;
   line-height: 1.7;
   color: var(--stone);
-  max-width: 560px;
-  margin: 0 auto 56px;
+  max-width: 480px;
+  margin: 0 0 36px;
+  text-align: left;
 }
 .problems-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2px;
-  background: var(--cream-dark, #EDE6D6);
+  background: rgba(30,18,10,0.07);
+  border: 1px solid rgba(30,18,10,0.07);
   text-align: left;
 }
 .problem-card {
   background: var(--white, #FFFFFF);
-  padding: 52px 44px 48px;
+  padding: 34px 30px 32px;
   position: relative;
   overflow: hidden;
   transition: transform 0.45s cubic-bezier(.23,1,.32,1);
@@ -1698,29 +1554,31 @@
   font-weight: 500;
   letter-spacing: 0.22em;
   color: var(--terracotta);
-  margin-bottom: 22px;
+  margin-bottom: 16px;
   line-height: 1;
 }
 .problem-card h4 {
   font-family: var(--serif);
-  font-size: 24px;
+  font-size: 21px;
   font-weight: 400;
   color: var(--espresso);
   line-height: 1.25;
-  margin: 0 0 14px;
-  max-width: 90%;
+  margin: 0 0 12px;
 }
 .problem-card p {
-  font-size: 14px;
-  line-height: 1.85;
+  font-size: 13.5px;
+  line-height: 1.8;
   color: var(--stone);
   margin: 0;
-  max-width: 90%;
 }
-@media (max-width: 768px) {
-  .product-problems { padding: 72px 20px; }
+@media (max-width: 900px) {
+  .product-problems { padding: 72px 22px; }
+  .problems-layout { grid-template-columns: 1fr; gap: 30px; }
+  .problems-media { min-height: 340px; }
+}
+@media (max-width: 560px) {
   .problems-grid { grid-template-columns: 1fr; }
-  .problem-card { padding: 36px 28px; }
+  .problem-card { padding: 30px 26px; }
 }
 
 /* ── PRODUCT SECTIONS ── */
@@ -2320,7 +2178,7 @@ document.addEventListener('keydown', function(e) {
 
 /* Scroll-reveal: fade + slide-up sections as they enter viewport */
 (function initScrollReveal() {
-  var targets = document.querySelectorAll('.product-problems, .product-section, .product-ritual, .results-timeline, .timeline-node, .problem-card, .material-inline-card, .product-lineage, .lineage-card');
+  var targets = document.querySelectorAll('.product-problems, .product-section, .results-timeline, .timeline-node, .problem-card, .material-inline-card, .product-lineage, .lineage-card');
   if (!targets.length || typeof IntersectionObserver === 'undefined') return;
   targets.forEach(function(el) { el.classList.add('reveal'); });
   var io = new IntersectionObserver(function(entries) {
