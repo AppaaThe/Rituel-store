@@ -19,20 +19,27 @@
     <div class="nav-dropdown-wrap">
       <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="megaMenu" onclick="toggleMegaMenu(this)">Shop <span aria-hidden="true">▾</span></button>
       <div class="nav-mega-menu" id="megaMenu" role="menu">
-        <div class="mega-col">
-          <span class="mega-col-title">Shop by Product</span>
-          <a href="{{ routes.collections_url }}/all" class="mega-link">Shop All</a>
-          <a href="/products/amethyst-gua-sha" class="mega-link">Amethyst Gua Sha</a>
-          <a href="/products/rituel-amethyst-roller" class="mega-link">Amethyst Roller</a>
-          <a href="/products/rituel-ice-roller" class="mega-link">Ice Roller</a>
-          <a href="/products/rituel-rosehip-oil" class="mega-link">Rosehip Oil</a>
+        <a href="/products/amethyst-gua-sha" class="mega-hero">
+          <span class="mega-hero-eyebrow">Start here · Our hero</span>
+          <span class="mega-hero-title">Amethyst Gua Sha</span>
+          <span class="mega-hero-sub">Depuff &amp; sculpt your jawline in 5 minutes a day</span>
+          <span class="mega-hero-arrow">Shop the gua sha →</span>
+        </a>
+        <div class="mega-cols">
+          <div class="mega-col">
+            <span class="mega-col-title">More Tools</span>
+            <a href="/products/rituel-amethyst-roller" class="mega-link">Amethyst Roller</a>
+            <a href="/products/rituel-ice-roller" class="mega-link">Ice Roller</a>
+            <a href="/products/rituel-rosehip-oil" class="mega-link">Rosehip Oil</a>
+          </div>
+          <div class="mega-col">
+            <span class="mega-col-title">Ritual Sets</span>
+            <a href="/products/rituel-starter-ritual" class="mega-link">Starter Ritual — $35</a>
+            <a href="/products/rituel-full-ritual" class="mega-link">Full Ritual — $48</a>
+            <a href="/products/rituel-complete-ritual" class="mega-link">Complete Ritual — $58</a>
+          </div>
         </div>
-        <div class="mega-col">
-          <span class="mega-col-title">Ritual Sets</span>
-          <a href="/products/rituel-starter-ritual" class="mega-link">Starter Ritual — $35</a>
-          <a href="/products/rituel-full-ritual" class="mega-link">Full Ritual — $48</a>
-          <a href="/products/rituel-complete-ritual" class="mega-link">Complete Ritual — $58</a>
-        </div>
+        <a href="{{ routes.collections_url }}/all" class="mega-all">Shop all products →</a>
       </div>
     </div>
     <a href="{{ pages['about-us'].url | default: '/pages/about-us' }}">About Us</a>
@@ -66,10 +73,10 @@
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-inner">
     <a href="{{ routes.root_url }}" onclick="toggleMenu()">Home</a>
+    <a href="/products/amethyst-gua-sha" onclick="toggleMenu()" class="mobile-menu-hero">Amethyst Gua Sha — our hero →</a>
     <a href="{{ routes.collections_url }}/all" onclick="toggleMenu()">Shop All</a>
     <div class="mobile-menu-section">
-      <span class="mobile-menu-label">Shop by Product</span>
-      <a href="/products/amethyst-gua-sha" onclick="toggleMenu()" class="mobile-menu-sub">Amethyst Gua Sha</a>
+      <span class="mobile-menu-label">More Tools</span>
       <a href="/products/rituel-amethyst-roller" onclick="toggleMenu()" class="mobile-menu-sub">Amethyst Roller</a>
       <a href="/products/rituel-ice-roller" onclick="toggleMenu()" class="mobile-menu-sub">Ice Roller</a>
       <a href="/products/rituel-rosehip-oil" onclick="toggleMenu()" class="mobile-menu-sub">Rosehip Oil</a>
@@ -429,15 +436,77 @@
   background: var(--white, #FDFAF5);
   border: 1px solid rgba(30,18,10,0.08);
   box-shadow: 0 12px 40px rgba(30,18,10,0.1);
-  padding: 32px 36px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
-  min-width: 380px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 440px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
   z-index: 200;
+}
+.mega-hero {
+  display: block;
+  background: var(--cream, #F7F2EA);
+  border: 1px solid rgba(30,18,10,0.07);
+  border-radius: 6px;
+  padding: 16px 18px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.mega-hero:hover { background: var(--cream-dark, #EDE6D6); transform: translateY(-1px); }
+.mega-hero-eyebrow {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--terracotta, #B8704A);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.mega-hero-title {
+  display: block;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 22px;
+  line-height: 1.05;
+  color: var(--espresso, #1E120A);
+  margin-bottom: 5px;
+}
+.mega-hero-sub {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--stone, #8B7355);
+  margin-bottom: 9px;
+}
+.mega-hero-arrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--terracotta, #B8704A);
+}
+.mega-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+.mega-all {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--espresso, #1E120A);
+  text-decoration: none;
+  padding-top: 14px;
+  border-top: 1px solid rgba(30,18,10,0.08);
+  transition: color 0.2s ease;
+}
+.mega-all:hover { color: var(--terracotta, #B8704A); }
+.mobile-menu-hero {
+  color: var(--terracotta, #B8704A) !important;
+  font-weight: 600;
 }
 .nav-dropdown-wrap:hover .nav-mega-menu,
 .nav-dropdown-wrap:focus-within .nav-mega-menu,
