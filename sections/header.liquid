@@ -20,13 +20,6 @@
       <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="megaMenu" onclick="toggleMegaMenu(this)">Shop <span aria-hidden="true">▾</span></button>
       <div class="nav-mega-menu" id="megaMenu" role="menu">
         <div class="mega-col">
-          <span class="mega-col-title">Shop by Concern</span>
-          <a href="/products/rituel-ice-roller" class="mega-link">De-puff & Drain</a>
-          <a href="/products/amethyst-gua-sha" class="mega-link">Sculpt & Define</a>
-          <a href="/products/rituel-full-ritual" class="mega-link">Glow & Radiance</a>
-          <a href="/products/rituel-amethyst-roller" class="mega-link">Soothe & Calm</a>
-        </div>
-        <div class="mega-col">
           <span class="mega-col-title">Shop by Product</span>
           <a href="{{ routes.collections_url }}/all" class="mega-link">Shop All</a>
           <a href="/products/amethyst-gua-sha" class="mega-link">Amethyst Gua Sha</a>
@@ -74,13 +67,6 @@
   <div class="mobile-menu-inner">
     <a href="{{ routes.root_url }}" onclick="toggleMenu()">Home</a>
     <a href="{{ routes.collections_url }}/all" onclick="toggleMenu()">Shop All</a>
-    <div class="mobile-menu-section">
-      <span class="mobile-menu-label">Shop by Concern</span>
-      <a href="/products/rituel-ice-roller" onclick="toggleMenu()" class="mobile-menu-sub">De-puff & Drain</a>
-      <a href="/products/amethyst-gua-sha" onclick="toggleMenu()" class="mobile-menu-sub">Sculpt & Define</a>
-      <a href="/products/rituel-full-ritual" onclick="toggleMenu()" class="mobile-menu-sub">Glow & Radiance</a>
-      <a href="/products/rituel-amethyst-roller" onclick="toggleMenu()" class="mobile-menu-sub">Soothe & Calm</a>
-    </div>
     <div class="mobile-menu-section">
       <span class="mobile-menu-label">Shop by Product</span>
       <a href="/products/amethyst-gua-sha" onclick="toggleMenu()" class="mobile-menu-sub">Amethyst Gua Sha</a>
@@ -445,9 +431,9 @@
   box-shadow: 0 12px 40px rgba(30,18,10,0.1);
   padding: 32px 36px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 36px;
-  min-width: 520px;
+  min-width: 380px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
