@@ -270,10 +270,11 @@
             <ol>
               {%- case problem_set -%}
                 {%- when 'guasha' -%}
-                  <li>Cleanse your face and apply a few drops of facial oil for slip.</li>
-                  <li>Starting at the neck, sweep the stone upward with light, steady pressure.</li>
-                  <li>Move to the jawline, then cheekbones, then forehead — always upward and outward.</li>
-                  <li>Finish with the small curve under the eyes for depuffing. 5 minutes total.</li>
+                  <li>Cleanse your face and press 2&ndash;3 drops of facial oil into damp skin so the stone glides without dragging.</li>
+                  <li><strong>Open the drainage:</strong> with the long curved edge, sweep <em>downward</em> along the sides of your neck from jaw to collarbone &mdash; 5 light strokes each side.</li>
+                  <li><strong>Sculpt the face, always upward and outward:</strong> jawline (chin &rarr; ear), cheekbones (nose &rarr; ear), forehead (brow &rarr; hairline). 5 strokes per area, light pressure.</li>
+                  <li><strong>Use the notched edge for detail work:</strong> glide gently along the brow bone, around the eye socket, and along the sides of the nose.</li>
+                  <li><strong>Finish by draining:</strong> repeat the downward neck sweeps to flush. 5 minutes total &mdash; best done every morning on cool, clean skin.</li>
                 {%- when 'roller' -%}
                   <li>Apply serum or oil to clean skin so the roller glides smoothly.</li>
                   <li>Use the larger head on cheeks, forehead and neck in upward strokes.</li>
@@ -343,7 +344,7 @@
 
 <!-- REVIEWS — Social Proof -->
 <section class="product-section product-reviews-section" id="reviews">
-  <span class="section-label">Real Results</span>
+  <span class="section-label">Verified Reviews</span>
   <h2 class="section-title">What our <em>customers</em> say</h2>
 
   <div class="reviews-summary">
@@ -1439,9 +1440,10 @@
 
 /* ── PROBLEMS SOLVED ── */
 .product-problems {
-  background: var(--cream-dark, #EDE6D6);
+  background: var(--espresso, #1E120A);
   padding: 110px 40px;
   margin: 0;
+  color: var(--cream, #F7F2EA);
 }
 .product-problems-inner {
   max-width: 1200px;
@@ -1473,20 +1475,21 @@
 .product-problems.reveal .problems-media img { transform: scale(1.12); }
 .product-problems.reveal.is-visible .problems-media img { transform: scale(1); }
 .problems-content { padding-top: 6px; }
+.product-problems .section-label { color: var(--blush, #E8C5B0); }
 .product-problems .section-title {
   font-family: var(--serif);
   font-size: clamp(34px, 3.4vw, 52px);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.06;
   margin: 12px 0 14px;
-  color: var(--espresso);
+  color: var(--cream, #F7F2EA);
   text-align: left;
 }
-.product-problems .section-title em { font-style: italic; color: var(--terracotta); }
+.product-problems .section-title em { font-style: italic; color: var(--blush, #E8C5B0); }
 .product-problems-sub {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.7;
-  color: var(--stone);
+  color: rgba(247, 242, 234, 0.72);
   max-width: 420px;
   margin: 0 0 38px;
   text-align: left;
@@ -1502,11 +1505,11 @@
 .problems-list::before {
   content: '';
   position: absolute;
-  left: 19px;
+  left: 25px;
   top: 10px;
   bottom: 10px;
   width: 1px;
-  background: linear-gradient(var(--terracotta, #A15E3C), rgba(161,94,60,0.12));
+  background: linear-gradient(var(--blush, #E8C5B0), rgba(232,197,176,0.12));
   transform-origin: top;
 }
 .product-problems.reveal .problems-list::before { transform: scaleY(0); transition: transform 1.1s cubic-bezier(.16,1,.3,1) 0.2s; }
@@ -1516,7 +1519,7 @@
   align-items: flex-start;
   gap: 22px;
   padding: 22px 0;
-  border-bottom: 1px solid rgba(30,18,10,0.08);
+  border-bottom: 1px solid rgba(247, 242, 234, 0.12);
 }
 .problem-row:last-child { border-bottom: none; }
 .product-problems.reveal .problem-row { opacity: 0; transform: translateY(26px); transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1); }
@@ -1527,39 +1530,40 @@
 .product-problems.reveal.is-visible .problem-row:nth-child(4) { transition-delay: 0.64s; }
 .problem-num {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: var(--white, #FFFFFF);
-  border: 1px solid rgba(161,94,60,0.25);
+  background: var(--terracotta, #A15E3C);
+  border: none;
   font-family: var(--serif);
-  font-size: 14px;
-  color: var(--terracotta, #A15E3C);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--cream, #F7F2EA);
   position: relative;
   z-index: 1;
   transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
 }
 .problem-row:hover .problem-num {
-  background: var(--terracotta, #A15E3C);
-  color: var(--white, #FFFFFF);
+  background: var(--cream, #F7F2EA);
+  color: var(--espresso, #1E120A);
   transform: scale(1.08);
 }
 .problem-row-text { padding-top: 7px; }
 .problem-row h4 {
   font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--espresso, #1E120A);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--cream, #F7F2EA);
   line-height: 1.2;
-  margin: 0 0 5px;
+  margin: 0 0 7px;
 }
 .problem-row p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--stone, #6B5A40);
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(247, 242, 234, 0.78);
   margin: 0;
 }
 @media (max-width: 900px) {
